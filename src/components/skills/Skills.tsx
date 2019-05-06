@@ -11,10 +11,10 @@ export default class Skills extends Component {
           <Col>
             <Container fluid style={{ marginBottom: 12 }}>
               <Row noGutters>
-                <Col xs={6} md={2} lg={1}>
+                <Col xs={5} md={2}>
                   <p>Languages</p>
                 </Col>
-                <Col xs={6} md={10} lg={11}>
+                <Col xs={7} md={10}>
                   <p>Proficiency</p>
                 </Col>
               </Row>

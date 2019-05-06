@@ -13,9 +13,8 @@ export default class Entry extends Component<IProps> {
     const { backgroundColor, textColor, height } = this.props;
 
     return (
-      <Row noGutters>
+      <Row>
         <Container
-          fluid
           className="body"
           style={{
             backgroundColor: backgroundColor,

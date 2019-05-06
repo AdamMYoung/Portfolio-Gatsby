@@ -13,10 +13,10 @@ export default class Progress extends Component<IProps> {
     return (
       <Container fluid>
         <Row noGutters>
-          <Col xs={6} md={2} lg={1}>
+          <Col xs={5} md={2}>
             <p>{title}</p>
           </Col>
-          <Col xs={6} md={10} lg={11}>
+          <Col xs={7} md={10}>
             <ProgressBar
               className="Skills-progressBar"
               variant="danger"
