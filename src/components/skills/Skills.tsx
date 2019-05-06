@@ -19,7 +19,8 @@ export default class Skills extends Component {
                       <Card.Text>
                         I am well versed in HTML, CSS and JavaScript. I
                         implement these technologies primarily within React,
-                        although I'm open to trying new frameworks.
+                        although I'm open to trying new frameworks and
+                        technologies when they become available.
                       </Card.Text>
                     </Card.Body>
                   </Card>
@@ -29,7 +30,7 @@ export default class Skills extends Component {
                         API Development
                       </Card.Title>
                       <Card.Text>
-                        I have developed varied APIs within .NET Core within a
+                        I have developed varied APIs using .NET Core within a
                         microservice architecture. These have integrated
                         advanced features such as authentication and API gateway
                         support.
