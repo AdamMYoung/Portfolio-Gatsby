@@ -1,0 +1,15 @@
+.title {
+  padding-top: 12px;
+  text-align: center;
+}
+
+.Title-description {
+  padding-top: 12;
+  margin: auto;
+}
+
+@media only screen and (min-width: 500px) {
+  .Title-description {
+    max-width: 70%;
+  }
+}
