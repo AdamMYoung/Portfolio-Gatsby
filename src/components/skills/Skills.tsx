@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, CardGroup, Card } from "react-bootstrap";
 import "./Skills.css";
-import Progress from "./Progress";
 
 export default class Skills extends Component {
   render() {
@@ -9,23 +8,65 @@ export default class Skills extends Component {
       <Container fluid className="justify-content-center">
         <Row noGutters>
           <Col>
-            <Container fluid style={{ marginBottom: 12 }}>
-              <Row noGutters>
-                <Col xs={5} md={2}>
-                  <p>Languages</p>
-                </Col>
-                <Col xs={7} md={10}>
-                  <p>Proficiency</p>
-                </Col>
-              </Row>
-            </Container>
-            <Progress title="C#" progress={80} />
-            <Progress title="Java" progress={50} />
-            <Progress title="HTML" progress={50} />
-            <Progress title="Typescript" progress={50} />
-            <Progress title="Kotlin" progress={40} />
-            <Progress title="SQL" progress={40} />
-            <Progress title="ADA" progress={20} />
+            <Row noGutters>
+              <Col>
+                <CardGroup>
+                  <Card bg="dark" text="light">
+                    <Card.Body>
+                      <Card.Title className="role-header">
+                        Web Design
+                      </Card.Title>
+                      <Card.Text>
+                        I am well versed in HTML, CSS and JavaScript. I
+                        implement these technologies primarily within React,
+                        although I'm open to trying new frameworks.
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                  <Card bg="dark" text="light">
+                    <Card.Body>
+                      <Card.Title className="role-header">
+                        API Development
+                      </Card.Title>
+                      <Card.Text>
+                        I have developed varied APIs within .NET Core within a
+                        microservice architecture. These have integrated
+                        advanced features such as authentication and API gateway
+                        support.
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </CardGroup>
+                <CardGroup>
+                  <Card bg="dark" text="light">
+                    <Card.Body>
+                      <Card.Title className="role-header">
+                        Database Design
+                      </Card.Title>
+                      <Card.Text>
+                        I have designed many different databases, ranging from
+                        simple to complex. I have also iterated on previous
+                        implementations to improve efficiency and reduce
+                        downtime within existing systems.
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                  <Card bg="dark" text="light">
+                    <Card.Body>
+                      <Card.Title className="role-header">
+                        Deployment
+                      </Card.Title>
+                      <Card.Text>
+                        I have extensive experience with the Microsoft Azure
+                        cloud platform, in which I deployed several apps and
+                        databases. I have also established CI and CD pipelines
+                        within Azure, for automated deployment of applications.
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </CardGroup>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>

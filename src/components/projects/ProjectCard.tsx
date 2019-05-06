@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
 interface IProps {
   title: string;
@@ -13,17 +13,15 @@ export default class ProjectCard extends Component<IProps> {
     const { title, src, description, link } = this.props;
 
     return (
-      <Card
-        bg="dark"
-        text="light"
-        style={{ textAlign: "center", marginTop: 6 }}
-      >
+      <Card bg="dark" text="light">
         <Card.Img variant="top" src={src} />
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{description}</Card.Text>
-          <Card.Link href={link}>Github</Card.Link>
         </Card.Body>
+        <Button variant="primary" href={link}>
+          GitHub
+        </Button>
       </Card>
     );
   }

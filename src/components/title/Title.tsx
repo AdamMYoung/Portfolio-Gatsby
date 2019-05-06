@@ -1,25 +1,19 @@
 import React, { Component } from "react";
-import { Col, Image, Container, Row } from "react-bootstrap";
-import profile from "../../media/profile.jpg";
+import { Col, Container, Row } from "react-bootstrap";
+
 import "./Title.css";
 
 export default class Title extends Component {
   render() {
     return (
-      <Container fluid>
-        <Row noGutters>
+      <Container className="title">
+        <Row>
           <Col className="body">
-            <Image src={profile} height={150} width={150} roundedCircle />
-            <div className="title">
-              <h2>Adam Young</h2>
-              <h4>Full-Stack Software Developer</h4>
-              <p className="Title-description">
-                I'm a 21 year old software developer based in Middlesbrough, UK.
-                I focus on all aspects of software development, ranging from
-                back-end to front-end and everything in-between. I primarily
-                specialize in React and API development, and enjoy experimenting
-                with Android on the side.
-              </p>
+            <div>
+              <h1>
+                My name is <strong>Adam Young</strong>, I'm a
+                <strong> Software Developer</strong> based in Middlesbrough, UK
+              </h1>
             </div>
           </Col>
         </Row>
