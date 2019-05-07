@@ -54,11 +54,17 @@ export default class Layout extends Component {
             <Social />
           </Entry>
           <span className="section-divider" />
-          <Entry height={50}>
-            <p>
-              Website by Adam Young. Created with
-              <a href="https://reactjs.org/"> React</a>
-            </p>
+          <Entry>
+            <div style={{ marginBottom: 36 }}>
+              <p>
+                Website by Adam Young. Created with
+                <a href="https://reactjs.org/"> React</a>
+              </p>
+              <p>
+                Find the source code
+                <a href="https://github.com/AdamMYoung/Portfolio"> here</a>
+              </p>
+            </div>
           </Entry>
         </Container>
       </Container>

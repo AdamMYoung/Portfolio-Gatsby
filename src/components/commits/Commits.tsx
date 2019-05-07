@@ -12,6 +12,8 @@ interface IState {
   pullRequests: number;
 }
 
+const githubUsername = "AdamMYoung";
+
 export default class Commits extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
@@ -33,21 +35,31 @@ export default class Commits extends Component<IProps, IState> {
   private getGithubData = async () => {
     let now = moment();
 
-    await fetch("https://api.github.com/users/AdamMYoung")
+    //Gets user
+    await fetch(`https://api.github.com/users/${githubUsername}`)
       .then(response => response.json())
       .then(data => this.setState({ publicRepos: data.public_repos }));
 
+    var events = [] as Event[];
+
     //Gets all events.
-    var events = await fetch("https://api.github.com/users/AdamMYoung/events")
-      .then(response => response.json())
-      .then(data => data as Event[]);
+    for (var i = 1; i <= 10; i++) {
+      var result = await fetch(
+        `https://api.github.com/users/${githubUsername}/events?page=${i}`
+      )
+        .then(response => response.json())
+        .then(data => data as Event[]);
+
+      events = events.concat(result);
+
+      //If last element is older than current month, stop fetching.
+      var lastElement = moment(result[result.length - 1].created_at);
+      if (lastElement.month() !== now.month()) break;
+    }
 
     //Filters by this month.
     var monthEvents = events.filter(
-      x =>
-        moment()
-          .get(x.created_at)
-          .month() === now.month()
+      x => moment(x.created_at).month() === now.month()
     );
 
     //Filters by event type.
