@@ -23,8 +23,8 @@ export default class Commits extends Component<IProps, IState> {
     };
   }
 
-  componentDidMount() {
-    this.getGithubData();
+  async componentDidMount() {
+    await this.getGithubData();
   }
 
   /**
