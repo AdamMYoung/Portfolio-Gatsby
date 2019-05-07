@@ -1,1 +1,3 @@
-This project is my portfolio website, built in React. You can find a link to it [here](https://github.com/AdamMYoung/Portfolio).
+## Portfolio
+
+This is my portfolio website, built in React. You can find a link to it [here](http://www.adam-young.xyz).
