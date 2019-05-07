@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Container, Row, CardDeck, Col } from "react-bootstrap";
 import listen from "../../media/listen.png";
 import create from "../../media/create.png";
-import groups from "../../media/groupr.png";
 import InfoCard from "../elements/card/InfoCard";
 
 export default class Projects extends Component {
