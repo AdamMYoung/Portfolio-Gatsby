@@ -23,7 +23,7 @@ export default class InfoCard extends Component<IProps> {
 
     return (
       <Card bg="dark" text="light">
-        <Card.Img variant="top" src={image} />
+        {image && <Card.Img variant="top" src={image} alt={title} />}
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Subtitle>{subtitle}</Card.Subtitle>

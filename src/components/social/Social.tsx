@@ -14,16 +14,19 @@ export default class Social extends Component {
         </Row>
         <Row>
           <Col className="justify-content-center list-elements">
-            <a href="https://twitter.com/AdamMYoung97">
+            <a href="https://twitter.com/AdamMYoung97" title="Twitter">
               <i className="fab fa-twitter-square fa-3x" />
             </a>
-            <a href="https://www.linkedin.com/in/adammichaelyoung/">
+            <a
+              href="https://www.linkedin.com/in/adammichaelyoung/"
+              title="LinkedIn"
+            >
               <i className="fab fa-linkedin fa-3x" />
             </a>
-            <a href="https://github.com/ADAMMYOUNG">
+            <a href="https://github.com/ADAMMYOUNG" title="Github">
               <i className="fab fa-github-square fa-3x" />
             </a>
-            <a href="mailto:adamyoungg97@gmail.com">
+            <a href="mailto:adamyoungg97@gmail.com" title="Email">
               <i className="fas fa-envelope-square fa-3x" />
             </a>
           </Col>
