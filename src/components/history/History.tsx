@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import InfoCard from "../elements/card/InfoCard";
 import dupont from "../../media/dupont.png";
 import teesside from "../../media/teesside-uni.jpg";
+import laptop from "../../media/code-laptop.png";
 import Timeline from "./timeline/Timeline";
 import TimelineEntry, { Sides } from "./timeline/TimelineEntry";
 
@@ -38,7 +39,7 @@ export default class History extends Component {
               <TimelineEntry>
                 <InfoCard
                   title="Final Year"
-                  image={teesside}
+                  image={laptop}
                   subtitle="2018-2019"
                   description="I started final year, where I developed Vocalia, a web-based podcast consumption and creation platform built with .NET Core and React."
                 />

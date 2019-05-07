@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Nav, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "./Social.css";
 
 export default class Social extends Component {
