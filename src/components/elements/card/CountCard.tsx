@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Card.css";
 import { Card } from "react-bootstrap";
 
 interface IProps {

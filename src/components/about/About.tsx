@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import "./About.css";
 
 export default class About extends Component {
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, CardGroup, Card } from "react-bootstrap";
-import "./Roles.css";
+
 import InfoCard from "../elements/card/InfoCard";
 
 export default class Roles extends Component {
@@ -9,7 +9,7 @@ export default class Roles extends Component {
       <Container fluid>
         <Row>
           <Col>
-            <h2>My Roles Include...</h2>
+            <h2>Roles</h2>
           </Col>
         </Row>
         <Row noGutters>

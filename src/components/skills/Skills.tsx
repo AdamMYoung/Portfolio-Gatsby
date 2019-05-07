@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container, Row, Col, CardGroup, Card } from "react-bootstrap";
-import "./Skills.css";
 import InfoCard from "../elements/card/InfoCard";
 
 export default class Skills extends Component {
