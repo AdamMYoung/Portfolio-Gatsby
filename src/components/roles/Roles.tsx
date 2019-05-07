@@ -10,6 +10,7 @@ export default class Roles extends Component {
         <Row>
           <Col>
             <h2>Roles</h2>
+            <h6>What I'm usually up to at work.</h6>
           </Col>
         </Row>
         <Row noGutters>

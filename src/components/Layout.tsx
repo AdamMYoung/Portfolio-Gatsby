@@ -18,37 +18,42 @@ export default class Layout extends Component {
           <Title />
         </Entry>
         <Container>
+          {/* About */}
           <Entry>
             <About />
           </Entry>
           <span className="section-divider" />
+          {/* Roles */}
           <Entry>
             <Roles />
           </Entry>
           <span className="section-divider" />
+          {/* Commits */}
           <Entry>
             <Commits />
           </Entry>
           <span className="section-divider" />
+          {/* Projects */}
           <Entry>
-            <h2>Projects</h2>
             <Projects />
           </Entry>
           <span className="section-divider" />
+          {/* Skills */}
           <Entry>
-            <h2>Skills</h2>
             <Skills />
           </Entry>
           <span className="section-divider" />
-          <Entry height="20h">
-            <h2>Social</h2>
+          {/* Social */}
+          <Entry>
             <Social />
           </Entry>
           <span className="section-divider" />
-          <p style={{ height: 50, textAlign: "center" }}>
-            Website by Adam Young. Created with
-            <a href="https://reactjs.org/"> React</a>.
-          </p>
+          <Entry height={50}>
+            <p>
+              Website by Adam Young. Created with
+              <a href="https://reactjs.org/"> React</a>.
+            </p>
+          </Entry>
         </Container>
       </Container>
     );

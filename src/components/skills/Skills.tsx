@@ -6,6 +6,12 @@ export default class Skills extends Component {
   render() {
     return (
       <Container fluid className="justify-content-center">
+        <Row>
+          <Col>
+            <h2>Skills</h2>
+            <h6>What I do as a full-stack developer.</h6>
+          </Col>
+        </Row>
         <Row noGutters>
           <Col>
             <Row noGutters>

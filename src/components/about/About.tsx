@@ -11,7 +11,7 @@ export default class About extends Component {
           </Col>
           <Col xs={12} md={8}>
             <h5>
-              I'm Adam Young, a Full-Stack Software Developer who specializes in
+              I'm Adam Young, a full-stack software developer who specializes in
               React and .Net Core development.
             </h5>
           </Col>

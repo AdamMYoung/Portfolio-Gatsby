@@ -10,7 +10,8 @@ export default class Projects extends Component {
       <Container className="center-text">
         <Row>
           <Col>
-            <h6>Here's a few projects I've recently worked on.</h6>
+            <h2>Projects</h2>
+            <h6>Some things I've worked on.</h6>
           </Col>
         </Row>
         <Row>

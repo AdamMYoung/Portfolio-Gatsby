@@ -67,12 +67,8 @@ export default class Commits extends Component<IProps, IState> {
       <Container className="center-text">
         <Row>
           <Col>
-            <div>
-              <h2>I Love What I Do</h2>
-              <h6>
-                Here's some statistics for what I've been up to recently...
-              </h6>
-            </div>
+            <h2>I Love What I Do</h2>
+            <h6>This month's open source contributions.</h6>
           </Col>
         </Row>
         <Row>
