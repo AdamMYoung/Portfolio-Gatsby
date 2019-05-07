@@ -41,28 +41,27 @@ export default class Commits extends Component<IProps, IState> {
       .then(data => this.setState({ publicRepos: data.public_repos }));
 
     var events = [] as Event[];
+    var promises = [] as Promise<void>[];
 
-    //Gets all events.
+    //Adds all events to a collection for parallel execution.
     for (var i = 1; i <= 10; i++) {
-      var result = await fetch(
-        `https://api.github.com/users/${githubUsername}/events?page=${i}`
-      )
-        .then(response => response.json())
-        .then(data => data as Event[]);
-
-      events = events.concat(result);
-
-      //If last element is older than current month, stop fetching.
-      var lastElement = moment(result[result.length - 1].created_at);
-      if (lastElement.month() !== now.month()) break;
+      promises.push(
+        fetch(`https://api.github.com/users/${githubUsername}/events?page=${i}`)
+          .then(response => response.json())
+          .then(data => (events = events.concat(data as Event[])))
+          .then(() => {})
+      );
     }
 
-    //Filters by this month.
+    //Execute all promises at once, getting all possible events.
+    await Promise.all(promises);
+
+    //Filters events by this month.
     var monthEvents = events.filter(
       x => moment(x.created_at).month() === now.month()
     );
 
-    //Filters by event type.
+    //Filters events by event type.
     var pushCount = monthEvents.filter(x => x.type === "PushEvent").length;
     var pullRequestCount = monthEvents.filter(
       x => x.type === "PullRequestEvent"
