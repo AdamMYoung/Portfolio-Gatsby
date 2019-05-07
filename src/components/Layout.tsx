@@ -57,7 +57,7 @@ export default class Layout extends Component {
           <Entry height={50}>
             <p>
               Website by Adam Young. Created with
-              <a href="https://reactjs.org/"> React</a>.
+              <a href="https://reactjs.org/"> React</a>
             </p>
           </Entry>
         </Container>

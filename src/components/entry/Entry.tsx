@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Container } from "react-bootstrap";
+import { Row, Container, Fade } from "react-bootstrap";
 import "./Entry.css";
 
 interface IProps {
@@ -10,7 +10,23 @@ interface IProps {
   fullscreen?: boolean;
 }
 
-export default class Entry extends Component<IProps> {
+interface IState {
+  loaded: boolean;
+}
+
+export default class Entry extends Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+
+    this.state = {
+      loaded: false
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ loaded: true });
+  }
+
   render() {
     const {
       backgroundColor,
@@ -20,24 +36,24 @@ export default class Entry extends Component<IProps> {
       fullscreen
     } = this.props;
 
+    const { loaded } = this.state;
+
     return (
       <Row noGutters>
-        <Container
-          className="body"
-          fluid
-          style={{
-            backgroundColor: backgroundColor,
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundAttachment: "fixed",
-            color: textColor,
-            height: fullscreen ? "100vh" : height ? height : "auto"
-          }}
-        >
-          {this.props.children}
-        </Container>
+        <Fade in={loaded}>
+          <Container
+            className="body background-image"
+            fluid
+            style={{
+              backgroundColor: backgroundColor,
+              backgroundImage: `url(${backgroundImage})`,
+              color: textColor,
+              height: fullscreen ? "100vh" : height ? height : "auto"
+            }}
+          >
+            {this.props.children}
+          </Container>
+        </Fade>
       </Row>
     );
   }

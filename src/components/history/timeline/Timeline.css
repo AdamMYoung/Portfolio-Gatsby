@@ -108,7 +108,7 @@
 
   /* Make sure that all arrows are pointing leftwards */
   .timeline-container::before {
-    left: 62px;
+    left: 61px;
     border: medium solid white;
     border-width: 10px 10px 10px 0;
     border-color: transparent white transparent transparent;
