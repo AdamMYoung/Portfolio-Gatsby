@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, CardGroup, Card } from "react-bootstrap";
+import { Container, Row, Col, CardGroup } from "react-bootstrap";
 
 import InfoCard from "../elements/card/InfoCard";
 
@@ -13,7 +13,7 @@ export default class Roles extends Component {
             <h6>What I'm usually up to at work.</h6>
           </Col>
         </Row>
-        <Row noGutters>
+        <Row>
           <Col>
             <CardGroup>
               <InfoCard

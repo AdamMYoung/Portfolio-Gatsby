@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, CardDeck, Card } from "react-bootstrap";
+import { Container, Row, Col, CardDeck } from "react-bootstrap";
 import { Event } from "../../models/Event";
 import CountCard from "../elements/card/CountCard";
 var moment = require("moment");

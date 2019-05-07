@@ -9,6 +9,7 @@ import desk from "../media/desk-background.jpg";
 import About from "./about/About";
 import Roles from "./roles/Roles";
 import Commits from "./commits/Commits";
+import History from "./history/History";
 
 export default class Layout extends Component {
   render() {
@@ -31,6 +32,11 @@ export default class Layout extends Component {
           {/* Commits */}
           <Entry>
             <Commits />
+          </Entry>
+          <span className="section-divider" />
+          {/* History */}
+          <Entry>
+            <History />
           </Entry>
           <span className="section-divider" />
           {/* Projects */}
