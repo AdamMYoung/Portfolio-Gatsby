@@ -40,7 +40,7 @@ export default class History extends Component {
                   title="Final Year"
                   image={teesside}
                   subtitle="2018-2019"
-                  description="I started final year, where I developed Vocalia, a web-based podcast consumptions and creation platform built with .NET Core and React."
+                  description="I started final year, where I developed Vocalia, a web-based podcast consumption and creation platform built with .NET Core and React."
                 />
               </TimelineEntry>
             </Timeline>
