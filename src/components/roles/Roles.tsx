@@ -6,7 +6,7 @@ import InfoCard from "../elements/card/InfoCard";
 export default class Roles extends Component {
   render() {
     return (
-      <Container fluid>
+      <Container>
         <Row>
           <Col>
             <h2>Roles</h2>

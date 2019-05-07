@@ -12,9 +12,9 @@ export default class Skills extends Component {
             <h6>What I do as a full-stack developer.</h6>
           </Col>
         </Row>
-        <Row noGutters>
+        <Row>
           <Col>
-            <Row noGutters>
+            <Row>
               <Col>
                 <CardGroup>
                   <InfoCard

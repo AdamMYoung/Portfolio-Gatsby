@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import InfoCard from "../elements/card/InfoCard";
-import dupont from "../../media/dupont.png";
+import office from "../../media/office.jpg";
 import teesside from "../../media/teesside-uni.jpg";
 import laptop from "../../media/code-laptop.png";
 import Timeline from "./timeline/Timeline";
@@ -31,7 +31,7 @@ export default class History extends Component {
               <TimelineEntry side={Sides.Right}>
                 <InfoCard
                   title="DuPont Teijin Films"
-                  image={dupont}
+                  image={office}
                   subtitle="2017-2018"
                   description="I started a placement year at DuPont Teijin Films, where I worked on a variety of C# plotting and management applications."
                 />
