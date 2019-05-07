@@ -47,6 +47,7 @@ export default class Entry extends Component<IProps, IState> {
             style={{
               backgroundColor: backgroundColor,
               backgroundImage: `url(${backgroundImage})`,
+              backgroundAttachment: "fixed",
               color: textColor,
               height: fullscreen ? "100vh" : height ? height : "auto"
             }}
