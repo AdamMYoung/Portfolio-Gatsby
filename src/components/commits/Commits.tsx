@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, CardDeck, Card } from "react-bootstrap";
 import "./Commits.css";
 import { Event } from "../../models/Event";
+import CountCard from "../elements/card/CountCard";
 var moment = require("moment");
 
 interface IProps {}
@@ -78,24 +79,15 @@ export default class Commits extends Component<IProps, IState> {
         <Row>
           <Col>
             <CardDeck>
-              <Card bg="dark" text="light">
-                <h1 className="github-count">{publicRepos}</h1>
-                <Card.Body>
-                  <Card.Title>Public Repos</Card.Title>
-                </Card.Body>
-              </Card>
-              <Card bg="dark" text="light">
-                <h1 className="github-count">{githubPushes}</h1>
-                <Card.Body>
-                  <Card.Title>Pushes to GitHub this month</Card.Title>
-                </Card.Body>
-              </Card>
-              <Card bg="dark" text="light">
-                <h1 className="github-count">{pullRequests}</h1>
-                <Card.Body>
-                  <Card.Title>Pull requests this month</Card.Title>
-                </Card.Body>
-              </Card>
+              <CountCard title="Public Repos" count={publicRepos} />
+              <CountCard
+                title="Pushes to GitHub this month"
+                count={githubPushes}
+              />
+              <CountCard
+                title="Pull requests this month"
+                count={pullRequests}
+              />
             </CardDeck>
           </Col>
         </Row>

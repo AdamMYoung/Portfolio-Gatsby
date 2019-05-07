@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, CardDeck, Col } from "react-bootstrap";
 import listen from "../../media/listen.png";
 import create from "../../media/create.png";
-import ProjectCard from "./ProjectCard";
-import "./Projects.css";
+import InfoCard from "../elements/card/InfoCard";
 
 export default class Projects extends Component {
   render() {
@@ -17,17 +16,19 @@ export default class Projects extends Component {
         <Row>
           <Col>
             <CardDeck>
-              <ProjectCard
+              <InfoCard
                 title="Vocalia Create"
                 description="Vocalia Create is a podcast creation platform writen in React. Features include WebRTC recording, timeline editing and RSS publishing."
-                src={create}
-                link="https://github.com/AdamMYoung/Vocalia-Create"
+                image={create}
+                buttonText="View on GitHub"
+                buttonLink="https://github.com/AdamMYoung/Vocalia-Create"
               />
-              <ProjectCard
+              <InfoCard
                 title="Vocalia Listen"
                 description="Vocalia Listen is a podcast consumption platform written in React. Features include subscription sync, PWA integration and material design."
-                src={listen}
-                link="https://github.com/AdamMYoung/Vocalia-Listen"
+                image={listen}
+                buttonText="View on GitHub"
+                buttonLink="https://github.com/AdamMYoung/Vocalia-Listen"
               />
             </CardDeck>
           </Col>

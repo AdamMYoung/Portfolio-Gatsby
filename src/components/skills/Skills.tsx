@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, CardGroup, Card } from "react-bootstrap";
 import "./Skills.css";
+import InfoCard from "../elements/card/InfoCard";
 
 export default class Skills extends Component {
   render() {
@@ -11,60 +12,36 @@ export default class Skills extends Component {
             <Row noGutters>
               <Col>
                 <CardGroup>
-                  <Card bg="dark" text="light">
-                    <Card.Body>
-                      <Card.Title className="role-header">
-                        Web Design
-                      </Card.Title>
-                      <Card.Text>
-                        I am well versed in HTML, CSS and JavaScript. I
+                  <InfoCard
+                    title="Web Design"
+                    description="I am well versed in HTML, CSS and JavaScript. I
                         implement these technologies primarily within React,
                         although I'm open to trying new frameworks and
-                        technologies when they become available.
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card bg="dark" text="light">
-                    <Card.Body>
-                      <Card.Title className="role-header">
-                        API Development
-                      </Card.Title>
-                      <Card.Text>
-                        I have developed varied APIs using .NET Core within a
-                        microservice architecture. These have integrated
-                        advanced features such as authentication and API gateway
-                        support.
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
+                        technologies when they become available."
+                  />
+                  <InfoCard
+                    title="API Development"
+                    description="I have developed varied APIs using .NET Core within a
+                    microservice architecture. These have integrated
+                    advanced features such as authentication and API gateway
+                    support."
+                  />
                 </CardGroup>
                 <CardGroup>
-                  <Card bg="dark" text="light">
-                    <Card.Body>
-                      <Card.Title className="role-header">
-                        Database Design
-                      </Card.Title>
-                      <Card.Text>
-                        I have designed many different databases, ranging from
-                        simple to complex. I have also iterated on previous
-                        implementations to improve efficiency and reduce
-                        downtime within existing systems.
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card bg="dark" text="light">
-                    <Card.Body>
-                      <Card.Title className="role-header">
-                        Deployment
-                      </Card.Title>
-                      <Card.Text>
-                        I have extensive experience with the Microsoft Azure
-                        cloud platform, in which I deployed several apps and
-                        databases. I have also established CI and CD pipelines
-                        within Azure, for automated deployment of applications.
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
+                  <InfoCard
+                    title="Database Design"
+                    description="I have designed many different databases, ranging from
+                    simple to complex. I have also iterated on previous
+                    implementations to improve efficiency and reduce
+                    downtime within existing systems."
+                  />
+                  <InfoCard
+                    title="Deployment"
+                    description="I have extensive experience with the Microsoft Azure
+                    cloud platform, in which I deployed several apps and
+                    databases. I have also established CI and CD pipelines
+                    within Azure, for automated deployment of applications."
+                  />
                 </CardGroup>
               </Col>
             </Row>
