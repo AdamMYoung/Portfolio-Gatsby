@@ -34,16 +34,15 @@ export default class Commits extends Component<IProps, IState> {
   private getGithubData = async () => {
     var repo = new GithubRepository(githubUsername);
 
-    //Gets user
+    //User
     var user = await repo.getUser();
     if (user) this.setState({ publicRepos: user.public_repos });
 
-    //Filters events by event type.
+    //Events
     var pushes = await repo.getMonthsPushEvents();
     var pullRequests = await repo.getMonthsPullRequestEvents();
 
     if (pushes && pullRequests) {
-      //Updates the stored values.
       this.setState({
         githubPushes: pushes.length,
         pullRequests: pullRequests.length
