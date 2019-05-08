@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Container, Row, Col, CardDeck } from "react-bootstrap";
 import CountCard from "../elements/card/CountCard";
 import GithubRepository from "../../data/GithubRepository";
-var moment = require("moment");
 
 interface IProps {}
 
@@ -33,30 +32,21 @@ export default class Commits extends Component<IProps, IState> {
    * Gets all GitHub data for the account.
    */
   private getGithubData = async () => {
-    let now = moment();
     var repo = new GithubRepository(githubUsername);
 
     //Gets user
     var user = await repo.getUser();
     if (user) this.setState({ publicRepos: user.public_repos });
 
-    var events = await repo.getEvents();
-    if (events) {
-      //Filters events by this month.
-      var monthEvents = events.filter(
-        x => moment(x.created_at).month() === now.month()
-      );
+    //Filters events by event type.
+    var pushes = await repo.getMonthsPushEvents();
+    var pullRequests = await repo.getMonthsPullRequestEvents();
 
-      //Filters events by event type.
-      var pushCount = monthEvents.filter(x => x.type === "PushEvent").length;
-      var pullRequestCount = monthEvents.filter(
-        x => x.type === "PullRequestEvent"
-      ).length;
-
+    if (pushes && pullRequests) {
       //Updates the stored values.
       this.setState({
-        githubPushes: pushCount,
-        pullRequests: pullRequestCount
+        githubPushes: pushes.length,
+        pullRequests: pullRequests.length
       });
     }
   };

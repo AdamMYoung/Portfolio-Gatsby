@@ -1,9 +1,12 @@
 import { User } from "../models/User";
 import { Event } from "../models/Event";
+var moment = require("moment");
 
 export default class GithubRepository {
   private githubUsername: string;
   private githubUrl: string = "https://api.github.com/users/";
+  private events: Event[] = [];
+  private now = moment();
 
   constructor(username: string) {
     this.githubUsername = username;
@@ -22,26 +25,48 @@ export default class GithubRepository {
   /**
    * Gets all events belonging to the current user.
    */
-  public async getEvents(): Promise<Event[] | null> {
+  private async getMonthEvents(): Promise<Event[] | null> {
+    if (this.events.length > 0) return this.events;
     var promises = [] as Promise<void>[];
-    var events = [] as Event[];
 
     //Inner function for adding events to the collection.
     var addEvent = (page: number) => {
       promises.push(
         fetch(`${this.githubUrl}${this.githubUsername}/events?page=${page}`)
           .then(response => response.json())
-          .then(data => (events = events.concat(data as Event[])))
+          .then(data => (this.events = this.events.concat(data as Event[])))
           .then(() => {})
       );
     };
 
     //Adds all events to a collection for parallel execution.
     for (var i = 1; i <= 10; i++) addEvent(i);
-
     await Promise.all(promises);
 
-    if (events.length > 0) return events;
+    //Filters retrieved events by this month.
+    this.events = this.events.filter(
+      x => moment(x.created_at).month() === this.now.month()
+    );
+
+    if (this.events.length > 0) return this.events;
+    else return null;
+  }
+
+  /**
+   * Gets all pull requests for the current month.
+   */
+  public async getMonthsPullRequestEvents(): Promise<Event[] | null> {
+    var events = await this.getMonthEvents();
+    if (events) return events.filter(x => x.type === "PullRequestEvent");
+    else return null;
+  }
+
+  /**
+   * Gets all push events for the current month.
+   */
+  public async getMonthsPushEvents(): Promise<Event[] | null> {
+    var events = await this.getMonthEvents();
+    if (events) return events.filter(x => x.type === "PushEvent");
     else return null;
   }
 }
