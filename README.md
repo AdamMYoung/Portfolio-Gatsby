@@ -1,3 +1,3 @@
 ## Portfolio
 
-This is my portfolio website, built in React. You can find a link to it [here](http://www.adam-young.xyz).
+This portfolio website is created in React, utilzing the react-bootstrap libraries for a responsive design. Features include a custom timeline implementation, GitHub statistic polling, and service worker implementations to provide a quicker response on page reload.
