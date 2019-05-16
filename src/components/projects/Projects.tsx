@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Container, Row, CardDeck, Col } from "react-bootstrap";
+import { Container, Row, CardDeck, Col, Button } from "react-bootstrap";
 import listen from "../../media/listen.png";
-import create from "../../media/create.png";
+import groupr from "../../media/groupr.png";
 import InfoCard from "../elements/card/InfoCard";
 
 export default class Projects extends Component {
@@ -18,19 +18,43 @@ export default class Projects extends Component {
           <Col>
             <CardDeck>
               <InfoCard
-                title="Vocalia Create"
-                description="Vocalia Create is a podcast creation platform writen in React. Features include WebRTC recording, timeline editing and RSS publishing."
-                image={create}
-                buttonText="View on GitHub"
-                buttonLink="https://github.com/AdamMYoung/Vocalia-Create"
-              />
-              <InfoCard
-                title="Vocalia Listen"
-                description="Vocalia Listen is a podcast consumption platform written in React. Features include subscription sync, PWA integration and material design."
+                title="Vocalia"
+                description="Vocalia is a platform for consuming and creating podcasts, all within the browser. 
+                It features a microservice-based architecture for the back-end, and two SPA React apps for the front-end."
                 image={listen}
-                buttonText="View on GitHub"
-                buttonLink="https://github.com/AdamMYoung/Vocalia-Listen"
-              />
+              >
+                <Button
+                  variant="primary"
+                  href="https://github.com/AdamMYoung/Vocalia-Create"
+                >
+                  Create - View on GitHub
+                </Button>
+                <Button
+                  variant="primary"
+                  href="https://github.com/AdamMYoung/Vocalia-Listen"
+                >
+                  Listen - View on GitHub
+                </Button>
+                <Button
+                  variant="primary"
+                  href="https://github.com/AdamMYoung/Vocalia-API"
+                >
+                  API - View on GitHub
+                </Button>
+              </InfoCard>
+              <InfoCard
+                title="Groupr"
+                description="A WPF application to add folders to the Windows taskbar. The application uses two separate components, one for managing groups and one for loading folders.
+                Folders are selected via startup parameters passed into the folder application, which is then rendered above the taskbar when selected."
+                image={groupr}
+              >
+                <Button
+                  variant="primary"
+                  href="https://github.com/AdamMYoung/Vocalia-API"
+                >
+                  View on GitHub
+                </Button>
+              </InfoCard>
             </CardDeck>
           </Col>
         </Row>
