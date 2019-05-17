@@ -1,8 +1,17 @@
 import React, { Component } from "react";
-import { Container, Row, CardDeck, Col, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  CardDeck,
+  Col,
+  Button,
+  DropdownButton,
+  Dropdown
+} from "react-bootstrap";
 import listen from "../../media/listen.png";
 import groupr from "../../media/groupr.png";
 import InfoCard from "../elements/card/InfoCard";
+import "./Projects.css";
 
 export default class Projects extends Component {
   render() {
@@ -23,24 +32,17 @@ export default class Projects extends Component {
                 It features a microservice-based architecture for the back-end, and two SPA React apps for the front-end."
                 image={listen}
               >
-                <Button
-                  variant="primary"
-                  href="https://github.com/AdamMYoung/Vocalia-Create"
-                >
-                  Create - View on GitHub
-                </Button>
-                <Button
-                  variant="primary"
-                  href="https://github.com/AdamMYoung/Vocalia-Listen"
-                >
-                  Listen - View on GitHub
-                </Button>
-                <Button
-                  variant="primary"
-                  href="https://github.com/AdamMYoung/Vocalia-API"
-                >
-                  API - View on GitHub
-                </Button>
+                <DropdownButton id="vocalia-dropdown" title="View on GitHub">
+                  <Dropdown.Item href="https://github.com/AdamMYoung/Vocalia-Create">
+                    Vocalia Create
+                  </Dropdown.Item>
+                  <Dropdown.Item href="https://github.com/AdamMYoung/Vocalia-Listen">
+                    Vocalia Listen
+                  </Dropdown.Item>
+                  <Dropdown.Item href="https://github.com/AdamMYoung/Vocalia-API">
+                    Vocalia API
+                  </Dropdown.Item>
+                </DropdownButton>
               </InfoCard>
               <InfoCard
                 title="Groupr"
