@@ -14,7 +14,7 @@ export default class Social extends Component {
         </Row>
         <Row>
           <Col className="justify-content-center list-elements">
-            <a href="https://twitter.com/AdamMYoung97" title="Twitter">
+            <a href="https://twitter.com/AdamMYoung_" title="Twitter">
               <i className="fab fa-twitter-square fa-3x" />
             </a>
             <a
