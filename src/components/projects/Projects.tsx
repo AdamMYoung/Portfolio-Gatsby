@@ -52,7 +52,7 @@ export default class Projects extends Component {
               >
                 <Button
                   variant="primary"
-                  href="https://github.com/AdamMYoung/Vocalia-API"
+                  href="https://github.com/AdamMYoung/Groupr"
                 >
                   View on GitHub
                 </Button>
