@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 export enum Sides {
   Left,
@@ -9,17 +9,14 @@ interface IProps {
   side?: Sides;
 }
 
-export default class TimelineEntry extends Component<IProps> {
-  render() {
-    const { side } = this.props;
+const TimelineEntry: React.FC<IProps> = props => {
+  const selectedSide = props.side === Sides.Right ? "timeline-right" : "timeline-left";
 
-    const selectedSide =
-      side === Sides.Right ? "timeline-right" : "timeline-left";
+  return (
+    <div className={"timeline-container " + selectedSide}>
+      <div className="timeline-content">{props.children}</div>
+    </div>
+  );
+};
 
-    return (
-      <div className={"timeline-container " + selectedSide}>
-        <div className="timeline-content">{this.props.children}</div>
-      </div>
-    );
-  }
-}
+export default TimelineEntry;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
 
 interface IProps {
@@ -8,20 +8,16 @@ interface IProps {
   description?: string;
 }
 
-export default class InfoCard extends Component<IProps> {
-  render() {
-    const { image, title, subtitle, description } = this.props;
+const InfoCard: React.FC<IProps> = props => (
+  <Card bg="dark" text="light">
+    {props.image && <Card.Img variant="top" src={props.image} alt={props.title} />}
+    <Card.Body>
+      <Card.Title>{props.title}</Card.Title>
+      <Card.Subtitle>{props.subtitle}</Card.Subtitle>
+      <Card.Text>{props.description}</Card.Text>
+    </Card.Body>
+    {props.children}
+  </Card>
+);
 
-    return (
-      <Card bg="dark" text="light">
-        {image && <Card.Img variant="top" src={image} alt={title} />}
-        <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Subtitle>{subtitle}</Card.Subtitle>
-          <Card.Text>{description}</Card.Text>
-        </Card.Body>
-        {this.props.children}
-      </Card>
-    );
-  }
-}
+export default InfoCard;

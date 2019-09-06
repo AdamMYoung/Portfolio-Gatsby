@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
 
 interface IProps {
@@ -6,17 +6,13 @@ interface IProps {
   count: number;
 }
 
-export default class CountCard extends Component<IProps> {
-  render() {
-    const { title, count } = this.props;
+const CountCard: React.FC<IProps> = props => (
+  <Card bg="dark" text="light">
+    <h1 style={{ paddingTop: 24 }}>{props.count}</h1>
+    <Card.Body>
+      <Card.Title>{props.title}</Card.Title>
+    </Card.Body>
+  </Card>
+);
 
-    return (
-      <Card bg="dark" text="light">
-        <h1 style={{ paddingTop: 24 }}>{count}</h1>
-        <Card.Body>
-          <Card.Title>{title}</Card.Title>
-        </Card.Body>
-      </Card>
-    );
-  }
-}
+export default CountCard;

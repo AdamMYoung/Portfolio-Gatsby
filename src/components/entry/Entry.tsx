@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Container, Fade } from "react-bootstrap";
 import "./Entry.css";
 
@@ -10,52 +10,29 @@ interface IProps {
   fullscreen?: boolean;
 }
 
-interface IState {
-  loaded: boolean;
-}
+const Entry: React.FC<IProps> = props => {
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => setLoaded(true), []);
 
-export default class Entry extends Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
+  return (
+    <Row noGutters>
+      <Fade in={loaded}>
+        <Container
+          className="body background-image"
+          fluid
+          style={{
+            backgroundColor: props.backgroundColor,
+            backgroundImage: `url(${props.backgroundImage})`,
+            backgroundAttachment: "fixed",
+            color: props.textColor,
+            height: props.fullscreen ? "100vh" : props.height ? props.height : "auto"
+          }}
+        >
+          {props.children}
+        </Container>
+      </Fade>
+    </Row>
+  );
+};
 
-    this.state = {
-      loaded: false
-    };
-  }
-
-  componentDidMount() {
-    this.setState({ loaded: true });
-  }
-
-  render() {
-    const {
-      backgroundColor,
-      backgroundImage,
-      textColor,
-      height,
-      fullscreen
-    } = this.props;
-
-    const { loaded } = this.state;
-
-    return (
-      <Row noGutters>
-        <Fade in={loaded}>
-          <Container
-            className="body background-image"
-            fluid
-            style={{
-              backgroundColor: backgroundColor,
-              backgroundImage: `url(${backgroundImage})`,
-              backgroundAttachment: "fixed",
-              color: textColor,
-              height: fullscreen ? "100vh" : height ? height : "auto"
-            }}
-          >
-            {this.props.children}
-          </Container>
-        </Fade>
-      </Row>
-    );
-  }
-}
+export default Entry;
