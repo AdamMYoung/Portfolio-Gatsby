@@ -7,7 +7,7 @@ const Title: React.FC = () => (
       <Col>
         <div>
           <h1>
-            My name is <strong>Adam Young</strong>, I'm a<strong> Software Developer</strong> based in Middlesbrough, UK
+            My name is <strong>Adam Young</strong>, I'm a<strong> Software Developer</strong> based in Birmingham, UK
           </h1>
         </div>
       </Col>

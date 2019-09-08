@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, CardDeck } from "react-bootstrap";
 import CountCard from "../elements/card/CountCard";
-import GithubRepository from "../../data/GithubRepository";
+import GithubRepository from "../../../data/GithubRepository";
 
 interface IProps {}
 

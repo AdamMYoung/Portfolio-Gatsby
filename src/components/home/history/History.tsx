@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import InfoCard from "../elements/card/InfoCard";
-import office from "../../media/office.jpg";
-import teesside from "../../media/teesside-uni.jpg";
-import laptop from "../../media/code-laptop.png";
-import terraquest from "../../media/terraquest-logo.jpg";
+import office from "../../../media/office.jpg";
+import teesside from "../../../media/teesside-uni.jpg";
+import laptop from "../../../media/code-laptop.png";
+import terraquest from "../../../media/terraquest-logo.jpg";
 import Timeline from "./timeline/Timeline";
 import TimelineEntry, { Sides } from "./timeline/TimelineEntry";
 

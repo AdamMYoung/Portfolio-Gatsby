@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, CardDeck, Col, Button, DropdownButton, Dropdown } from "react-bootstrap";
-import listen from "../../media/listen.png";
-import groupr from "../../media/groupr.png";
+import listen from "../../../media/listen.png";
+import groupr from "../../../media/groupr.png";
 import InfoCard from "../elements/card/InfoCard";
 import "./Projects.css";
 
