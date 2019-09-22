@@ -1,12 +1,15 @@
 import { User } from "../models/User";
 import { Event } from "../models/Event";
-var moment = require("moment");
+import axios from "axios";
+import moment from "moment";
 
 export default class GithubRepository {
   private githubUsername: string;
-  private githubUrl: string = "https://api.github.com/users/";
+  private githubUrl: string = "https://api.github.com";
   private events: Event[] = [];
   private now = moment();
+
+  private instance = axios.create({ baseURL: this.githubUrl, timeout: 1000 });
 
   constructor(username: string) {
     this.githubUsername = username;
@@ -16,9 +19,9 @@ export default class GithubRepository {
    * Gets the current user information.
    */
   public async getUser(): Promise<User | null> {
-    return await fetch(`${this.githubUrl}${this.githubUsername}`)
-      .then(response => response.json())
-      .then(data => data as User)
+    return await this.instance
+      .get(`/users/${this.githubUsername}`)
+      .then(response => response.data as User)
       .catch(() => null);
   }
 
@@ -32,6 +35,7 @@ export default class GithubRepository {
     //Inner function for adding events to the collection.
     var addEvent = (page: number) => {
       promises.push(
+        //this.instance.get(`/users/${this.githubUsername}/events`, {page: `${page}`})
         fetch(`${this.githubUrl}${this.githubUsername}/events?page=${page}`)
           .then(response => response.json())
           .then(data => (this.events = this.events.concat(data as Event[])))
@@ -44,9 +48,7 @@ export default class GithubRepository {
     await Promise.all(promises);
 
     //Filters retrieved events by this month.
-    this.events = this.events.filter(
-      x => moment(x.created_at).month() === this.now.month()
-    );
+    this.events = this.events.filter(x => moment(x.created_at).month() === this.now.month());
 
     if (this.events.length > 0) return this.events;
     else return null;

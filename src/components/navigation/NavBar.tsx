@@ -5,16 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 interface IProps extends RouteComponentProps {}
 
-const NavBar: React.FC<IProps> = props => {
-  /**
-   * Scrolls the browser window to the specified element.
-   * @param id ID of the element to scroll to.
-   */
-  const scrollTo = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView(true);
-  };
-
+const NavBar: React.FC<IProps> = () => {
   return (
     <Navbar id="navbar" bg="dark" variant="dark" expand="md" sticky="top" collapseOnSelect>
       <Navbar.Brand>Adam Young</Navbar.Brand>
