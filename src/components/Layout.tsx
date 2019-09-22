@@ -10,10 +10,10 @@ import Routes from "./navigation/Routes";
 
 const Layout: React.FC = () => (
   <>
-    <div style={{ height: "6vh" }}>
+    {/* <div style={{ height: "6vh" }}>
       <NavBar />
-    </div>
-    <SimpleBar style={{ height: "94vh" }}>
+    </div> */}
+    <SimpleBar style={{ height: "100vh" }}>
       <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
         {/* Navigation Routes */}
         <Routes />

@@ -5,7 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 interface IProps extends RouteComponentProps {}
 
-const NavBar: React.FC<IProps> = props => {
+const NavBar: React.FC<IProps> = () => {
   return (
     <Navbar id="navbar" bg="dark" variant="dark" expand="md" sticky="top" collapseOnSelect>
       <Navbar.Brand>Adam Young</Navbar.Brand>
