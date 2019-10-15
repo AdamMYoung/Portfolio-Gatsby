@@ -1,7 +1,8 @@
-import { User } from "../models/User";
-import { Event } from "../models/Event";
 import axios from "axios";
 import moment from "moment";
+
+import { User } from "../models/github/User";
+import { Event } from "../models/github/Event";
 
 export default class GithubRepository {
   private githubUsername: string;
