@@ -36,9 +36,7 @@ export default class GithubRepository {
     //Inner function for adding events to the collection.
     var addEvent = (page: number) => {
       promises.push(
-        //this.instance.get(`/users/${this.githubUsername}/events`, {page: `${page}`})
-        fetch(`${this.githubUrl}${this.githubUsername}/events?page=${page}`)
-          .then(response => response.json())
+        this.instance.get(`/users/${this.githubUsername}/events?page=${page}`)
           .then(data => (this.events = this.events.concat(data as Event[])))
           .then(() => {})
       );
