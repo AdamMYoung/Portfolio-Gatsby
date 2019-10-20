@@ -37,7 +37,7 @@ export default class GithubRepository {
     var addEvent = (page: number) => {
       promises.push(
         this.instance.get(`/users/${this.githubUsername}/events?page=${page}`)
-          .then(data => (this.events = this.events.concat(data as Event[])))
+          .then(response => (this.events = this.events.concat(response.data as Event[])))
           .then(() => {})
       );
     };

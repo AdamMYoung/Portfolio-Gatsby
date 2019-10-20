@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
+import hljs from "highlight.js"
+import 'highlight.js/styles/an-old-hope.css';
+
 import BloggerRepository from "../../data/BloggerRepository";
 
 const bloggerApi = new BloggerRepository("5234620729516617055");
+
 
 interface IProps {
   id: number;
@@ -23,6 +27,10 @@ const BlogDetail: React.FC<IProps> = props => {
     };
     fetchData();
   }, []);
+
+  document.querySelectorAll("code").forEach(block => {
+    hljs.highlightBlock(block);
+  });
 
   return (
     <div style={{ minHeight: "80vh" }}>
