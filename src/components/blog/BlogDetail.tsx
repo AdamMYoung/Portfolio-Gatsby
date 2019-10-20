@@ -16,7 +16,7 @@ interface IProps {
 
 class BlogDetail extends React.Component<IProps> {
   state = {
-    post: {} as Post
+    post: (null as unknown) as Post
   };
 
   async componentDidMount() {
@@ -40,28 +40,32 @@ class BlogDetail extends React.Component<IProps> {
 
     return (
       <div style={{ minHeight: "80vh" }}>
-        {post && (
-          <Container style={{ marginTop: 12, marginBottom: 24 }}>
-            <Row>
-              <Col>
-                <LinkContainer to="/blog" style={{ margin: 12, float: "left" }}>
-                  <Button variant="primary">Back to blog</Button>
-                </LinkContainer>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <h2>{post.title}</h2>
-                <h4>{new Date(post.updated).toDateString()}</h4>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div style={{ textAlign: "left" }} dangerouslySetInnerHTML={{ __html: post.content }} />
-              </Col>
-            </Row>
-          </Container>
-        )}
+        <Container style={{ marginTop: 12, marginBottom: 24 }}>
+          <Row>
+            <Col>
+              <LinkContainer to="/blog" style={{ margin: 12, float: "left" }}>
+                <Button variant="primary">Back to blog</Button>
+              </LinkContainer>
+            </Col>
+          </Row>
+          {post ? (
+            <>
+              <Row>
+                <Col>
+                  <h2>{post.title}</h2>
+                  <h4>{new Date(post.updated).toDateString()}</h4>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <div style={{ textAlign: "left" }} dangerouslySetInnerHTML={{ __html: post.content }} />
+                </Col>
+              </Row>
+            </>
+          ) : (
+            <h3>Loading Post...</h3>
+          )}
+        </Container>
       </div>
     );
   }
