@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import * as p5 from "p5";
 import SimpleBar from "simplebar-react";
 
-import TOPOLOGY from "./animation/vanta-topology.min.js";
+import TOPOLOGY from "./animation/vanta.topology.js";
 
 import Navbar from "./navigation/Navbar";
 import Routes from "./routes/Routes";
