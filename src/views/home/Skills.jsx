@@ -30,17 +30,17 @@ const Skills = () => (
       <SkillEntry
         icon="devicon-typescript-plain colored"
         title="TypeScript"
-        content="TypeScript is a programming language built around JavaScript, providing type safety and inheritence similar to other OOP languages. I have also used this within react in projects such as Vocalia to reduce the chances of errors in my work."
+        content="TypeScript is a programming language built around JavaScript, providing type safety and inheritence similar to other OOP languages. I have also used this within react in projects such as Vocalia to improve safety when accessing variables."
       />
       <SkillEntry
         icon="devicon-html5-plain colored"
         title="HTML"
-        content="HTML defines the layout of web pages, not neccisarily a programming language but as a markup language. This defines the general structure of web pages, and is one of the three key aspects of the web."
+        content="HTML defines the layout of web pages, not neccisarily a programming language but as a markup language. This defines the general structure of web pages, and is one of the three key building blocks of the web. All of my web applications use HTML."
       />
       <SkillEntry
         icon="devicon-css3-plain colored"
         title="CSS"
-        content="CSS defines the look and feel of webpages, and is used within my work to provide colours, fonts, styles and animations. The colour change animation of this site is a good example of the power of CSS."
+        content="CSS defines the look and feel of webpages, and is used within my work to provide colours, fonts, styles and animations. The colour change animation of this site is a great example of the power of CSS."
       />
     </Tab>
 
