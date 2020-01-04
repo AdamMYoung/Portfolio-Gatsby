@@ -1,39 +1,56 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
-import ScrollEvent from "../scroll-event/ScrollEvent";
-
-const ScrollListItem = props => {
-  return (
-    <div style={{ minHeight: "90vh", marginTop: 24, marginBotom: 24 }}>
-      <Container>
-        <Row>
-          <Col>
-            <ScrollEvent onEnter={props.onEnter}>
-              <div>
-                <h1>{props.title}</h1>
-                <h3>{props.subtitle}</h3>
-              </div>
-            </ScrollEvent>
-          </Col>
-        </Row>
-        <Row>
-          <Col>{props.children}</Col>
-        </Row>
-      </Container>
-    </div>
-  );
-};
+import { ScrollListEntry } from "./ScrollListEntry";
+import { ScrollListSection } from "./ScrollListSection";
+import { getGuid } from "../../../utility/stringUtils";
 
 const ScrollList = props => {
-  const [visibleIndex, setVisibleIndex] = useState(0);
+  const [visibleEntryIndex, setVisibleEntryIndex] = useState(0);
+  const [visibleSectionIndex, setVisibleSectionIndex] = useState(0);
 
-  //Add highlight change on scroll interaction.
-  const itemsSubList = React.Children.toArray(props.children).map((item, index) => (
-    <h3 key={item.props.title} style={{ color: visibleIndex === index ? "white" : "gray" }}>
-      {item.props.title}
-    </h3>
+  const entries = React.Children.toArray(props.children).map((child, index) =>
+    React.cloneElement(child, {
+      name: getGuid(),
+      onEntryEntered: () => setVisibleEntryIndex(index),
+      onSectionEntered: sectionIndex => {
+        setVisibleSectionIndex(sectionIndex);
+        setVisibleEntryIndex(index);
+      }
+    })
+  );
+
+  /**
+   * Returns text styling based on if the entry is active or not.
+   */
+  const getTextStyle = (requiredIndex, currentIndex) => {
+    return { color: requiredIndex === currentIndex ? "white" : "gray" };
+  };
+
+  const itemsSubList = entries.map((entry, index) => (
+    <div key={index}>
+      {/* Entry title. */}
+      {entry.props.displayInList && (
+        <a key={index} style={{ cursor: "pointer" }} onClick={() => document.getElementById(entry.props.name).scrollIntoView()}>
+          <h3 key={entry.props.title} style={getTextStyle(index, visibleEntryIndex)}>
+            {entry.props.title}
+          </h3>
+        </a>
+      )}
+
+      {/* Section titles. */}
+      {entry.props.displayInList &&
+        index === visibleEntryIndex &&
+        React.Children.toArray(entry.props.children).map(
+          (section, sectionIndex) =>
+            section.props.displayInList && (
+              <h5 key={sectionIndex} style={getTextStyle(sectionIndex, visibleSectionIndex)}>
+                {section.props.title}
+              </h5>
+            )
+        )}
+    </div>
   ));
 
   return (
@@ -49,15 +66,14 @@ const ScrollList = props => {
       </Col>
 
       <Col sm={12} md={9} lg={10}>
-        {React.Children.toArray(props.children).map((child, index) =>
-          React.cloneElement(child, { onEnter: () => setVisibleIndex(index) })
-        )}
+        {entries}
       </Col>
     </Row>
   );
 };
 
-ScrollList.Item = ScrollListItem;
+ScrollList.Entry = ScrollListEntry;
+ScrollList.Section = ScrollListSection;
 
 export default ScrollList;
 
@@ -72,15 +88,4 @@ ScrollList.propTypes = {
 
   //Minimum height of the list.
   minHeight: PropTypes.string
-};
-
-ScrollListItem.propTypes = {
-  // Title to display in the list.
-  title: PropTypes.string.isRequired,
-
-  //Subtitle to display in the list.
-  subtitle: PropTypes.string,
-
-  //Content to display in the list entry.
-  children: PropTypes.node.isRequired
 };

@@ -32,6 +32,10 @@ const NavBar = props => (
         <NavDropdown.Item href="https://github.com/AdamMYoung/Vocalia-Listen">Vocalia</NavDropdown.Item>
         <NavDropdown.Item href="https://github.com/AdamMYoung/Groupr">Groupr</NavDropdown.Item>
       </NavDropdown>
+
+      <LinkContainer exact to="/snippets">
+        <Nav.Link>Snippets</Nav.Link>
+      </LinkContainer>
     </Nav>
   </Navbar>
 );
