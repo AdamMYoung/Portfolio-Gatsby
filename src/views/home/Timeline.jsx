@@ -11,13 +11,23 @@ const TimelineView = () => (
   <Timeline>
     <Timeline.Entry>
       <InfoCard
-        title="Teesside University"
-        image={university}
-        subtitle="2015 - 2017"
-        description="I began my BSc in Computer Science at Teesside University, located in Middlesbrough, UK."
+        title="Terraquest Solutions"
+        image={quayside}
+        subtitle="2019-Present"
+        description="My first graduate role is at Terraquest Solutions, where I work primarily as a front-end 
+        React developer on a variety of internal and external applications."
       />
     </Timeline.Entry>
     <Timeline.Entry side="right">
+      <InfoCard
+        title="Teesside University (Final Year)"
+        image={laptop}
+        subtitle="2018-2019"
+        description="I started my final year at university, where I developed Vocalia, a web-based podcast consumption and creation platform built with .NET Core and React.
+           This won the British Computer Society award during ExpoTees, the university's project exhibition day."
+      />
+    </Timeline.Entry>
+    <Timeline.Entry>
       <InfoCard
         title="DuPont Teijin Films"
         image={office}
@@ -26,22 +36,12 @@ const TimelineView = () => (
            applications, managed and maintained database, and provided support across the business."
       />
     </Timeline.Entry>
-    <Timeline.Entry>
-      <InfoCard
-        title="Final Year"
-        image={laptop}
-        subtitle="2018-2019"
-        description="I started final year where I developed Vocalia, a web-based podcast consumption and creation platform built with .NET Core and React.
-           This won the British Computer Society award during ExpoTees, the university's project exhibition day."
-      />
-    </Timeline.Entry>
     <Timeline.Entry side="right">
       <InfoCard
-        title="Terraquest Solutions"
-        image={quayside}
-        subtitle="2019-Present"
-        description="My first graduate role is at Terraquest Solutions, where I work primarily as a front-end 
-        React developer on a variety of internal and external applications."
+        title="Teesside University (1st & 2nd Year)"
+        image={university}
+        subtitle="2015 - 2017"
+        description="I began my BSc in Computer Science at Teesside University, located in Middlesbrough, UK."
       />
     </Timeline.Entry>
   </Timeline>

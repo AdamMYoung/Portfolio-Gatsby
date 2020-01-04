@@ -1,16 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
-import * as p5 from "p5";
 import SimpleBar from "simplebar-react";
+import * as p5 from "p5";
 
 import TOPOLOGY from "./animation/vanta.topology.js";
 
 import Navbar from "./navigation/Navbar";
 import Routes from "./routes/Routes";
+import Footer from "./navigation/Footer";
 
 const Layout = () => {
   const [color, setColor] = useState("#2635a6");
   const [vantaEffect, setVantaEffect] = useState(null);
+
   const bgRef = useRef(null);
+  const scrollRef = useRef(null);
 
   //Updates the background when the page loads.
   useEffect(() => {
@@ -31,24 +34,17 @@ const Layout = () => {
   }, [vantaEffect]);
 
   return (
-    <div style={{ position: "relative" }}>
-      <div style={{ position: "absolute", right: 0, zIndex: 1000 }}>
-        <Navbar color={color} onColourChanged={color => setColor(color)} />
-      </div>
-      <div
-        ref={bgRef}
-        style={{
-          position: "absolute",
-          height: "100vh",
-          width: "100vw",
-          backgroundColor: color,
-          transition: "background-color 1.5s ease"
-        }}
-      >
-        <SimpleBar style={{ height: "100vh" }}>
-          <Routes color={color} />
-        </SimpleBar>
-      </div>
+    <div
+      ref={bgRef}
+      style={{ height: "100vh", width: "100vw", backgroundColor: color, transition: "background-color 1.5s ease" }}
+    >
+      <SimpleBar scrollableNodeProps={{ ref: scrollRef }} style={{ height: "100vh" }}>
+        <div style={{ position: "absolute", right: 0, zIndex: 1000 }}>
+          <Navbar color={color} onColourChanged={color => setColor(color)} />
+        </div>
+        <Routes color={color} />
+        <Footer onScroll={() => (scrollRef.current.scrollTop = 0)} />
+      </SimpleBar>
     </div>
   );
 };
