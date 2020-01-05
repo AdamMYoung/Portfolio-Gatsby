@@ -36,21 +36,26 @@ class Effect extends P5Base {
 
       let flow_grid = [];
 
-      let number_of_particles = 4500;
+      let number_of_particles = 0;
+
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        number_of_particles = 1000;
+      } else {
+        number_of_particles = 3000;
+      }
+
       let particles = [];
 
       p.setup = function() {
         t.initP5(p); // sets bg too
         p.smooth();
         p.noStroke();
-        //p.blendMode(p.OVERLAY)
 
         init_particles();
         init_flow();
       };
       p.draw = function() {
         p.translate(-offset, -offset);
-        //display_flow()
         update_particles();
         display_particles();
       };
