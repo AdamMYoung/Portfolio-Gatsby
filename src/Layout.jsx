@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import SimpleBar from "simplebar-react";
 import * as p5 from "p5";
 
@@ -7,6 +7,7 @@ import TOPOLOGY from "./animation/vanta.topology.js";
 import Navbar from "./navigation/Navbar";
 import Routes from "./routes/Routes";
 import Footer from "./navigation/Footer";
+import Placeholder from "./views/Placeholder";
 
 const Layout = () => {
   const [color, setColor] = useState("#2635a6");
@@ -42,7 +43,10 @@ const Layout = () => {
         <div style={{ position: "absolute", right: 0, zIndex: 1000 }}>
           <Navbar color={color} onColourChanged={color => setColor(color)} />
         </div>
-        <Routes color={color} />
+        <Suspense fallback={<Placeholder />}>
+          <Routes color={color} />
+        </Suspense>
+
         <Footer onScroll={() => (scrollRef.current.scrollTop = 0)} />
       </SimpleBar>
     </div>

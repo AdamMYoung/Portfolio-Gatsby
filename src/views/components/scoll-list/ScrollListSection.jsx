@@ -12,7 +12,7 @@ export const ScrollListSection = props => {
           <Col>
             <ScrollEvent onEnter={props.onSectionEntered}>
               <div>
-                <h3>{props.title}</h3>
+                <h2 style={{ marginBottom: 12 }}>{props.title}</h2>
               </div>
             </ScrollEvent>
           </Col>
