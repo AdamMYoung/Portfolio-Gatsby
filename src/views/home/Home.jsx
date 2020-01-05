@@ -32,12 +32,6 @@ const Home = () => {
               <ScrollList.Section>
                 <Timeline />
               </ScrollList.Section>
-              <ScrollList.Section>
-                <Timeline />
-              </ScrollList.Section>
-              <ScrollList.Section>
-                <Timeline />
-              </ScrollList.Section>
             </ScrollList.Entry>
 
             {/* Skills */}
