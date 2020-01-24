@@ -1,14 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import ReactGA from "react-ga";
 
 import Layout from "./Layout";
 
+const history = createBrowserHistory();
 ReactGA.initialize("UA-140587584-1");
 
-const history = createBrowserHistory();
-history.listen(route => ReactGA.pageview(route.pathname));
+history.listen(location => {
+  ReactGA.set({ page: location.pathname });
+  ReactGA.pageview(location.pathname);
+});
 
 const App = () => {
   return (
