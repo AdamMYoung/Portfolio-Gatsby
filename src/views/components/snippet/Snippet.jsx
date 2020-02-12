@@ -2,13 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 
-import { SnippetCode } from "./SnippetCode";
-import { SnippetInfo } from "./SnippetInfo";
-
-import { SnippetAttribution } from "./SnippetAttribution";
-
 const Snippet = props => (
   <>
+    <hr style={{ backgroundColor: "white" }} />
     <Container>
       <Row>
         <Col>
@@ -18,13 +14,8 @@ const Snippet = props => (
 
       {props.children}
     </Container>
-    <hr style={{ backgroundColor: "white" }} />
   </>
 );
-
-Snippet.Info = SnippetInfo;
-Snippet.Code = SnippetCode;
-Snippet.Attribution = SnippetAttribution;
 
 export default Snippet;
 
