@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-import "highlight.js/styles/color-brewer.css";
+import "highlight.js/styles/atom-one-dark.css";
 
 import { getSnippets } from "../../api/contentfulApi";
 
