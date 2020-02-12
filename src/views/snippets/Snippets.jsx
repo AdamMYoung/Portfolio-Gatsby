@@ -50,9 +50,9 @@ const Snippets = () => {
                         group.fields.snippets.map(snippet => (
                           <Snippet title={snippet.fields.title}>
                             <p>{snippet.fields.description}</p>
-                            <Highlight>
+                            <Highlight language={language.fields.title}>
                               <pre>
-                                <code>{snippet.fields.code}</code>
+                                <code style={{ color: "white" }}>{snippet.fields.code}</code>
                               </pre>
                             </Highlight>
                           </Snippet>
