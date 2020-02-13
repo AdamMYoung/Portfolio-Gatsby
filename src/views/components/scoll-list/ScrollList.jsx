@@ -25,7 +25,7 @@ const ScrollList = props => {
    * Returns text styling based on if the entry is active or not.
    */
   const getTextStyle = (requiredIndex, currentIndex) => {
-    return { color: requiredIndex === currentIndex ? "white" : "gray" };
+    return { cursor: "pointer", color: requiredIndex === currentIndex ? "white" : "gray" };
   };
 
   const itemsSubList = entries.map((entry, index) => (
@@ -45,7 +45,11 @@ const ScrollList = props => {
         React.Children.toArray(entry.props.children).map(
           (section, sectionIndex) =>
             section.props.displayInList && (
-              <h5 key={sectionIndex} style={getTextStyle(sectionIndex, visibleSectionIndex)}>
+              <h5
+                key={sectionIndex}
+                style={getTextStyle(sectionIndex, visibleSectionIndex)}
+                onClick={() => document.getElementById(section.props.title).scrollIntoView()}
+              >
                 {section.props.title}
               </h5>
             )

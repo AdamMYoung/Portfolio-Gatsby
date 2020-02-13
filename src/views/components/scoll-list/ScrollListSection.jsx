@@ -6,7 +6,7 @@ import ScrollEvent from "../scroll-event/ScrollEvent";
 
 export const ScrollListSection = props => {
   return (
-    <div id={props.name} style={{ marginTop: 24, marginBotom: 24 }}>
+    <div id={props.title} style={{ marginTop: 24, marginBotom: 24 }}>
       <Container>
         <Row>
           <Col>
