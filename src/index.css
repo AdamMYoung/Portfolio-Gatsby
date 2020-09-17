@@ -1,29 +1,17 @@
 body {
   margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #282c34;
   color: white;
-}
-
-.section-divider {
-  display: inline-block;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  width: 100%;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.15);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-p {
-  margin: 0;
+h1 {
+  font-size: 3em;
 }
 
 h1,
@@ -34,4 +22,54 @@ h5,
 h6,
 p {
   font-weight: lighter;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: white;
+} /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder {
+  color: white;
+} /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder {
+  color: white;
+} /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder {
+  color: white;
+} /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder {
+  color: white;
+} /* Microsoft Edge */
+
+.dropdown-menu {
+  background: transparent;
+  border-color: white;
+  min-width: 0;
+}
+
+.dropdown-item {
+  color: white;
+}
+
+.dropdown-item:hover {
+  background: transparent;
+  color: lightgray;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: lightgray;
+  text-decoration: none;
 }
