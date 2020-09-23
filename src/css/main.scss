@@ -1,0 +1,10 @@
+@import './overrides.scss';
+@import '~bootstrap/scss/bootstrap';
+
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+}
