@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
-import mobile from 'is-mobile';
 
 import Routes from '../routes/Routes';
 import { ProfileCard } from './card/ProfileCard';
@@ -28,8 +27,6 @@ const PaddedContainer = styled.div`
 `;
 
 const Layout: React.FC = () => {
-  const isMobile = mobile();
-
   return (
     <Background>
       <PaddedContainer>

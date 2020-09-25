@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import styled from 'styled-components';
 
@@ -36,15 +36,15 @@ export const Navigation = () => {
           <NavButton variant='link'>Projects</NavButton>
         </LinkContainer>
       </Col>
-      <Col xs={6} sm={2} className='mt-1 mt-sm-1'>
-        <NavButton variant='link' href='https://blog.aydev.uk' target='_blank'>
-          Blog
-        </NavButton>
-      </Col>
       <Col xs={12} sm={2} className='mt-1 mt-sm-1'>
         <LinkContainer to='/contact'>
           <NavButton variant='link'>Contact</NavButton>
         </LinkContainer>
+      </Col>
+      <Col xs={6} sm={2} className='mt-1 mt-sm-1'>
+        <NavButton variant='link' href='https://blog.aydev.uk' target='_blank'>
+          Blog
+        </NavButton>
       </Col>
     </>
   );

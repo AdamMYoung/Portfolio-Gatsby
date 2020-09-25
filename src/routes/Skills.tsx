@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { faDatabase, faGlobe, faNetworkWired, faServer } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import { Image } from 'react-bootstrap';
+import { Col, Image } from 'react-bootstrap';
 import sqlServer from '../assets/microsoft-sql-server.svg';
 
 import { DetailCard } from '../views/card/DetailCard';
@@ -22,24 +22,32 @@ const Skills = () => {
   return (
     <>
       <DetailCard title='Skills' description='A few of my skills as a software developer.'>
-        <SkillCard title='Web Technologies' icon={faGlobe} onClick={() => setWebTechVisible(true)}>
-          <p>Developed enterprise solutions utilizing React, Gatsby, GIS frameworks and more.</p>
-        </SkillCard>
-        <SkillCard title='API Development' icon={faNetworkWired} onClick={() => setApiDevVisible(true)}>
-          <p>Built scalable, microservice-oriented APIs within .NET Core, documented using OpenAPI/Swagger.</p>
-        </SkillCard>
-        <SkillCard title='Database Design' icon={faDatabase} onClick={() => setDatabaseDesignVisible(true)}>
-          <p>
-            Designed application data-structures utilizing bounded contexts, designed with scalability, efficiency and
-            reportability in mind.
-          </p>
-        </SkillCard>
-        <SkillCard title='DevOps' icon={faServer} onClick={() => setDevOpsVisible(true)}>
-          <p>
-            Implemented a wide variety of CI/CD pipelines, making use of release gates and automated testing when deploy
-            to the Microsoft Azure cloud.
-          </p>
-        </SkillCard>
+        <Col xs={12} sm={6} className='mb-4'>
+          <SkillCard title='Web Technologies' icon={faGlobe} onClick={() => setWebTechVisible(true)}>
+            <p>Developed enterprise solutions utilizing React, Gatsby, GIS frameworks and more.</p>
+          </SkillCard>
+        </Col>
+        <Col xs={12} sm={6} className='mb-4'>
+          <SkillCard title='API Development' icon={faNetworkWired} onClick={() => setApiDevVisible(true)}>
+            <p>Built scalable, microservice-oriented APIs within .NET Core, documented using OpenAPI/Swagger.</p>
+          </SkillCard>
+        </Col>
+        <Col xs={12} sm={6} className='mb-4'>
+          <SkillCard title='Database Design' icon={faDatabase} onClick={() => setDatabaseDesignVisible(true)}>
+            <p>
+              Designed application data-structures utilizing bounded contexts, designed with scalability, efficiency and
+              reportability in mind.
+            </p>
+          </SkillCard>
+        </Col>
+        <Col xs={12} sm={6} className='mb-4'>
+          <SkillCard title='DevOps' icon={faServer} onClick={() => setDevOpsVisible(true)}>
+            <p>
+              Implemented a wide variety of CI/CD pipelines, making use of release gates and automated testing when
+              deploy to the Microsoft Azure cloud.
+            </p>
+          </SkillCard>
+        </Col>
       </DetailCard>
 
       {isWebTechVisible && (
