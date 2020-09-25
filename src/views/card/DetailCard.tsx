@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Col, Container, Row } from 'react-bootstrap';
@@ -24,9 +24,19 @@ const NavButton = styled(Button)`
   }
 `;
 
+const FadingDiv = styled.div<{ fadeIn: boolean }>`
+  opacity: ${(props) => (props.fadeIn ? 1 : 0)};
+  transition: opacity 0.5s;
+`;
+
 export const DetailCard: React.FC<Props> = (props) => {
+  const [isVisible, setVisible] = useState(false);
   const { title, description, previousUrl, nextUrl, children } = props;
   const isMobile = mobile();
+
+  useEffect(() => {
+    setTimeout(() => setVisible(true), 50);
+  }, []);
 
   return (
     <div className='d-flex h-100'>
@@ -41,12 +51,16 @@ export const DetailCard: React.FC<Props> = (props) => {
       <Container fluid>
         <Row>
           <Col xs={12}>
-            <h2>{title}</h2>
-            <p>{description}</p>
+            <FadingDiv fadeIn={isVisible}>
+              <h2>{title}</h2>
+              <p>{description}</p>
+            </FadingDiv>
           </Col>
         </Row>
         <Row>
-          <Col>{children}</Col>
+          <Col>
+            <FadingDiv fadeIn={isVisible}>{children}</FadingDiv>
+          </Col>
         </Row>
       </Container>
 

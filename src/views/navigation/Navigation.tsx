@@ -43,6 +43,11 @@ export const Navigation = () => {
         </LinkContainer>
       </Col>
       <Col xs={6} md={2} className='mt-1 mt-sm-1'>
+        <LinkContainer to='/history'>
+          <NavButton variant='link'>History</NavButton>
+        </LinkContainer>
+      </Col>
+      <Col xs={6} md={2} className='mt-1 mt-sm-1'>
         <LinkContainer to='/contact'>
           <NavButton variant='link'>Contact</NavButton>
         </LinkContainer>

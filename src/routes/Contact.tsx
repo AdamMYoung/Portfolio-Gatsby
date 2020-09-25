@@ -15,7 +15,7 @@ const RoundedButton = styled(Button)`
 const Contact = () => {
   return (
     <DetailCard
-      previousUrl='/skills'
+      previousUrl='/history'
       title='Contact'
       description="Pop your details below, and I'll get back to you as soon as possible."
     >

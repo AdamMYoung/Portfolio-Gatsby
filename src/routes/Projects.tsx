@@ -23,6 +23,12 @@ const SkillDetailText = styled.p`
   margin-bottom: 16px !important;
 `;
 
+const OverflowContainer = styled(Container)`
+  height: 475px;
+  overflow-x: auto;
+  padding-top: 8px;
+`;
+
 const Projects = () => {
   const [isVocaliaVisible, setVocaliaVisible] = useState(false);
   const [isGrouprVisible, setGrouprVisible] = useState(false);
@@ -31,11 +37,11 @@ const Projects = () => {
     <>
       <DetailCard
         previousUrl='/skills'
-        nextUrl='/contact'
+        nextUrl='/history'
         title='Projects'
         description="Side projects I've worked on in my spare time."
       >
-        <Container fluid>
+        <OverflowContainer fluid>
           <Row>
             <Col xs={12} className='mb-4'>
               <SkillCard title='Vocalia' onClick={() => setVocaliaVisible(true)}>
@@ -67,7 +73,7 @@ const Projects = () => {
               </SkillCard>
             </Col>
           </Row>
-        </Container>
+        </OverflowContainer>
       </DetailCard>
       {isVocaliaVisible && (
         <Modal customFooter title='Vocalia' onClose={() => setVocaliaVisible(false)}>
