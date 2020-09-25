@@ -70,7 +70,7 @@ const Skills = () => {
           <div className='d-flex'>
             <SkillIcon className='devicon-csharp-plain colored'></SkillIcon>
             <SkillIcon className='devicon-dot-net-plain-wordmark colored'></SkillIcon>
-            <SkillIcon className='devicon-express-original-wordmark colored'></SkillIcon>
+            <SkillIcon className='devicon-express-original colored'></SkillIcon>
           </div>
           <hr />
           <p className='h4'>Projects</p>
@@ -103,11 +103,11 @@ const Skills = () => {
         <Modal title='DevOps' onClose={() => setDevOpsVisible(false)}>
           <p className='h4'>Technologies</p>
           <div className='d-flex'>
-            <SkillIcon className='devicon-npm-original-wordmark colored'></SkillIcon>i
+            <SkillIcon className='devicon-npm-original-wordmark colored'></SkillIcon>
+            <SkillIcon className='devicon-nginx-original colored'></SkillIcon>
             <SkillIcon className='devicon-webpack-plain colored'></SkillIcon>
             <SkillIcon className='devicon-git-plain colored'></SkillIcon>
             <SkillIcon className='devicon-github-plain colored'></SkillIcon>
-            <SkillIcon className='devicon-nginx-original colored'></SkillIcon>
           </div>
           <hr />
           <p className='h4'>Projects</p>
