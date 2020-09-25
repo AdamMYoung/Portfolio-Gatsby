@@ -5,14 +5,8 @@ import { DetailCard } from '../views/card/DetailCard';
 
 const Contact = () => {
   return (
-    <DetailCard>
-      <Container>
-        <Row>
-          <Col xs={12}>
-            <h2>Contact</h2>
-          </Col>
-        </Row>
-      </Container>
+    <DetailCard title='Contact' description="Pop your details below, and I'll get back to you as soon as possible.">
+      <Col xs={12}></Col>
     </DetailCard>
   );
 };

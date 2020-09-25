@@ -39,17 +39,14 @@ const Layout: React.FC = () => {
               <ProfileCard />
             </Col>
 
-            {isMobile && <Navigation />}
             <Col xs={12} sm={8} md={9} className='mt-3'>
               <Routes />
             </Col>
           </Row>
 
-          {!isMobile && (
-            <Row className='mt-4 pb-4'>
-              <Navigation />
-            </Row>
-          )}
+          <Row className='mt-0 mt-sm-4 pb-4 justify-content-center'>
+            <Navigation />
+          </Row>
         </Container>
       </PaddedContainer>
     </Background>

@@ -25,18 +25,18 @@ const ListItem = styled(ListGroup.Item)`
 `;
 
 const HeightenedCard = styled(Card)`
-  min-height: 450px;
+  min-height: 480px;
 
   @media (max-width: 576px) {
-    height: auto;
+    min-height: auto;
   }
 `;
 
 export const ProfileCard = () => {
   return (
     <HeightenedCard className='p-3'>
-      <Container fluid>
-        <Row>
+      <Container fluid className='h-auto h-sm-100'>
+        <Row className='h-auto h-sm-100'>
           <Col xs={6} sm={12} className='d-flex align-items-center'>
             <Image src={profile} fluid roundedCircle />
           </Col>
@@ -55,20 +55,25 @@ export const ProfileCard = () => {
               </ListItem>
             </ListGroup>
           </Col>
-          <Col xs={12} className='mt-2 d-flex justify-content-center'>
-            <div>
-              <Button className='m-0 mx-1' variant='outline-dark' href='https://github.com/AdamMYoung' target='_blank'>
-                <FontAwesomeIcon size='2x' icon={faGithub} />
-              </Button>
-              <Button
-                className='m-0 mx-1'
-                variant='outline-dark'
-                href='https://www.instagram.com/adammyoungphotography'
-                target='_blank'
-              >
-                <FontAwesomeIcon size='2x' icon={faInstagram} />
-              </Button>
-            </div>
+          <Col xs={12} className='mt-4 d-flex justify-content-center'>
+            <Button
+              style={{ height: 48 }}
+              className='m-0 mx-1'
+              variant='outline-dark'
+              href='https://github.com/AdamMYoung'
+              target='_blank'
+            >
+              <FontAwesomeIcon size='2x' icon={faGithub} />
+            </Button>
+            <Button
+              style={{ height: 48 }}
+              className='m-0 mx-1'
+              variant='outline-dark'
+              href='https://www.instagram.com/adammyoungphotography'
+              target='_blank'
+            >
+              <FontAwesomeIcon size='2x' icon={faInstagram} />
+            </Button>
           </Col>
         </Row>
       </Container>
