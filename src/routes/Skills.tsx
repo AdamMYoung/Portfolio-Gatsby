@@ -10,7 +10,7 @@ import { Modal } from '../views/modal/Modal';
 
 const SkillIcon = styled.i`
   font-size: 48px;
-  margin 0px 4px;
+  margin 4px 4px;
 `;
 
 const Skills = () => {
@@ -53,7 +53,7 @@ const Skills = () => {
       {isWebTechVisible && (
         <Modal title='Web Technologies' onClose={() => setWebTechVisible(false)}>
           <p className='h4'>Technologies</p>
-          <div className='d-flex'>
+          <div className='d-flex flex-wrap'>
             <SkillIcon className='devicon-typescript-plain colored'></SkillIcon>
             <SkillIcon className='devicon-javascript-plain colored'></SkillIcon>
             <SkillIcon className='devicon-nodejs-plain colored'></SkillIcon>
@@ -75,7 +75,7 @@ const Skills = () => {
       {isApiDevVisible && (
         <Modal title='API Development' onClose={() => setApiDevVisible(false)}>
           <p className='h4'>Technologies</p>
-          <div className='d-flex'>
+          <div className='d-flex flex-wrap'>
             <SkillIcon className='devicon-csharp-plain colored'></SkillIcon>
             <SkillIcon className='devicon-dot-net-plain-wordmark colored'></SkillIcon>
             <SkillIcon className='devicon-express-original colored'></SkillIcon>
@@ -92,7 +92,7 @@ const Skills = () => {
       {isDatabaseDesignVisible && (
         <Modal title='Database Design' onClose={() => setDatabaseDesignVisible(false)}>
           <p className='h4'>Technologies</p>
-          <div className='d-flex'>
+          <div className='d-flex flex-wrap'>
             <Image src={sqlServer} fluid height={48} width={48} />
             <SkillIcon className='devicon-mysql-plain colored'></SkillIcon>
             <SkillIcon className='devicon-postgresql-plain colored'></SkillIcon>
@@ -110,7 +110,7 @@ const Skills = () => {
       {isDevOpsVisible && (
         <Modal title='DevOps' onClose={() => setDevOpsVisible(false)}>
           <p className='h4'>Technologies</p>
-          <div className='d-flex'>
+          <div className='d-flex flex-wrap'>
             <SkillIcon className='devicon-npm-original-wordmark colored'></SkillIcon>
             <SkillIcon className='devicon-nginx-original colored'></SkillIcon>
             <SkillIcon className='devicon-webpack-plain colored'></SkillIcon>
