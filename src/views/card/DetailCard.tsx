@@ -1,9 +1,10 @@
+import React from 'react';
 import { faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import styled from 'styled-components';
+import mobile from 'is-mobile';
 
 type Props = {
   title: string;
@@ -25,14 +26,17 @@ const NavButton = styled(Button)`
 
 export const DetailCard: React.FC<Props> = (props) => {
   const { title, description, previousUrl, nextUrl, children } = props;
+  const isMobile = mobile();
 
   return (
     <div className='d-flex h-100'>
-      <LinkContainer to={previousUrl ?? ''}>
-        <NavButton variant='link' disabled={!previousUrl} onMouseDown={(e: any) => e.preventDefault()}>
-          <FontAwesomeIcon icon={faBackward} />
-        </NavButton>
-      </LinkContainer>
+      {!isMobile && (
+        <LinkContainer to={previousUrl ?? ''}>
+          <NavButton variant='link' disabled={!previousUrl} onMouseDown={(e: any) => e.preventDefault()}>
+            <FontAwesomeIcon icon={faBackward} />
+          </NavButton>
+        </LinkContainer>
+      )}
 
       <Container fluid>
         <Row>
@@ -46,11 +50,13 @@ export const DetailCard: React.FC<Props> = (props) => {
         </Row>
       </Container>
 
-      <LinkContainer to={nextUrl ?? ''}>
-        <NavButton variant='link' disabled={!nextUrl} onMouseDown={(e: any) => e.preventDefault()}>
-          <FontAwesomeIcon icon={faForward} />
-        </NavButton>
-      </LinkContainer>
+      {!isMobile && (
+        <LinkContainer to={nextUrl ?? ''}>
+          <NavButton variant='link' disabled={!nextUrl} onMouseDown={(e: any) => e.preventDefault()}>
+            <FontAwesomeIcon icon={faForward} />
+          </NavButton>
+        </LinkContainer>
+      )}
     </div>
   );
 };
