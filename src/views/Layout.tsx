@@ -6,6 +6,7 @@ import mobile from 'is-mobile';
 import Routes from '../routes/Routes';
 import { ProfileCard } from './card/ProfileCard';
 import { Navigation } from './navigation/Navigation';
+import { Card } from './card/Card';
 
 const Background = styled.div`
   height: 100%;
@@ -47,7 +48,9 @@ const Layout: React.FC = () => {
             {isMobile && <Navigation />}
 
             <Col xs={12} sm={8} md={9} className='mt-3'>
-              <Routes />
+              <Card className='p-4'>
+                <Routes />
+              </Card>
             </Col>
           </Row>
 
