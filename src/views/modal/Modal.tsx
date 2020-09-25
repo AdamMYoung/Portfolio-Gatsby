@@ -22,7 +22,6 @@ export const Modal = (props: Props) => {
   return (
     <StyledModal centered show onHide={onClose}>
       <BSModal.Header closeButton>
-        {' '}
         <BSModal.Title>{title}</BSModal.Title>
       </BSModal.Header>
 

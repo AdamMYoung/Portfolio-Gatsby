@@ -1,5 +1,5 @@
 import React from 'react';
-import { faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -17,7 +17,7 @@ const NavButton = styled(Button)`
   margin: auto 8px;
   padding: 0px;
   height: 100%;
-  color: ${(props) => (props.disabled ? 'lightgray' : 'black')};
+  color: ${(props) => (props.disabled ? 'white' : 'lightgray')} !important;
 
   svg {
     height: 100%;
@@ -33,7 +33,7 @@ export const DetailCard: React.FC<Props> = (props) => {
       {!isMobile && (
         <LinkContainer to={previousUrl ?? ''}>
           <NavButton variant='link' disabled={!previousUrl} onMouseDown={(e: any) => e.preventDefault()}>
-            <FontAwesomeIcon icon={faBackward} />
+            <FontAwesomeIcon icon={faArrowLeft} />
           </NavButton>
         </LinkContainer>
       )}
@@ -53,7 +53,7 @@ export const DetailCard: React.FC<Props> = (props) => {
       {!isMobile && (
         <LinkContainer to={nextUrl ?? ''}>
           <NavButton variant='link' disabled={!nextUrl} onMouseDown={(e: any) => e.preventDefault()}>
-            <FontAwesomeIcon icon={faForward} />
+            <FontAwesomeIcon icon={faArrowRight} />
           </NavButton>
         </LinkContainer>
       )}

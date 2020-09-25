@@ -1,7 +1,16 @@
 import React from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import styled from 'styled-components';
 
 import { DetailCard } from '../views/card/DetailCard';
+
+const RoundedFormControl = styled(Form.Control)`
+  border-radius: 16px;
+`;
+
+const RoundedButton = styled(Button)`
+  border-radius: 16px;
+`;
 
 const Contact = () => {
   return (
@@ -17,19 +26,26 @@ const Contact = () => {
               <input type='hidden' name='form-name' value='contact' />
               <Form.Group controlId='name'>
                 <Form.Label>Your Name</Form.Label>
-                <Form.Control type='text' placeholder='Name' name='name' />
+                <RoundedFormControl type='text' placeholder='Name' name='name' />
               </Form.Group>
 
               <Form.Group controlId='email'>
                 <Form.Label>Your Email</Form.Label>
-                <Form.Control type='email' placeholder='Email address' name='email' />
+                <RoundedFormControl type='email' placeholder='Email address' name='email' />
               </Form.Group>
 
               <Form.Group controlId='message'>
-                <Form.Control as='textarea' type='text' name='message' placeholder='Your message' />
+                <Form.Label>Your Message</Form.Label>
+                <Form.Control
+                  as='textarea'
+                  type='text'
+                  name='message'
+                  placeholder='Your message'
+                  style={{ borderRadius: 16 }}
+                />
               </Form.Group>
 
-              <Button type='submit'>Send</Button>
+              <RoundedButton type='submit'>Send</RoundedButton>
             </Form>
           </Col>
         </Row>

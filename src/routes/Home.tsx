@@ -1,7 +1,6 @@
 import { faBicycle, faCamera, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Card } from '../views/card/Card';
 
 import { DetailCard } from '../views/card/DetailCard';
 import { SkillCard } from '../views/card/SkillCard';
