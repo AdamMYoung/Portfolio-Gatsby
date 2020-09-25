@@ -7,7 +7,7 @@ import { Card } from './Card';
 
 const StyledCard = styled(Card)`
   transition: background-color 0.2s;
-  box-shadow: 2px 1px 2px lightgray;
+  box-shadow: 0px 0px 10px lightgray;
 
   &:hover {
     background-color: #ebebeb;

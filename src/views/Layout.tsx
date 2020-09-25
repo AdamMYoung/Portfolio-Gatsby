@@ -41,14 +41,14 @@ const Layout: React.FC = () => {
       <PaddedContainer>
         <Container>
           <Row>
-            <Col xs={12} sm={4} md={3} className='mt-3'>
+            <Col xs={12} md={3} className='mt-3'>
               <ProfileCard />
             </Col>
 
             {isMobile && <Navigation />}
 
-            <Col xs={12} sm={8} md={9} className='mt-3'>
-              <Card className='p-4'>
+            <Col xs={12} md={9} className='mt-3'>
+              <Card className='py-4 px-0'>
                 <Routes />
               </Card>
             </Col>

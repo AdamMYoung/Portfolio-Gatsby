@@ -27,27 +27,27 @@ const NavButton = styled(Button)`
 export const Navigation = () => {
   return (
     <>
-      <Col xs={6} sm={2} className='mt-3 mt-sm-1'>
+      <Col xs={6} md={2} className='mt-3 mt-sm-1'>
         <LinkContainer to='/' exact>
           <NavButton variant='link'>Home</NavButton>
         </LinkContainer>
       </Col>
-      <Col xs={6} sm={2} className='mt-3 mt-sm-1'>
+      <Col xs={6} md={2} className='mt-3 mt-sm-1'>
         <LinkContainer to='/skills'>
           <NavButton variant='link'>Skills</NavButton>
         </LinkContainer>
       </Col>
-      <Col xs={6} sm={2} className='mt-1 mt-sm-1'>
+      <Col xs={6} md={2} className='mt-1 mt-sm-1'>
         <LinkContainer to='/projects'>
           <NavButton variant='link'>Projects</NavButton>
         </LinkContainer>
       </Col>
-      <Col xs={6} sm={2} className='mt-1 mt-sm-1'>
+      <Col xs={6} md={2} className='mt-1 mt-sm-1'>
         <LinkContainer to='/contact'>
           <NavButton variant='link'>Contact</NavButton>
         </LinkContainer>
       </Col>
-      <Col xs={6} sm={2} className='mt-1 mt-sm-1'>
+      <Col xs={6} md={2} className='mt-1 mt-sm-1'>
         <NavButton variant='link' href='https://blog.aydev.uk' target='_blank'>
           Blog
         </NavButton>

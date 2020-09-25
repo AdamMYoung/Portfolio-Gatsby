@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, Image } from 'react-bootstrap';
+import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 
 import { DetailCard } from '../views/card/DetailCard';
@@ -19,18 +19,27 @@ const Projects = () => {
 
   return (
     <>
-      <DetailCard title='Projects' description="Side projects I've worked on in my spare time.">
-        <Col xs={12} sm={6} className='mb-4'>
-          <SkillCard title='Vocalia' onClick={() => setVocaliaVisible(true)}>
-            <RoundedImage src={vocalia} fluid />
-          </SkillCard>
-        </Col>
+      <DetailCard
+        previousUrl='/skills'
+        nextUrl='/contact'
+        title='Projects'
+        description="Side projects I've worked on in my spare time."
+      >
+        <Container fluid>
+          <Row>
+            <Col xs={12} sm={6} className='mb-4'>
+              <SkillCard title='Vocalia' onClick={() => setVocaliaVisible(true)}>
+                <RoundedImage src={vocalia} fluid />
+              </SkillCard>
+            </Col>
 
-        <Col xs={12} sm={6} className='mb-4' onClick={() => setGrouprVisible(true)}>
-          <SkillCard title='Groupr'>
-            <RoundedImage src={groupr} fluid />
-          </SkillCard>
-        </Col>
+            <Col xs={12} sm={6} className='mb-4' onClick={() => setGrouprVisible(true)}>
+              <SkillCard title='Groupr'>
+                <RoundedImage src={groupr} fluid />
+              </SkillCard>
+            </Col>
+          </Row>
+        </Container>
       </DetailCard>
       {isVocaliaVisible && (
         <Modal customFooter title='Vocalia' onClose={() => setVocaliaVisible(false)}>
