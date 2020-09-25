@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import profile from '../../assets/profile.jpg';
 import { Card } from './Card';
-import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const ListItem = styled(ListGroup.Item)`
   display: flex;
@@ -64,6 +64,17 @@ export const ProfileCard = () => {
               </ListItem>
             </ListGroup>
           </Col>
+          <Col xs={12} className='mt-2 d-flex justify-content-center'>
+            <iframe
+              title='google_maps'
+              width='100%'
+              height='150'
+              frameBorder='0'
+              style={{ border: 0, borderRadius: 16 }}
+              src='https://www.google.com/maps/embed/v1/place?key=AIzaSyA1o1kriIMX9xSStfAd96lnvup9kBNZTfE
+    &q=Broad+St,+Birmingham'
+            ></iframe>
+          </Col>
           <Col xs={12} className='mt-4 d-flex justify-content-center'>
             <Button
               style={{ height: 48 }}
@@ -82,6 +93,15 @@ export const ProfileCard = () => {
               target='_blank'
             >
               <FontAwesomeIcon size='2x' icon={faInstagram} />
+            </Button>
+            <Button
+              style={{ height: 48 }}
+              className='m-0 mx-1'
+              variant='outline-dark'
+              href='https://www.linkedin.com/in/adammichaelyoung/'
+              target='_blank'
+            >
+              <FontAwesomeIcon size='2x' icon={faLinkedin} />
             </Button>
           </Col>
         </Row>
