@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { faDatabase, faGlobe, faNetworkWired, faServer } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+import { Image } from 'react-bootstrap';
+import sqlServer from '../assets/microsoft-sql-server.svg';
 
 import { DetailCard } from '../views/card/DetailCard';
 import { SkillCard } from '../views/card/SkillCard';
 import { Modal } from '../views/modal/Modal';
+
+const SkillIcon = styled.i`
+  font-size: 48px;
+  margin 0px 4px;
+`;
 
 const Skills = () => {
   const [isWebTechVisible, setWebTechVisible] = useState(false);
@@ -34,10 +42,82 @@ const Skills = () => {
         </SkillCard>
       </DetailCard>
 
-      {isWebTechVisible && <Modal title='Web Technologies' onClose={() => setWebTechVisible(false)} />}
-      {isApiDevVisible && <Modal title='API Development' onClose={() => setApiDevVisible(false)} />}
-      {isDatabaseDesignVisible && <Modal title='Database Design' onClose={() => setDatabaseDesignVisible(false)} />}
-      {isDevOpsVisible && <Modal title='DevOps' onClose={() => setDevOpsVisible(false)} />}
+      {isWebTechVisible && (
+        <Modal title='Web Technologies' onClose={() => setWebTechVisible(false)}>
+          <p className='h4'>Technologies</p>
+          <div className='d-flex'>
+            <SkillIcon className='devicon-typescript-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-javascript-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-nodejs-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-react-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-html5-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-css3-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-bootstrap-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-sass-plain colored'></SkillIcon>
+          </div>
+          <hr />
+          <p className='h4'>Projects</p>
+          <ul>
+            <li>Personal - Vocalia</li>
+            <li>TerraQuest Solutions - Planning Portal</li>
+            <li>TerraQuest Solutions - ReQuestaPlan</li>
+          </ul>
+        </Modal>
+      )}
+      {isApiDevVisible && (
+        <Modal title='API Development' onClose={() => setApiDevVisible(false)}>
+          <p className='h4'>Technologies</p>
+          <div className='d-flex'>
+            <SkillIcon className='devicon-csharp-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-dot-net-plain-wordmark colored'></SkillIcon>
+            <SkillIcon className='devicon-express-original-wordmark colored'></SkillIcon>
+          </div>
+          <hr />
+          <p className='h4'>Projects</p>
+          <ul>
+            <li>Personal - Vocalia</li>
+            <li>TerraQuest Solutions - Planning Portal</li>
+            <li>TerraQuest Solutions - ReQuestaPlan</li>
+          </ul>
+        </Modal>
+      )}
+      {isDatabaseDesignVisible && (
+        <Modal title='Database Design' onClose={() => setDatabaseDesignVisible(false)}>
+          <p className='h4'>Technologies</p>
+          <div className='d-flex'>
+            <Image src={sqlServer} fluid height={48} width={48} />
+            <SkillIcon className='devicon-mysql-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-postgresql-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-mongodb-plain colored'></SkillIcon>
+          </div>
+          <hr />
+          <p className='h4'>Projects</p>
+          <ul>
+            <li>Personal - Vocalia</li>
+            <li>TerraQuest Solutions - Planning Portal</li>
+            <li>TerraQuest Solutions - ReQuestaPlan</li>
+          </ul>
+        </Modal>
+      )}
+      {isDevOpsVisible && (
+        <Modal title='DevOps' onClose={() => setDevOpsVisible(false)}>
+          <p className='h4'>Technologies</p>
+          <div className='d-flex'>
+            <SkillIcon className='devicon-npm-original-wordmark colored'></SkillIcon>i
+            <SkillIcon className='devicon-webpack-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-git-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-github-plain colored'></SkillIcon>
+            <SkillIcon className='devicon-nginx-original colored'></SkillIcon>
+          </div>
+          <hr />
+          <p className='h4'>Projects</p>
+          <ul>
+            <li>Personal - Vocalia</li>
+            <li>TerraQuest Solutions - Planning Portal</li>
+            <li>TerraQuest Solutions - ReQuestaPlan</li>
+          </ul>
+        </Modal>
+      )}
     </>
   );
 };

@@ -5,6 +5,8 @@ import { createBrowserHistory } from 'history';
 import Layout from './views/Layout';
 
 import './css/main.scss';
+import 'devicon/devicon.css';
+import 'devicon/devicon-colors.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const history = createBrowserHistory();
