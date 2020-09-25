@@ -25,7 +25,7 @@ const ListItem = styled(ListGroup.Item)`
 `;
 
 const HeightenedCard = styled(Card)`
-  min-height: 480px;
+  min-height: 525px;
 
   @media (max-width: 576px) {
     min-height: auto;
