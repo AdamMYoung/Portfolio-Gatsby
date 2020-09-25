@@ -5,13 +5,13 @@ import styled from 'styled-components';
 
 import { Card } from './Card';
 
-const StyledCard = styled(Card)`
+const StyledCard = styled(Card)<{ interactable: boolean }>`
   transition: background-color 0.2s;
-  box-shadow: ${(props) => (props.disabled ? '0px 0px 3px lightgray' : '0px 0px 10px lightgray')};
+  box-shadow: ${(props) => (props.interactable ? '0px 0px 3px lightgray' : '0px 0px 10px lightgray')};
 
   &:hover {
-    background-color: ${(props) => (props.disabled ? 'white' : '#ebebeb')};
-    cursor: ${(props) => (props.disabled ? 'normal' : 'pointer')};
+    background-color: ${(props) => (props.interactable ? 'white' : '#ebebeb')};
+    cursor: ${(props) => (props.interactable ? 'auto' : 'pointer')};
   }
 
   p {
@@ -30,7 +30,7 @@ export const SkillCard: React.FC<Props> = (props) => {
   const { title, icon, children, disabled, onClick } = props;
 
   return (
-    <StyledCard onClick={onClick} disabled={disabled}>
+    <StyledCard onClick={onClick} interactable={disabled}>
       <div className='d-flex'>
         {icon && <FontAwesomeIcon size='2x' icon={icon} className='mr-3' />}
         <div>
