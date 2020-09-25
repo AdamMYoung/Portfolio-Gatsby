@@ -34,10 +34,10 @@ const HeightenedCard = styled(Card)`
 
 export const ProfileCard = () => {
   return (
-    <HeightenedCard className='p-3'>
+    <HeightenedCard className='p-2'>
       <Container fluid className='h-auto h-sm-100'>
         <Row className='h-auto h-sm-100'>
-          <Col xs={6} sm={12} className='d-flex align-items-center'>
+          <Col xs={6} sm={12} className='mt-3 d-flex align-items-center'>
             <Image src={profile} fluid roundedCircle />
           </Col>
           <Col xs={6} sm={12} className='d-flex align-items-center justify-content-center'>
