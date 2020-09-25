@@ -12,8 +12,14 @@ const NavButton = styled(Button)`
   border-radius: 16px;
   color: black !important;
 
+  &:hover {
+    text-decoration: none;
+    background: lightgray;
+  }
+
   &:focus,
   &:active {
+    text-decoration: none;
     border-color: transparent;
   }
 `;

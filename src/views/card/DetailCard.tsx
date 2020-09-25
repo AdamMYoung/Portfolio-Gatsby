@@ -12,7 +12,7 @@ export const DetailCard: React.FC<Props> = (props) => {
   const { title, description, children } = props;
 
   return (
-    <Card>
+    <Card className='p-4'>
       <Container>
         <Row>
           <Col xs={12}>

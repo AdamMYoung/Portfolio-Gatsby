@@ -32,7 +32,7 @@ const Skills = () => {
             <p>Built scalable, microservice-oriented APIs within .NET Core, documented using OpenAPI/Swagger.</p>
           </SkillCard>
         </Col>
-        <Col xs={12} sm={6} className='mb-4'>
+        <Col xs={12} sm={6} className='mb-4 mb-sm-0'>
           <SkillCard title='Database Design' icon={faDatabase} onClick={() => setDatabaseDesignVisible(true)}>
             <p>
               Designed application data-structures utilizing bounded contexts, designed with scalability, efficiency and
@@ -40,7 +40,7 @@ const Skills = () => {
             </p>
           </SkillCard>
         </Col>
-        <Col xs={12} sm={6} className='mb-4'>
+        <Col xs={12} sm={6}>
           <SkillCard title='DevOps' icon={faServer} onClick={() => setDevOpsVisible(true)}>
             <p>
               Implemented a wide variety of CI/CD pipelines, making use of release gates and automated testing when
