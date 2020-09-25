@@ -3,13 +3,13 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import { DetailCard } from '../views/card/DetailCard';
 
-const Projects = () => {
+const Blog = () => {
   return (
     <DetailCard>
       <Container>
         <Row>
           <Col xs={12}>
-            <h2>Projects</h2>
+            <h2>Blog</h2>
           </Col>
         </Row>
       </Container>
@@ -17,4 +17,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default Blog;
