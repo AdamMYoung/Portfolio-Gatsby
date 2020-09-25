@@ -19,8 +19,8 @@ export const DetailCard: React.FC<Props> = (props) => {
             <h2>{title}</h2>
             <p>{description}</p>
           </Col>
-          {children}
         </Row>
+        <Row>{children}</Row>
       </Container>
     </Card>
   );

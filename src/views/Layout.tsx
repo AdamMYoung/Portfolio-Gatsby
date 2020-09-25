@@ -1,6 +1,7 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
+import mobile from 'is-mobile';
 
 import Routes from '../routes/Routes';
 import { ProfileCard } from './card/ProfileCard';
@@ -26,7 +27,14 @@ const PaddedContainer = styled.div`
   }
 `;
 
+const TopScreenButton = styled(Button)`
+  width: 100%;
+  border-radius: 16px;
+`;
+
 const Layout: React.FC = () => {
+  const isMobile = mobile();
+
   return (
     <Background>
       <PaddedContainer>
@@ -36,13 +44,26 @@ const Layout: React.FC = () => {
               <ProfileCard />
             </Col>
 
+            {isMobile && <Navigation />}
+
             <Col xs={12} sm={8} md={9} className='mt-3'>
               <Routes />
             </Col>
           </Row>
 
-          <Row className='mt-0 mt-sm-4 pb-4 justify-content-center'>
-            <Navigation />
+          <Row className='mt-4 pb-4 justify-content-center'>
+            {!isMobile ? (
+              <Navigation />
+            ) : (
+              <Col xs={12}>
+                <TopScreenButton
+                  variant='light'
+                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+                >
+                  Back to top
+                </TopScreenButton>
+              </Col>
+            )}
           </Row>
         </Container>
       </PaddedContainer>

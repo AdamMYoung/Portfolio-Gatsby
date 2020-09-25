@@ -7,7 +7,7 @@ import { DetailCard } from '../views/card/DetailCard';
 const Home = () => {
   return (
     <DetailCard title='About Me' description='A short description of my work and hobbies.'>
-      <Col xs={6}>
+      <Col xs={12} sm={6}>
         <Card>
           <p className='h4'>Software Developer</p>
           <p>
@@ -15,7 +15,7 @@ const Home = () => {
           </p>
         </Card>
       </Col>
-      <Col xs={6}>
+      <Col xs={12} sm={6} className='mt-4 mt-sm-0'>
         <Card>
           <p className='h4'>Photographer</p>
           <p>

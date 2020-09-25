@@ -36,7 +36,7 @@ export const Navigation = () => {
           <NavButton variant='link'>Projects</NavButton>
         </LinkContainer>
       </Col>
-      <Col xs={12} sm={2} className='mt-1 mt-sm-1'>
+      <Col xs={6} sm={2} className='mt-1 mt-sm-1'>
         <LinkContainer to='/contact'>
           <NavButton variant='link'>Contact</NavButton>
         </LinkContainer>
