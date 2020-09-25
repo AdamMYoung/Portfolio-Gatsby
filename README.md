@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React-Redux-Router Kickstart
 
-## Available Scripts
+This is a generic template, used to kickstart the development of modern React apps. It comes pre-configured with:
 
-In the project directory, you can run:
+- Axios (with examples)
+- React Redux (with examples)
+- React Router (with examples)
+- Generic authentication providers
 
-### `npm start`
+## Structure
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The template has the following structure:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- API - All API interaction logic, made through Axios
+- Assets - Static content to display on the site
+- Containers - React Redux containers, used to hook into the Redux store and provide interaction logic
+- Hooks - React hooks used in the application
+- Providers - Data providers used within the application, allowing components to hook into them and access exposed data
+- Routes - URL routes of the application
+- Store - Redux store information, such as actions, reducers, types and thunks
+- Utils - Utility classes of the application
+- Views - Standalone view components, typically used by containers to display information to the user
 
-### `npm test`
+## Development Rules
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Below are some rules you should try to follow when developing within this template.
 
-### `npm run build`
+- React components should be pascal case. e.g. `<MyNewComponent/>` and `MyNewComponent.tsx`.
+- Classes should be camel case. e.g. `stringHelpers.ts`
+- Folders should be all lower case, separated by hyphens. e.g. `/src/my-new-folder`
+- If you find yourself re-implementing properties, try extending existing props instead. For an example of this, check the `AuthenticatedRoute.tsx` props.
+- Try and avoid too many nested folders. This can result in ugly and unreadable import statements.
+- React is based around **composition** rather than inheritance. This usually means you'll develop simpler components first, and build more complex ones from this. Don't dive straight into implementation, first break it down into its constituent parts. This will greatly promote re-usability within the application.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Configuration
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- .env - Configuration information is provided to the application using the .env files at the root of the template. These provide differing URLS at compile time depending on the build selected (dev/test/build).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- .prettier - Opinionated code formatter, used to apply agreed styling to the codebase.
 
-### `npm run eject`
+## Building
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### `yarn start`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This will start the application in developer mode. Redux calls will be visible via the Redux devtools browser extension, and break points can be hit in this mode.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### `yarn test`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This will run all tests within the application, and output the results to the console window.
 
-## Learn More
+### `yarn build`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This will build a production-ready version of the application, to deploy where needed.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Further Reading
 
-### Code Splitting
+Below are some good tutorials/guides to get to grips with the various technologies used within the template.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- React - https://reactjs.org/docs/getting-started.html
+- Axios - https://github.com/axios/axios
+- React Router - https://reacttraining.com/react-router/web/
+- React Redux - https://redux.js.org/basics/basic-tutorial
+- React Redux (Typescript) - https://redux.js.org/recipes/usage-with-typescript
