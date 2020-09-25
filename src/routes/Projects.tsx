@@ -11,6 +11,12 @@ import { Modal } from '../views/modal/Modal';
 
 const RoundedImage = styled(Image)`
   border-radius: 16px;
+  max-width: 60%;
+`;
+
+const SkillDetailText = styled.p`
+  margin-top: 8px !important;
+  margin-bottom: 16px !important;
 `;
 
 const Projects = () => {
@@ -27,15 +33,33 @@ const Projects = () => {
       >
         <Container fluid>
           <Row>
-            <Col xs={12} sm={6} className='mb-4'>
+            <Col xs={12} className='mb-4'>
               <SkillCard title='Vocalia' onClick={() => setVocaliaVisible(true)}>
-                <RoundedImage src={vocalia} fluid />
+                <Container fluid className='mt-3'>
+                  <Row>
+                    <Col xs={6}>
+                      <RoundedImage src={vocalia} fluid />
+                    </Col>
+                    <Col xs={6}>
+                      <SkillDetailText>Podcast creation and consumption platform.</SkillDetailText>
+                    </Col>
+                  </Row>
+                </Container>
               </SkillCard>
             </Col>
 
-            <Col xs={12} sm={6} className='mb-4' onClick={() => setGrouprVisible(true)}>
+            <Col xs={12} className='mb-4' onClick={() => setGrouprVisible(true)}>
               <SkillCard title='Groupr'>
-                <RoundedImage src={groupr} fluid />
+                <Container fluid className='mt-3'>
+                  <Row>
+                    <Col xs={6}>
+                      <RoundedImage src={groupr} fluid />
+                    </Col>
+                    <Col xs={6}>
+                      <SkillDetailText>Windows 10 taskbar folder creator.</SkillDetailText>
+                    </Col>
+                  </Row>
+                </Container>
               </SkillCard>
             </Col>
           </Row>

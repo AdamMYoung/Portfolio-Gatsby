@@ -14,7 +14,7 @@ type Props = {
 };
 
 const NavButton = styled(Button)`
-  margin: 0px 8px;
+  margin: auto 8px;
   padding: 0px;
   height: 100%;
   color: ${(props) => (props.disabled ? 'lightgray' : 'black')};

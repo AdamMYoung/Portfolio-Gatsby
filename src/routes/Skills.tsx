@@ -29,12 +29,12 @@ const Skills = () => {
       >
         <Container fluid>
           <Row>
-            <Col xs={12} md={6} className='mb-4'>
+            <Col xs={12} className='mb-4'>
               <SkillCard title='Web Technologies' icon={faGlobe} onClick={() => setWebTechVisible(true)}>
                 <p>Developed enterprise solutions utilizing React, Gatsby, GIS frameworks and more.</p>
               </SkillCard>
             </Col>
-            <Col xs={12} md={6} className='mb-4'>
+            <Col xs={12} className='mb-4'>
               <SkillCard title='API Development' icon={faNetworkWired} onClick={() => setApiDevVisible(true)}>
                 <p>Built scalable, microservice-oriented APIs within .NET Core, documented using OpenAPI/Swagger.</p>
               </SkillCard>

@@ -7,25 +7,30 @@ import { Card } from './Card';
 
 const StyledCard = styled(Card)`
   transition: background-color 0.2s;
-  box-shadow: 0px 0px 10px lightgray;
+  box-shadow: ${(props) => (props.disabled ? '0px 0px 3px lightgray' : '0px 0px 10px lightgray')};
 
   &:hover {
-    background-color: #ebebeb;
-    cursor: pointer;
+    background-color: ${(props) => (props.disabled ? 'white' : '#ebebeb')};
+    cursor: ${(props) => (props.disabled ? 'normal' : 'pointer')};
+  }
+
+  p {
+    margin-bottom: 0;
   }
 `;
 
 type Props = {
   title: string;
+  disabled?: boolean;
   icon?: IconProp;
   onClick?: () => void;
 };
 
 export const SkillCard: React.FC<Props> = (props) => {
-  const { title, icon, children, onClick } = props;
+  const { title, icon, children, disabled, onClick } = props;
 
   return (
-    <StyledCard onClick={onClick}>
+    <StyledCard onClick={onClick} disabled={disabled}>
       <div className='d-flex'>
         {icon && <FontAwesomeIcon size='2x' icon={icon} className='mr-3' />}
         <div>
