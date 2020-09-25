@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import React, { useState } from 'react';
-import { Button, Col, Form } from 'react-bootstrap';
+import { Alert, Button, Col, Form } from 'react-bootstrap';
 
 import { DetailCard } from '../views/card/DetailCard';
 
@@ -60,6 +60,7 @@ const Contact = () => {
           <Button disabled={submitted} type='submit'>
             Send
           </Button>
+          {submitted && <Alert className='mt-4'>Submitted! Thanks for your message.</Alert>}
         </Form>
       </Col>
     </DetailCard>
