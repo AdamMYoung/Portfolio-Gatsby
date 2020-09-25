@@ -11,16 +11,16 @@ const Contact = () => {
           <input type='hidden' name='form-name' value='contact' />
           <Form.Group controlId='name'>
             <Form.Label>Your Name</Form.Label>
-            <Form.Control type='text' placeholder='Name' />
+            <Form.Control type='text' placeholder='Name' name='name' />
           </Form.Group>
 
           <Form.Group controlId='email'>
             <Form.Label>Your Email</Form.Label>
-            <Form.Control type='email' placeholder='Email address' />
+            <Form.Control type='email' placeholder='Email address' name='email' />
           </Form.Group>
 
           <Form.Group controlId='message'>
-            <Form.Control as='textarea' type='text' placeholder='Your message' />
+            <Form.Control as='textarea' type='text' name='message' placeholder='Your message' />
           </Form.Group>
 
           <Button type='submit'>Send</Button>
