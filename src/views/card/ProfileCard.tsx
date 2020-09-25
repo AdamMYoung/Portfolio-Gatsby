@@ -33,9 +33,12 @@ const HeightenedCard = styled(Card)`
 `;
 
 const ProfileImage = styled(Image)`
-  max-width: 200px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 768px) {
+    max-width: 75%;
+  }
 `;
 
 export const ProfileCard = () => {

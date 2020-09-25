@@ -12,6 +12,10 @@ import { Modal } from '../views/modal/Modal';
 const RoundedImage = styled(Image)`
   border-radius: 16px;
   max-width: 60%;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 const SkillDetailText = styled.p`
@@ -37,10 +41,10 @@ const Projects = () => {
               <SkillCard title='Vocalia' onClick={() => setVocaliaVisible(true)}>
                 <Container fluid className='mt-3'>
                   <Row>
-                    <Col xs={6}>
+                    <Col xs={12} md={6}>
                       <RoundedImage src={vocalia} fluid />
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={12} md={6}>
                       <SkillDetailText>Podcast creation and consumption platform.</SkillDetailText>
                     </Col>
                   </Row>
@@ -52,10 +56,10 @@ const Projects = () => {
               <SkillCard title='Groupr'>
                 <Container fluid className='mt-3'>
                   <Row>
-                    <Col xs={6}>
+                    <Col xs={12} md={6}>
                       <RoundedImage src={groupr} fluid />
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={12} md={6}>
                       <SkillDetailText>Windows 10 taskbar folder creator.</SkillDetailText>
                     </Col>
                   </Row>
