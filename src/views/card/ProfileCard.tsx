@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { faMapMarkerAlt, faSuitcase } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Button, Col, Container, Image, ListGroup, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 
-import profile from '../../assets/profile.jpg';
+import { Post } from '../../types';
 import { Card } from './Card';
-import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { getBlogPosts } from '../../api/bloggerApi';
+
+import profile from '../../assets/profile.jpg';
+import { SkillCard } from './SkillCard';
 
 const ListItem = styled(ListGroup.Item)`
   display: flex;
@@ -42,6 +46,17 @@ const ProfileImage = styled(Image)`
 `;
 
 export const ProfileCard = () => {
+  const [latestBlog, setLatestBlog] = useState<Post | null>(null);
+
+  useEffect(() => {
+    const loadLatestBlog = async () => {
+      const posts = await getBlogPosts();
+      if (posts) setLatestBlog(posts[0]);
+    };
+
+    loadLatestBlog();
+  }, []);
+
   return (
     <HeightenedCard className='p-2'>
       <Container fluid className='h-auto h-sm-100'>
@@ -64,17 +79,21 @@ export const ProfileCard = () => {
               </ListItem>
             </ListGroup>
           </Col>
-          <Col xs={12} className='mt-2 d-flex justify-content-center'>
-            <iframe
-              title='google_maps'
-              width='100%'
-              height='150'
-              frameBorder='0'
-              style={{ border: 0, borderRadius: 16 }}
-              src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_MAPS_KEY}
-    &q=Broad+St,+Birmingham`}
-            ></iframe>
+          <Col xs={12} className='mt-2 d-flex'>
+            <SkillCard title='Latest Blog Post' disabled>
+              {latestBlog ? (
+                <>
+                  <p style={{ fontSize: 12 }}>{new Date(latestBlog.published).toDateString()}</p>
+                  <a style={{ fontSize: 12 }} href={latestBlog.url} target='_blank' rel='noopener noreferrer'>
+                    <p className='py-2'>{latestBlog.title}</p>
+                  </a>
+                </>
+              ) : (
+                <p style={{ height: 100 }}>Loading...</p>
+              )}
+            </SkillCard>
           </Col>
+
           <Col xs={12} className='mt-4 d-flex justify-content-center'>
             <Button
               style={{ height: 48 }}
