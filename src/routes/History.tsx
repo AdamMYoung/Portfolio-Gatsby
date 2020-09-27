@@ -35,7 +35,7 @@ const History = () => {
               <Container fluid className='mt-3'>
                 <Row>
                   <Col xs={12} md={6} className='d-flex align-items-center'>
-                    <RoundedImage src={quayside} fluid />
+                    <RoundedImage src={quayside} alt='White office block' fluid />
                   </Col>
                   <Col xs={12} md={6} className='d-flex align-items-center'>
                     <SkillDetailText>
@@ -52,7 +52,7 @@ const History = () => {
               <Container fluid className='mt-3'>
                 <Row>
                   <Col xs={12} md={6} className='d-flex align-items-center'>
-                    <RoundedImage src={laptop} fluid />
+                    <RoundedImage src={laptop} alt='Illustrated laptop with bright colours' fluid />
                   </Col>
                   <Col xs={12} md={6} className='d-flex align-items-center'>
                     <SkillDetailText>
@@ -70,7 +70,7 @@ const History = () => {
               <Container fluid className='mt-3'>
                 <Row>
                   <Col xs={12} md={6} className='d-flex align-items-center'>
-                    <RoundedImage src={office} fluid />
+                    <RoundedImage src={office} alt='Illustrated man working.' fluid />
                   </Col>
                   <Col xs={12} md={6} className='d-flex align-items-center'>
                     <SkillDetailText>
@@ -88,7 +88,7 @@ const History = () => {
               <Container fluid className='mt-3'>
                 <Row>
                   <Col xs={12} md={6} className='d-flex align-items-center'>
-                    <RoundedImage src={university} fluid />
+                    <RoundedImage src={university} alt="Golden university building on a summer's day." fluid />
                   </Col>
                   <Col xs={12} md={6} className='d-flex align-items-center'>
                     <SkillDetailText>

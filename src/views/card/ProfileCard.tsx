@@ -62,7 +62,7 @@ export const ProfileCard = () => {
       <Container fluid className='h-auto h-sm-100'>
         <Row className='h-auto h-sm-100'>
           <Col xs={6} sm={12} className='mt-3 d-flex align-items-center'>
-            <ProfileImage src={profile} fluid roundedCircle />
+            <ProfileImage src={profile} alt='Profile picture of developer' fluid roundedCircle />
           </Col>
           <Col xs={6} sm={12} className='d-flex align-items-center justify-content-center'>
             <h1 className='h4 mt-4 '>Adam Young</h1>

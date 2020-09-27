@@ -48,7 +48,7 @@ const Projects = () => {
                 <Container fluid className='mt-3'>
                   <Row>
                     <Col xs={12} md={6}>
-                      <RoundedImage src={vocalia} fluid />
+                      <RoundedImage src={vocalia} alt="Vocalia's tiled interface" fluid />
                     </Col>
                     <Col xs={12} md={6}>
                       <SkillDetailText>Podcast creation and consumption platform.</SkillDetailText>
@@ -63,7 +63,7 @@ const Projects = () => {
                 <Container fluid className='mt-3'>
                   <Row>
                     <Col xs={12} md={6}>
-                      <RoundedImage src={groupr} fluid />
+                      <RoundedImage src={groupr} alt="Groupr's interface, with listed applications" fluid />
                     </Col>
                     <Col xs={12} md={6}>
                       <SkillDetailText>Windows 10 taskbar folder creator.</SkillDetailText>

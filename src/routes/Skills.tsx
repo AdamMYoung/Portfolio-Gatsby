@@ -102,7 +102,7 @@ const Skills = () => {
         <Modal title='Database Design' onClose={() => setDatabaseDesignVisible(false)}>
           <p className='h4'>Technologies</p>
           <div className='d-flex flex-wrap'>
-            <Image src={sqlServer} fluid height={48} width={48} />
+            <Image src={sqlServer} alt='SQL Server logo' fluid height={48} width={48} />
             <SkillIcon className='devicon-mysql-plain colored'></SkillIcon>
             <SkillIcon className='devicon-postgresql-plain colored'></SkillIcon>
             <SkillIcon className='devicon-mongodb-plain colored'></SkillIcon>
