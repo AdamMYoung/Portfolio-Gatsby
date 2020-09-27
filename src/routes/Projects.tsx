@@ -51,7 +51,9 @@ const Projects = () => {
                       <RoundedImage src={vocalia} alt="Vocalia's tiled interface" fluid />
                     </Col>
                     <Col xs={12} md={6}>
-                      <SkillDetailText>Podcast creation and consumption platform.</SkillDetailText>
+                      <SkillDetailText>
+                        Podcast creation and consumption platform, developed in React and .NET Core.
+                      </SkillDetailText>
                     </Col>
                   </Row>
                 </Container>
@@ -66,7 +68,7 @@ const Projects = () => {
                       <RoundedImage src={groupr} alt="Groupr's interface, with listed applications" fluid />
                     </Col>
                     <Col xs={12} md={6}>
-                      <SkillDetailText>Windows 10 taskbar folder creator.</SkillDetailText>
+                      <SkillDetailText>WPF app to create folders on your desktop in Windows 10.</SkillDetailText>
                     </Col>
                   </Row>
                 </Container>
