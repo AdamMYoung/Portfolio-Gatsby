@@ -7,7 +7,7 @@ import { Card } from './Card';
 
 const StyledCard = styled(Card)<{ interactable: boolean }>`
   transition: background-color 0.2s;
-  box-shadow: ${(props) => (props.interactable ? '0px 0px 3px lightgray' : '0px 0px 10px lightgray')};
+  box-shadow: ${(props) => (props.interactable ? '0px 0px 0px lightgray' : '0px 0px 10px lightgray')};
 
   &:hover {
     background-color: ${(props) => (props.interactable ? 'white' : '#ebebeb')};
