@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import ReactGA from 'react-ga';
 
 import Layout from './views/Layout';
 
@@ -9,7 +10,13 @@ import 'devicon/devicon.css';
 import 'devicon/devicon-colors.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID ?? '');
+
 const history = createBrowserHistory();
+
+history.listen((listener) => {
+  ReactGA.pageview(listener.pathname);
+});
 
 const App = () => {
   return (

@@ -71,8 +71,8 @@ export const ProfileCard = () => {
               height='150'
               frameBorder='0'
               style={{ border: 0, borderRadius: 16 }}
-              src='https://www.google.com/maps/embed/v1/place?key=AIzaSyA1o1kriIMX9xSStfAd96lnvup9kBNZTfE
-    &q=Broad+St,+Birmingham'
+              src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_MAPS_KEY}
+    &q=Broad+St,+Birmingham`}
             ></iframe>
           </Col>
           <Col xs={12} className='mt-4 d-flex justify-content-center'>
