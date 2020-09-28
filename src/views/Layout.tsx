@@ -18,13 +18,9 @@ const PaddedContainer = styled.div`
   min-height: 100vh;
   display: flex;
   align-items: center;
-  margin-left: 48px;
-  margin-right: 48px;
 
   @media (max-width: 1200px) {
     display: block;
-    margin-left: 4px;
-    margin-right: 4px;
   }
 `;
 
