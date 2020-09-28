@@ -21,7 +21,7 @@ const PaddedContainer = styled.div`
   margin-left: 48px;
   margin-right: 48px;
 
-  @media (max-width: 576px) {
+  @media (max-width: 1200px) {
     display: block;
     margin-left: 4px;
     margin-right: 4px;
