@@ -39,7 +39,7 @@ const Projects = () => {
         previousUrl='/skills'
         nextUrl='/history'
         title='Projects'
-        description="Side projects I've worked on in my spare time."
+        description="Side projects I've worked on in my spare time. Click below to learn more."
       >
         <OverflowContainer fluid>
           <Row>

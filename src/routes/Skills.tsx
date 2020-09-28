@@ -25,7 +25,7 @@ const Skills = () => {
         previousUrl='/home'
         nextUrl='/projects'
         title='Skills'
-        description='A few of my skills as a software developer.'
+        description='A few of my skills as a software developer.  Click below to learn more.'
       >
         <Container fluid>
           <Row>
