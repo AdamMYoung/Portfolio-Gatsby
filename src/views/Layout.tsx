@@ -19,7 +19,7 @@ const PaddedContainer = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 992px) {
     display: block;
   }
 `;
