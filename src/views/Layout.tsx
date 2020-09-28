@@ -39,7 +39,7 @@ const Layout: React.FC = () => {
   return (
     <Background>
       <PaddedContainer>
-        <Container>
+        <Container fluid="md">
           <Row>
             <Col xs={12} md={3} className='mt-3'>
               <ProfileCard />
