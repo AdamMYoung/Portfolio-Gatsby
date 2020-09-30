@@ -7,7 +7,7 @@ import { SkillCard } from '../views/card/SkillCard';
 
 import vocalia from '../assets/vocalia.png';
 import groupr from '../assets/groupr.png';
-import { Modal } from '../views/modal/Modal';
+import { Modal } from 'aydev-components';
 
 const RoundedImage = styled(Image)`
   border-radius: 16px;

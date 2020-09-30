@@ -3,7 +3,6 @@ import { faMapMarkerAlt, faSuitcase } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Card } from 'aydev-components';
-import styled from 'styled-components';
 
 import { Post } from '../../types';
 import { getBlogPosts } from '../../api/bloggerApi';

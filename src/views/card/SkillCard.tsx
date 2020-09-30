@@ -14,7 +14,7 @@ export const SkillCard: React.FC<Props> = (props) => {
   const { title, icon, children, disabled, onClick } = props;
 
   return (
-    <Card onClick={onClick} interactable={!disabled}>
+    <Card onClick={onClick} interactable={!disabled} minHeight='auto'>
       <div className='d-flex'>
         {icon && <FontAwesomeIcon size='2x' icon={icon} className='mr-3' />}
         <div>

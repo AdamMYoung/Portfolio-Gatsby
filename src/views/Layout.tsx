@@ -1,12 +1,10 @@
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
-import mobile from 'is-mobile';
 
 import Routes from '../routes/Routes';
 import { ProfileCard } from './card/ProfileCard';
 import { Navigation } from './navigation/Navigation';
-import { Card } from './card/Card';
 
 const Background = styled.div`
   height: 100%;
@@ -30,39 +28,43 @@ const TopScreenButton = styled(Button)`
 `;
 
 const Layout: React.FC = () => {
-  const isMobile = mobile();
-
   return (
     <Background>
       <PaddedContainer>
-        <Container fluid="lg">
-          <Row>
-            <Col xs={12} md={3} className='mt-3'>
+        <Container fluid='lg'>
+          {/* Desktop */}
+          <Row className='d-none d-lg-flex'>
+            <Col xs={12} lg={3} className='mt-3'>
               <ProfileCard />
             </Col>
 
-            {isMobile && <Navigation />}
-
-            <Col xs={12} md={9} className='mt-3'>
-              <Card className='py-4 px-0'>
-                <Routes />
-              </Card>
+            <Col xs={12} lg={9} className='mt-3'>
+              <Routes />
             </Col>
           </Row>
 
-          <Row className='mt-4 pb-4 justify-content-center'>
-            {!isMobile ? (
-              <Navigation />
-            ) : (
-              <Col xs={12}>
-                <TopScreenButton
-                  variant='light'
-                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
-                >
-                  Back to top
-                </TopScreenButton>
-              </Col>
-            )}
+          {/* Mobile */}
+          <Row className='d-flex d-lg-none'>
+            <Col xs={12} lg={3} className='mt-3'>
+              <ProfileCard />
+            </Col>
+
+            <Navigation />
+
+            <Col xs={12} lg={9} className='mt-3'>
+              <Routes />
+            </Col>
+          </Row>
+
+          <Row className='mt-4 pb-4 d-none d-lg-flex justify-content-center'>
+            <Navigation />
+          </Row>
+          <Row className='mt-4 pb-4 d-flex d-lg-none justify-content-center'>
+            <Col xs={12}>
+              <TopScreenButton variant='light' onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>
+                Back to top
+              </TopScreenButton>
+            </Col>
           </Row>
         </Container>
       </PaddedContainer>

@@ -6,7 +6,7 @@ import sqlServer from '../assets/microsoft-sql-server.svg';
 
 import { DetailCard } from '../views/card/DetailCard';
 import { SkillCard } from '../views/card/SkillCard';
-import { Modal } from '../views/modal/Modal';
+import { Modal } from 'aydev-components';
 
 const SkillIcon = styled.i`
   font-size: 48px;
