@@ -24,7 +24,7 @@ const SkillDetailText = styled.p`
 `;
 
 const OverflowContainer = styled(Container)`
-  height: 475px;
+  height: 600px;
   overflow-x: auto;
   padding-top: 8px;
 `;
@@ -60,8 +60,8 @@ const Projects = () => {
               </SkillCard>
             </Col>
 
-            <Col xs={12} className='mb-4' onClick={() => setGrouprVisible(true)}>
-              <SkillCard title='Groupr'>
+            <Col xs={12} className='mb-4'>
+              <SkillCard title='Groupr' onClick={() => setGrouprVisible(true)}>
                 <Container fluid className='mt-3'>
                   <Row>
                     <Col xs={12} md={6}>

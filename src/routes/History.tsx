@@ -20,7 +20,7 @@ const SkillDetailText = styled.p`
 `;
 
 const OverflowContainer = styled(Container)`
-  height: 475px;
+  height: 600px;
   overflow-x: auto;
   padding-top: 8px;
 `;
