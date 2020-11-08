@@ -23,7 +23,7 @@ export const ProfileCard = () => {
   }, []);
 
   return (
-    <Card>
+    <div>
       <Card.Header>
         <Card.Header.Image src={profile} alt='Profile picture of developer' />
         <Card.Header.Title>Adam Young</Card.Header.Title>
@@ -59,6 +59,6 @@ export const ProfileCard = () => {
           </Card.Body.ButtonRow.Button>
         </Card.Body.ButtonRow>
       </Card.Body>
-    </Card>
+    </div>
   );
 };

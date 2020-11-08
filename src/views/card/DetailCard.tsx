@@ -38,7 +38,7 @@ export const DetailCard: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <Card>
+    <>
       <div className=' py-4 px-0 d-flex h-100'>
         <div className='d-none d-flex-lg'>
           <LinkContainer to={previousUrl ?? ''}>
@@ -72,6 +72,6 @@ export const DetailCard: React.FC<Props> = (props) => {
           </LinkContainer>
         </div>
       </div>
-    </Card>
+    </>
   );
 };
