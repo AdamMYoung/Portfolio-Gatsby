@@ -4,20 +4,26 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
 
+type StyleVariants = 'light' | 'gray' | 'dark';
+
 type Props = {
   title: string;
-  variant?: 'light' | 'dark';
+  variant?: StyleVariants;
   icon?: IconProp;
 };
 
-const SectionLayout = styled.div<{ variant?: 'light' | 'dark' }>`
+const SectionLayout = styled.div<{ variant?: StyleVariants }>`
   padding: 86px 24px;
   min-height: 20vh;
-  background-color: ${(props) => (props.variant === 'light' ? 'white' : '#f1f1f1')};
+  background-color: ${(props) => {
+    if (props.variant === 'light') return 'white';
+    if (props.variant === 'gray') return '#f1f1f1';
+    return '#151515';
+  }};
 `;
 
-const ColouredText = styled.div<{ variant?: 'light' | 'dark' }>`
-  color: black;
+const ColouredText = styled.div<{ variant?: StyleVariants }>`
+  color: ${(props) => (props.variant === 'dark' ? 'white' : 'black')};
 
   p {
     font-weight: light;

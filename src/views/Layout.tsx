@@ -2,9 +2,11 @@ import { faAddressCard, faBookOpen, faUserTie } from '@fortawesome/free-solid-sv
 import React from 'react';
 import styled from 'styled-components';
 
+import { Skills } from '../content';
 import { Navigation } from './navigation/Navigation';
 import { Section } from './section/Section';
 import { Splash } from './splash/Splash';
+import { TileList } from './tile-list/TileList';
 
 const Description = styled.p`
   font-weight: light;
@@ -47,7 +49,7 @@ const Layout: React.FC = () => {
     <>
       <Navigation />
       <Splash />
-      <Section title='Hello!' variant='dark'>
+      <Section title='Hello!' variant='light'>
         <Description>
           Hi! I'm Adam, a software developer specializing in React, currently based in Birmingham, UK. I enjoy creating
           modern and functional websites, with ease of use at the forefront.
@@ -64,28 +66,17 @@ const Layout: React.FC = () => {
         </div>
       </Section>
 
-      <Section title='Skills' variant='light' icon={faBookOpen}>
-        Text
+      <Section title='Skills' variant='dark' icon={faBookOpen}>
+        <TileList entries={Skills} />
       </Section>
 
-      <Section title='Experience' variant='dark' icon={faUserTie}>
+      <Section title='Experience' variant='gray' icon={faUserTie}>
         Text
       </Section>
 
       <Section title='Contact' variant='light' icon={faAddressCard}>
         Text
       </Section>
-
-      {/* Desktop
-        <Row className='d-none d-lg-flex'>
-          <Col xs={12} lg={3} className='mt-3'>
-            <ProfileCard />
-          </Col>
-
-          <Col xs={12} lg={9} className='mt-3'>
-            <Routes />
-          </Col>
-        </Row> */}
     </>
   );
 };
