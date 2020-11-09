@@ -11,7 +11,7 @@ export const Navigation = () => {
   return (
     <Navbar collapseOnSelect expand='lg' bg='transparent' variant='dark' fixed='top'>
       <Container>
-        <Navbar.Brand>Adam Young</Navbar.Brand>
+        <Navbar.Brand className='font-weight-bold'>Adam Young</Navbar.Brand>
         <Navbar.Toggle aria-controls='navbar-nav' />
         <Navbar.Collapse id='navbar-nav'>
           <Nav className='ml-auto'>

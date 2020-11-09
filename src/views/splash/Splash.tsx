@@ -15,7 +15,7 @@ const SplashStyle = styled.div<{ backgroundImage?: string }>`
 
 const CenteredText = styled.div`
   position: absolute;
-  width: 100vw;
+  width: 100%;
   top: 50%;
   left: 0%;
   transform: translate(0%, -50%);
