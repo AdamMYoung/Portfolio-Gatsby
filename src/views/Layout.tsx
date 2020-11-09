@@ -49,7 +49,7 @@ const Layout: React.FC = () => {
       <Splash />
       <Section title='Hello!' variant='dark'>
         <Description>
-          Hi! I'm Adam, a software developer specializing in React currently based in Birmingham, UK. I enjoy creating
+          Hi! I'm Adam, a software developer specializing in React, currently based in Birmingham, UK. I enjoy creating
           modern and functional websites, with ease of use at the forefront.
         </Description>
         <Email href='mailto:adam@aydev.uk'>adam@aydev.uk</Email>
@@ -68,11 +68,11 @@ const Layout: React.FC = () => {
         Text
       </Section>
 
-      <Section title='Experience' variant='light' icon={faUserTie}>
+      <Section title='Experience' variant='dark' icon={faUserTie}>
         Text
       </Section>
 
-      <Section title='Contact' variant='dark' icon={faAddressCard}>
+      <Section title='Contact' variant='light' icon={faAddressCard}>
         Text
       </Section>
 
