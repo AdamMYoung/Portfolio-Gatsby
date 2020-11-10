@@ -42,9 +42,12 @@ const HoverText = styled.p`
 
 const ListWrapper = styled.div`
   margin-top: 48px;
-  max-height: 80vh;
-  overflow: hidden;
-  overflow-y: auto;
+
+  @media screen and (max-width: 556px) {
+    max-height: 80vh;
+    overflow: hidden;
+    overflow-y: auto;
+  }
 `;
 
 type ListProps = {
