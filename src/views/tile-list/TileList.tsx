@@ -34,6 +34,7 @@ const HoverText = styled.p`
   padding: 12px;
   transition: opacity 0.3s;
   text-overflow: ellipsis;
+  user-select: none;
 
   ${ImageContainer}:hover & {
     opacity: 1;
