@@ -9,6 +9,7 @@ const ImageContainer = styled.div<{ visible?: boolean }>`
   position: relative;
   margin-bottom: 24px;
   transition: opacity 0.6s;
+  overflow: hidden;
 
   &:hover {
     cursor: pointer;
@@ -16,14 +17,9 @@ const ImageContainer = styled.div<{ visible?: boolean }>`
 `;
 
 const SkillIcon = styled.i`
-  font-size: 14rem;
+  font-size: 12rem;
   width: 100%;
-
   transition: filter 0.3s;
-
-  @media screen and (max-width: 556px) {
-    font-size: 10rem;
-  }
 
   ${ImageContainer}:hover & {
     filter: brightness(47%) blur(4px);
@@ -37,10 +33,18 @@ const HoverText = styled.p`
   left: 0;
   padding: 12px;
   transition: opacity 0.3s;
+  text-overflow: ellipsis;
 
   ${ImageContainer}:hover & {
     opacity: 1;
   }
+`;
+
+const ListWrapper = styled.div`
+  margin-top: 48px;
+  max-height: 80vh;
+  overflow: hidden;
+  overflow-y: auto;
 `;
 
 type ListProps = {
@@ -76,11 +80,11 @@ export const TileList = (props: ListProps) => {
   return (
     <>
       <TileListFilters keys={filters} selectedKey={selectedKey} onKeySelected={setSelectedKey} />
-      <div style={{ marginTop: 48 }} className='d-flex flex-wrap justify-content-around'>
+      <ListWrapper className='d-flex flex-wrap justify-content-around'>
         {entriesToDisplay.map((entry) => (
           <TileListEntry key={Math.random()} text={entry.text} iconName={entry.iconName} />
         ))}
-      </div>
+      </ListWrapper>
     </>
   );
 };
@@ -89,9 +93,9 @@ const TileListFilters = (props: FilterProps) => {
   const { keys, selectedKey, onKeySelected } = props;
 
   return (
-    <div className='d-flex'>
+    <div className='d-flex flex-wrap'>
       <Button
-        className='mr-2'
+        className='mr-2 mt-3'
         variant='outline-primary'
         active={selectedKey === null}
         onClick={() => onKeySelected(null)}
@@ -101,7 +105,7 @@ const TileListFilters = (props: FilterProps) => {
       {keys.map((key) => (
         <Button
           key={key}
-          className='mx-2'
+          className='mx-2 mt-3'
           variant='outline-primary'
           active={selectedKey === key}
           onClick={() => onKeySelected(key)}

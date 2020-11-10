@@ -16,7 +16,7 @@ export const Skills: TileEntry[] = [
   {
     iconName: 'devicon-javascript-plain colored',
     text:
-      "When working on older projects or quickly prototyping, JavaScript is the 2nd choice due to the looseness of the language and fluidity of it's typing",
+      "When working on older projects or quickly prototyping, JavaScript is the 2nd choice due to the fluidity of it's typing.",
     filterKey: FilterKeys.web,
   },
   {
@@ -34,7 +34,7 @@ export const Skills: TileEntry[] = [
   {
     iconName: 'devicon-dot-net-plain-wordmark colored',
     text:
-      'I have a wide range of experience developing in .net, ranging from WPF to MVC in both .NET framework and .NET Core in micro-service architectures.',
+      'I have a range of experience in .NET, ranging from WPF to MVC with .NET Core in micro-service architectures.',
     filterKey: FilterKeys.backend,
   },
   {
@@ -45,7 +45,7 @@ export const Skills: TileEntry[] = [
   {
     iconName: 'devicon-postgresql-plain colored',
     text:
-      'I have experience with various relational databases such as MySQL, PostgreSQL and SQL Server, implemented across a variety of projects and frameworks.',
+      'I have experience with relational databases such as MySQL, PostgreSQL and SQL Server, used across a variety of frameworks.',
     filterKey: FilterKeys.database,
   },
   {
@@ -55,14 +55,12 @@ export const Skills: TileEntry[] = [
   },
   {
     iconName: 'devicon-npm-original-wordmark colored',
-    text:
-      "Within Azure DevOps I've developed numerous CI/CD pipelines for various Node projects. I've also developed and published components to the NPM repository.",
+    text: "Within Azure DevOps I've developed numerous CI/CD pipelines for various Node projects. ",
     filterKey: FilterKeys.devops,
   },
   {
     iconName: 'devicon-github-plain',
-    text:
-      'I also have an extensive history of using and publishing open source projects on GitHub. I believe that everybody can benefit from open source solutions.',
+    text: 'I also have an extensive history of using and publishing open source projects on GitHub.',
     filterKey: FilterKeys.devops,
   },
 ];
