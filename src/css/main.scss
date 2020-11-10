@@ -1,17 +1,6 @@
 @import './overrides.scss';
 @import '~bootstrap/scss/bootstrap';
 
-.switch-wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
-.switch-wrapper > div {
-  &:before {
-    position: absolute;
-  }
-  position: absolute;
-  height: 100%;
-  width: 100%;
+html {
+  scroll-behavior: smooth;
 }

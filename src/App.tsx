@@ -9,6 +9,7 @@ import './css/main.scss';
 import 'devicon/devicon.css';
 import 'devicon/devicon-colors.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ThemeProvider } from 'styled-components';
 
 ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID ?? '');
 
@@ -20,9 +21,11 @@ history.listen((listener) => {
 
 const App = () => {
   return (
-    <Router history={history}>
-      <Layout />
-    </Router>
+    <ThemeProvider theme={{ color: { primary: '#deae47' } }}>
+      <Router history={history}>
+        <Layout />
+      </Router>
+    </ThemeProvider>
   );
 };
 

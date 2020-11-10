@@ -1,62 +1,71 @@
 import React from 'react';
-import { Button, Col } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
+import useScrollPosition from '@react-hook/window-scroll';
 
-const NavButton = styled(Button)`
-  padding: 0;
-  margin: 4px 0px;
-  width: 100%;
-  background: white;
-  padding: 12px;
-  border-radius: 16px;
-  color: black !important;
+const NavLink = styled(Nav.Link)<{ hasBackground?: boolean }>`
+  font-weight: bold;
+  color: ${(props) => (props.hasBackground ? 'black' : 'white')} !important;
+  transition: color 0.5s;
+`;
 
-  &:hover {
-    text-decoration: none;
-    background: lightgray;
-  }
+const NavbarBrand = styled(Navbar.Brand)<{ hasBackground?: boolean }>`
+  color: ${(props) => (props.hasBackground ? 'black' : 'white')} !important;
+  transition: color 0.5s;
+`;
 
-  &:focus,
-  &:active {
-    text-decoration: none;
-    border-color: transparent;
-  }
+const NavDivider = styled.div<{ hasBackground?: boolean }>`
+  height: 1.75rem;
+  margin: 5px 4px;
+  border-right: 1px solid ${(props) => (props.hasBackground ? 'black' : 'white')};
+  border-left: 1px solid ${(props) => (props.hasBackground ? 'black' : 'white')};
+  transition: border-left 0.5s, border-right 0.5s;
+`;
+
+const StyledNavbar = styled(Navbar)<{ hasBackground?: boolean }>`
+  background-color: ${(props) => (props.hasBackground ? 'white' : 'transparent')} !important;
+  color: ${(props) => (props.hasBackground ? 'black' : 'white')} !important;
+  border-bottom: ${(props) => (props.hasBackground ? '1px solid gray' : 'none')};
+  transition: background-color 0.5s, border-bottom 0.5s;
 `;
 
 export const Navigation = () => {
+  const scrollY = useScrollPosition();
+  const hasBackground = scrollY !== 0;
+
   return (
-    <>
-      <Col xs={6} md={2} className='mt-3 mt-sm-1'>
-        <LinkContainer to='/' exact>
-          <NavButton variant='link'>Home</NavButton>
-        </LinkContainer>
-      </Col>
-      <Col xs={6} md={2} className='mt-3 mt-sm-1'>
-        <LinkContainer to='/skills'>
-          <NavButton variant='link'>Skills</NavButton>
-        </LinkContainer>
-      </Col>
-      <Col xs={6} md={2} className='mt-1 mt-sm-1'>
-        <LinkContainer to='/projects'>
-          <NavButton variant='link'>Projects</NavButton>
-        </LinkContainer>
-      </Col>
-      <Col xs={6} md={2} className='mt-1 mt-sm-1'>
-        <LinkContainer to='/history'>
-          <NavButton variant='link'>History</NavButton>
-        </LinkContainer>
-      </Col>
-      <Col xs={6} md={2} className='mt-1 mt-sm-1'>
-        <LinkContainer to='/contact'>
-          <NavButton variant='link'>Contact</NavButton>
-        </LinkContainer>
-      </Col>
-      <Col xs={6} md={2} className='mt-1 mt-sm-1'>
-        <NavButton variant='link' href='https://blog.aydev.uk' target='_blank'>
-          Blog
-        </NavButton>
-      </Col>
-    </>
+    <StyledNavbar
+      hasBackground={hasBackground}
+      collapseOnSelect
+      expand='lg'
+      bg={hasBackground ? 'light' : 'dark'}
+      variant={hasBackground ? 'light' : 'dark'}
+      fixed='top'
+    >
+      <Container>
+        <NavbarBrand href='#home' hasBackground={hasBackground} className='font-weight-bold'>
+          Adam Young
+        </NavbarBrand>
+        <Navbar.Toggle aria-controls='navbar-nav' />
+        <Navbar.Collapse id='navbar-nav'>
+          <Nav className='ml-auto'>
+            <NavLink href='#skills' hasBackground={hasBackground}>
+              Skills
+            </NavLink>
+            <NavLink href='#experience' hasBackground={hasBackground}>
+              Experience
+            </NavLink>
+            <NavLink href='#contact' hasBackground={hasBackground}>
+              Contact
+            </NavLink>
+            <NavDivider className='d-none d-lg-block' hasBackground={hasBackground} />
+            <NavLink href='https://blog.aydev.uk/' target='_blank' rel='noopener' hasBackground={hasBackground}>
+              Blog
+            </NavLink>
+            {/* <NavLink hasBackground={hasBackground}>Photography</NavLink> */}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </StyledNavbar>
   );
 };

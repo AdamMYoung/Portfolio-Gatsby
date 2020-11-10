@@ -1,48 +1,142 @@
-import { faBicycle, faCamera, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard, faBookOpen, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Form, Table } from 'react-bootstrap';
+import styled from 'styled-components';
 
-import { DetailCard } from '../views/card/DetailCard';
-import { SkillCard } from '../views/card/SkillCard';
+import { Skills } from '../content';
+import { Section } from '../views/section/Section';
+import { Splash } from '../views/splash/Splash';
+import { TileList } from '../views/tile-list/TileList';
 
+const Description = styled.p`
+  font-weight: light;
+  font-size: 1.5rem;
+`;
+
+const Email = styled.a`
+  font-size: 1.75rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  color: ${(props) => props.theme.color.primary};
+
+  &:focus {
+    color: ${(props) => props.theme.color.primary};
+  }
+
+  &:hover {
+    color: ${(props) => props.theme.color.primary};
+    text-decoration: none;
+  }
+`;
+
+const SocialLink = styled.a`
+  color: gray;
+  margin-right: 1rem;
+  cursor: pointer;
+
+  &:focus {
+    color: gray;
+  }
+
+  &:hover {
+    color: gray;
+    text-decoration: none;
+  }
+`;
 const Home = () => {
   return (
-    <DetailCard nextUrl='/skills' title='About Me' description='An introduction to my work and hobbies.'>
-      <Container fluid>
-        <Row>
-          <Col xs={12} md={12}>
-            <SkillCard disabled icon={faLaptopCode} title='Software Developer'>
-              <p>
-                I graduated university in 2019 with a BSc Computer Science, and currently work in Birmingham. I'm a
-                full-stack developer, specializing in React.js for the front-end and .NET Core for the back-end. I have
-                experience across the entire development lifecycle, working in scrum teams to deliver requirements
-                efficiently.
-              </p>
-              <p className='mt-2'>
-                I also have experience in various other languages such as Ada, Clojure, Java and Kotlin, as well as
-                Android, WPF, and ASP.NET MVC development.
-              </p>
-            </SkillCard>
-          </Col>
-          <Col xs={12} md={6} className='mt-4 '>
-            <SkillCard disabled icon={faCamera} title='Photographer'>
-              <p>
-                During the COVID-19 lockdown I decided to take up photography to get out and about. My current camera of
-                choice is a Nikon D3500.
-              </p>
-            </SkillCard>
-          </Col>
-          <Col xs={12} md={6} className='mt-4'>
-            <SkillCard disabled icon={faBicycle} title='Cyclist'>
-              <p>
-                I also started cycling as a way to get about the city, and to improve my general fitness. Since selling
-                my car, it's been a life saver.
-              </p>
-            </SkillCard>
-          </Col>
-        </Row>
-      </Container>
-    </DetailCard>
+    <>
+      <Splash />
+      <Section title='Hello!' variant='light'>
+        <Description>
+          Hi! I'm Adam, a software developer specializing in React, currently based in Birmingham, UK. I enjoy creating
+          modern and functional websites, with ease of use at the forefront.
+        </Description>
+        <Email href='mailto:adam@aydev.uk'>adam@aydev.uk</Email>
+
+        <div className='d-flex mt-4'>
+          <SocialLink href='https://www.linkedin.com/in/adammichaelyoung/' target='_blank' rel='noopener'>
+            LinkedIn
+          </SocialLink>
+          <SocialLink href='https://www.instagram.com/adammyoungphotography/' target='_blank' rel='noopener'>
+            Instagram
+          </SocialLink>
+        </div>
+      </Section>
+
+      <Section id='skills' title='Skills' variant='dark' icon={faBookOpen}>
+        <TileList entries={Skills} />
+      </Section>
+
+      <Section id='experience' title='Experience' variant='gray' icon={faUserTie}>
+        <Table responsive>
+          <tbody>
+            <tr>
+              <td>
+                <Description>July 2019 - Present</Description>
+              </td>
+              <td>
+                <Description>
+                  Developer at <b>TerraQuest Solutions</b>
+                </Description>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Description>2018 - 2019</Description>
+              </td>
+              <td>
+                <Description>
+                  Final Year Student at <b>Teesside University</b>
+                </Description>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Description>2017 - 2018</Description>
+              </td>
+              <td>
+                <Description>
+                  Placement Software Developer at <b>DuPont Teijin Films</b>
+                </Description>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Description>2015 - 2017</Description>
+              </td>
+              <td>
+                <Description>
+                  Student at <b>Teesside University</b>
+                </Description>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
+      </Section>
+
+      <Section id='contact' title='Contact' variant='light' icon={faAddressCard}>
+        <Form name='contact' method='post'>
+          <input type='hidden' name='form-name' value='contact' />
+          <Form.Group controlId='name'>
+            <Form.Label>Name</Form.Label>
+            <Form.Control type='text' placeholder='John Doe' name='name' />
+          </Form.Group>
+
+          <Form.Group controlId='email'>
+            <Form.Label>Email Address</Form.Label>
+            <Form.Control type='email' placeholder='john.doe@contact.co.uk' name='email' />
+          </Form.Group>
+
+          <Form.Group controlId='message'>
+            <Form.Label>Message</Form.Label>
+            <Form.Control as='textarea' type='text' name='message' placeholder='Hi, I was wondering...' />
+          </Form.Group>
+
+          <Button type='submit'>Send</Button>
+        </Form>
+      </Section>
+    </>
   );
 };
 
