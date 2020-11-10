@@ -1,12 +1,18 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 import { TileEntry } from '../../types';
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<{ visible?: boolean }>`
+  opacity: ${(props) => (props.visible ? 1 : 0)};
   display: flex;
   position: relative;
   margin-bottom: 24px;
+  transition: opacity 0.6s;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const SkillIcon = styled.i`
@@ -19,9 +25,8 @@ const SkillIcon = styled.i`
     font-size: 10rem;
   }
 
-  &:hover {
+  ${ImageContainer}:hover & {
     filter: brightness(47%) blur(4px);
-    cursor: pointer;
   }
 `;
 
@@ -71,9 +76,9 @@ export const TileList = (props: ListProps) => {
   return (
     <>
       <TileListFilters keys={filters} selectedKey={selectedKey} onKeySelected={setSelectedKey} />
-      <div className='d-flex flex-wrap justify-content-between'>
+      <div className='mt-4 d-flex flex-wrap justify-content-center'>
         {entriesToDisplay.map((entry) => (
-          <TileListEntry text={entry.text} iconName={entry.iconName} />
+          <TileListEntry key={entry.text} text={entry.text} iconName={entry.iconName} />
         ))}
       </div>
     </>
@@ -85,11 +90,17 @@ const TileListFilters = (props: FilterProps) => {
 
   return (
     <div className='d-flex'>
-      <Button variant='outline-primary' active={selectedKey === null} onClick={() => onKeySelected(null)}>
+      <Button
+        className='mr-2'
+        variant='outline-primary'
+        active={selectedKey === null}
+        onClick={() => onKeySelected(null)}
+      >
         All
       </Button>
       {keys.map((key) => (
         <Button
+          key={key}
           className='mx-2'
           variant='outline-primary'
           active={selectedKey === key}
@@ -103,10 +114,19 @@ const TileListFilters = (props: FilterProps) => {
 };
 
 const TileListEntry = (props: EntryProps) => {
+  const [visible, setVisible] = useState<boolean>(false);
   const { text, iconName } = props;
 
+  useEffect(() => {
+    setTimeout(() => setVisible(true), 300);
+
+    return () => {
+      setVisible(false);
+    };
+  }, []);
+
   return (
-    <ImageContainer>
+    <ImageContainer visible={visible} className='mx-2'>
       <SkillIcon className={iconName} />
       <HoverText>{text}</HoverText>
     </ImageContainer>
