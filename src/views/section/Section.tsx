@@ -7,6 +7,7 @@ import styled from 'styled-components';
 type StyleVariants = 'light' | 'gray' | 'dark';
 
 type Props = {
+  id?: string;
   title: string;
   variant?: StyleVariants;
   icon?: IconProp;
@@ -35,10 +36,10 @@ const ColouredText = styled.div<{ variant?: StyleVariants }>`
 `;
 
 export const Section: React.FC<Props> = (props) => {
-  const { title, variant, icon, children } = props;
+  const { title, variant, icon, id, children } = props;
 
   return (
-    <SectionLayout variant={variant}>
+    <SectionLayout variant={variant} id={id}>
       <Container fluid='lg'>
         <ColouredText variant={variant}>
           <div className='d-flex mb-3'>

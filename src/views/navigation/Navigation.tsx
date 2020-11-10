@@ -43,18 +43,26 @@ export const Navigation = () => {
       fixed='top'
     >
       <Container>
-        <NavbarBrand hasBackground={hasBackground} className='font-weight-bold'>
+        <NavbarBrand href='#home' hasBackground={hasBackground} className='font-weight-bold'>
           Adam Young
         </NavbarBrand>
         <Navbar.Toggle aria-controls='navbar-nav' />
         <Navbar.Collapse id='navbar-nav'>
           <Nav className='ml-auto'>
-            <NavLink hasBackground={hasBackground}>Skills</NavLink>
-            <NavLink hasBackground={hasBackground}>Experience</NavLink>
-            <NavLink hasBackground={hasBackground}>Contact</NavLink>
-            <NavLink hasBackground={hasBackground}>Blog</NavLink>
+            <NavLink href='#skills' hasBackground={hasBackground}>
+              Skills
+            </NavLink>
+            <NavLink href='#experience' hasBackground={hasBackground}>
+              Experience
+            </NavLink>
+            <NavLink href='#contact' hasBackground={hasBackground}>
+              Contact
+            </NavLink>
             <NavDivider className='d-none d-lg-block' hasBackground={hasBackground} />
-            <NavLink hasBackground={hasBackground}>Photography</NavLink>
+            <NavLink href='https://blog.aydev.uk/' target='_blank' rel='noopener' hasBackground={hasBackground}>
+              Blog
+            </NavLink>
+            {/* <NavLink hasBackground={hasBackground}>Photography</NavLink> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

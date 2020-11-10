@@ -34,7 +34,7 @@ const CenteredText = styled.div`
 
 export const Splash = () => {
   return (
-    <SplashStyle backgroundImage={splashBg}>
+    <SplashStyle id='home' backgroundImage={splashBg}>
       <CenteredText>
         <h1 className='font-weight-bold'>Adam Young</h1>
         <h2>Software Developer</h2>
