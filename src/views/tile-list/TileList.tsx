@@ -68,10 +68,10 @@ export const TileList = (props: ListProps) => {
     return Array.from(set);
   }, [entries]);
 
-  let entriesToDisplay = entries;
-  if (selectedKey) {
-    entriesToDisplay = entries.filter((entry) => entry.filterKey === selectedKey);
-  }
+  const entriesToDisplay = useMemo(
+    () => (!selectedKey ? entries : entries.filter((entry) => entry.filterKey === selectedKey)),
+    [selectedKey, entries]
+  );
 
   return (
     <>

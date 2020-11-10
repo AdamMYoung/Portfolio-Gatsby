@@ -1,5 +1,6 @@
 import { faAddressCard, faBookOpen, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
+import { Button, Form, Table } from 'react-bootstrap';
 import styled from 'styled-components';
 
 import { Skills } from '../content';
@@ -71,11 +72,72 @@ const Layout: React.FC = () => {
       </Section>
 
       <Section title='Experience' variant='gray' icon={faUserTie}>
-        Text
+        <Table responsive>
+          <tbody>
+            <tr>
+              <td>
+                <Description>July 2019 - Present</Description>
+              </td>
+              <td>
+                <Description>
+                  Developer at <b>TerraQuest Solutions</b>
+                </Description>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Description>2018 - 2019</Description>
+              </td>
+              <td>
+                <Description>
+                  Final Year Student at <b>Teesside University</b>
+                </Description>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Description>2017 - 2018</Description>
+              </td>
+              <td>
+                <Description>
+                  Placement Software Developer at <b>DuPont Teijin Films</b>
+                </Description>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Description>2015 - 2017</Description>
+              </td>
+              <td>
+                <Description>
+                  Student at <b>Teesside University</b>
+                </Description>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
       </Section>
 
       <Section title='Contact' variant='light' icon={faAddressCard}>
-        Text
+        <Form name='contact' method='post'>
+          <input type='hidden' name='form-name' value='contact' />
+          <Form.Group controlId='name'>
+            <Form.Label>Name</Form.Label>
+            <Form.Control type='text' placeholder='John Doe' name='name' />
+          </Form.Group>
+
+          <Form.Group controlId='email'>
+            <Form.Label>Email Address</Form.Label>
+            <Form.Control type='email' placeholder='john.doe@contact.co.uk' name='email' />
+          </Form.Group>
+
+          <Form.Group controlId='message'>
+            <Form.Label>Message</Form.Label>
+            <Form.Control as='textarea' type='text' name='message' placeholder='Hi, I was wondering...' />
+          </Form.Group>
+
+          <Button type='submit'>Send</Button>
+        </Form>
       </Section>
     </>
   );
