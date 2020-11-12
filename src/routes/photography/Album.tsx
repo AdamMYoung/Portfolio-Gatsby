@@ -46,15 +46,18 @@ type Props = {
 
 export const Album = (props: Props) => {
   const { isLoading, data } = useAlbums();
-  const [selectedUrl, setSelectedUrl] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const { setFullScreen } = useFullScreenStatus();
 
   const album = data?.items.filter((album) => album.fields.name === props.albumName)[0];
+  const images = album?.fields.images;
 
   useEffect(() => {
-    setFullScreen(!!selectedUrl);
+    setFullScreen(selectedIndex !== null);
     return () => setFullScreen(false);
-  }, [selectedUrl, setFullScreen]);
+  }, [selectedIndex, setFullScreen]);
+
+  console.log(selectedIndex);
 
   if (isLoading) return null;
   if (!album) return <Redirect to='/page-not-found' />;
@@ -72,12 +75,12 @@ export const Album = (props: Props) => {
       <Section title='Pictures' variant='dark'>
         <Row>
           {!isLoading &&
-            album.fields.images &&
-            album.fields.images.map((image) => {
+            images &&
+            images.map((image, index) => {
               const { file } = image.fields;
               return (
                 <Col key={file.url} xs={6} sm={4}>
-                  <ImageContainer onClick={() => setSelectedUrl(file.url)}>
+                  <ImageContainer onClick={() => setSelectedIndex(index)}>
                     <ImageThumbnail fluid src={file.url} />
                   </ImageContainer>
                 </Col>
@@ -86,7 +89,16 @@ export const Album = (props: Props) => {
         </Row>
       </Section>
 
-      {selectedUrl && <Lightbox mainSrc={selectedUrl} onCloseRequest={() => setSelectedUrl(null)} />}
+      {selectedIndex !== null && images && (
+        <Lightbox
+          mainSrc={images[selectedIndex].fields.file.url}
+          prevSrc={images[(selectedIndex + images.length - 1) % images.length].fields.file.url}
+          nextSrc={images[(selectedIndex + 1) % images.length].fields.file.url}
+          onMovePrevRequest={() => setSelectedIndex((selectedIndex + images.length - 1) % images.length)}
+          onMoveNextRequest={() => setSelectedIndex((selectedIndex + 1) % images.length)}
+          onCloseRequest={() => setSelectedIndex(null)}
+        />
+      )}
     </>
   );
 };
