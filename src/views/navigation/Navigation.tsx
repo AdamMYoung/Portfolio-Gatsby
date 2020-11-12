@@ -2,11 +2,25 @@ import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import useScrollPosition from '@react-hook/window-scroll';
+import { LinkContainer } from 'react-router-bootstrap';
+import { HashLink as RRHashLink } from 'react-router-hash-link';
 
 const NavLink = styled(Nav.Link)<{ hasBackground?: boolean }>`
   font-weight: bold;
   color: ${(props) => (props.hasBackground ? 'black' : 'white')} !important;
   transition: color 0.5s;
+`;
+
+const HashLink = styled(RRHashLink)<{ hasBackground?: boolean }>`
+  font-weight: bold;
+  color: ${(props) => (props.hasBackground ? 'black' : 'white')} !important;
+  transition: color 0.5s;
+  display: block;
+  padding: 0.5rem 0.5rem;
+
+  &:hover {
+    text-decoration: none;
+  }
 `;
 
 const NavbarBrand = styled(Navbar.Brand)<{ hasBackground?: boolean }>`
@@ -43,26 +57,32 @@ export const Navigation = () => {
       fixed='top'
     >
       <Container>
-        <NavbarBrand href='#home' hasBackground={hasBackground} className='font-weight-bold'>
-          Adam Young
-        </NavbarBrand>
+        <HashLink to='/#home'>
+          <NavbarBrand hasBackground={hasBackground} className='font-weight-bold'>
+            Adam Young
+          </NavbarBrand>
+        </HashLink>
         <Navbar.Toggle aria-controls='navbar-nav' />
         <Navbar.Collapse id='navbar-nav'>
           <Nav className='ml-auto'>
-            <NavLink href='#skills' hasBackground={hasBackground}>
+            <HashLink to='/#skills' hasBackground={hasBackground}>
               Skills
-            </NavLink>
-            <NavLink href='#experience' hasBackground={hasBackground}>
+            </HashLink>
+            <HashLink to='/#experience' hasBackground={hasBackground}>
               Experience
-            </NavLink>
-            <NavLink href='#contact' hasBackground={hasBackground}>
+            </HashLink>
+            <HashLink to='/#contact' hasBackground={hasBackground}>
               Contact
-            </NavLink>
+            </HashLink>
+
+            <LinkContainer to='/photography'>
+              <NavLink hasBackground={hasBackground}>Photography</NavLink>
+            </LinkContainer>
             <NavDivider className='d-none d-lg-block' hasBackground={hasBackground} />
+
             <NavLink href='https://blog.aydev.uk/' target='_blank' rel='noopener' hasBackground={hasBackground}>
               Blog
             </NavLink>
-            {/* <NavLink hasBackground={hasBackground}>Photography</NavLink> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

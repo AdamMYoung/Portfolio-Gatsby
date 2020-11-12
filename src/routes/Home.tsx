@@ -46,7 +46,12 @@ const SocialLink = styled.a`
 const Home = () => {
   return (
     <>
-      <Splash />
+      <Splash>
+        <h1 className='font-weight-bold'>Adam Young</h1>
+        <h2>Software Developer</h2>
+        <h2>Photographer</h2>
+        <h2>Based in Birmingham, UK</h2>
+      </Splash>
       <Section title='Hello!' variant='light'>
         <Description>
           Hi! I'm Adam, a software developer specializing in React, currently based in Birmingham, UK. I enjoy creating

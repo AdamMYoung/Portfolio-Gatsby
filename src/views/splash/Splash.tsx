@@ -32,15 +32,10 @@ const CenteredText = styled.div`
   }
 `;
 
-export const Splash = () => {
+export const Splash: React.FC = (props) => {
   return (
     <SplashStyle id='home' backgroundImage={splashBg}>
-      <CenteredText>
-        <h1 className='font-weight-bold'>Adam Young</h1>
-        <h2>Software Developer</h2>
-        <h2>Photographer</h2>
-        <h2>Based in Birmingham, UK</h2>
-      </CenteredText>
+      <CenteredText>{props.children}</CenteredText>
     </SplashStyle>
   );
 };
