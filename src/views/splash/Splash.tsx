@@ -5,7 +5,8 @@ import splashBg from '../../assets/splash-bg.jpg';
 
 const SplashStyle = styled.div<{ backgroundImage?: string }>`
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${(props) => props.backgroundImage});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(${(props) => props.backgroundImage + `?w=${window.innerWidth}`});
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
