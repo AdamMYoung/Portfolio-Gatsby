@@ -58,7 +58,7 @@ const PhotographyRoute = () => {
                 <Col key={name} xs={6} sm={4}>
                   <LinkContainer to={`/photography/${name}`}>
                     <ImageContainer>
-                      <AlbumThumbnail fluid src={file.url} alt={title} />
+                      <AlbumThumbnail fluid src={file.url + '?w=350'} alt={title} />
                       <AlbumText>{name}</AlbumText>
                     </ImageContainer>
                   </LinkContainer>
