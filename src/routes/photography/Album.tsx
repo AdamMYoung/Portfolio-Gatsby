@@ -15,6 +15,7 @@ import { useFullScreenStatus } from '../../providers/FullScreenProvider';
 const ImageContainer = styled.div`
   display: flex;
   position: relative;
+  margin-bottom: 24px;
 
   &:hover {
     cursor: pointer;
@@ -79,9 +80,9 @@ export const Album = (props: Props) => {
             images.map((image, index) => {
               const { file } = image.fields;
               return (
-                <Col key={file.url} xs={6} sm={4}>
+                <Col key={file.url} xs={6} sm={4} className='my-auto'>
                   <ImageContainer onClick={() => setSelectedIndex(index)}>
-                    <ImageThumbnail fluid src={file.url} />
+                    <ImageThumbnail fluid src={file.url + '?w=350'} />
                   </ImageContainer>
                 </Col>
               );
