@@ -24,6 +24,8 @@ const ImageContainer = styled.div`
 
 const ImageThumbnail = styled(Image)`
   transition: filter 0.3s;
+  margin-left: auto;
+  margin-right: auto;
 
   ${ImageContainer}:hover & {
     filter: brightness(48%) blur(1px);
@@ -80,7 +82,7 @@ export const Album = (props: Props) => {
             images.map((image, index) => {
               const { file } = image.fields;
               return (
-                <Col key={file.url} xs={6} sm={4} className='my-auto'>
+                <Col key={file.url} sm={12} md={6} lg={4} className='my-auto'>
                   <ImageContainer onClick={() => setSelectedIndex(index)}>
                     <ImageThumbnail fluid src={file.url + '?w=350'} />
                   </ImageContainer>

@@ -21,6 +21,8 @@ const ImageContainer = styled.div`
 
 const AlbumThumbnail = styled(Image)`
   transition: filter 0.3s;
+  margin-left: auto;
+  margin-right: auto;
 
   ${ImageContainer}:hover & {
     filter: brightness(48%) blur(1px);
@@ -55,7 +57,7 @@ const PhotographyRoute = () => {
               const { featuredImage, name } = album.fields;
               const { file, title } = featuredImage.fields;
               return (
-                <Col key={name} xs={6} sm={4}>
+                <Col key={name} sm={12} md={6} lg={4}>
                   <link rel='preload' as='image' href={file.url}></link>
                   <LinkContainer to={`/photography/${name}`}>
                     <ImageContainer>
