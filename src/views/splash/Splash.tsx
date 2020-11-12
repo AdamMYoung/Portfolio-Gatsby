@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import splashBg from '../../assets/splash-bg.jpg';
 
 const SplashStyle = styled.div<{ backgroundImage?: string }>`
-  background-image: url(${(props) => props.backgroundImage});
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${(props) => props.backgroundImage});
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,9 +33,13 @@ const CenteredText = styled.div`
   }
 `;
 
-export const Splash: React.FC = (props) => {
+type Props = {
+  backgroundImage?: string;
+};
+
+export const Splash: React.FC<Props> = (props) => {
   return (
-    <SplashStyle id='home' backgroundImage={splashBg}>
+    <SplashStyle id='home' backgroundImage={props.backgroundImage ?? splashBg}>
       <CenteredText>{props.children}</CenteredText>
     </SplashStyle>
   );

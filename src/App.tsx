@@ -11,6 +11,7 @@ import 'devicon/devicon.css';
 import 'devicon/devicon-colors.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeProvider } from 'styled-components';
+import { FullScreenProvider } from './providers/FullScreenProvider';
 
 const queryCache = new QueryCache();
 
@@ -23,13 +24,15 @@ history.listen((listener) => {
 
 const App = () => {
   return (
-    <ReactQueryCacheProvider queryCache={queryCache}>
-      <ThemeProvider theme={{ color: { primary: '#deae47' } }}>
-        <Router history={history}>
-          <Layout />
-        </Router>
-      </ThemeProvider>
-    </ReactQueryCacheProvider>
+    <FullScreenProvider>
+      <ReactQueryCacheProvider queryCache={queryCache}>
+        <ThemeProvider theme={{ color: { primary: '#deae47' } }}>
+          <Router history={history}>
+            <Layout />
+          </Router>
+        </ThemeProvider>
+      </ReactQueryCacheProvider>
+    </FullScreenProvider>
   );
 };
 
