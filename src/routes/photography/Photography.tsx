@@ -56,6 +56,7 @@ const PhotographyRoute = () => {
               const { file, title } = featuredImage.fields;
               return (
                 <Col key={name} xs={6} sm={4}>
+                  <link rel='preload' as='image' href={file.url}></link>
                   <LinkContainer to={`/photography/${name}`}>
                     <ImageContainer>
                       <AlbumThumbnail fluid src={file.url + '?w=350'} alt={title} />
