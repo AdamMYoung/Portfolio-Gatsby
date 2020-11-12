@@ -60,8 +60,6 @@ export const Album = (props: Props) => {
     return () => setFullScreen(false);
   }, [selectedIndex, setFullScreen]);
 
-  console.log(selectedIndex);
-
   if (isLoading) return null;
   if (!album) return <Redirect to='/page-not-found' />;
 
