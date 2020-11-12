@@ -31,6 +31,12 @@ const CenteredText = styled.div`
   > h2 {
     font-size: 1.3rem;
   }
+
+  @media screen and (max-width: 556px) {
+    > h1 {
+      font-size: 2.75rem;
+    }
+  }
 `;
 
 type Props = {
