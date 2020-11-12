@@ -12,6 +12,7 @@ import { Album } from './Album';
 const ImageContainer = styled.div`
   display: flex;
   position: relative;
+  margin-bottom: 24px;
 
   &:hover {
     cursor: pointer;
