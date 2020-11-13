@@ -1,12 +1,15 @@
 import { faAddressCard, faBookOpen, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { Button, Form, Table } from 'react-bootstrap';
+import { Button, Form, Table, Row, Col, Card } from 'react-bootstrap';
 import styled from 'styled-components';
 
 import { Skills } from '../content';
 import { Section } from '../views/section/Section';
 import { Splash } from '../views/splash/Splash';
 import { TileList } from '../views/tile-list/TileList';
+
+import finance from '../assets/finance.jpg';
+import vocalia from '../assets/vocalia.png';
 
 const Description = styled.p`
   font-weight: light;
@@ -71,6 +74,52 @@ const Home = () => {
 
       <Section id='skills' title='Skills' variant='dark' icon={faBookOpen}>
         <TileList entries={Skills} />
+      </Section>
+
+      <Section id='projects' title='Projects' variant='light'>
+        <Row>
+          <Col sm={12} md={6}>
+            <Card style={{ border: 'none' }}>
+              <Card.Img variant='top' src={finance} />
+              <Card.Body>
+                <Card.Title>AYDev | Finance</Card.Title>
+                <Card.Text>
+                  AYDev | Finance is a web-based financial management app. It provides overview and historical analysis
+                  of purchases, supports recurring payments and offline functionality.
+                </Card.Text>
+                <div className='d-flex'>
+                  <Button href='https://finance.aydev.uk/' target='_blank' className='mx-1 my-1'>
+                    Website
+                  </Button>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col sm={12} md={6}>
+            <Card style={{ border: 'none' }}>
+              <Card.Img variant='top' src={vocalia} />
+              <Card.Body>
+                <Card.Title>Vocalia</Card.Title>
+                <Card.Text>
+                  Vocalia is a web-based podcasting platform, which allowed the user to listen and create podcasts
+                  within the same ecosystem. The project was built over several months as part of my final year project
+                  at university.
+                </Card.Text>
+
+                <Button href='https://github.com/AdamMYoung/Vocalia-Listen' target='_blank' className='mx-1 my-1'>
+                  Github (Listen)
+                </Button>
+                <Button href='https://github.com/AdamMYoung/Vocalia-Create' target='_blank' className='mx-1 my-1'>
+                  Github (Create)
+                </Button>
+                <Button href='https://github.com/AdamMYoung/Vocalia-API' target='_blank' className='mx-1 my-1'>
+                  Github (API)
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </Section>
 
       <Section id='experience' title='Experience' variant='gray' icon={faUserTie}>
