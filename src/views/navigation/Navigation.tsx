@@ -71,6 +71,9 @@ export const Navigation = () => {
             <HashLink to='/#experience' hasBackground={hasBackground}>
               Experience
             </HashLink>
+            <HashLink to='/#projects' hasBackground={hasBackground}>
+              Projects
+            </HashLink>
             <HashLink to='/#contact' hasBackground={hasBackground}>
               Contact
             </HashLink>
