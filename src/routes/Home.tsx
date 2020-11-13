@@ -46,6 +46,12 @@ const SocialLink = styled.a`
     text-decoration: none;
   }
 `;
+
+const ProjectCard = styled(Card)`
+  border: none;
+  margin-top: 1rem;
+`;
+
 const Home = () => {
   return (
     <>
@@ -79,7 +85,7 @@ const Home = () => {
       <Section id='projects' title='Projects' variant='light'>
         <Row>
           <Col sm={12} md={6}>
-            <Card style={{ border: 'none' }}>
+            <ProjectCard>
               <Card.Img variant='top' src={finance} />
               <Card.Body>
                 <Card.Title>AYDev | Finance</Card.Title>
@@ -93,11 +99,12 @@ const Home = () => {
                   </Button>
                 </div>
               </Card.Body>
-            </Card>
+            </ProjectCard>
+            <hr className='d-md-none mb-4' />
           </Col>
 
           <Col sm={12} md={6}>
-            <Card style={{ border: 'none' }}>
+            <ProjectCard>
               <Card.Img variant='top' src={vocalia} />
               <Card.Body>
                 <Card.Title>Vocalia</Card.Title>
@@ -117,7 +124,7 @@ const Home = () => {
                   Github (API)
                 </Button>
               </Card.Body>
-            </Card>
+            </ProjectCard>
           </Col>
         </Row>
       </Section>
