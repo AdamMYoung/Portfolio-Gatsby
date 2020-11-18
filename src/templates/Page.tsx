@@ -75,7 +75,7 @@ export const query = graphql`
             name
             image {
               fluid(quality: 50, maxWidth: 600) {
-                ...GatsbyContentfulFluid_withWebp
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
             description {
@@ -103,7 +103,7 @@ export const query = graphql`
             name
             featuredImage {
               fixed(width: 400) {
-                ...GatsbyContentfulFixed_withWebp
+                ...GatsbyContentfulFixed_withWebp_noBase64
               }
             }
             internal {
