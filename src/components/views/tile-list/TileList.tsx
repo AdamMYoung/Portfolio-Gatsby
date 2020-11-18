@@ -84,7 +84,7 @@ export const TileList = (props: ListProps) => {
   return (
     <div>
       <TileListFilters keys={filters} selectedKey={selectedKey} onKeySelected={setSelectedKey} />
-      <ListWrapper className='d-flex flex-wrap justify-content-around'>
+      <ListWrapper className='mt-2 d-flex flex-wrap justify-content-around'>
         {entriesToDisplay.map((entry) => (
           <TileListEntry key={Math.random()} text={entry.text} iconName={entry.iconName} />
         ))}
