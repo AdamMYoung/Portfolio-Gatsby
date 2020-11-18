@@ -8,6 +8,7 @@ const NavLink = styled(Nav.Link)<{ hasBackground?: boolean }>`
   font-weight: bold;
   color: ${(props) => (props.hasBackground ? 'black' : 'white')} !important;
   transition: color 0.5s;
+  padding: 0.5rem 0.5rem;
 `;
 
 const ReachLink = styled(Link)<{ hasBackground?: boolean }>`
@@ -46,7 +47,7 @@ const StyledNavbar = styled(Navbar)<{ hasBackground?: boolean }>`
 export const Navigation = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulPage {
+      allContentfulPage(filter: { displayInNavigation: { eq: true } }) {
         edges {
           node {
             slug

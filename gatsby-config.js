@@ -7,6 +7,7 @@ module.exports = {
     title: `Adam Young | Portfolio`,
     description: `Portfolio of Adam Young`,
     author: `Adam Young`,
+    siteUrl: 'https://www.aydev.uk',
   },
   plugins: [
     'gatsby-plugin-sass',
@@ -15,6 +16,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     'gatsby-plugin-fontawesome-css',
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

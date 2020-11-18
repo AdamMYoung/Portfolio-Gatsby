@@ -42,7 +42,6 @@ export const query = graphql`
     contentfulPage(slug: { eq: $slug }) {
       name
       sections {
-        displayInNav
         title
         variant
         content {
