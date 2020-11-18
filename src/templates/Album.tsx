@@ -41,8 +41,6 @@ const Album = ({ data }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const { setFullScreen } = useFullScreenStatus();
 
-
-
   useEffect(() => {
     setFullScreen(selectedIndex !== null);
     return () => setFullScreen(false);
@@ -98,12 +96,12 @@ export const query = graphql`
       }
       images {
         id
-        fixed(width: 400) {
+        fixed(width: 400, quality: 25) {
           ...GatsbyContentfulFixed_withWebp
         }
-        
+
         file {
-            url
+          url
         }
       }
     }
