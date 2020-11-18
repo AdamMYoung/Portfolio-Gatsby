@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import BackgroundImage from 'gatsby-background-image';
+import GatsbyImage from 'gatsby-image';
 
-import splashBg from '../../assets/splash-bg.jpg';
-
-const SplashStyle = styled.div<{ backgroundImage?: string }>`
+const SplashStyle = styled(BackgroundImage)`
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${(props) => props.backgroundImage});
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -40,12 +39,12 @@ const CenteredText = styled.div`
 `;
 
 type Props = {
-  backgroundImage?: string;
+  backgroundImage: GatsbyImage;
 };
 
 export const Splash: React.FC<Props> = (props) => {
   return (
-    <SplashStyle id='home' backgroundImage={props.backgroundImage ?? splashBg}>
+    <SplashStyle fluid={[`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`, props.backgroundImage]}>
       <CenteredText>{props.children}</CenteredText>
     </SplashStyle>
   );

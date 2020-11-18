@@ -1,5 +1,3 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
@@ -10,7 +8,7 @@ type Props = {
   id?: string;
   title: string;
   variant?: StyleVariants;
-  icon?: IconProp;
+  icon?: string;
 };
 
 const SectionLayout = styled.div<{ variant?: StyleVariants }>`
@@ -43,7 +41,7 @@ export const Section: React.FC<Props> = (props) => {
       <Container fluid='lg'>
         <ColouredText variant={variant}>
           <div className='d-flex mb-3'>
-            {icon && <FontAwesomeIcon className='mr-4' icon={icon} size='2x' />}
+            {icon && <i className={`mr-4 ${icon}`} />}
             <h3 className='mb-2'>{title}</h3>
           </div>
           {children}

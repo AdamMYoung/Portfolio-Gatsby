@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
-import { TileEntry } from '../../types';
+import { TileEntry } from '../../../types';
 
 const ImageContainer = styled.div<{ visible?: boolean }>`
   opacity: ${(props) => (props.visible ? 1 : 0)};
@@ -82,14 +82,14 @@ export const TileList = (props: ListProps) => {
   );
 
   return (
-    <>
+    <div>
       <TileListFilters keys={filters} selectedKey={selectedKey} onKeySelected={setSelectedKey} />
       <ListWrapper className='d-flex flex-wrap justify-content-around'>
         {entriesToDisplay.map((entry) => (
           <TileListEntry key={Math.random()} text={entry.text} iconName={entry.iconName} />
         ))}
       </ListWrapper>
-    </>
+    </div>
   );
 };
 

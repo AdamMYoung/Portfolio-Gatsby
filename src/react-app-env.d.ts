@@ -1,3 +1,5 @@
 /// <reference types="react-scripts" />
 
-declare module 'react-router-transition';
+declare module @kentico/gatsby-kontent-components {
+
+}

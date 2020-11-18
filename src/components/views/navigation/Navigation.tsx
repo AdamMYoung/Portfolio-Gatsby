@@ -2,8 +2,7 @@ import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import useScrollPosition from '@react-hook/window-scroll';
-import { LinkContainer } from 'react-router-bootstrap';
-import { HashLink as RRHashLink } from 'react-router-hash-link';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 
 const NavLink = styled(Nav.Link)<{ hasBackground?: boolean }>`
   font-weight: bold;
@@ -11,7 +10,7 @@ const NavLink = styled(Nav.Link)<{ hasBackground?: boolean }>`
   transition: color 0.5s;
 `;
 
-const HashLink = styled(RRHashLink)<{ hasBackground?: boolean }>`
+const ReachLink = styled(Link)<{ hasBackground?: boolean }>`
   font-weight: bold;
   color: ${(props) => (props.hasBackground ? 'black' : 'white')} !important;
   transition: color 0.5s;
@@ -37,6 +36,7 @@ const NavDivider = styled.div<{ hasBackground?: boolean }>`
 `;
 
 const StyledNavbar = styled(Navbar)<{ hasBackground?: boolean }>`
+  position: fixed;
   background-color: ${(props) => (props.hasBackground ? 'white' : 'transparent')} !important;
   color: ${(props) => (props.hasBackground ? 'black' : 'white')} !important;
   border-bottom: ${(props) => (props.hasBackground ? '1px solid gray' : 'none')};
@@ -44,6 +44,19 @@ const StyledNavbar = styled(Navbar)<{ hasBackground?: boolean }>`
 `;
 
 export const Navigation = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allContentfulPage {
+        edges {
+          node {
+            slug
+            name
+          }
+        }
+      }
+    }
+  `);
+
   const scrollY = useScrollPosition();
   const hasBackground = scrollY !== 0;
 
@@ -57,32 +70,21 @@ export const Navigation = () => {
       fixed='top'
     >
       <Container>
-        <HashLink to='/#home'>
+        <ReachLink to='/'>
           <NavbarBrand hasBackground={hasBackground} className='font-weight-bold'>
             Adam Young
           </NavbarBrand>
-        </HashLink>
+        </ReachLink>
         <Navbar.Toggle aria-controls='navbar-nav' />
         <Navbar.Collapse id='navbar-nav'>
           <Nav className='ml-auto'>
-            <HashLink to='/#skills' hasBackground={hasBackground}>
-              Skills
-            </HashLink>
-            <HashLink to='/#experience' hasBackground={hasBackground}>
-              Experience
-            </HashLink>
-            <HashLink to='/#projects' hasBackground={hasBackground}>
-              Projects
-            </HashLink>
-            <HashLink to='/#contact' hasBackground={hasBackground}>
-              Contact
-            </HashLink>
+            {data.allContentfulPage.edges.map(({ node }) => (
+              <ReachLink to={node.slug} hasBackground={hasBackground}>
+                {node.name}
+              </ReachLink>
+            ))}
 
-            <LinkContainer to='/photography'>
-              <NavLink hasBackground={hasBackground}>Photography</NavLink>
-            </LinkContainer>
             <NavDivider className='d-none d-lg-block' hasBackground={hasBackground} />
-
             <NavLink href='https://blog.aydev.uk/' target='_blank' rel='noopener' hasBackground={hasBackground}>
               Blog
             </NavLink>
