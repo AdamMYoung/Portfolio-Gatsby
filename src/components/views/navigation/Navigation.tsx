@@ -47,7 +47,7 @@ const StyledNavbar = styled(Navbar)<{ hasBackground?: boolean }>`
 export const Navigation = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulPage(filter: { displayInNavigation: { eq: true } }) {
+      allContentfulPage(sort: { order: ASC, fields: name }, filter: { displayInNavigation: { eq: true } }) {
         edges {
           node {
             slug
