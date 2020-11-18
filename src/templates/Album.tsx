@@ -90,13 +90,13 @@ export const query = graphql`
     contentfulAlbum(name: { eq: $name }) {
       name
       featuredImage {
-        fluid(quality: 70, maxWidth: 1920) {
+        fluid(quality: 50, maxWidth: 1920) {
           ...GatsbyContentfulFluid_withWebp
         }
       }
       images {
         id
-        fixed(width: 400, quality: 25) {
+        fixed(width: 400, quality: 15) {
           ...GatsbyContentfulFixed_withWebp
         }
 
