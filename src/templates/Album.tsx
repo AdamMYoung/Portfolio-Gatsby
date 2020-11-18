@@ -96,7 +96,7 @@ export const query = graphql`
       }
       images {
         id
-        fixed(width: 400, quality: 15) {
+        fixed(width: 400, quality: 25) {
           ...GatsbyContentfulFixed_withWebp
         }
 
