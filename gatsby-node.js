@@ -1,9 +1,5 @@
 const path = require(`path`);
 
-// *NOTE* This is required for Kentiko configuration, but commented out since we don't have a CMS to connect to.
-//For configuring auto generation of pages,
-//see https://www.gatsbyjs.com/docs/sourcing-from-kentico-kontent/#creating-new-pages
-
 exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
   if (node.internal.type === `ContentfulPage`) {
     createNodeField({
