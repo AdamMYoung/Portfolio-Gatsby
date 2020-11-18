@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
+
 import { TileEntry } from '../../../types';
 
 const ImageContainer = styled.div<{ visible?: boolean }>`

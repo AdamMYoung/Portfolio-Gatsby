@@ -78,7 +78,7 @@ const SocialLink = styled.a`
 `;
 
 const ProjectCard = styled(Card)`
-  border: none;
+  border: none !important;
   margin-top: 1rem;
 `;
 

@@ -5,9 +5,9 @@ import { useFullScreenStatus } from '../providers/FullScreenProvider';
 import { Helmet } from './Helmet';
 import { Navigation } from './navigation/Navigation';
 
-import '../../css/main.scss';
 import 'devicon/devicon.css';
 import 'devicon/devicon-colors.css';
+import '../../css/main.scss';
 
 ReactGA.initialize(process.env.GATSBY_GA_TRACKING_ID ?? '');
 
