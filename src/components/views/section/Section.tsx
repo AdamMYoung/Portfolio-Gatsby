@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type StyleVariants = 'light' | 'gray' | 'dark';
 
@@ -41,7 +42,7 @@ export const Section: React.FC<Props> = (props) => {
       <Container fluid='lg'>
         <ColouredText variant={variant}>
           <div className='d-flex mb-3'>
-            {icon && <i className={`mr-4 ${icon}`} />}
+            {icon && <FontAwesomeIcon className={`mr-4`} icon={icon as any} />}
             <h3 className='mb-2'>{title}</h3>
           </div>
           {children}

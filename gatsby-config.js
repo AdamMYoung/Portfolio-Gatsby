@@ -13,6 +13,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
     `gatsby-transformer-sharp`,
+    'gatsby-plugin-fontawesome-css',
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
