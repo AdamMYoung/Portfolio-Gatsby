@@ -47,7 +47,7 @@ const Album = ({ data }: Props) => {
   }, [selectedIndex, setFullScreen]);
 
   return (
-    <Layout>
+    <Layout title={name}>
       <Splash backgroundImage={featuredImage.fluid}>
         <h1 className='font-weight-bold'>{name}</h1>
       </Splash>

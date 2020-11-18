@@ -11,7 +11,11 @@ import '../../css/main.scss';
 
 ReactGA.initialize(process.env.GATSBY_GA_TRACKING_ID ?? '');
 
-const Layout: React.FC = (props) => {
+type Props = {
+  title: string;
+};
+
+const Layout: React.FC<Props> = (props) => {
   const { isFullScreen } = useFullScreenStatus();
 
   useEffect(() => {
@@ -20,7 +24,7 @@ const Layout: React.FC = (props) => {
 
   return (
     <>
-      <Helmet />
+      <Helmet title={props.title} />
       {!isFullScreen && <Navigation />}
       {props.children}
     </>

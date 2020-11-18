@@ -13,10 +13,10 @@ type Props = {
 };
 
 const Page = ({ data }: Props) => {
-  const { splash, sections } = data.contentfulPage;
+  const { splash, sections, name } = data.contentfulPage;
 
   return (
-    <Layout>
+    <Layout title={name}>
       <Splash backgroundImage={splash.background.fluid}>
         {documentToReactComponents(JSON.parse(splash.content.raw))}
       </Splash>
@@ -40,6 +40,7 @@ export default Page;
 export const query = graphql`
   query pageQuery($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
+      name
       sections {
         displayInNav
         title

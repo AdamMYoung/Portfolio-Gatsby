@@ -1,11 +1,15 @@
 import React from 'react';
 import { Helmet as RHelmet } from 'react-helmet';
 
-export const Helmet = () => {
+type Props = {
+  title: string;
+};
+
+export const Helmet = (props: Props) => {
   return (
     <RHelmet>
       <meta charSet='utf-8' />
-      <title>Portfolio</title>
+      <title>{props.title}</title>
       <link
         rel='stylesheet'
         href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
