@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Row } from 'react-bootstrap';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { graphql } from 'gatsby';
 
@@ -6,10 +7,15 @@ import Layout from '../components/views/Layout';
 import { Splash } from '../components/views/splash/Splash';
 import { Section } from '../components/views/section/Section';
 import { ContentResolver } from '../components/views/contentful/ContentResolver';
-import { Container, Row } from 'react-bootstrap';
+
+import { ContentfulPage } from '../types';
+
+type ContentSchema = {
+  contentfulPage: ContentfulPage;
+};
 
 type Props = {
-  data: any;
+  data: ContentSchema;
 };
 
 const Page = ({ data }: Props) => {

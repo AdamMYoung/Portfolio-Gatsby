@@ -7,19 +7,31 @@ import { ContactForm } from '../contact-form/ContactForm';
 import { ExperienceSet } from '../experience-set/ExperienceSet';
 import { Project } from '../project/Project';
 import { LinkText } from '../link-text/LinkText';
+import {
+  ContentfulAlbum,
+  ContentfulExperienceSet,
+  ContentfulProject,
+  ContentfulSectionContentTypes,
+  ContentfulSkillSet,
+  ContentfulText,
+} from '../../../types';
 
 type Props = {
-  data: any;
+  data: ContentfulSectionContentTypes;
 };
 
 export const ContentResolver = (props: Props) => {
-  const { data } = props;
+  const { data: contentfulData } = props;
+
+  let data = contentfulData;
 
   switch (data.internal.type) {
     case 'ContentfulText':
+      data = data as ContentfulText;
       return <LinkText links={data.links}>{documentToReactComponents(JSON.parse(data.content.raw))}</LinkText>;
 
     case 'ContentfulSkillSet':
+      data = data as ContentfulSkillSet;
       return (
         <TileList
           entries={data.skills.map((skill) => ({
@@ -31,6 +43,7 @@ export const ContentResolver = (props: Props) => {
       );
 
     case 'ContentfulProject':
+      data = data as ContentfulProject;
       return (
         <Project name={data.name} image={data.image.fluid} links={data.links}>
           {documentToReactComponents(JSON.parse(data.description.raw))}
@@ -38,12 +51,14 @@ export const ContentResolver = (props: Props) => {
       );
 
     case 'ContentfulExperienceSet':
+      data = data as ContentfulExperienceSet;
       return <ExperienceSet experiences={data.experienceHistory} />;
 
     case 'ContentfulContact':
       return <ContactForm />;
 
     case 'ContentfulAlbum':
+      data = data as ContentfulAlbum;
       return (
         <Album
           name={data.name}

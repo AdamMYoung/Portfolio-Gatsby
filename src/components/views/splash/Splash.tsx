@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
-import GatsbyImage from 'gatsby-image';
+import GatsbyImage, { FluidObject } from 'gatsby-image';
 
 const SplashStyle = styled(BackgroundImage)`
   position: relative;
@@ -39,7 +39,7 @@ const CenteredText = styled.div`
 `;
 
 type Props = {
-  backgroundImage: GatsbyImage;
+  backgroundImage: FluidObject;
 };
 
 export const Splash: React.FC<Props> = (props) => {

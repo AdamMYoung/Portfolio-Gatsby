@@ -3,7 +3,7 @@ import { Col, Image, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import Lightbox from 'react-image-lightbox';
 import { graphql } from 'gatsby';
-import GatsbyImage from 'gatsby-image';
+import GatsbyImage, { FixedObject } from 'gatsby-image';
 
 import Layout from '../components/views/Layout';
 import { useFullScreenStatus } from '../components/providers/FullScreenProvider';
@@ -11,6 +11,7 @@ import { Splash } from '../components/views/splash/Splash';
 import { Section } from '../components/views/section/Section';
 
 import 'react-image-lightbox/style.css';
+import { ContentfulFluidImage } from '../types';
 
 const ImageContainer = styled.div`
   display: flex;
@@ -32,8 +33,22 @@ const ImageThumbnail = styled(GatsbyImage)`
   }
 `;
 
+type ContentSchema = {
+  contentfulAlbum: {
+    name: string;
+    featuredImage: ContentfulFluidImage;
+    images: {
+      id: string;
+      fixed: FixedObject;
+      file: {
+        url: string;
+      };
+    }[];
+  };
+};
+
 type Props = {
-  data: any;
+  data: ContentSchema;
 };
 
 const Album = ({ data }: Props) => {
