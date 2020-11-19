@@ -23,10 +23,7 @@ export const Project: React.FC<Props> = (props) => {
         <GatsbyImage fluid={image} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            {children}
-            {/* {documentToReactComponents(JSON.parse(data.description.raw))} */}
-          </Card.Text>
+          <Card.Text>{children}</Card.Text>
 
           <div className='d-flex flex-column'>
             {links.map((link) => (
