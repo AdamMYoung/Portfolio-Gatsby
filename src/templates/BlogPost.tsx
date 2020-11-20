@@ -30,6 +30,7 @@ const BlogPost = ({ data }: Props) => {
             {documentToReactComponents(JSON.parse(content.raw))}
           </Col>
           <Col xs={12} md={3}>
+            <p className='h5 mb-3'>Recent posts</p>
             <ListGroup>
               {posts.map(({ node: post }) => (
                 <Link style={{ color: 'black' }} to={`${slug}/${encodeURI(post.title.toLowerCase())}`}>
