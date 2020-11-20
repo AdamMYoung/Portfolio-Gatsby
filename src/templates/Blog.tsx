@@ -32,7 +32,7 @@ const Blog = ({ data }: Props) => {
       </Splash>
 
       <Section title='Blog Posts' variant='light'>
-        <ListGroup>
+        <ListGroup variant='flush'>
           {posts
             .sort((a, b) => new Date(a.publishDate) - new Date(b.publishDate))
             .map((post) => (
@@ -45,7 +45,7 @@ const Blog = ({ data }: Props) => {
                         <h3 className='flex-grow-1 my-auto'>{post.title}</h3>
                         <p className='my-auto'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
                       </div>
-                      <p>{post.summary.summary}</p>
+                      {post.summary && <p>{post.summary.summary}</p>}
                     </div>
                   </LinkCard>
                 </Link>

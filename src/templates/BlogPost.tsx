@@ -20,7 +20,7 @@ const BlogPost = ({ data }: Props) => {
     <Layout title={title}>
       <Splash backgroundImage={headerImage.fluid}>
         <h1 className='h2'>{title}</h1>
-        <p>{summary.summary}</p>
+        {summary && <p>{summary.summary}</p>}
       </Splash>
 
       <Container fluid='xl' className='my-4' style={{ minHeight: '50vh' }}>
@@ -34,22 +34,21 @@ const BlogPost = ({ data }: Props) => {
           {posts.length > 0 && (
             <Col xs={12} md={4} lg={3}>
               <Card>
-                <Card.Body>
-                  <p className='h5 mb-4'>Other posts</p>
-                  <ListGroup variant='flush'>
-                    {posts.map(({ node: post }) => (
-                      <Link style={{ color: 'black' }} to={`${slug}/${encodeURI(post.title.toLowerCase())}`}>
-                        <ListGroup.Item action>
-                          <div className='d-flex'>
-                            <b className='flex-grow-1 my-auto'>{post.title}</b>
-                            <p className='my-auto'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
-                          </div>
-                          <p>{post.summary.summary}</p>
-                        </ListGroup.Item>
+                <p className='h5 px-4 pt-3 pb-2'>Other posts</p>
+
+                <ListGroup variant='flush'>
+                  {posts.map(({ node: post }) => (
+                    <ListGroup.Item action>
+                      <Link
+                        style={{ color: 'black', border: 'none' }}
+                        to={`${slug}/${encodeURI(post.title.toLowerCase())}`}
+                      >
+                        <b className='flex-grow-1 my-auto'>{post.title}</b>
+                        {post.summary && <p>{post.summary.summary}</p>}
                       </Link>
-                    ))}
-                  </ListGroup>
-                </Card.Body>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
               </Card>
             </Col>
           )}
