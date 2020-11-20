@@ -26,18 +26,34 @@ export type TileEntry = {
 
 //Contentful
 
+//Root Types
+
+type ContentfulEntry<TTypeName extends string> = {
+  internal: {
+    type: TTypeName;
+  };
+};
+
+export type ContentfulPage = {
+  name: string;
+  sections: ContentfulSection[];
+  splash: ContentfulSplash;
+};
+
+export type ContentfulBlogPost = ContentfulEntry<'ContentfulBlogPost'> & {
+  title: string;
+  headerImage: ContentfulFluidImage;
+  content: ContentfulRichText;
+};
+
+//Element types.
+
 export type ContentfulFluidImage = {
   fluid: FluidObject;
 };
 
 export type ContentfulFixedImage = {
   fixed: FixedObject;
-};
-
-type ContentfulEntry<TTypeName> = {
-  internal: {
-    type: TTypeName;
-  };
 };
 
 type ContentfulRichText = {
@@ -51,12 +67,6 @@ type ContentfulSkill = {
   };
   devIconCssName: string;
   name: string;
-};
-
-export type ContentfulPage = {
-  name: string;
-  sections: ContentfulSection[];
-  splash: ContentfulSplash;
 };
 
 export type ContentfulSection = {

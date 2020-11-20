@@ -129,7 +129,6 @@ export const query = graphql`
             ...GatsbyContentfulFluid_withWebp
           }
         }
-        name
         content {
           raw
         }

@@ -55,6 +55,14 @@ export const Navigation = () => {
           }
         }
       }
+      allContentfulBlog(sort: { order: ASC, fields: name }, filter: { displayInNavigation: { eq: true } }) {
+        edges {
+          node {
+            slug
+            name
+          }
+        }
+      }
     }
   `);
 
@@ -86,9 +94,11 @@ export const Navigation = () => {
             ))}
 
             <NavDivider className='d-none d-lg-block' hasBackground={hasBackground} />
-            <NavLink href='https://blog.aydev.uk/' target='_blank' rel='noopener' hasBackground={hasBackground}>
-              Blog
-            </NavLink>
+            {data.allContentfulBlog.edges.map(({ node }) => (
+              <ReachLink to={node.slug} hasBackground={hasBackground}>
+                {node.name}
+              </ReachLink>
+            ))}
           </Nav>
         </Navbar.Collapse>
       </Container>

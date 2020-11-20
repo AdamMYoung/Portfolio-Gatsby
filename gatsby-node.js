@@ -29,6 +29,16 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allContentfulBlog {
+        edges {
+          node {
+            slug
+            posts {
+              title
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -36,18 +46,30 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: node.slug,
       component: path.resolve('src/templates/Page.tsx'),
-      context: {
-        slug: node.slug,
-      },
+      context: { slug: node.slug },
+    });
+  });
+
+  result.data.allContentfulAlbum.edges.forEach(({ node }) => {
+    createPage({
+      path: `/albums/${encodeURI(node.name.toLowerCase())}`,
+      component: path.resolve('src/templates/Album.tsx'),
+      context: { name: node.name },
+    });
+  });
+
+  result.data.allContentfulBlog.edges.forEach(({ node }) => {
+    createPage({
+      path: node.slug,
+      component: path.resolve('src/templates/Blog.tsx'),
+      context: { slug: node.slug },
     });
 
-    result.data.allContentfulAlbum.edges.forEach(({ node }) => {
+    node.posts.forEach((post) => {
       createPage({
-        path: `/albums/${encodeURI(node.name.toLowerCase())}`,
-        component: path.resolve('src/templates/Album.tsx'),
-        context: {
-          name: node.name,
-        },
+        path: `${node.slug}/${encodeURI(post.title.toLowerCase())}`,
+        component: path.resolve('src/templates/BlogPost.tsx'),
+        context: { title: post.title },
       });
     });
   });
