@@ -2,7 +2,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { graphql, Link } from 'gatsby';
 import moment from 'moment';
 import React from 'react';
-import { Col, Container, ListGroup, Row } from 'react-bootstrap';
+import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 
 import Layout from '../components/views/Layout';
 import { Splash } from '../components/views/splash/Splash';
@@ -23,27 +23,36 @@ const BlogPost = ({ data }: Props) => {
         <p>{summary.summary}</p>
       </Splash>
 
-      <Container fluid='xl' className='my-4'>
+      <Container fluid='xl' className='my-4' style={{ minHeight: '50vh' }}>
         <Row>
-          <Col xs={12} md={9}>
+          <Col>
             <h2>{title}</h2>
             <p>{moment(publishDate).format('dddd Do MMMM YYYY')}</p>
             <hr />
             {documentToReactComponents(JSON.parse(content.raw))}
           </Col>
-          <Col xs={12} md={3}>
-            <p className='h5 mb-4'>Recent posts</p>
-            <ListGroup>
-              {posts.map(({ node: post }) => (
-                <Link style={{ color: 'black' }} to={`${slug}/${encodeURI(post.title.toLowerCase())}`}>
-                  <ListGroup.Item action>
-                    <b>{post.title}</b>
-                    <p className='mt-2 mb-0'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
-                  </ListGroup.Item>
-                </Link>
-              ))}
-            </ListGroup>
-          </Col>
+          {posts.length > 0 && (
+            <Col xs={12} md={4} lg={3}>
+              <Card>
+                <Card.Body>
+                  <p className='h5 mb-4'>Other posts</p>
+                  <ListGroup variant='flush'>
+                    {posts.map(({ node: post }) => (
+                      <Link style={{ color: 'black' }} to={`${slug}/${encodeURI(post.title.toLowerCase())}`}>
+                        <ListGroup.Item action>
+                          <div className='d-flex'>
+                            <b className='flex-grow-1 my-auto'>{post.title}</b>
+                            <p className='my-auto'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
+                          </div>
+                          <p>{post.summary.summary}</p>
+                        </ListGroup.Item>
+                      </Link>
+                    ))}
+                  </ListGroup>
+                </Card.Body>
+              </Card>
+            </Col>
+          )}
         </Row>
       </Container>
     </Layout>
@@ -72,11 +81,14 @@ export const query = graphql`
         raw
       }
     }
-    allContentfulBlogPost(limit: 5) {
+    allContentfulBlogPost(limit: 5, filter: { title: { ne: $title } }, sort: { fields: publishDate, order: DESC }) {
       edges {
         node {
           title
           publishDate
+          summary {
+            summary
+          }
         }
       }
     }

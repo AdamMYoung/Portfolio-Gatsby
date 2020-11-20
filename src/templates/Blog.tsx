@@ -33,22 +33,24 @@ const Blog = ({ data }: Props) => {
 
       <Section title='Blog Posts' variant='light'>
         <ListGroup>
-          {posts.map((post) => (
-            <ListGroup.Item action>
-              <Link style={{ color: 'black' }} to={`${slug}/${encodeURI(post.title.toLowerCase())}`}>
-                <LinkCard>
-                  <GatsbyImage style={{ width: 300 }} fixed={post.headerImage.fixed} />
-                  <div className='ml-4 d-flex flex-column  w-100'>
-                    <div className='d-flex w-100 mb-2'>
-                      <h3 className='flex-grow-1 my-auto'>{post.title}</h3>
-                      <p className='my-auto'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
+          {posts
+            .sort((a, b) => new Date(a.publishDate) - new Date(b.publishDate))
+            .map((post) => (
+              <ListGroup.Item action>
+                <Link style={{ color: 'black' }} to={`${slug}/${encodeURI(post.title.toLowerCase())}`}>
+                  <LinkCard>
+                    <GatsbyImage style={{ width: 300 }} fixed={post.headerImage.fixed} />
+                    <div className='ml-4 d-flex flex-column  w-100'>
+                      <div className='d-flex w-100 mb-2'>
+                        <h3 className='flex-grow-1 my-auto'>{post.title}</h3>
+                        <p className='my-auto'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
+                      </div>
+                      <p>{post.summary.summary}</p>
                     </div>
-                    <p>{post.summary.summary}</p>
-                  </div>
-                </LinkCard>
-              </Link>
-            </ListGroup.Item>
-          ))}
+                  </LinkCard>
+                </Link>
+              </ListGroup.Item>
+            ))}
         </ListGroup>
       </Section>
     </Layout>
