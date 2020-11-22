@@ -62,7 +62,7 @@ export const ContentResolver = (props: Props) => {
       return (
         <Album
           name={data.name}
-          url={`/albums/${encodeURI(data.name.toLowerCase())}`}
+          url={`/albums/${encodeURIComponent(data.name.toLowerCase())}`}
           thumbnail={data.featuredImage.fixed}
         />
       );

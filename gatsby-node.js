@@ -52,7 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   result.data.allContentfulAlbum.edges.forEach(({ node }) => {
     createPage({
-      path: `/albums/${encodeURI(node.name.toLowerCase())}`,
+      path: `/albums/${encodeURIComponent(node.name.toLowerCase())}`,
       component: path.resolve('src/templates/Album.tsx'),
       context: { name: node.name },
     });
@@ -67,7 +67,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     node.posts.forEach((post) => {
       createPage({
-        path: `${node.slug}/${encodeURI(post.title.toLowerCase())}`,
+        path: `${node.slug}/${encodeURIComponent(post.title.toLowerCase())}`,
         component: path.resolve('src/templates/BlogPost.tsx'),
         context: { title: post.title },
       });

@@ -40,7 +40,7 @@ const Blog = ({ data }: Props) => {
                 <Link
                   className='text-decoration-none'
                   style={{ color: 'black' }}
-                  to={`${slug}/${encodeURI(post.title.toLowerCase())}`}
+                  to={`${slug}/${encodeURIComponent(post.title.toLowerCase())}`}
                 >
                   <LinkCard>
                     <Row>
