@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import moment from 'moment';
 import GatsbyImage from 'gatsby-image';
 import React from 'react';
-import { ListGroup } from 'react-bootstrap';
+import { Col, ListGroup, Row } from 'react-bootstrap';
 import Layout from '../components/views/Layout';
 import { Section } from '../components/views/section/Section';
 import { Splash } from '../components/views/splash/Splash';
@@ -43,14 +43,20 @@ const Blog = ({ data }: Props) => {
                   to={`${slug}/${encodeURI(post.title.toLowerCase())}`}
                 >
                   <LinkCard>
-                    <GatsbyImage style={{ width: 300 }} fixed={post.headerImage.fixed} />
-                    <div className='ml-4 d-flex flex-column  w-100'>
-                      <div className='d-flex w-100 mb-2'>
-                        <h3 className='flex-grow-1 my-auto'>{post.title}</h3>
-                        <p className='my-auto'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
-                      </div>
-                      {post.summary && <p>{post.summary.summary}</p>}
-                    </div>
+                    <Row>
+                      <Col className='mb-4' sm={12} md={3}>
+                        <GatsbyImage className='mx-auto' fluid={post.headerImage.fluid} />
+                      </Col>
+                      <Col>
+                        <div className='ml-4 d-flex flex-column w-100'>
+                          <div className='d-flex flex-column flex-md-row w-100 mb-2'>
+                            <h3 className='flex-grow-1 my-auto'>{post.title}</h3>
+                            <p className='mb-auto'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
+                          </div>
+                          {post.summary && <p>{post.summary.summary}</p>}
+                        </div>
+                      </Col>
+                    </Row>
                   </LinkCard>
                 </Link>
               </ListGroup.Item>
@@ -71,8 +77,8 @@ export const query = graphql`
       posts {
         title
         headerImage {
-          fixed(width: 200) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
+          fluid(quality: 25) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
         summary {
