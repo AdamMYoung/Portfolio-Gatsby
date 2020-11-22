@@ -37,7 +37,11 @@ const Blog = ({ data }: Props) => {
             .sort((a, b) => new Date(a.publishDate) - new Date(b.publishDate))
             .map((post) => (
               <ListGroup.Item action>
-                <Link style={{ color: 'black' }} to={`${slug}/${encodeURI(post.title.toLowerCase())}`}>
+                <Link
+                  className='text-decoration-none'
+                  style={{ color: 'black' }}
+                  to={`${slug}/${encodeURI(post.title.toLowerCase())}`}
+                >
                   <LinkCard>
                     <GatsbyImage style={{ width: 300 }} fixed={post.headerImage.fixed} />
                     <div className='ml-4 d-flex flex-column  w-100'>

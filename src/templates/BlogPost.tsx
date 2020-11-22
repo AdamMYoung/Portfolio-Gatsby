@@ -40,11 +40,11 @@ const BlogPost = ({ data }: Props) => {
                   {posts.map(({ node: post }) => (
                     <ListGroup.Item action>
                       <Link
+                        className='text-decoration-none'
                         style={{ color: 'black', border: 'none' }}
                         to={`${slug}/${encodeURI(post.title.toLowerCase())}`}
                       >
-                        <b className='flex-grow-1 my-auto'>{post.title}</b>
-                        {post.summary && <p>{post.summary.summary}</p>}
+                        <p className='font-weight-bold flex-grow-1 mb-0'>{post.title}</p>
                       </Link>
                     </ListGroup.Item>
                   ))}
@@ -85,9 +85,6 @@ export const query = graphql`
         node {
           title
           publishDate
-          summary {
-            summary
-          }
         }
       }
     }
