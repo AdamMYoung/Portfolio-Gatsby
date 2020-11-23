@@ -42,7 +42,7 @@ const BlogPost = ({ data }: Props) => {
                       <Link
                         className='text-decoration-none'
                         style={{ color: 'black', border: 'none' }}
-                        to={`${slug}/${encodeURIComponent(post.title.toLowerCase())}`}
+                        to={`${slug}${post.slug}`}
                       >
                         <p className='font-weight-bold flex-grow-1 mb-0'>{post.title}</p>
                       </Link>
@@ -84,6 +84,7 @@ export const query = graphql`
       edges {
         node {
           title
+          slug
           publishDate
         }
       }

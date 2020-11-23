@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import moment from 'moment';
 import GatsbyImage from 'gatsby-image';
 import React from 'react';
-import { Col, ListGroup, Row } from 'react-bootstrap';
+import { Col, Container, ListGroup, Row } from 'react-bootstrap';
 import Layout from '../components/views/Layout';
 import { Section } from '../components/views/section/Section';
 import { Splash } from '../components/views/splash/Splash';
@@ -37,26 +37,24 @@ const Blog = ({ data }: Props) => {
             .sort((a, b) => new Date(a.publishDate) - new Date(b.publishDate))
             .map((post) => (
               <ListGroup.Item action>
-                <Link
-                  className='text-decoration-none'
-                  style={{ color: 'black' }}
-                  to={`${slug}/${encodeURIComponent(post.title.toLowerCase())}`}
-                >
+                <Link className='text-decoration-none' style={{ color: 'black' }} to={`${slug}${post.slug}`}>
                   <LinkCard>
-                    <Row>
-                      <Col className='mb-4' sm={12} md={3}>
-                        <GatsbyImage className='mx-auto' fluid={post.headerImage.fluid} />
-                      </Col>
-                      <Col>
-                        <div className='ml-4 d-flex flex-column w-100'>
-                          <div className='d-flex flex-column flex-md-row w-100 mb-2'>
-                            <h3 className='flex-grow-1 my-auto'>{post.title}</h3>
-                            <p className='mb-auto'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
+                    <Container fluid>
+                      <Row>
+                        <Col className='mb-4' sm={12} md={3}>
+                          <GatsbyImage className='mx-auto' fluid={post.headerImage.fluid} />
+                        </Col>
+                        <Col>
+                          <div className='ml-md-4 d-flex flex-column w-100'>
+                            <div className='d-flex flex-column flex-md-row w-100 mb-2'>
+                              <h3 className='flex-grow-1 my-auto'>{post.title}</h3>
+                              <p className='mb-auto'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
+                            </div>
+                            {post.summary && <p>{post.summary.summary}</p>}
                           </div>
-                          {post.summary && <p>{post.summary.summary}</p>}
-                        </div>
-                      </Col>
-                    </Row>
+                        </Col>
+                      </Row>
+                    </Container>
                   </LinkCard>
                 </Link>
               </ListGroup.Item>
@@ -76,6 +74,8 @@ export const query = graphql`
       slug
       posts {
         title
+        slug
+        publishDate
         headerImage {
           fluid(quality: 25) {
             ...GatsbyContentfulFluid_withWebp_noBase64

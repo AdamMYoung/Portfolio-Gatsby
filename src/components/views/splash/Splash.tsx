@@ -22,6 +22,8 @@ const CenteredText = styled.div`
   -webkit-transform: translate(0%, -50%);
   text-align: center;
   color: white;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
   > h1 {
     font-size: 4.5rem;

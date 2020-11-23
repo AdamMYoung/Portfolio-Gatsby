@@ -35,6 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
             posts {
               title
+              slug
             }
           }
         }
@@ -67,7 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     node.posts.forEach((post) => {
       createPage({
-        path: `${node.slug}/${encodeURIComponent(post.title.toLowerCase())}`,
+        path: `${node.slug}${post.slug}`,
         component: path.resolve('src/templates/BlogPost.tsx'),
         context: { title: post.title },
       });
