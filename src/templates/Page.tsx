@@ -9,6 +9,7 @@ import { Section } from '../components/views/section/Section';
 import { ContentResolver } from '../components/views/contentful/ContentResolver';
 
 import { ContentfulPage } from '../types';
+import { Helmet } from 'react-helmet';
 
 type ContentSchema = {
   contentfulPage: ContentfulPage;
@@ -19,10 +20,14 @@ type Props = {
 };
 
 const Page = ({ data }: Props) => {
-  const { splash, sections, name } = data.contentfulPage;
+  const { splash, sections, name, description } = data.contentfulPage;
 
   return (
     <Layout title={name}>
+      <Helmet>
+        <meta name='description' content={description?.description} />
+      </Helmet>
+
       <Splash backgroundImage={splash.background.fluid}>
         {documentToReactComponents(JSON.parse(splash.content.raw))}
       </Splash>
@@ -47,6 +52,9 @@ export const query = graphql`
   query pageQuery($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       name
+      description {
+        description
+      }
       sections {
         title
         variant

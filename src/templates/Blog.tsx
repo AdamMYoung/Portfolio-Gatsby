@@ -8,6 +8,7 @@ import Layout from '../components/views/Layout';
 import { Section } from '../components/views/section/Section';
 import { Splash } from '../components/views/splash/Splash';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 const LinkCard = styled.div`
   display: flex;
@@ -23,10 +24,13 @@ type Props = {
 };
 
 const Blog = ({ data }: Props) => {
-  const { splash, posts, name, slug } = data.contentfulBlog;
+  const { splash, posts, name, slug, description } = data.contentfulBlog;
 
   return (
     <Layout title={name}>
+      <Helmet>
+        <meta name='description' content={description?.description} />
+      </Helmet>
       <Splash backgroundImage={splash.background.fluid}>
         {documentToReactComponents(JSON.parse(splash.content.raw))}
       </Splash>
@@ -72,6 +76,9 @@ export const query = graphql`
     contentfulBlog(slug: { eq: $slug }, posts: { elemMatch: { publishDate: { lt: $date } } }) {
       name
       slug
+      description {
+        description
+      }
       posts {
         title
         slug

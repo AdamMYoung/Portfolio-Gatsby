@@ -36,6 +36,9 @@ type ContentfulEntry<TTypeName extends string> = {
 
 export type ContentfulPage = {
   name: string;
+  description: {
+    description: string;
+  };
   sections: ContentfulSection[];
   splash: ContentfulSplash;
 };

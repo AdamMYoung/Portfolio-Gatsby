@@ -10,6 +10,7 @@ import readingTime from 'reading-time';
 import Layout from '../components/views/Layout';
 import { Splash } from '../components/views/splash/Splash';
 import { Section } from '../components/views/section/Section';
+import { Helmet } from 'react-helmet';
 
 type Props = {
   data: any;
@@ -31,6 +32,9 @@ const BlogPost = ({ data }: Props) => {
 
   return (
     <Layout title={title}>
+      <Helmet>
+        <meta name='description' content={summary?.summary} />
+      </Helmet>
       <Splash backgroundImage={headerImage.fluid}>
         <h1 className='h2'>{title}</h1>
         {summary && <p>{summary.summary}</p>}
