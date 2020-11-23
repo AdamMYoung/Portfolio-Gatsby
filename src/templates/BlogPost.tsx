@@ -61,7 +61,7 @@ const BlogPost = ({ data }: Props) => {
 export default BlogPost;
 
 export const query = graphql`
-  query blogPostQuery($title: String!) {
+  query blogPostQuery($title: String!, $date: Date!) {
     contentfulBlog(posts: { elemMatch: { title: { eq: $title } } }) {
       slug
     }
@@ -80,7 +80,11 @@ export const query = graphql`
         raw
       }
     }
-    allContentfulBlogPost(limit: 5, filter: { title: { ne: $title } }, sort: { fields: publishDate, order: DESC }) {
+    allContentfulBlogPost(
+      limit: 5
+      filter: { title: { ne: $title }, publishDate: { lt: $date } }
+      sort: { fields: publishDate, order: DESC }
+    ) {
       edges {
         node {
           title

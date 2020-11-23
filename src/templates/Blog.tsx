@@ -68,8 +68,8 @@ const Blog = ({ data }: Props) => {
 export default Blog;
 
 export const query = graphql`
-  query blogQuery($slug: String!) {
-    contentfulBlog(slug: { eq: $slug }) {
+  query blogQuery($slug: String!, $date: Date!) {
+    contentfulBlog(slug: { eq: $slug }, posts: { elemMatch: { publishDate: { lt: $date } } }) {
       name
       slug
       posts {

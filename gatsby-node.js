@@ -63,14 +63,14 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: node.slug,
       component: path.resolve('src/templates/Blog.tsx'),
-      context: { slug: node.slug },
+      context: { slug: node.slug, date: new Date() },
     });
 
     node.posts.forEach((post) => {
       createPage({
         path: `${node.slug}${post.slug}`,
         component: path.resolve('src/templates/BlogPost.tsx'),
-        context: { title: post.title },
+        context: { title: post.title, date: new Date() },
       });
     });
   });
