@@ -2,10 +2,14 @@ import ReactDOMServer from 'react-dom/server';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { graphql, Link } from 'gatsby';
 import moment from 'moment';
-import React from 'react';
+import React, { useRef } from 'react';
 import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { Disqus } from 'gatsby-plugin-disqus';
 import readingTime from 'reading-time';
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { BLOCKS } from '@contentful/rich-text-types';
 
 import Layout from '../components/views/Layout';
 import { Splash } from '../components/views/splash/Splash';
@@ -21,13 +25,31 @@ const BlogPost = ({ data }: Props) => {
   const { edges: posts } = data.allContentfulBlogPost;
   const { slug } = data.contentfulBlog;
 
+  const embeddedRenderCount = useRef(0);
+
   const disqusConfig = {
     url: `${data.site.siteMetadata.siteUrl}${slug}${postSlug}`,
     identifier: postSlug,
     title,
   };
 
-  const blogContent = documentToReactComponents(JSON.parse(content.raw));
+  const renderers = {
+    code: ({ language, value }) => {
+      return <SyntaxHighlighter style={tomorrow} children={value} language={language} />;
+    },
+  };
+
+  const contentfulRenderOptions = {
+    renderNode: {
+      [BLOCKS.EMBEDDED_ENTRY]: () => {
+        const embeddedElement = content.references[embeddedRenderCount.current];
+        embeddedRenderCount.current = embeddedRenderCount.current + 1;
+        return <ReactMarkdown children={embeddedElement.code.code} renderers={renderers} />;
+      },
+    },
+  };
+
+  const blogContent = documentToReactComponents(JSON.parse(content.raw), contentfulRenderOptions);
   const stats = readingTime(ReactDOMServer.renderToStaticMarkup(blogContent as any));
 
   return (
@@ -106,6 +128,11 @@ export const query = graphql`
       }
       content {
         raw
+        references {
+          code {
+            code
+          }
+        }
       }
     }
     allContentfulBlogPost(
