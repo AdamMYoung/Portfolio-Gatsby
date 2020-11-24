@@ -1,5 +1,5 @@
 import ReactDOMServer from 'react-dom/server';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { graphql, Link } from 'gatsby';
 import moment from 'moment';
 import React, { useRef } from 'react';
@@ -10,11 +10,23 @@ import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { BLOCKS } from '@contentful/rich-text-types';
+import { Helmet } from 'react-helmet';
+import GatsbyImage from 'gatsby-image';
+import styled from 'styled-components';
 
 import Layout from '../components/views/Layout';
 import { Splash } from '../components/views/splash/Splash';
 import { Section } from '../components/views/section/Section';
-import { Helmet } from 'react-helmet';
+
+const RichTextLayout = styled.div`
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin-bottom: 1rem;
+  }
+`;
 
 type Props = {
   data: any;
@@ -24,8 +36,6 @@ const BlogPost = ({ data }: Props) => {
   const { title, publishDate, summary, content, headerImage, slug: postSlug } = data.contentfulBlogPost;
   const { edges: posts } = data.allContentfulBlogPost;
   const { slug } = data.contentfulBlog;
-
-  const embeddedRenderCount = useRef(0);
 
   const disqusConfig = {
     url: `${data.site.siteMetadata.siteUrl}${slug}${postSlug}`,
@@ -41,15 +51,38 @@ const BlogPost = ({ data }: Props) => {
 
   const contentfulRenderOptions = {
     renderNode: {
-      [BLOCKS.EMBEDDED_ENTRY]: () => {
-        const embeddedElement = content.references[embeddedRenderCount.current];
-        embeddedRenderCount.current = embeddedRenderCount.current + 1;
-        return <ReactMarkdown children={embeddedElement.code.code} renderers={renderers} />;
+      [BLOCKS.EMBEDDED_ASSET]: (node) => {
+        const embeddedElement = node.data.target;
+        console.log(embeddedElement);
+
+        switch (embeddedElement.internal.type) {
+          case 'ContentfulAsset':
+            return (
+              <div className='mx-auto my-2'>
+                <GatsbyImage
+                  imgStyle={{ objectFit: 'contain' }}
+                  style={{ maxHeight: '50vh' }}
+                  fluid={embeddedElement.fluid}
+                />
+              </div>
+            );
+        }
+      },
+      [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+        const embeddedElement = node.data.target;
+        console.log(embeddedElement);
+
+        switch (embeddedElement.internal.type) {
+          case 'ContentfulCodeBlock':
+            return <ReactMarkdown children={embeddedElement.code.code} renderers={renderers} />;
+          default:
+            return null;
+        }
       },
     },
   };
 
-  const blogContent = documentToReactComponents(JSON.parse(content.raw), contentfulRenderOptions);
+  const blogContent = renderRichText(content, contentfulRenderOptions);
   const stats = readingTime(ReactDOMServer.renderToStaticMarkup(blogContent as any));
 
   return (
@@ -71,7 +104,7 @@ const BlogPost = ({ data }: Props) => {
             </p>
             <p style={{ fontSize: '1rem' }}>{stats.text}</p>
             <hr />
-            {blogContent}
+            <RichTextLayout>{blogContent}</RichTextLayout>
           </Col>
           {posts.length > 0 && (
             <Col xs={12} md={4} lg={3}>
@@ -129,8 +162,23 @@ export const query = graphql`
       content {
         raw
         references {
-          code {
-            code
+          ... on ContentfulCodeBlock {
+            contentful_id
+            code {
+              code
+            }
+            internal {
+              type
+            }
+          }
+          ... on ContentfulAsset {
+            contentful_id
+            fluid {
+              ...GatsbyContentfulFluid_withWebp
+            }
+            internal {
+              type
+            }
           }
         }
       }
