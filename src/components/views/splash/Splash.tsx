@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 import GatsbyImage, { FluidObject } from 'gatsby-image';
+import { Helmet } from 'react-helmet';
 
 const SplashStyle = styled(BackgroundImage)`
   position: relative;
@@ -47,6 +48,9 @@ type Props = {
 export const Splash: React.FC<Props> = (props) => {
   return (
     <SplashStyle fluid={[`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`, props.backgroundImage]}>
+      <Helmet>
+        <meta name='thumbnail' content={props.backgroundImage.src} />
+      </Helmet>
       <CenteredText>{props.children}</CenteredText>
     </SplashStyle>
   );
