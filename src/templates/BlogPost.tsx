@@ -24,6 +24,7 @@ const RichTextLayout = styled.div`
   h3,
   h4,
   h5 {
+    margin-bottom: 1.25rem;
     margin-bottom: 1rem;
   }
 `;
