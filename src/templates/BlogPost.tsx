@@ -31,6 +31,10 @@ const RichTextLayout = styled.div`
     margin-top: 0.75rem;
     margin-bottom: 0.5rem;
   }
+
+  p {
+    font-size: 1rem;
+  }
 `;
 
 type Props = {
