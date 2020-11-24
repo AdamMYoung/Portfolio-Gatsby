@@ -19,13 +19,17 @@ import { Splash } from '../components/views/splash/Splash';
 import { Section } from '../components/views/section/Section';
 
 const RichTextLayout = styled.div`
-  h1,
+  h1 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
   h2,
   h3,
   h4,
   h5 {
-    margin-bottom: 1.25rem;
-    margin-bottom: 1rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 `;
 
