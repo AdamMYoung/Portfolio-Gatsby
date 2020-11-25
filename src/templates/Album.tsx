@@ -12,6 +12,7 @@ import { Section } from '../components/views/section/Section';
 
 import 'react-image-lightbox/style.css';
 import { ContentfulFluidImage } from '../types';
+import { Helmet } from 'react-helmet';
 
 const ImageContainer = styled.div`
   display: flex;
@@ -63,6 +64,16 @@ const Album = ({ data }: Props) => {
 
   return (
     <Layout title={name}>
+      <Helmet>
+        {images.map((image) => (
+          <>
+            <meta property='og:image' content={image.fixed.src} />
+            <meta property='og:image:width' content={image.fixed.width.toString()} />
+            <meta property='og:image:height' content={image.fixed.height.toString()} />
+            {image.fixed.media && <meta property='og:image:type' content={image.fixed.media} />}
+          </>
+        ))}
+      </Helmet>
       <Splash backgroundImage={featuredImage.fluid}>
         <h1 className='font-weight-bold'>{name}</h1>
       </Splash>

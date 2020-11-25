@@ -30,6 +30,9 @@ const Blog = ({ data }: Props) => {
     <Layout title={name}>
       <Helmet>
         <meta name='description' content={description?.description} />
+
+        <meta property='og:type' content='blog' />
+        <meta property='og:description' content={description?.description} />
       </Helmet>
       <Splash backgroundImage={splash.background.fluid}>
         {documentToReactComponents(JSON.parse(splash.content.raw))}

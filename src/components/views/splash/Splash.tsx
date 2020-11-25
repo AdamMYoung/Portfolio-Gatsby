@@ -50,6 +50,8 @@ export const Splash: React.FC<Props> = (props) => {
     <SplashStyle fluid={[`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`, props.backgroundImage]}>
       <Helmet>
         <meta name='thumbnail' content={props.backgroundImage.src} />
+
+        <meta property='og:image' content={props.backgroundImage.src} />
       </Helmet>
       <CenteredText>{props.children}</CenteredText>
     </SplashStyle>

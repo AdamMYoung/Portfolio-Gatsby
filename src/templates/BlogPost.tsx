@@ -101,6 +101,9 @@ const BlogPost = ({ data }: Props) => {
     <Layout title={title}>
       <Helmet>
         <meta name='description' content={summary?.summary} />
+
+        <meta property='og:type' content='article' />
+        <meta property='og:description' content={summary?.summary} />
       </Helmet>
       <Splash backgroundImage={headerImage.fluid}>
         <h1 className='h2'>{title}</h1>
