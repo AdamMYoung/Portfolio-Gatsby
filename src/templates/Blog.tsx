@@ -31,7 +31,7 @@ const Blog = ({ data }: Props) => {
       <Helmet>
         <meta name='description' content={description?.description} />
 
-        <meta property='og:type' content='blog' />
+        <meta property='og:type' content='website' />
         <meta property='og:description' content={description?.description} />
       </Helmet>
       <Splash backgroundImage={splash.background.fluid}>
