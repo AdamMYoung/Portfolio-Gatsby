@@ -19,21 +19,26 @@ import { Splash } from '../components/views/splash/Splash';
 import { Section } from '../components/views/section/Section';
 
 const RichTextLayout = styled.div`
-  h1 {
-    margin-top: 1.25rem;
+  h1,
+  h2 {
+    margin-top: 1rem;
     margin-bottom: 0.75rem;
   }
 
-  h2,
   h3,
   h4,
   h5 {
-    margin-top: 0.75rem;
-    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
 
   p {
     font-size: 1rem;
+  }
+
+  hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -62,7 +67,6 @@ const BlogPost = ({ data }: Props) => {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
         const embeddedElement = node.data.target;
-        console.log(embeddedElement);
 
         switch (embeddedElement.internal.type) {
           case 'ContentfulAsset':
@@ -79,7 +83,6 @@ const BlogPost = ({ data }: Props) => {
       },
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
         const embeddedElement = node.data.target;
-        console.log(embeddedElement);
 
         switch (embeddedElement.internal.type) {
           case 'ContentfulCodeBlock':
