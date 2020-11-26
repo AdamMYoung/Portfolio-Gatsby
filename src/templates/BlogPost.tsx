@@ -107,6 +107,16 @@ const BlogPost = ({ data }: Props) => {
         <meta property='og:article:author:profile:first_name' content='Adam' />
         <meta property='og:article:author:profile:last_name' content='Young' />
         <meta property='og:description' content={summary?.summary} />
+
+        <script type='application/ld+json'>
+          {{
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            datePublished: moment(publishDate).toISOString(),
+            headline: title,
+            image: headerImage.fluid.src,
+          }}
+        </script>
       </Helmet>
       <Splash backgroundImage={headerImage.fluid}>
         <h1 className='h2'>{title}</h1>
