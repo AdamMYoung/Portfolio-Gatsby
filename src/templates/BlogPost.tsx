@@ -103,8 +103,9 @@ const BlogPost = ({ data }: Props) => {
         <meta name='description' content={summary?.summary} />
 
         <meta property='og:type' content='article' />
-        <meta property='og:article:published_time' content={publishDate} />
-        <meta property='og:article:author' content='Adam Young' />
+        <meta property='og:article:published_time' content={moment(publishDate).toISOString()} />
+        <meta property='og:article:author:profile:first_name' content='Adam' />
+        <meta property='og:article:author:profile:last_name' content='Young' />
         <meta property='og:description' content={summary?.summary} />
       </Helmet>
       <Splash backgroundImage={headerImage.fluid}>
