@@ -41,7 +41,7 @@ const Blog = ({ data }: Props) => {
       <Section title='Blog Posts' variant='light'>
         <ListGroup variant='flush'>
           {posts
-            .sort((a, b) => new Date(a.publishDate) - new Date(b.publishDate))
+            .sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate))
             .map((post) => (
               <ListGroup.Item action>
                 <Link className='text-decoration-none' style={{ color: 'black' }} to={`${slug}${post.slug}`}>
