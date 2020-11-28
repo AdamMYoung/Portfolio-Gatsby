@@ -150,7 +150,9 @@ const BlogPost = ({ data }: Props) => {
                         style={{ color: 'black', border: 'none' }}
                         to={`${slug}${post.slug}`}
                       >
-                        <p className='font-weight-bold flex-grow-1 mb-0'>{post.title}</p>
+                        <p style={{ fontSize: '1rem' }} className='font-weight-bold flex-grow-1 mb-0'>
+                          {post.title}
+                        </p>
                       </Link>
                     </ListGroup.Item>
                   ))}
