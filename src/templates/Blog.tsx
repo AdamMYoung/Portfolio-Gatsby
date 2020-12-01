@@ -9,6 +9,7 @@ import { Section } from '../components/views/section/Section';
 import { Splash } from '../components/views/splash/Splash';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+import { BlogCard } from '../components/views/blog-card/BlogCard';
 
 const LinkCard = styled.div`
   display: flex;
@@ -46,22 +47,12 @@ const Blog = ({ data }: Props) => {
               <ListGroup.Item action>
                 <Link className='text-decoration-none' style={{ color: 'black' }} to={`${slug}${post.slug}`}>
                   <LinkCard>
-                    <Container fluid>
-                      <Row>
-                        <Col className='mb-4' sm={12} md={3}>
-                          <GatsbyImage className='mx-auto' fluid={post.headerImage.fluid} />
-                        </Col>
-                        <Col>
-                          <div className='ml-md-4 d-flex flex-column w-100'>
-                            <div className='d-flex flex-column flex-md-row w-100 mb-2'>
-                              <h3 className='flex-grow-1 my-auto'>{post.title}</h3>
-                              <p className='mb-auto'>{moment(post.publishDate).format('DD/MM/YYYY')}</p>
-                            </div>
-                            {post.summary && <p>{post.summary.summary}</p>}
-                          </div>
-                        </Col>
-                      </Row>
-                    </Container>
+                    <BlogCard
+                      title={post.title}
+                      summary={post?.summary?.summary}
+                      image={post.headerImage.fluid}
+                      publishDate={post.publishDate}
+                    />
                   </LinkCard>
                 </Link>
               </ListGroup.Item>
