@@ -33,7 +33,7 @@ const Work = (props: Props) => {
             <div className="mt-24">
                 <List>
                     <List.Item>
-                        <ImageCard className="my-2" fluid={quayside.childImageSharp.fluid} alt="Vocalia">
+                        <ImageCard className="my-4" fluid={quayside.childImageSharp.fluid} alt="Vocalia">
                             <h2 className="text-xl font-bold">TerraQuest - Developer (2019 - Current).</h2>
                             <p className="mt-2">
                                 During my time at TerraQuest, I have worked with a variety of technologies relating to
@@ -49,7 +49,7 @@ const Work = (props: Props) => {
                         </ImageCard>
                     </List.Item>
                     <List.Item>
-                        <ImageCard className="my-2" fluid={dupont.childImageSharp.fluid} alt="AYDev Finance">
+                        <ImageCard className="my-3" fluid={dupont.childImageSharp.fluid} alt="AYDev Finance">
                             <h2 className="text-xl font-bold">
                                 DuPont Teijin Films - Student Software Engineer (2017 - 2018).
                             </h2>
@@ -80,7 +80,7 @@ const Work = (props: Props) => {
                         </ImageCard>
                     </List.Item>
                     <List.Item>
-                        <ImageCard className="my-2" fluid={teesside.childImageSharp.fluid} alt="AYDev Finance">
+                        <ImageCard className="my-3" fluid={teesside.childImageSharp.fluid} alt="AYDev Finance">
                             <h2 className="text-xl font-bold">Teesside University - Student (2015 - 2019).</h2>
                             <p className="mt-2">
                                 My studies at Teesside University from 2015 to 2019 provided me with industry-standard
@@ -97,16 +97,6 @@ const Work = (props: Props) => {
                                 <List.Item>
                                     Development experience across various platforms (Windows, Web, Android, Arduino).
                                 </List.Item>
-                                <List.Item>
-                                    AI experience utilizing the functional programming language Clojure.
-                                </List.Item>
-                            </List>
-
-                            <p className="mt-4">
-                                My Final Year Project (Vocalia) provided me with a great deal of experience in areas
-                                such as:
-                            </p>
-                            <List className="mt-2 text-sm list-disc list-inside">
                                 <List.Item>SPA development within the React framework.</List.Item>
                                 <List.Item>
                                     PWA integration following Google's standards for Chrome implementation.
