@@ -1,52 +1,35 @@
-require('dotenv').config({
-  path: `.env`,
-});
-
 module.exports = {
-  siteMetadata: {
-    title: `Adam Young | Portfolio`,
-    description: `Portfolio of Adam Young`,
-    author: `Adam Young`,
-    siteUrl: 'https://www.aydev.uk',
-  },
-  plugins: [
-    'gatsby-plugin-sass',
-    `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-styled-components',
-    `gatsby-transformer-sharp`,
-    'gatsby-plugin-fontawesome-css',
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-sitemap`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Adam Young | Portfolio`,
-        short_name: `Portfolio`,
-        start_url: `/`,
-        background_color: `#fff`,
-        theme_color: `#fff`,
-        display: `minimal-ui`,
-      },
+    siteMetadata: {
+        title: 'Portfolio',
+        siteUrl: 'https://www.aydev.uk',
     },
-    {
-      resolve: `gatsby-plugin-disqus`,
-      options: {
-        shortname: `aydev`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [`Montserrat\:400,500,600,700`],
-        display: 'swap',
-      },
-    },
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-  ],
+    plugins: [
+        {
+            resolve: 'gatsby-source-contentful',
+            options: {
+                accessToken: 'YA6xOU6T2wNiOzPnjVu9JKT9LBdkJ7JoK6w1DsmK8ts',
+                spaceId: '6x69711h0cvt',
+            },
+        },
+        'gatsby-plugin-styled-components',
+        {
+            resolve: 'gatsby-plugin-google-analytics',
+            options: {
+                trackingId: 'UA-140587584-1',
+            },
+        },
+        'gatsby-plugin-sharp',
+        'gatsby-plugin-react-helmet',
+        'gatsby-plugin-sitemap',
+        'gatsby-transformer-sharp',
+        'gatsby-plugin-postcss',
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: 'images',
+                path: './src/images/',
+            },
+            __key: 'images',
+        },
+    ],
 };

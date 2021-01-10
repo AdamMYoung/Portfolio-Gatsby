@@ -1,122 +1,44 @@
-import GatsbyImage, { FixedObject, FluidObject } from 'gatsby-image';
-
-export type Post = {
-  published: Date;
-  updated: Date;
-  url: string;
-  title: string;
-};
-
-export type Experience = {
-  date: string;
-  jobTitle: string;
-  company: string;
-};
-
-export type Link = {
-  name: string;
-  url: string;
-};
-
-export type TileEntry = {
-  iconName: string;
-  text: string;
-  filterKey: string;
-};
-
 //Contentful
+
+import { FixedObject, FluidObject } from 'gatsby-image';
+
+export type FluidImageSharp = {
+    childImageSharp: {
+        fluid: FluidObject;
+    };
+};
 
 //Root Types
 
 type ContentfulEntry<TTypeName extends string> = {
-  internal: {
-    type: TTypeName;
-  };
-};
-
-export type ContentfulPage = {
-  name: string;
-  description: {
-    description: string;
-  };
-  sections: ContentfulSection[];
-  splash: ContentfulSplash;
+    internal: {
+        type: TTypeName;
+    };
 };
 
 export type ContentfulBlogPost = ContentfulEntry<'ContentfulBlogPost'> & {
-  title: string;
-  headerImage: ContentfulFluidImage;
-  content: ContentfulRichText;
+    title: string;
+    headerImage: ContentfulFluidImage;
+    content: ContentfulRichText;
 };
 
 //Element types.
 
 export type ContentfulFluidImage = {
-  fluid: FluidObject;
+    fluid: FluidObject;
 };
 
 export type ContentfulFixedImage = {
-  fixed: FixedObject;
+    fixed: FixedObject;
 };
 
 type ContentfulRichText = {
-  raw: string;
-};
-
-type ContentfulSkill = {
-  category: string;
-  description: {
-    description: string;
-  };
-  devIconCssName: string;
-  name: string;
-};
-
-export type ContentfulSection = {
-  title: string;
-  variant: 'light' | 'gray' | 'dark';
-  content: ContentfulSectionContentTypes[];
-};
-
-export type ContentfulText = ContentfulEntry<'ContentfulText'> & {
-  content: ContentfulRichText;
-  links: Link[];
-};
-
-export type ContentfulSkillSet = ContentfulEntry<'ContentfulSkillSet'> & {
-  skills: ContentfulSkill[];
-};
-
-export type ContentfulProject = ContentfulEntry<'ContentfulProject'> & {
-  name: string;
-  image: ContentfulFluidImage;
-  description: ContentfulRichText;
-  links: Link[];
-};
-
-export type ContentfulExperienceSet = ContentfulEntry<'ContentfulExperienceSet'> & {
-  experienceHistory: Experience[];
+    raw: string;
 };
 
 export type ContentfulAlbum = ContentfulEntry<'ContentfulAlbum'> & {
-  name: string;
-  featuredImage: ContentfulFixedImage;
+    name: string;
+    featuredImage: ContentfulFixedImage;
 };
 
-export type ContentfulContact = ContentfulEntry<'ContentfulContact'> & {
-  name: string;
-};
-
-export type ContentfulSplash = {
-  name: string;
-  background: ContentfulFluidImage;
-  content: ContentfulRichText;
-};
-
-export type ContentfulSectionContentTypes =
-  | ContentfulText
-  | ContentfulSkillSet
-  | ContentfulProject
-  | ContentfulExperienceSet
-  | ContentfulAlbum
-  | ContentfulContact;
+export type ContentfulSectionContentTypes = ContentfulAlbum;

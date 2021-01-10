@@ -1,77 +1,41 @@
 const path = require(`path`);
 
-exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
-  if (node.internal.type === `ContentfulPage`) {
-    createNodeField({
-      node,
-      name: `slug`,
-      value: node.slug,
-    });
-  }
-};
-
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+    const { createPage } = actions;
 
-  const result = await graphql(`
-    query pagesQuery {
-      allContentfulPage {
-        edges {
-          node {
-            slug
-          }
-        }
-      }
-      allContentfulAlbum {
-        edges {
-          node {
-            name
-          }
-        }
-      }
-      allContentfulBlog {
-        edges {
-          node {
-            slug
-            posts {
-              title
-              slug
+    const result = await graphql(`
+        query pagesQuery {
+            allContentfulAlbum {
+                edges {
+                    node {
+                        name
+                    }
+                }
             }
-          }
+            allContentfulBlogPost {
+                edges {
+                    node {
+                        title
+                        slug
+                    }
+                }
+            }
         }
-      }
-    }
-  `);
+    `);
 
-  result.data.allContentfulPage.edges.forEach(({ node }) => {
-    createPage({
-      path: node.slug,
-      component: path.resolve('src/templates/Page.tsx'),
-      context: { slug: node.slug },
-    });
-  });
-
-  result.data.allContentfulAlbum.edges.forEach(({ node }) => {
-    createPage({
-      path: `/albums/${encodeURIComponent(node.name.toLowerCase())}`,
-      component: path.resolve('src/templates/Album.tsx'),
-      context: { name: node.name },
-    });
-  });
-
-  result.data.allContentfulBlog.edges.forEach(({ node }) => {
-    createPage({
-      path: node.slug,
-      component: path.resolve('src/templates/Blog.tsx'),
-      context: { slug: node.slug, date: new Date() },
+    result.data.allContentfulAlbum.edges.forEach(({ node }) => {
+        createPage({
+            path: `/photography/${encodeURIComponent(node.name.toLowerCase())}`,
+            component: path.resolve('src/templates/album.tsx'),
+            context: { name: node.name },
+        });
     });
 
-    node.posts.forEach((post) => {
-      createPage({
-        path: `${node.slug}${post.slug}`,
-        component: path.resolve('src/templates/BlogPost.tsx'),
-        context: { title: post.title, date: new Date() },
-      });
+    result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
+        createPage({
+            path: `/blog${node.slug}`,
+            component: path.resolve('src/templates/blog-post.tsx'),
+            context: { title: node.title, date: new Date() },
+        });
     });
-  });
 };
