@@ -21,6 +21,7 @@ module.exports = {
         'gatsby-plugin-sharp',
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sitemap',
+        'gatsby-plugin-preload-fonts',
         'gatsby-transformer-sharp',
         'gatsby-plugin-postcss',
         {
