@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import List from '../components/list';
-import image from '../images/Coffee break.svg';
+import image from '../images/Coffee Break.svg';
 import InfoPage from '../views/info-page';
 import ImageCard from '../components/image-card';
 import { graphql } from 'gatsby';
