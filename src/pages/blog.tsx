@@ -20,9 +20,7 @@ const Index = ({ data }) => {
                 <h2 className="text-4xl font-bold mb-4">Recent blog posts</h2>
                 <List active>
                     {data.allContentfulBlogPost.edges.map(({ node }) => (
-                        <List.Item onClick={() => navigate(`/blog${node.slug}`)}>{`${new Date(
-                            node.createdAt
-                        ).toLocaleDateString(['en-GB', 'en-US'])} - ${node.title}`}</List.Item>
+                        <List.Item onClick={() => navigate(`/blog${node.slug}`)}>{node.title}</List.Item>
                     ))}
                 </List>
             </div>
