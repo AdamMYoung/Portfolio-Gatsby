@@ -1,13 +1,12 @@
 import * as React from 'react';
+import { graphql, navigate } from 'gatsby';
 
-import Layout from '../components/layout';
 import List from '../components/list';
-import Image from '../components/image';
 import image from '../images/Relaxing on a weekend.svg';
 import InfoPage from '../views/info-page';
 
 // markup
-const Index = () => {
+const Index = ({ data }) => {
     return (
         <InfoPage
             title="Blog"
@@ -19,14 +18,33 @@ const Index = () => {
 
             <div className="mt-24">
                 <h2 className="text-4xl font-bold mb-4">Recent blog posts</h2>
-                <List>
-                    <List.Item>Post 1</List.Item>
-                    <List.Item>Post 2</List.Item>
-                    <List.Item>Post 3</List.Item>
+                <List active>
+                    {data.allContentfulBlogPost.edges.map(({ node }) => (
+                        <List.Item onClick={() => navigate(`/blog${node.slug}`)}>{`${new Date(
+                            node.createdAt
+                        ).toLocaleDateString(['en-GB', 'en-US'])} - ${node.title}`}</List.Item>
+                    ))}
                 </List>
             </div>
         </InfoPage>
     );
 };
+
+export const query = graphql`
+    {
+        allContentfulBlogPost(limit: 5, sort: { fields: publishDate, order: DESC }) {
+            edges {
+                node {
+                    title
+                    slug
+                    createdAt
+                    summary {
+                        summary
+                    }
+                }
+            }
+        }
+    }
+`;
 
 export default Index;

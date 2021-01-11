@@ -1,7 +1,7 @@
 import ReactDOMServer from 'react-dom/server';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
-import { graphql, Link } from 'gatsby';
-import moment from 'moment';
+import { graphql, Link, navigate } from 'gatsby';
+import dayjs from 'dayjs';
 import React from 'react';
 import GatsbyImage from 'gatsby-image';
 import { BLOCKS } from '@contentful/rich-text-types';
@@ -23,10 +23,9 @@ type Props = {
 const BlogPost = ({ data }: Props) => {
     const { title, publishDate, summary, content, headerImage, slug: postSlug } = data.contentfulBlogPost;
     const { edges: posts } = data.allContentfulBlogPost;
-    const { slug } = data.contentfulBlog;
 
     const disqusConfig = {
-        url: `${data.site.siteMetadata.siteUrl}${slug}${postSlug}`,
+        url: `${data.site.siteMetadata.siteUrl}/blog/${postSlug}`,
         identifier: postSlug,
         title,
     };
@@ -77,7 +76,7 @@ const BlogPost = ({ data }: Props) => {
                 <meta name="description" content={summary?.summary} />
 
                 <meta property="og:type" content="article" />
-                <meta property="og:article:published_time" content={moment(publishDate).toISOString()} />
+                <meta property="og:article:published_time" content={new Date(publishDate).toISOString()} />
                 <meta property="og:article:author:profile:first_name" content="Adam" />
                 <meta property="og:article:author:profile:last_name" content="Young" />
                 <meta property="og:description" content={summary?.summary} />
@@ -86,9 +85,8 @@ const BlogPost = ({ data }: Props) => {
                     {JSON.stringify({
                         '@context': 'https://schema.org',
                         '@type': 'BlogPosting',
-                        datePublished: moment(publishDate).toISOString(),
+                        datePublished: new Date(publishDate).toISOString(),
                         headline: title,
-                        image: headerImage.fluid.src,
                         author: {
                             '@type': 'Person',
                             name: 'Adam Young',
@@ -97,31 +95,23 @@ const BlogPost = ({ data }: Props) => {
                 </script>
             </Helmet>
 
-            <div className="container my-4" style={{ minHeight: '30vh' }}>
-                <div>
-                    <div>
-                        <h2>{title}</h2>
-                        <p className="my-0" style={{ fontSize: '1rem' }}>
-                            {moment(publishDate).format('dddd Do MMMM YYYY')}
-                        </p>
-                        <p style={{ fontSize: '1rem' }}>{stats.text}</p>
-                        <hr />
-                        <Typography>{blogContent}</Typography>
-                    </div>
+            <div className="container lg:flex my-4" style={{ minHeight: '30vh' }}>
+                <div className="w-full lg:w-2/3 px-2">
+                    <h2 className="text-4xl font-bold">{title}</h2>
+                    <p className="my-0 text-md mt-2">{dayjs(publishDate).format('dddd DD MMMM YYYY')}</p>
+                    <p className="text-md">{stats.text}</p>
+                    <hr className="my-4" />
+                    <Typography>{blogContent}</Typography>
+                </div>
+                <div className="w-full lg:w-1/3 px-2">
                     {posts.length > 0 && (
-                        <div>
-                            <div>
-                                <p className="h5 px-4 pt-3 pb-2">Other posts</p>
-                                <List>
-                                    {posts.map(({ node: post }) => (
-                                        <List.Item>
-                                            <Link to={`${slug}${post.slug}`}>
-                                                <p>{post.title}</p>
-                                            </Link>
-                                        </List.Item>
-                                    ))}
-                                </List>
-                            </div>
+                        <div className="mt-4 border rounded-lg p-4">
+                            <p className="my-2 ml-1 text-xl font-bold">Other posts</p>
+                            <List active>
+                                {posts.map(({ node: post }) => (
+                                    <List.Item onClick={() => navigate(`/blog${post.slug}`)}>{post.title}</List.Item>
+                                ))}
+                            </List>
                         </div>
                     )}
                 </div>

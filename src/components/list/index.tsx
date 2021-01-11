@@ -8,8 +8,12 @@ type Props = {
     children: React.ReactNode;
 };
 
-const ListItem: React.FC = (props) => {
-    return <li className="px-1 py-0.5 rounded-lg">{props.children}</li>;
+const ListItem: React.FC<{ onClick?: () => void }> = (props) => {
+    return (
+        <li onClick={props.onClick} className="px-1 py-0.5 rounded-lg">
+            {props.children}
+        </li>
+    );
 };
 
 const List = (props: Props) => {

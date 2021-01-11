@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import { graphql } from 'gatsby';
-import { FixedObject } from 'gatsby-image';
+import Img, { FixedObject } from 'gatsby-image';
 import { Helmet } from 'react-helmet';
 
 import Layout from '../components/layout';
@@ -35,18 +35,29 @@ const Album = ({ data }: Props) => {
         return () => setFullScreen(false);
     }, [selectedIndex, setFullScreen]);
 
+    const tags = [];
+    {
+        images.forEach((image) => {
+            tags.push(<meta property="og:image" content={image.fixed.src} />);
+            tags.push(<meta property="og:image:width" content={image.fixed.width.toString()} />);
+            tags.push(<meta property="og:image:height" content={image.fixed.height.toString()} />);
+            image.fixed.media && tags.push(<meta property="og:image:type" content={image.fixed.media} />);
+        });
+    }
+
     return (
         <Layout title={name}>
-            <Helmet>
-                {images.map((image) => (
-                    <>
-                        <meta property="og:image" content={image.fixed.src} />
-                        <meta property="og:image:width" content={image.fixed.width.toString()} />
-                        <meta property="og:image:height" content={image.fixed.height.toString()} />
-                        {image.fixed.media && <meta property="og:image:type" content={image.fixed.media} />}
-                    </>
+            <Helmet>{tags}</Helmet>
+
+            <h1 className="text-4xl font-bold mb-4">{name}</h1>
+
+            <div className="flex flex-wrap justify-around">
+                {images.map((img, index) => (
+                    <div onClick={() => setSelectedIndex(index)}>
+                        <Img className="cursor-pointer hover:opacity-60 transition my-2 rounded-lg" fixed={img.fixed} />
+                    </div>
                 ))}
-            </Helmet>
+            </div>
 
             {selectedIndex !== null && (
                 <Lightbox

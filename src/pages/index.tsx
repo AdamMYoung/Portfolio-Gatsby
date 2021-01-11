@@ -1,3 +1,4 @@
+import { graphql, navigate, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 
 import List from '../components/list';
@@ -5,7 +6,7 @@ import image from '../images/Work from home.svg';
 import InfoPage from '../views/info-page';
 
 // markup
-const Index = () => {
+const Index = ({ data }) => {
     return (
         <InfoPage
             title="Home"
@@ -21,13 +22,30 @@ const Index = () => {
             <div className="mt-24">
                 <h2 className="text-4xl font-bold mb-4">Recent blog posts</h2>
                 <List active>
-                    <List.Item>Post 1</List.Item>
-                    <List.Item>Post 2</List.Item>
-                    <List.Item>Post 3</List.Item>
+                    {data.allContentfulBlogPost.edges.map(({ node }) => (
+                        <List.Item onClick={() => navigate(`/blog${node.slug}`)}>{node.title}</List.Item>
+                    ))}
                 </List>
             </div>
         </InfoPage>
     );
 };
+
+export const query = graphql`
+    {
+        allContentfulBlogPost(limit: 5, sort: { fields: publishDate, order: DESC }) {
+            edges {
+                node {
+                    title
+                    slug
+                    createdAt
+                    summary {
+                        summary
+                    }
+                }
+            }
+        }
+    }
+`;
 
 export default Index;
