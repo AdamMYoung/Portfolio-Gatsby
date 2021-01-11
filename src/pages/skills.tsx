@@ -1,7 +1,8 @@
 import * as React from 'react';
-import ImageCard from '../components/image-card';
+import ImageRowCard from '../components/image-row-card';
 
 import List from '../components/list';
+import InfoPage from '../views/info-page';
 import image from '../images/Code Version Control.svg';
 import csharp from '../images/csharp.svg';
 import css from '../images/css.svg';
@@ -16,7 +17,28 @@ import npm from '../images/npm.svg';
 import react from '../images/react.svg';
 import redux from '../images/redux.svg';
 import typescript from '../images/typescript.svg';
-import InfoPage from '../views/info-page';
+
+const frontEndImages = [
+    { src: html5, alt: 'HTML5' },
+    { src: css, alt: 'CSS' },
+    { src: typescript, alt: 'TypeScript' },
+    { src: gatsby, alt: 'Gatsby' },
+    { src: react, alt: 'Redux' },
+    { src: redux, alt: 'Redux' },
+];
+
+const backEndImages = [
+    { src: csharp, alt: 'C#' },
+    { src: kotlin, alt: 'Kotlin' },
+    { src: dotnet, alt: '.NET' },
+    { src: nodejs, alt: 'Node.js' },
+];
+
+const devOpsImages = [
+    { src: docker, alt: 'Docker' },
+    { src: github, alt: 'GitHub' },
+    { src: npm, alt: 'NPM' },
+];
 
 // markup
 const Skills = () => {
@@ -33,86 +55,42 @@ const Skills = () => {
                 DevOps.
             </p>
 
-            <div className="mt-24">
-                <h2 className="text-2xl font-bold">Front-end</h2>
-                <List>
-                    <List.Item>
-                        <ImageCard className="my-4" src={html5} alt="HTML5">
-                            <h2 className="text-xl font-bold">HTML5</h2>
-                            <p className="mt-2"></p>
-                        </ImageCard>
-                    </List.Item>
-                    <List.Item>
-                        <ImageCard className="my-3" src={css} alt="CSS">
-                            <h2 className="text-xl font-bold">CSS</h2>
-                        </ImageCard>
-                    </List.Item>
+            <List className="mt-24">
+                <List.Item>
+                    <ImageRowCard title="Front-end" className="my-4" imgSet={frontEndImages}>
+                        <p>
+                            The main focus of my career has been in front-end development, with SPA libraries and
+                            technologies being my "bread-and-butter". Technologies such as React and Gatsby are what I
+                            spend most of my days in, alongside popular JS libraries such as Redux, TailwindCSS and many
+                            others.
+                        </p>
+                        <p className="mt-2">
+                            My programming language of choice is TypeScript, due to it's type safety and deep
+                            integration with React.
+                        </p>
+                    </ImageRowCard>
+                </List.Item>
+                <List.Item>
+                    <ImageRowCard title="Back-end" className="my-4" imgSet={backEndImages}>
+                        <p>
+                            When working on back-end frameworks, I typically prefer .NET Core, due to it's familiarity
+                            and widespread use across the industry. Recently I've been using more Node.js API endpoints
+                            in the form of Azure Functions, allowing me to maintain type definitions between several
+                            projects.
+                        </p>
+                    </ImageRowCard>
+                </List.Item>
 
-                    <List.Item>
-                        <ImageCard className="my-3" src={typescript} alt="TypeScript">
-                            <h2 className="text-xl font-bold">TypeScript</h2>
-                        </ImageCard>
-                    </List.Item>
-                    <List.Item>
-                        <ImageCard className="my-3" src={gatsby} alt="Gatsby">
-                            <h2 className="text-xl font-bold">Gatsby</h2>
-                        </ImageCard>
-                    </List.Item>
-                    <List.Item>
-                        <ImageCard className="my-3" src={react} alt="React">
-                            <h2 className="text-xl font-bold">React</h2>
-                        </ImageCard>
-                    </List.Item>
-                    <List.Item>
-                        <ImageCard className="my-3" src={redux} alt="Redux">
-                            <h2 className="text-xl font-bold">Redux</h2>
-                        </ImageCard>
-                    </List.Item>
-                </List>
-
-                <h2 className="text-2xl font-bold mt-12">Back-end</h2>
-                <List>
-                    <List.Item>
-                        <ImageCard className="my-4" src={csharp} alt="C Sharp">
-                            <h2 className="text-xl font-bold">C#</h2>
-                        </ImageCard>
-                    </List.Item>
-                    <List.Item>
-                        <ImageCard className="my-3" src={dotnet} alt=".Net">
-                            <h2 className="text-xl font-bold">.NET Core</h2>
-                        </ImageCard>
-                    </List.Item>
-                    <List.Item>
-                        <ImageCard className="my-3" src={kotlin} alt="Kotlin">
-                            <h2 className="text-xl font-bold">Kotlin</h2>
-                        </ImageCard>
-                    </List.Item>
-                    <List.Item>
-                        <ImageCard className="my-3" src={nodejs} alt="NodeJS">
-                            <h2 className="text-xl font-bold">Node.js</h2>
-                        </ImageCard>
-                    </List.Item>
-                </List>
-
-                <h2 className="text-2xl font-bold mt-12">DevOps</h2>
-                <List>
-                    <List.Item>
-                        <ImageCard className="my-4" src={docker} alt="Docker">
-                            <h2 className="text-xl font-bold">Docker</h2>
-                        </ImageCard>
-                    </List.Item>
-                    <List.Item>
-                        <ImageCard className="my-3" src={github} alt="GitHub">
-                            <h2 className="text-xl font-bold">GitHub</h2>
-                        </ImageCard>
-                    </List.Item>
-                    <List.Item>
-                        <ImageCard className="my-3" src={npm} alt="NPM">
-                            <h2 className="text-xl font-bold">NPM</h2>
-                        </ImageCard>
-                    </List.Item>
-                </List>
-            </div>
+                <List.Item>
+                    <ImageRowCard title="DevOps" className="my-4" imgSet={devOpsImages}>
+                        <p>
+                            I also have experience setting up deployment pipelines and configuring Azure resources. One
+                            of the main projects using these technologies is my hobbyist app, which is a fully
+                            serverless application built on Cosmos DB, Azure Functions and the Azure Management API.
+                        </p>
+                    </ImageRowCard>
+                </List.Item>
+            </List>
         </InfoPage>
     );
 };

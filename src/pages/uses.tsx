@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import Layout from '../components/layout';
 import List from '../components/list';
 import image from '../images/Remote working challenges.svg';
 import InfoPage from '../views/info-page';
@@ -16,16 +15,32 @@ const Index = () => {
         >
             <h1 className="text-5xl font-bold mb-4">Uses</h1>
             <p className="text-lg font-semibold">
-                I'm a front-end software developer working in Birmingham, with a passion for exploration and learning.
+                Here I've listed the hardware and software I use on a day-to-day basis.
             </p>
 
             <div className="mt-24">
-                <h2 className="text-4xl font-bold mb-4">Recent blog posts</h2>
-                <List>
-                    <List.Item>Post 1</List.Item>
-                    <List.Item>Post 2</List.Item>
-                    <List.Item>Post 3</List.Item>
-                </List>
+                <section>
+                    <h2 className="text-4xl font-bold mb-4">Hardware</h2>
+                    <List className="list-inside list-disc">
+                        <List.Item>CPU - Intel i5-3570k</List.Item>
+                        <List.Item>Motherboard - ASRock Z170M</List.Item>
+                        <List.Item>RAM - 16GB HyperX Fury</List.Item>
+                        <List.Item>GPU - Nvidia RTX 2060</List.Item>
+                        <List.Item>PSU - Corsair HX1000i</List.Item>
+                    </List>
+                </section>
+
+                <section>
+                    <h2 className="text-4xl font-bold mt-8 mb-4">Software</h2>
+                    <List className="list-inside list-disc">
+                        <List.Item>Browser - Google Chrome</List.Item>
+                        <List.Item>IDE (Front-end) - Visual Studio Code</List.Item>
+                        <List.Item>IDE (Back-end) - Visual Studio</List.Item>
+                        <List.Item>Git Client - GitKraken</List.Item>
+                        <List.Item>API Testing - Postman</List.Item>
+                        <List.Item>Design Tools - Zeplin</List.Item>
+                    </List>
+                </section>
             </div>
         </InfoPage>
     );

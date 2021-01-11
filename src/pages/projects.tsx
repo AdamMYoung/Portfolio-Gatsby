@@ -44,7 +44,8 @@ const Projects = (props: Props) => {
                             <p className="mt-2">
                                 Vocalia is a web-based podcasting platform, which allowed the user to listen and create
                                 podcasts within the same ecosystem. The project was built over several months as part of
-                                my final year project at university.
+                                my final year project at university, developed using WebRTC standards and a deep focus
+                                into PWA capabilities such as mobile media-player integration.
                             </p>
                         </ImageCard>
                     </List.Item>
@@ -54,7 +55,8 @@ const Projects = (props: Props) => {
                             <p className="mt-2">
                                 AYDev | Finance is a web-based financial management app. It provides overview and
                                 historical analysis of purchases, supports recurring payments and offline functionality
-                                as a Progressive Web App.
+                                as a Progressive Web App. The site is built using React, with Redux and redux-thunk
+                                middleware providing offline storage and backup functionality.
                             </p>
                         </ImageCard>
                     </List.Item>
@@ -64,7 +66,9 @@ const Projects = (props: Props) => {
                             <p className="mt-2">
                                 Hobbyist is a social media designed to connect you to people with similar interests. It
                                 promotes sharing of user's creations, and building communities between like-minded
-                                individuals.
+                                individuals. The site was built with a React/TailwindCSS front-end, with a serverless
+                                back-end built using Cosmos DB, Azure Functions and Azure API Management. Authentication
+                                is provided by Auth0, with payment support integrated with Stripe.
                             </p>
                         </ImageCard>
                     </List.Item>

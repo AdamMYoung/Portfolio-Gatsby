@@ -27,7 +27,7 @@ const Work = (props: Props) => {
         >
             <h1 className="text-5xl font-bold mb-4">Work</h1>
             <p className="text-lg font-semibold">
-                The previous and current job roles I've had within my software development career.
+                Previous and current job roles I've had within my software development career.
             </p>
 
             <div className="mt-24">
