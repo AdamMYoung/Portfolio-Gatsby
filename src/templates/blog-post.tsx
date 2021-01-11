@@ -1,6 +1,6 @@
-import ReactDOMServer from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
-import { graphql, Link, navigate } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
 import dayjs from 'dayjs';
 import React from 'react';
 import GatsbyImage from 'gatsby-image';
@@ -68,7 +68,7 @@ const BlogPost = ({ data }: Props) => {
     };
 
     const blogContent = renderRichText(content, contentfulRenderOptions);
-    const stats = readingTime(ReactDOMServer.renderToStaticMarkup(blogContent as any));
+    const stats = readingTime(renderToStaticMarkup(blogContent as any));
 
     return (
         <Layout title={title}>
