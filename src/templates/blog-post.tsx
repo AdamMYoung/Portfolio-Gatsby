@@ -106,7 +106,7 @@ const BlogPost = ({ data }: Props) => {
                 <div className="w-full lg:w-1/3 px-2">
                     {posts.length > 0 && (
                         <div className="mt-4 border rounded-lg p-4">
-                            <p className="my-2 ml-1 text-xl font-bold">Other posts</p>
+                            <p className="my-2 ml-1 text-3xl font-bold">Other posts</p>
                             <List active>
                                 {posts.map(({ node: post }) => (
                                     <List.Item onClick={() => navigate(`/blog${post.slug}`)}>{post.title}</List.Item>
