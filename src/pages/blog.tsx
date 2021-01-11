@@ -17,7 +17,7 @@ const Index = ({ data }) => {
             <h1 className="text-5xl font-bold mb-4">Blog</h1>
 
             <div className="mt-24">
-                <h2 className="text-4xl font-bold mb-4">Recent blog posts</h2>
+                <h2 className="text-4xl font-bold mb-4">Posts</h2>
                 <List active>
                     {data.allContentfulBlogPost.edges.map(({ node }) => (
                         <List.Item key={node.slug} onClick={() => navigate(`/blog${node.slug}`)}>
