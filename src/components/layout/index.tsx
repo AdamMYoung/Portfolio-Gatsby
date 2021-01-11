@@ -13,6 +13,7 @@ const Layout: React.FC<Props> = (props) => {
     return (
         <div className="bg-indigo-900 text-white">
             <Helmet>
+                <html lang="en-GB" />
                 <title>{props.title}</title>
                 {props.description && <meta name="description" content={props.description} />}
             </Helmet>
