@@ -14,8 +14,6 @@ const Index = ({ data }) => {
             src={image}
             alt="Illustration of man working on a laptop in a tent"
         >
-            <h1 className="text-5xl font-bold mb-4">Blog</h1>
-
             <div className="mt-24">
                 <h2 className="text-4xl font-bold mb-4">Posts</h2>
                 <List active>
