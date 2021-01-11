@@ -26,7 +26,7 @@ exports.createPages = async ({ graphql, actions }) => {
     result.data.allContentfulAlbum.edges.forEach(({ node }) => {
         createPage({
             path: `/photography/${encodeURIComponent(node.name.toLowerCase())}`,
-            component: path.resolve('src/templates/album.tsx'),
+            component: path.resolve('./src/templates/album.tsx'),
             context: { name: node.name },
         });
     });
@@ -34,7 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
     result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
         createPage({
             path: `/blog${node.slug}`,
-            component: path.resolve('src/templates/blog-post.tsx'),
+            component: path.resolve('./src/templates/blog-post.tsx'),
             context: { title: node.title, date: new Date() },
         });
     });
