@@ -18,7 +18,7 @@ const Index = () => {
                 Here I've listed the hardware and software I use on a day-to-day basis.
             </p>
 
-            <div className="mt-24">
+            <div className="mt-16">
                 <section>
                     <h2 className="text-4xl font-bold mb-4">Hardware</h2>
                     <List className="list-inside list-disc">

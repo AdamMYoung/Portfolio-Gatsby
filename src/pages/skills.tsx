@@ -57,7 +57,7 @@ const Skills = () => {
 
             <List className="mt-24">
                 <List.Item>
-                    <ImageRowCard title="Front-end" className="my-4" imgSet={frontEndImages}>
+                    <ImageRowCard title="Front-end" className="mb-4" imgSet={frontEndImages}>
                         <p>
                             The main focus of my career has been in front-end development, with SPA libraries and
                             technologies being my "bread-and-butter". Technologies such as React and Gatsby are what I

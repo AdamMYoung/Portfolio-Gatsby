@@ -36,7 +36,7 @@ const Projects = (props: Props) => {
                 page.
             </p>
 
-            <div className="mt-24">
+            <div className="mt-16">
                 <List>
                     <List.Item>
                         <ImageCard className="my-2" fluid={vocalia.childImageSharp.fluid} alt="Vocalia">

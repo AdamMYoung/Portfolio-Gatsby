@@ -14,7 +14,12 @@ const Index = ({ data }) => {
             src={image}
             alt="Illustration of man working on a laptop in a tent"
         >
-            <div className="mt-24">
+            <h1 className="text-5xl font-bold mb-4">Blog</h1>
+            <p className="text-lg font-semibold">
+                Below you can find my blog posts, typically about FE technologies, best practices or any issues that
+                I've faced recently.
+            </p>
+            <div className="mt-16">
                 <h2 className="text-4xl font-bold mb-4">Posts</h2>
                 <List active>
                     {data.allContentfulBlogPost.edges.map(({ node }) => (

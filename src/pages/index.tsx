@@ -19,7 +19,7 @@ const Index = ({ data }) => {
                 I'm a front-end software developer working in Birmingham, with a passion for exploration and learning.
             </p>
 
-            <div className="mt-24">
+            <div className="mt-16">
                 <h2 className="text-4xl font-bold mb-4">Recent blog posts</h2>
                 <List active>
                     {data.allContentfulBlogPost.edges.map(({ node }) => (

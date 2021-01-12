@@ -30,10 +30,10 @@ const Work = (props: Props) => {
                 Previous and current job roles I've had within my software development career.
             </p>
 
-            <div className="mt-24">
+            <div className="mt-16">
                 <List>
                     <List.Item>
-                        <ImageCard className="my-4" fluid={quayside.childImageSharp.fluid} alt="Vocalia">
+                        <ImageCard className="mb-4" fluid={quayside.childImageSharp.fluid} alt="Vocalia">
                             <h2 className="text-xl font-bold">TerraQuest - Developer (2019 - Current).</h2>
                             <p className="mt-2">
                                 During my time at TerraQuest, I have worked with a variety of technologies relating to

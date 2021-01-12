@@ -14,9 +14,13 @@ const InfoPage: React.FC<Props> = (props) => {
 
     return (
         <Layout title={title} description={description}>
-            <div className="flex">
-                <div className="md:w-1/2 xl:w-3/5">{children}</div>
-                <Image src={src} alt={alt} className="md:w-1/2 xl:w-2/5 mb-auto hidden md:block -mt-12" />
+            <div className="flex flex-wrap md:flex-nowrap">
+                <div className="w-full md:w-1/2 xl:w-3/5 order-1 md:order-0">{children}</div>
+                <Image
+                    src={src}
+                    alt={alt}
+                    className="h-80 md:h-auto w-full mx-auto order-0 md:order-1 md:w-1/2 xl:w-2/5 mb-auto -mt-12"
+                />
             </div>
         </Layout>
     );

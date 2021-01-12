@@ -13,7 +13,7 @@ const NotFound = () => {
                 <div>
                     <h1 className="text-5xl font-bold mb-4">Page not found.</h1>
 
-                    <div className="mt-24">
+                    <div className="mt-16">
                         <h2 className="text-4xl font-bold mb-4">Recent blog posts</h2>
                         <List>
                             <List.Item>Post 1</List.Item>

@@ -20,7 +20,7 @@ const Index = ({ data }) => {
                 Below are the highlights of what I've managed to capture since starting photography.
             </p>
 
-            <div className="mt-24">
+            <div className="mt-16">
                 <h2 className="text-4xl font-bold mb-4">Albums</h2>
                 <List>
                     {data.allContentfulAlbum.edges.map(({ node }) => (
@@ -28,7 +28,7 @@ const Index = ({ data }) => {
                             onClick={() => navigate(`/photography/${encodeURIComponent(node.name.toLowerCase())}`)}
                         >
                             <Img
-                                className="cursor-pointer hover:opacity-60 transition max-w-lg my-2 rounded-lg"
+                                className="cursor-pointer hover:opacity-60 transition max-w-lg mb-2 rounded-lg"
                                 fluid={node.featuredImage.fluid}
                             />
                         </List.Item>
