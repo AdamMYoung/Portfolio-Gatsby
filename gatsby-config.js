@@ -11,13 +11,19 @@ module.exports = {
                 spaceId: '6x69711h0cvt',
             },
         },
-        'gatsby-plugin-styled-components',
         {
             resolve: 'gatsby-plugin-google-analytics',
             options: {
                 trackingId: 'UA-140587584-1',
             },
         },
+        {
+            resolve: `gatsby-plugin-disqus`,
+            options: {
+                shortname: `aydev`,
+            },
+        },
+        'gatsby-plugin-styled-components',
         'gatsby-plugin-sharp',
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sitemap',

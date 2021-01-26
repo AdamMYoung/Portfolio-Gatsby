@@ -21,7 +21,7 @@ type Props = {
 };
 
 const BlogPost = ({ data }: Props) => {
-    const { title, publishDate, summary, content, headerImage, slug: postSlug } = data.contentfulBlogPost;
+    const { title, publishDate, summary, content, slug: postSlug } = data.contentfulBlogPost;
     const { edges: posts } = data.allContentfulBlogPost;
 
     const disqusConfig = {
@@ -109,15 +109,18 @@ const BlogPost = ({ data }: Props) => {
                             <p className="my-2 ml-1 text-3xl font-bold">Other posts</p>
                             <List active>
                                 {posts.map(({ node: post }) => (
-                                    <List.Item onClick={() => navigate(`/blog${post.slug}`)}>{post.title}</List.Item>
+                                    <List.Item key={post.slug} onClick={() => navigate(`/blog${post.slug}`)}>
+                                        {post.title}
+                                    </List.Item>
                                 ))}
                             </List>
                         </div>
                     )}
                 </div>
             </div>
-
-            <Disqus config={disqusConfig} />
+            <div className="w-full lg:w-2/3 px-2 mt-8">
+                <Disqus config={disqusConfig} />
+            </div>
         </Layout>
     );
 };
