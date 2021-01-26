@@ -41,6 +41,7 @@ const Album = ({ data }: Props) => {
             tags.push(<meta property="og:image" content={image.fixed.src} />);
             tags.push(<meta property="og:image:width" content={image.fixed.width.toString()} />);
             tags.push(<meta property="og:image:height" content={image.fixed.height.toString()} />);
+            tags.push(<link rel="preload" href={image.file.url} as="image" type="image/webp" />);
             image.fixed.media && tags.push(<meta property="og:image:type" content={image.fixed.media} />);
         });
     }
@@ -51,10 +52,10 @@ const Album = ({ data }: Props) => {
 
             <h1 className="text-4xl font-bold mb-4">{name}</h1>
 
-            <div className="flex flex-wrap justify-around">
+            <div className="flex flex-wrap justify-around items-center">
                 {images.map((img, index) => (
                     <div onClick={() => setSelectedIndex(index)}>
-                        <Img className="cursor-pointer hover:opacity-60 transition my-2 rounded-lg" fixed={img.fixed} />
+                        <Img className="cursor-pointer hover:opacity-60 transition m-2 rounded-lg" fixed={img.fixed} />
                     </div>
                 ))}
             </div>
@@ -84,7 +85,7 @@ export const query = graphql`
             name
             images {
                 id
-                fixed(width: 400, quality: 25) {
+                fixed(width: 400, quality: 80) {
                     ...GatsbyContentfulFixed_withWebp_noBase64
                 }
                 file {
