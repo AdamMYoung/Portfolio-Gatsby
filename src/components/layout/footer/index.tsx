@@ -46,6 +46,9 @@ const Footer = () => {
                 <Link type="external" to="https://twitter.com/AdamMYoung_">
                     Twitter
                 </Link>
+                <Link type="external" to="https://www.linkedin.com/in/adammichaelyoung/">
+                    LinkedIn
+                </Link>
             </FooterColumn>
         </footer>
     );
