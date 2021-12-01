@@ -22,6 +22,8 @@
     "@chakra-ui/react-utils": "^1.2.1",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
+    "chakra-ui-markdown-renderer": "^4.0.0",
+    "dayjs": "^1.10.7",
     "framer-motion": "^5.3.3",
     "gatsby": "^4.2.0",
     "gatsby-plugin-google-analytics": "^4.2.0",
@@ -34,6 +36,7 @@
     "gatsby-transformer-sharp": "^4.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-markdown": "^7.1.1"
   }
 }

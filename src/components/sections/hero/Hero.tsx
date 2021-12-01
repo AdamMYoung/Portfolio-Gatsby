@@ -16,7 +16,7 @@ import { useSemanticElement } from '../../../providers';
 
 export const Hero: FC<GridProps> = ({ children, ...rest }) => {
     return (
-        <Grid as="section" gridTemplateColumns={['1fr', null, '1fr 1.2fr']} {...rest}>
+        <Grid as="section" gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1.2fr']} {...rest}>
             {children}
         </Grid>
     );
@@ -24,7 +24,7 @@ export const Hero: FC<GridProps> = ({ children, ...rest }) => {
 
 export const HeroPanel: FC<StackProps> = ({ children, ...rest }) => {
     return (
-        <Stack order={[1, null, 'initial']} my="16" mr={[0, null, 16]} spacing="4" {...rest}>
+        <Stack order={[1, null, 'initial']} my="8" mr={[0, null, 16]} spacing="4" {...rest}>
             {children}
         </Stack>
     );
@@ -49,5 +49,13 @@ export const HeroSubtitle: FC<TextProps> = ({ children, ...rest }) => {
 };
 
 export const HeroImage: VFC<ImageProps> = (props) => {
-    return <Image order={[0, null, 'initial']} rounded="xl" {...props} />;
+    return (
+        <Image
+            order={[0, null, 'initial']}
+            rounded="xl"
+            maxH={[null, null, '70vh']}
+            mx={[null, null, 'auto']}
+            {...props}
+        />
+    );
 };

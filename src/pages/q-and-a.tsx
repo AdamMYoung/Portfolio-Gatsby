@@ -6,7 +6,7 @@ import { Layout } from '../views';
 const HeroIntro = () => {
     return (
         <Hero>
-            <HeroPanel spacing="6">
+            <HeroPanel>
                 <Stack>
                     <HeroTitle>Ask me a question.</HeroTitle>
                     <HeroSubtitle>Check out some previous questions below.</HeroSubtitle>

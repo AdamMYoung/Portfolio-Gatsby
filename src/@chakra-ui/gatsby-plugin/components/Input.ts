@@ -3,7 +3,7 @@ export const Input = {
         field: {
             borderRadius: 'full',
             borderColor: 'red.400',
-            p: 8,
+            py: 8,
         },
     },
 };

@@ -7,7 +7,7 @@ import { Layout } from '../views';
 const HeroIntro = () => {
     return (
         <Hero>
-            <HeroPanel spacing="6">
+            <HeroPanel spacing="8">
                 <Stack>
                     <HeroTitle>Adam Young</HeroTitle>
                     <Text>/ˈædəm jʌŋ/</Text>
