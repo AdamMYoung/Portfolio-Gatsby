@@ -24,7 +24,7 @@ export const Hero: FC<GridProps> = ({ children, ...rest }) => {
 
 export const HeroPanel: FC<StackProps> = ({ children, ...rest }) => {
     return (
-        <Stack order={[1, null, 'initial']} my="16" mr="16" spacing="4" {...rest}>
+        <Stack order={[1, null, 'initial']} my="16" mr={[0, null, 16]} spacing="4" {...rest}>
             {children}
         </Stack>
     );

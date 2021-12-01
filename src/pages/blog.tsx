@@ -51,7 +51,7 @@ const categories = [
 const Blogs = () => {
     return (
         <Stack spacing="8">
-            <Heading size="lg">Filter blog by topics</Heading>
+            <Heading>Filter articles by topic</Heading>
             <CategoryList onCategoriesChanged={console.log}>
                 {categories.map((c) => (
                     <CategoryListItem categoryKey={c} key={c}>
@@ -61,6 +61,13 @@ const Blogs = () => {
                     </CategoryListItem>
                 ))}
             </CategoryList>
+            <Heading variant="subtitle">
+                Prefer an{' '}
+                <Link color="red.400" variant="animate-ltr">
+                    RSS Feed
+                </Link>
+                ?
+            </Heading>
         </Stack>
     );
 };

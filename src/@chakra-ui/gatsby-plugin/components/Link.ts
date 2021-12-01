@@ -1,6 +1,7 @@
 export const Link = {
     baseStyle: {
         color: 'red.400',
+        rounded: 'lg',
     },
     variants: {
         'animate-ltr': {
@@ -19,6 +20,7 @@ export const Link = {
             },
             _focus: {
                 textDecoration: 'none',
+                boxShadow: 'none',
                 _after: {
                     transform: 'translate3d(0, 0, 0)',
                 },
