@@ -1,35 +1,34 @@
+require('dotenv').config({
+    path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
     siteMetadata: {
-        title: 'Portfolio',
         siteUrl: 'https://www.aydev.uk',
+        title: 'AYDev',
     },
     plugins: [
+        '@chakra-ui/gatsby-plugin',
         {
             resolve: 'gatsby-source-contentful',
             options: {
-                accessToken: 'YA6xOU6T2wNiOzPnjVu9JKT9LBdkJ7JoK6w1DsmK8ts',
-                spaceId: '6x69711h0cvt',
+                accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+                spaceId: process.env.CONTENTFUL_SPACE_ID,
+                host: process.env.CONTENTFUL_HOST,
             },
         },
-        {
-            resolve: 'gatsby-plugin-google-analytics',
-            options: {
-                trackingId: 'UA-140587584-1',
-            },
-        },
-        {
-            resolve: `gatsby-plugin-disqus`,
-            options: {
-                shortname: `aydev`,
-            },
-        },
-        'gatsby-plugin-styled-components',
-        'gatsby-plugin-sharp',
+        'gatsby-plugin-image',
+        // {
+        //     resolve: 'gatsby-plugin-google-analytics',
+        //     options: {
+        //         trackingId: '',
+        //     },
+        // },
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sitemap',
-        'gatsby-plugin-preload-fonts',
+        'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
-        'gatsby-plugin-postcss',
+
         {
             resolve: 'gatsby-source-filesystem',
             options: {

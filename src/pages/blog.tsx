@@ -1,53 +1,77 @@
-import * as React from 'react';
-import { graphql, navigate } from 'gatsby';
+import React, { VFC } from 'react';
+import { Box, Button, Heading, Input, Stack, Text } from '@chakra-ui/react';
+import { Layout } from '../views';
+import { CategoryList, CategoryListItem, Link } from '../components';
+import { Hero, HeroImage, HeroPanel, HeroSubtitle, HeroTitle } from '../components/sections/hero';
 
-import List from '../components/list';
-import image from '../images/Relaxing on a weekend.svg';
-import InfoPage from '../views/info-page';
-
-// markup
-const Index = ({ data }) => {
+const HeroIntro = () => {
     return (
-        <InfoPage
-            title="Blog"
-            description="A collection of tips and guides relating to software development."
-            src={image}
-            alt="Illustration of man working on a laptop in a tent"
-        >
-            <h1 className="text-5xl font-bold mb-4">Blog</h1>
-            <p className="text-lg font-semibold">
-                Below you can find my blog posts, typically about FE technologies, best practices or any issues that
-                I've faced recently.
-            </p>
-            <div className="mt-16">
-                <h2 className="text-4xl font-bold mb-4">Posts</h2>
-                <List active>
-                    {data.allContentfulBlogPost.edges.map(({ node }) => (
-                        <List.Item key={node.slug} onClick={() => navigate(`/blog${node.slug}`)}>
-                            {node.title}
-                        </List.Item>
-                    ))}
-                </List>
-            </div>
-        </InfoPage>
+        <Hero>
+            <HeroPanel spacing="6">
+                <HeroTitle>Learn development tips and tricks.</HeroTitle>
+                <HeroSubtitle>Check out the articles below.</HeroSubtitle>
+
+                <Input borderRadius="full" placeholder="Search for an article" />
+            </HeroPanel>
+
+            <HeroImage src="https://via.placeholder.com/700" />
+        </Hero>
     );
 };
 
-export const query = graphql`
-    {
-        allContentfulBlogPost(limit: 5, sort: { fields: publishDate, order: DESC }) {
-            edges {
-                node {
-                    title
-                    slug
-                    createdAt
-                    summary {
-                        summary
-                    }
-                }
-            }
-        }
-    }
-`;
+const categories = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+];
 
-export default Index;
+const Blogs = () => {
+    return (
+        <Stack spacing="8">
+            <Heading size="lg">Filter blog by topics</Heading>
+            <CategoryList onCategoriesChanged={console.log}>
+                {categories.map((c) => (
+                    <CategoryListItem categoryKey={c} key={c}>
+                        {c}
+                        {c}
+                        {c}
+                    </CategoryListItem>
+                ))}
+            </CategoryList>
+        </Stack>
+    );
+};
+
+const Blog: VFC = () => {
+    return (
+        <Layout>
+            <HeroIntro />
+            <Blogs />
+        </Layout>
+    );
+};
+
+export default Blog;
