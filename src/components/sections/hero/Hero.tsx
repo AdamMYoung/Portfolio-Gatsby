@@ -42,7 +42,7 @@ export const HeroTitle: FC<HeadingProps> = ({ children, ...rest }) => {
 
 export const HeroSubtitle: FC<TextProps> = ({ children, ...rest }) => {
     return (
-        <Heading as="p" fontSize="5xl" variant="subtitle" {...rest}>
+        <Heading as="p" fontSize="4xl" variant="subtitle" {...rest}>
             {children}
         </Heading>
     );

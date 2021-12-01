@@ -2,8 +2,8 @@ import { mode } from '@chakra-ui/theme-tools';
 
 export const Heading = {
     baseStyle: {
-        fontWeight: 'light',
-        lineHeight: 1.1,
+        fontWeight: 'normal',
+        lineHeight: 1,
     },
     variants: {
         subtitle: (props) => ({

@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { Heading } from './Heading';
 import { Image } from './Image';
 import { Input } from './Input';
+import { IconButton } from './IconButton';
 
 export const components = {
     Link,
@@ -12,4 +13,5 @@ export const components = {
     Heading,
     Image,
     Input,
+    IconButton,
 };
