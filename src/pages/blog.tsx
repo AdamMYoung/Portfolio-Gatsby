@@ -11,10 +11,11 @@ import { useBlogTopics } from '../hooks/static-queries/use-blog-topics';
 const HeroIntro = () => {
     return (
         <Hero>
-            <HeroPanel>
-                <HeroTitle>Learn development tips and tricks.</HeroTitle>
-                <HeroSubtitle>Check out the articles below.</HeroSubtitle>
-
+            <HeroPanel spacing="12">
+                <Stack>
+                    <HeroTitle>Learn development tips and tricks.</HeroTitle>
+                    <HeroSubtitle>Check out the articles below.</HeroSubtitle>
+                </Stack>
                 <Input borderRadius="full" placeholder="Search for an article" />
             </HeroPanel>
 
