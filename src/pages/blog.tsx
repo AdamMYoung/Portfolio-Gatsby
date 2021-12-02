@@ -1,10 +1,12 @@
-import React, { VFC } from 'react';
-import { Heading, Input, Stack, Text } from '@chakra-ui/react';
+import React, { useState, VFC } from 'react';
+import { Box, Button, Heading, Input, Stack, Text } from '@chakra-ui/react';
 import { BlogCard, Layout } from '../views';
 import { CardList, CategoryList, CategoryListItem, Link } from '../components';
 import { Hero, HeroImage, HeroPanel, HeroSubtitle, HeroTitle } from '../components/sections/hero';
-import { useBlogPosts } from '../hooks/static-queries/use-blog-posts/useBlogPosts';
+import { useBlogPosts } from '../hooks/static-queries/use-blog-posts';
 import { stringToLongDate } from '../utils/date';
+import { useArrayLimiter } from '../hooks';
+import { useBlogTopics } from '../hooks/static-queries/use-blog-topics';
 
 const HeroIntro = () => {
     return (
@@ -21,67 +23,52 @@ const HeroIntro = () => {
     );
 };
 
-const categories = [
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'p',
-    'q',
-    'r',
-    's',
-    't',
-    'u',
-    'v',
-    'w',
-    'x',
-    'y',
-    'z',
-];
-
 const Blogs = () => {
     const blogPosts = useBlogPosts();
+    const blogTopics = useBlogTopics();
+
+    const [blogFilters, setBlogFilters] = useState<string[]>([]);
+
+    const filteredArticles =
+        blogFilters.length === 0
+            ? blogPosts
+            : blogPosts.filter((post) => !!post.topics.find((t) => blogFilters.includes(t)));
+
+    const [visibleArticles, isAllArticlesVisible, loadMoreArticles] = useArrayLimiter(filteredArticles);
 
     return (
         <Stack spacing="8">
             <Heading>Filter articles by topic</Heading>
-            <CategoryList onCategoriesChanged={console.log}>
-                {categories.map((c) => (
+            <CategoryList onCategoriesChanged={setBlogFilters}>
+                {blogTopics.map((c) => (
                     <CategoryListItem categoryKey={c} key={c}>
-                        {c}
-                        {c}
                         {c}
                     </CategoryListItem>
                 ))}
             </CategoryList>
             <CardList>
-                {blogPosts.map(({ title, slug, heroImage, createdAt }) => (
+                {visibleArticles.map(({ id, title, slug, heroImage, createdAt }) => (
                     <BlogCard
+                        key={id}
                         to={`/blog/${slug}`}
                         title={title}
                         subtitle={stringToLongDate(createdAt)}
-                        src={heroImage.file.url}
+                        image={heroImage}
                     />
                 ))}
             </CardList>
-            <Heading variant="subtitle">
+            {!isAllArticlesVisible && (
+                <Box>
+                    <Button onClick={loadMoreArticles}>Load more articles</Button>
+                </Box>
+            )}
+            <Text variant="subtitle" fontSize="lg" lineHeight="1.12">
                 Prefer an{' '}
-                <Link color="red.400" variant="animate-ltr">
+                <Link color="red.400" variant="animate-ltr" href="/rss.xml">
                     RSS Feed
                 </Link>
                 ?
-            </Heading>
+            </Text>
         </Stack>
     );
 };

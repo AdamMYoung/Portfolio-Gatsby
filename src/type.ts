@@ -1,3 +1,5 @@
+import { ImageDataLike } from 'gatsby-plugin-image';
+
 export type BlogPost = {
     createdAt: string;
     updatedAt: string;
@@ -8,9 +10,5 @@ export type BlogPost = {
     copy: {
         copy: string;
     };
-    heroImage: {
-        file: {
-            url: string;
-        };
-    };
+    heroImage: ImageDataLike;
 };

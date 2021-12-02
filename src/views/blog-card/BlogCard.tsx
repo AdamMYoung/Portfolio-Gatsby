@@ -1,21 +1,25 @@
-import { Box, Heading, Image, Stack } from '@chakra-ui/react';
+import { Box, chakra, Heading, Image, Stack } from '@chakra-ui/react';
 import GatsbyLink from 'gatsby-link';
+import { GatsbyImage, getImage, IGatsbyImageData, ImageDataLike } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 import { CardListItem } from '../../components';
 
 type BlogCardProps = {
-    src: string;
+    image: ImageDataLike;
     title: string;
     subtitle: string;
     to: string;
 };
 
-export const BlogCard: VFC<BlogCardProps> = ({ src, title, subtitle, to }) => {
+const ChakraGatsbyImage = chakra(GatsbyImage);
+
+export const BlogCard: VFC<BlogCardProps> = ({ image, title, subtitle, to }) => {
     return (
         <CardListItem as={GatsbyLink} to={to} _hover={{ img: { borderColor: 'red' } }}>
             <Stack>
-                <Image
-                    src={src}
+                <ChakraGatsbyImage
+                    image={getImage(image)}
+                    alt={title}
                     w="full"
                     h="40rem"
                     rounded="xl"

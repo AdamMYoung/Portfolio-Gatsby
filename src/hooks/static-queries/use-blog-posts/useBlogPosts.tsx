@@ -16,9 +16,7 @@ export const useBlogPosts = () => {
                         copy
                     }
                     heroImage {
-                        file {
-                            url
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                     }
                 }
             }

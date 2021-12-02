@@ -11,8 +11,8 @@ import {
     Text,
     TextProps,
 } from '@chakra-ui/layout';
+
 import React, { FC, VFC } from 'react';
-import { useSemanticElement } from '../../../providers';
 
 export const Hero: FC<GridProps> = ({ children, ...rest }) => {
     return (
@@ -31,10 +31,8 @@ export const HeroPanel: FC<StackProps> = ({ children, ...rest }) => {
 };
 
 export const HeroTitle: FC<HeadingProps> = ({ children, ...rest }) => {
-    const semanticElement = useSemanticElement();
-
     return (
-        <Heading as={semanticElement} fontSize="5xl" {...rest}>
+        <Heading as="h1" fontSize="5xl" {...rest}>
             {children}
         </Heading>
     );
