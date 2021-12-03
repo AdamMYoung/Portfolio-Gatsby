@@ -1,19 +1,19 @@
 import { Button, FormControl, FormLabel, Input, Stack } from '@chakra-ui/react';
 import React, { VFC } from 'react';
-import { Hero, HeroPanel, HeroSubtitle, HeroTitle } from '../components/sections/hero';
+import { Hero, HeroBlock, HeroSubtitle, HeroTitle } from '../components/sections/hero';
 import { Layout } from '../views';
 
 const HeroIntro = () => {
     return (
         <Hero>
-            <HeroPanel>
+            <HeroBlock>
                 <Stack>
                     <HeroTitle>Ask me a question.</HeroTitle>
                     <HeroSubtitle>Check out some previous questions below.</HeroSubtitle>
                 </Stack>
-            </HeroPanel>
+            </HeroBlock>
 
-            <HeroPanel>
+            <HeroBlock>
                 <FormControl id="name">
                     <FormLabel>Name</FormLabel>
                     <Input borderRadius="full" placeholder="Jane Doe" />
@@ -37,7 +37,7 @@ const HeroIntro = () => {
                     />
                 </FormControl>
                 <Button variant="outline">Submit</Button>
-            </HeroPanel>
+            </HeroBlock>
         </Hero>
     );
 };

@@ -5,8 +5,10 @@ import { fonts } from './fonts';
 import { fontSizes } from './fontSizes';
 import { colors } from './colors';
 import { shadows } from './shadows';
+import { styles } from './styles';
 
 const theme = {
+    styles,
     colors,
     fonts,
     fontSizes,

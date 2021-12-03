@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { BlogPost } from '../type';
 import { Layout } from '../views';
-import { Box, Divider, Heading, Stack, Text } from '@chakra-ui/layout';
+import { Box, Divider, Heading, Spacer, Stack, Text } from '@chakra-ui/layout';
 import { stringToLongDate } from '../utils/date';
 import { Button } from '@chakra-ui/button';
 import { Image } from '@chakra-ui/image';
@@ -29,7 +29,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
     const updatedAtText = stringToLongDate(updatedAt);
 
     return (
-        <Layout>
+        <Layout spacing="12">
             <Stack spacing="6">
                 <Box>
                     <Button as={GatsbyLink} to="/blog" variant="link" pl="0">
@@ -39,26 +39,24 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                 <Stack>
                     <Heading>{title}</Heading>
                     <Heading variant="subtitle" fontSize="lg">
-                        {createdAtText}
+                        {createdAtText} ({createdAtText !== updatedAtText && `Updated on ` + updatedAtText})
                     </Heading>
                 </Stack>
             </Stack>
 
-            <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
-            {createdAtText !== updatedAtText && (
-                <Heading variant="subtitle" fontSize="lg">
-                    Last updated on {updatedAtText}
-                </Heading>
-            )}
-            <ReactMarkdown components={ChakraUIRenderer()} children={copy.copy} skipHtml />
-            <Divider />
-            <Stack spacing="4">
-                <Text fontSize="md">Written by Adam Young</Text>
-                <Text fontSize="md" variant="subtitle">
-                    Adam Young is a front-end engineer, who specializes in React and modern web technologies. He's
-                    working at <Link href="https://curve.com">Curve</Link> as a front-end engineer. He currently lives
-                    in Birmingham, UK with his fiance and two cats.
-                </Text>
+            <Stack spacing="10">
+                <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
+                <ReactMarkdown components={ChakraUIRenderer()} children={copy.copy} skipHtml />
+
+                <Divider />
+                <Stack spacing="4">
+                    <Text fontSize="md">Written by Adam Young</Text>
+                    <Text fontSize="md" variant="subtitle">
+                        Adam Young is a front-end engineer, who specializes in React and modern web technologies. He's
+                        working at <Link href="https://curve.com">Curve</Link> as a front-end engineer. He currently
+                        lives in Birmingham, UK with his fiance and two cats.
+                    </Text>
+                </Stack>
             </Stack>
         </Layout>
     );

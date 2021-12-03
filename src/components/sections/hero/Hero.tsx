@@ -22,9 +22,9 @@ export const Hero: FC<GridProps> = ({ children, ...rest }) => {
     );
 };
 
-export const HeroPanel: FC<StackProps> = ({ children, ...rest }) => {
+export const HeroBlock: FC<StackProps> = ({ children, ...rest }) => {
     return (
-        <Stack order={[1, null, 'initial']} my="8" mr={[0, null, 16]} spacing="4" {...rest}>
+        <Stack order={[1, null, 'initial']} my="8" spacing="4" mr={[0, null, 16]} {...rest}>
             {children}
         </Stack>
     );
@@ -38,7 +38,7 @@ export const HeroTitle: FC<HeadingProps> = ({ children, ...rest }) => {
     );
 };
 
-export const HeroSubtitle: FC<TextProps> = ({ children, ...rest }) => {
+export const HeroSubtitle: FC<HeadingProps> = ({ children, ...rest }) => {
     return (
         <Heading as="p" fontSize="4xl" variant="subtitle" {...rest}>
             {children}

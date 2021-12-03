@@ -1,15 +1,15 @@
 import { Stack } from '@chakra-ui/react';
 import React, { VFC } from 'react';
-import { Hero, HeroImage, HeroPanel, HeroSubtitle, HeroTitle } from '../components/sections/hero';
+import { Hero, HeroImage, HeroBlock, HeroSubtitle, HeroTitle } from '../components/sections/hero';
 import { Layout } from '../views';
 
 const HeroIntro = () => {
     return (
         <Hero>
-            <HeroPanel>
+            <HeroBlock>
                 <HeroTitle>Current and past projects.</HeroTitle>
                 <HeroSubtitle>Libraries, applications, and proof of concepts.</HeroSubtitle>
-            </HeroPanel>
+            </HeroBlock>
 
             <HeroImage src="https://via.placeholder.com/700" />
         </Hero>

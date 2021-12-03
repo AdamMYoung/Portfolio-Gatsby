@@ -1,8 +1,8 @@
 import React, { useState, VFC } from 'react';
 import { Box, Button, Heading, Input, Stack, Text } from '@chakra-ui/react';
-import { BlogCard, Layout } from '../views';
+import { BlogCard, FeaturedArticleCard, Layout } from '../views';
 import { CardList, CategoryList, CategoryListItem, Link } from '../components';
-import { Hero, HeroImage, HeroPanel, HeroSubtitle, HeroTitle } from '../components/sections/hero';
+import { Hero, HeroImage, HeroBlock, HeroSubtitle, HeroTitle } from '../components/sections/hero';
 import { useBlogPosts } from '../hooks/static-queries/use-blog-posts';
 import { stringToLongDate } from '../utils/date';
 import { useArrayLimiter } from '../hooks';
@@ -11,13 +11,18 @@ import { useBlogTopics } from '../hooks/static-queries/use-blog-topics';
 const HeroIntro = () => {
     return (
         <Hero>
-            <HeroPanel spacing="12">
+            <HeroBlock spacing="12">
                 <Stack>
                     <HeroTitle>Learn development tips and tricks.</HeroTitle>
                     <HeroSubtitle>Check out the articles below.</HeroSubtitle>
                 </Stack>
-                <Input borderRadius="full" placeholder="Search for an article" />
-            </HeroPanel>
+                <Stack spacing="4">
+                    <Input borderRadius="full" placeholder="Search for an article" />
+                    <Button as={Link} variant="outline" href="#articles">
+                        View Articles
+                    </Button>
+                </Stack>
+            </HeroBlock>
 
             <HeroImage src="https://via.placeholder.com/700" />
         </Hero>
@@ -41,13 +46,14 @@ const Blogs = () => {
         <Stack spacing="8">
             <Heading>Filter articles by topic</Heading>
             <CategoryList onCategoriesChanged={setBlogFilters}>
-                {blogTopics.map((c) => (
-                    <CategoryListItem categoryKey={c} key={c}>
-                        {c}
+                {blogTopics.map((topic) => (
+                    <CategoryListItem categoryKey={topic} key={topic}>
+                        {topic}
                     </CategoryListItem>
                 ))}
             </CategoryList>
-            <CardList>
+            <FeaturedArticleCard />
+            <CardList id="articles">
                 {visibleArticles.map(({ id, title, slug, heroImage, createdAt }) => (
                     <BlogCard
                         key={id}
