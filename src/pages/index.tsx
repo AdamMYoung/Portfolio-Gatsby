@@ -104,6 +104,26 @@ const WhoAmI = () => {
     );
 };
 
+const StuffUsed = () => {
+    return (
+        <Hero>
+            <HeroImage src="https://via.placeholder.com/700" />
+            <HeroBlock spacing="12" mr={0} ml={[0, null, 16]}>
+                <Stack spacing="4">
+                    <HeroTitle>Curious about what I use?</HeroTitle>
+                    <HeroSubtitle>
+                        I've got a "uses" page listing my tooling for development, as well as any other hobbies at the
+                        link below.
+                    </HeroSubtitle>
+                </Stack>
+                <Button as={Link} variant="outline" href="/uses">
+                    My Uses
+                </Button>
+            </HeroBlock>
+        </Hero>
+    );
+};
+
 const Index: VFC = () => {
     return (
         <Layout>
@@ -111,6 +131,7 @@ const Index: VFC = () => {
             <WhoAmI />
             <Interests />
             <FeaturedArticleCard />
+            <StuffUsed />
         </Layout>
     );
 };

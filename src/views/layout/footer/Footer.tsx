@@ -48,8 +48,12 @@ export const Footer: VFC = () => {
                         <Link color="primary" href="/stats">
                             Stats
                         </Link>
-                        <Link color="primary">Uses</Link>
-                        <Link color="primary">Photography</Link>
+                        <Link color="primary" href="/uses">
+                            Uses
+                        </Link>
+                        <Link color="primary" href="/photography">
+                            Photography
+                        </Link>
                     </Grid>
                 </Stack>
             </Grid>
