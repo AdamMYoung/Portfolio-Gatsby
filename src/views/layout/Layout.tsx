@@ -7,11 +7,10 @@ import { Navigation } from './navigation';
 
 export const Layout: FC<StackProps> = ({ children, ...rest }) => {
     return (
-        <Container maxW="1600px" minH="100vh" py="12">
+        <Container maxW="1600px" minH="100vh" pb="12">
             <Navigation />
-
-            <Container as="main" maxW="1290px" mt="16">
-                <Stack spacing="24" {...rest}>
+            <Container as="main" maxW="1280px" mt={[8, null, 16]}>
+                <Stack spacing={[16, null, 24]} {...rest}>
                     {children}
                 </Stack>
 

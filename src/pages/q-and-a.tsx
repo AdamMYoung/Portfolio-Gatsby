@@ -1,19 +1,25 @@
 import { Button, FormControl, FormLabel, Input, Stack } from '@chakra-ui/react';
 import React, { VFC } from 'react';
-import { Hero, HeroBlock, HeroSubtitle, HeroTitle } from '../components/sections/hero';
+import {
+    TwoPanel,
+    TwoPanelBlock,
+    TwoPanelHeading,
+    TwoPanelSubtitle,
+    TwoPanelTitle,
+} from '../components/sections/two-panel';
 import { Layout } from '../views';
 
 const HeroIntro = () => {
     return (
-        <Hero>
-            <HeroBlock>
-                <Stack>
-                    <HeroTitle>Ask me a question.</HeroTitle>
-                    <HeroSubtitle>Check out some previous questions below.</HeroSubtitle>
-                </Stack>
-            </HeroBlock>
+        <TwoPanel>
+            <TwoPanelBlock>
+                <TwoPanelHeading>
+                    <TwoPanelTitle>Ask me a question.</TwoPanelTitle>
+                    <TwoPanelSubtitle>Check out some previous questions below.</TwoPanelSubtitle>
+                </TwoPanelHeading>
+            </TwoPanelBlock>
 
-            <HeroBlock>
+            <TwoPanelBlock>
                 <FormControl id="name">
                     <FormLabel>Name</FormLabel>
                     <Input borderRadius="full" placeholder="Jane Doe" />
@@ -37,8 +43,8 @@ const HeroIntro = () => {
                     />
                 </FormControl>
                 <Button variant="outline">Submit</Button>
-            </HeroBlock>
-        </Hero>
+            </TwoPanelBlock>
+        </TwoPanel>
     );
 };
 

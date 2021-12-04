@@ -1,16 +1,23 @@
 import React, { VFC } from 'react';
-import { Box, Button, Heading, Spacer, Stack, Text } from '@chakra-ui/react';
+import { Button, Heading, Spacer, Stack, Text } from '@chakra-ui/react';
 import { Link, ThreePanel, ThreePanelBlock, ThreePanelImage, ThreePanelSubtitle, ThreePanelTitle } from '../components';
-import { Hero, HeroImage, HeroBlock, HeroTitle, HeroSubtitle } from '../components/sections/hero';
+import {
+    TwoPanel,
+    TwoPanelImage,
+    TwoPanelBlock,
+    TwoPanelTitle,
+    TwoPanelSubtitle,
+    TwoPanelHeading,
+} from '../components/sections/two-panel';
 import { FeaturedArticleCard, Layout } from '../views';
-import { Card } from '../components/card';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const HeroIntro = () => {
     return (
-        <Hero>
-            <HeroBlock spacing="8">
+        <TwoPanel>
+            <TwoPanelBlock>
                 <Stack>
-                    <HeroTitle>Adam Young</HeroTitle>
+                    <TwoPanelTitle>Adam Young</TwoPanelTitle>
                     <Text>/ˈædəm jʌŋ/</Text>
                     <Text variant="subtitle" as="i" fontWeight="semibold">
                         noun
@@ -32,23 +39,29 @@ const HeroIntro = () => {
                         About Me
                     </Button>
                 </Stack>
-            </HeroBlock>
+            </TwoPanelBlock>
 
-            <HeroImage src="https://via.placeholder.com/700" />
-        </Hero>
+            <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/me.jpg" alt="" />
+        </TwoPanel>
     );
 };
 
 const Interests: VFC = () => {
     return (
         <Stack spacing="8">
-            <Heading fontSize="5xl" textAlign="center" id="about-me">
+            <Heading fontSize={['4xl', null, '5xl']} textAlign={['left', null, 'center']} id="about-me">
                 What am I <i>into</i>?
             </Heading>
 
             <ThreePanel>
                 <ThreePanelBlock>
-                    <ThreePanelImage src="https://via.placeholder.com/700" />
+                    <StaticImage
+                        style={{ borderRadius: '12px' }}
+                        placeholder="blurred"
+                        src="../images/laptop-on-table.jpeg"
+                        alt=""
+                    />
+
                     <Stack>
                         <ThreePanelTitle>Programming</ThreePanelTitle>
                         <ThreePanelSubtitle>
@@ -57,21 +70,36 @@ const Interests: VFC = () => {
                     </Stack>
                 </ThreePanelBlock>
                 <ThreePanelBlock>
-                    <ThreePanelImage src="https://via.placeholder.com/700" />
+                    <StaticImage
+                        style={{ borderRadius: '12px' }}
+                        placeholder="blurred"
+                        src="../images/photography.jpg"
+                        alt=""
+                    />
                     <Stack>
                         <ThreePanelTitle>Photography</ThreePanelTitle>
                         <ThreePanelSubtitle>My reason to head outside.</ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>
                 <ThreePanelBlock>
-                    <ThreePanelImage src="https://via.placeholder.com/700" />
+                    <StaticImage
+                        style={{ borderRadius: '12px' }}
+                        placeholder="blurred"
+                        src="../images/3d-printing.jpg"
+                        alt=""
+                    />
                     <Stack>
                         <ThreePanelTitle>3D Printing</ThreePanelTitle>
                         <ThreePanelSubtitle>Building the weirdest stuff.</ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>
                 <ThreePanelBlock>
-                    <ThreePanelImage src="https://via.placeholder.com/700" />
+                    <StaticImage
+                        style={{ borderRadius: '12px' }}
+                        placeholder="blurred"
+                        src="../images/cats.jpg"
+                        alt=""
+                    />
                     <Stack>
                         <ThreePanelTitle>Cats</ThreePanelTitle>
                         <ThreePanelSubtitle>How could I not include them?</ThreePanelSubtitle>
@@ -84,11 +112,13 @@ const Interests: VFC = () => {
 
 const WhoAmI = () => {
     return (
-        <Hero>
-            <HeroImage alignSelf="center" src="https://via.placeholder.com/700" />
-            <HeroBlock mt={[8, null, 0]} mr={0} ml={[0, null, 16]}>
-                <HeroTitle>Who am I?</HeroTitle>
-                <HeroSubtitle fontSize="2xl">I was born in 1997, in the North East of England. </HeroSubtitle>
+        <TwoPanel>
+            <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/ne-england.jpg" alt="" />
+            <TwoPanelBlock>
+                <TwoPanelHeading>
+                    <TwoPanelTitle>Who am I?</TwoPanelTitle>
+                    <TwoPanelSubtitle>I was born in 1997, in the North East of England.</TwoPanelSubtitle>
+                </TwoPanelHeading>
                 <Text>
                     I attended Teesside University, and graduated in 2018 with a Bachelors in Computer Science. During
                     my final year of university is when I first started with React, and I've been obsessed with web
@@ -99,28 +129,28 @@ const WhoAmI = () => {
                     software development house as a full stack developer for around 2 years, working with mapping
                     libraries and design systems before moving into a fully front-end role at Curve.
                 </Text>
-            </HeroBlock>
-        </Hero>
+            </TwoPanelBlock>
+        </TwoPanel>
     );
 };
 
 const StuffUsed = () => {
     return (
-        <Hero>
-            <HeroImage src="https://via.placeholder.com/700" />
-            <HeroBlock spacing="12" mr={0} ml={[0, null, 16]}>
-                <Stack spacing="4">
-                    <HeroTitle>Curious about what I use?</HeroTitle>
-                    <HeroSubtitle>
-                        I've got a "uses" page listing my tooling for development, as well as any other hobbies at the
-                        link below.
-                    </HeroSubtitle>
-                </Stack>
+        <TwoPanel>
+            <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/edc.jpg" alt="" />
+            <TwoPanelBlock>
+                <TwoPanelHeading>
+                    <TwoPanelTitle>Curious about what I use?</TwoPanelTitle>
+                    <TwoPanelSubtitle>
+                        I've got a "uses" page listing everything I use day-to-day at the link below.
+                    </TwoPanelSubtitle>
+                </TwoPanelHeading>
+
                 <Button as={Link} variant="outline" href="/uses">
                     My Uses
                 </Button>
-            </HeroBlock>
-        </Hero>
+            </TwoPanelBlock>
+        </TwoPanel>
     );
 };
 

@@ -1,8 +1,7 @@
-import { Box, chakra, Heading, Image, LinkBox, LinkOverlay, Stack } from '@chakra-ui/react';
+import { chakra, Heading, Image, LinkBox, LinkOverlay, Stack } from '@chakra-ui/react';
 import GatsbyLink from 'gatsby-link';
-import { GatsbyImage, getImage, IGatsbyImageData, ImageDataLike } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-import { CardListItem } from '../../components';
 
 type BlogCardProps = {
     image: ImageDataLike;
@@ -24,6 +23,7 @@ export const BlogCard: VFC<BlogCardProps> = ({ image, title, subtitle, to }) => 
                     h="40rem"
                     rounded="xl"
                     fit="cover"
+                    pointerEvents="none"
                     transition="border 0.2s ease-in-out"
                     border="4px"
                     borderColor="transparent"

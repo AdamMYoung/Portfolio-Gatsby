@@ -2,30 +2,38 @@ import React, { useState, VFC } from 'react';
 import { Box, Button, Heading, Input, Stack, Text } from '@chakra-ui/react';
 import { BlogCard, FeaturedArticleCard, Layout } from '../views';
 import { CardList, CategoryList, CategoryListItem, Link } from '../components';
-import { Hero, HeroImage, HeroBlock, HeroSubtitle, HeroTitle } from '../components/sections/hero';
+import {
+    TwoPanel,
+    TwoPanelImage,
+    TwoPanelBlock,
+    TwoPanelHeading,
+    TwoPanelSubtitle,
+    TwoPanelTitle,
+} from '../components/sections/two-panel';
 import { useBlogPosts } from '../hooks/static-queries/use-blog-posts';
 import { stringToLongDate } from '../utils/date';
 import { useArrayLimiter } from '../hooks';
 import { useBlogTopics } from '../hooks/static-queries/use-blog-topics';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const HeroIntro = () => {
     return (
-        <Hero>
-            <HeroBlock spacing="12">
-                <Stack>
-                    <HeroTitle>Learn development tips and tricks.</HeroTitle>
-                    <HeroSubtitle>Check out the articles below.</HeroSubtitle>
-                </Stack>
-                <Stack spacing="4">
+        <TwoPanel>
+            <TwoPanelBlock>
+                <TwoPanelHeading>
+                    <TwoPanelTitle>Learn development tips and tricks.</TwoPanelTitle>
+                    <TwoPanelSubtitle>Check out the articles below.</TwoPanelSubtitle>
+                </TwoPanelHeading>
+                <Stack pt="4" spacing="4">
                     <Input borderRadius="full" placeholder="Search for an article" />
                     <Button as={Link} variant="outline" href="#articles">
                         View Articles
                     </Button>
                 </Stack>
-            </HeroBlock>
+            </TwoPanelBlock>
 
-            <HeroImage src="https://via.placeholder.com/700" />
-        </Hero>
+            <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/blog.jpg" alt="" />
+        </TwoPanel>
     );
 };
 

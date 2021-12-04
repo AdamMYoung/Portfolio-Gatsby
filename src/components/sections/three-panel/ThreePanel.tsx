@@ -1,4 +1,4 @@
-import { Image, ImageProps, Grid, GridProps, Heading, HeadingProps } from '@chakra-ui/react';
+import { Image, ImageProps, Grid, GridProps, Heading, HeadingProps, BoxProps, Box } from '@chakra-ui/react';
 import React, { FC, VFC } from 'react';
 
 export const ThreePanel: FC<GridProps> = ({ children, ...rest }) => {
@@ -33,6 +33,10 @@ export const ThreePanelSubtitle: FC<HeadingProps> = ({ children, ...rest }) => {
     );
 };
 
-export const ThreePanelImage: VFC<ImageProps> = (props) => {
-    return <Image rounded="xl" mx={[null, null, 'auto']} {...props} />;
+export const ThreePanelImage: FC<BoxProps> = ({ children, ...rest }) => {
+    return (
+        <Box rounded="xl" mx={[null, null, 'auto']} {...rest}>
+            {children}
+        </Box>
+    );
 };

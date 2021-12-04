@@ -22,6 +22,18 @@ type BlogPostProps = {
 
 const ChakraGatsbyImage = chakra(GatsbyImage);
 
+const newTheme = {
+    a: (props) => {
+        const { href, children } = props;
+
+        return (
+            <Link target="_blank" rel="noopener noreferer" href={href}>
+                {children}
+            </Link>
+        );
+    },
+};
+
 const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
     const { title, createdAt, updatedAt, heroImage, copy } = data.contentfulBlogPost;
 
@@ -46,7 +58,9 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
 
             <Stack spacing="10">
                 <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
-                <ReactMarkdown components={ChakraUIRenderer()} children={copy.copy} skipHtml />
+                <Stack spacing="6" fontSize="xl">
+                    <ReactMarkdown components={ChakraUIRenderer(newTheme)} children={copy.copy} skipHtml />
+                </Stack>
 
                 <Divider />
                 <Stack spacing="4">
@@ -54,7 +68,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                     <Text fontSize="md" variant="subtitle">
                         Adam Young is a front-end engineer, who specializes in React and modern web technologies. He's
                         working at <Link href="https://curve.com">Curve</Link> as a front-end engineer. He currently
-                        lives in Birmingham, UK with his fiance and two cats.
+                        lives in Birmingham with his fiancé and two cats.
                     </Text>
                 </Stack>
             </Stack>
