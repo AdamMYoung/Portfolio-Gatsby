@@ -1,13 +1,10 @@
 import { Divider, Grid, Stack } from '@chakra-ui/layout';
 import {
     Box,
-    Button,
-    ButtonGroup,
     Drawer,
     DrawerBody,
     DrawerCloseButton,
     DrawerContent,
-    DrawerHeader,
     DrawerOverlay,
     DrawerProps,
     useBreakpointValue,
@@ -79,7 +76,7 @@ export const Navigation: VFC = () => {
 
                 <Box>
                     {!isMobile && (
-                        <Stack direction="row" spacing="12" mx="auto">
+                        <Stack visibility={['hidden', null, null, 'visible']} direction="row" spacing="12" mx="auto">
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/blog">
                                 Blog
                             </Link>
