@@ -9,16 +9,22 @@ import {
     TwoPanelTitle,
 } from '../components/sections/two-panel';
 import { Layout } from '../views';
+import { SEO } from '../views/seo/SEO';
 
 const HeroIntro = () => {
     return (
         <TwoPanel>
             <TwoPanelBlock>
-                <TwoPanelTitle>Current and past projects.</TwoPanelTitle>
+                <TwoPanelTitle as="h1">Current and past projects.</TwoPanelTitle>
                 <TwoPanelSubtitle>Libraries, applications, and proof of concepts.</TwoPanelSubtitle>
             </TwoPanelBlock>
 
-            <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/projects.jpg" alt="" />
+            <StaticImage
+                style={{ borderRadius: '12px' }}
+                placeholder="blurred"
+                src="../images/projects.jpg"
+                alt="A wireframe sketch of an application"
+            />
         </TwoPanel>
     );
 };
@@ -49,6 +55,7 @@ const ProjectList = () => {
 const Projects: VFC = () => {
     return (
         <Layout>
+            <SEO title="Projects" description="All websites, libraries and other bits of code I've developed." />
             <HeroIntro />
             <ProjectList />
         </Layout>

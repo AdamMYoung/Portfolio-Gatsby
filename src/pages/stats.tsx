@@ -3,12 +3,14 @@ import { Progress } from '@chakra-ui/progress';
 import { Stat, StatHelpText, StatNumber } from '@chakra-ui/stat';
 import React, { VFC } from 'react';
 import { Layout } from '../views';
+import { SEO } from '../views/seo/SEO';
 
 const Stats: VFC = () => {
     return (
         <Layout>
+            <SEO title="Stats" description="Statistics across my development career, skills and more." />
             <Stack spacing="4">
-                <Heading>My Stats</Heading>
+                <Heading as="h1">My Stats</Heading>
                 <Stack>
                     <Heading as="h2" fontSize="lg">
                         Github

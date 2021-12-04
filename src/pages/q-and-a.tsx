@@ -8,13 +8,14 @@ import {
     TwoPanelTitle,
 } from '../components/sections/two-panel';
 import { Layout } from '../views';
+import { SEO } from '../views/seo/SEO';
 
 const HeroIntro = () => {
     return (
         <TwoPanel>
             <TwoPanelBlock>
                 <TwoPanelHeading>
-                    <TwoPanelTitle>Ask me a question.</TwoPanelTitle>
+                    <TwoPanelTitle as="h1">Ask me a question.</TwoPanelTitle>
                     <TwoPanelSubtitle>Check out some previous questions below.</TwoPanelSubtitle>
                 </TwoPanelHeading>
             </TwoPanelBlock>
@@ -51,6 +52,10 @@ const HeroIntro = () => {
 const QAndA: VFC = () => {
     return (
         <Layout>
+            <SEO
+                title="Q&A"
+                description="Ask a question, get a response. Have a look through questions asked by others too."
+            />
             <HeroIntro />
         </Layout>
     );

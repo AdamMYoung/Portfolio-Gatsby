@@ -34,7 +34,7 @@ export const TwoPanelHeading: FC<StackProps> = ({ children, ...rest }) => {
 
 export const TwoPanelTitle: FC<HeadingProps> = ({ children, ...rest }) => {
     return (
-        <Heading as="h1" fontSize={['4xl', null, '5xl']} {...rest}>
+        <Heading as="h2" fontSize={['4xl', null, '5xl']} {...rest}>
             {children}
         </Heading>
     );

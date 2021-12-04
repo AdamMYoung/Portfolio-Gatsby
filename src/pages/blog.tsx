@@ -15,13 +15,14 @@ import { stringToLongDate } from '../utils/date';
 import { useArrayLimiter } from '../hooks';
 import { useBlogTopics } from '../hooks/static-queries/use-blog-topics';
 import { StaticImage } from 'gatsby-plugin-image';
+import { SEO } from '../views/seo/SEO';
 
 const HeroIntro = () => {
     return (
         <TwoPanel>
             <TwoPanelBlock>
                 <TwoPanelHeading>
-                    <TwoPanelTitle>Learn development tips and tricks.</TwoPanelTitle>
+                    <TwoPanelTitle as="h1">Learn development tips and tricks.</TwoPanelTitle>
                     <TwoPanelSubtitle>Check out the articles below.</TwoPanelSubtitle>
                 </TwoPanelHeading>
                 <Stack pt="4" spacing="4">
@@ -32,7 +33,12 @@ const HeroIntro = () => {
                 </Stack>
             </TwoPanelBlock>
 
-            <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/blog.jpg" alt="" />
+            <StaticImage
+                style={{ borderRadius: '12px' }}
+                placeholder="blurred"
+                src="../images/blog.jpg"
+                alt="Hands ready to type on a laptop"
+            />
         </TwoPanel>
     );
 };
@@ -91,6 +97,7 @@ const Blogs = () => {
 const Blog: VFC = () => {
     return (
         <Layout>
+            <SEO title="Blog" description="The AYDev Blog. Find tips and guides across web development right here." />
             <HeroIntro />
             <Blogs />
         </Layout>

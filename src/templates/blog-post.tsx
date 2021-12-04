@@ -12,6 +12,7 @@ import GatsbyLink from 'gatsby-link';
 import { Link } from '../components';
 import { chakra } from '@chakra-ui/react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { SEO } from '../views/seo/SEO';
 
 type BlogPostProps = {
     data: {
@@ -30,13 +31,22 @@ const newTheme = {
 };
 
 const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
-    const { title, createdAt, updatedAt, heroImage, copy } = data.contentfulPageBlogPost;
+    const { title, summary, createdAt, updatedAt, heroImage, copy, topics } = data.contentfulPageBlogPost;
 
     const createdAtText = stringToLongDate(createdAt);
     const updatedAtText = stringToLongDate(updatedAt);
 
     return (
         <Layout spacing="12">
+            <SEO title={title} description={summary.summary} imageUrl={heroImage.file.url} imageAlt={title}>
+                <meta property="og:type" content="article" />
+                <meta property="og:article:published_time" content={createdAt} />
+                <meta property="og:article:modified_time" content={updatedAt} />
+                <meta property="og:article:section" content="Software Development" />
+                {topics.map((t) => (
+                    <meta property="og:article:tag" content={t} />
+                ))}
+            </SEO>
             <Stack spacing="6">
                 <Box>
                     <Button as={GatsbyLink} to="/blog" variant="link" pl="0">
@@ -82,10 +92,16 @@ export const query = graphql`
             topics
             title
             slug
+            summary {
+                summary
+            }
             copy {
                 copy
             }
             heroImage {
+                file {
+                    url
+                }
                 gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
             }
         }

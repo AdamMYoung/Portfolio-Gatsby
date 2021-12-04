@@ -9,16 +9,22 @@ import {
     TwoPanelTitle,
 } from '../components/sections/two-panel';
 import { Layout } from '../views';
+import { SEO } from '../views/seo/SEO';
 
 const HeroIntro = () => {
     return (
         <TwoPanel>
             <TwoPanelBlock>
-                <TwoPanelTitle>My Uses.</TwoPanelTitle>
+                <TwoPanelTitle as="h1">My Uses.</TwoPanelTitle>
                 <TwoPanelSubtitle>Equipment, software, hardware that I use for work and hobbies.</TwoPanelSubtitle>
             </TwoPanelBlock>
 
-            <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/edc.jpg" alt="" />
+            <StaticImage
+                style={{ borderRadius: '12px' }}
+                placeholder="blurred"
+                src="../images/edc.jpg"
+                alt="Various everyday items, such as a watch, wallet and laptop"
+            />
         </TwoPanel>
     );
 };
@@ -105,6 +111,10 @@ const PhotographyList = () => {
 const Uses: VFC = () => {
     return (
         <Layout>
+            <SEO
+                title="Uses"
+                description="The bits and pieces I use daily, from software development to photography."
+            />
             <HeroIntro />
             <WorkList />
             <PrintingList />

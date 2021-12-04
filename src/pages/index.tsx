@@ -11,13 +11,14 @@ import {
 } from '../components/sections/two-panel';
 import { FeaturedArticleCard, Layout } from '../views';
 import { StaticImage } from 'gatsby-plugin-image';
+import { SEO } from '../views/seo/SEO';
 
 const HeroIntro = () => {
     return (
         <TwoPanel>
             <TwoPanelBlock>
                 <Stack>
-                    <TwoPanelTitle>Adam Young</TwoPanelTitle>
+                    <TwoPanelTitle as="h1">Adam Young</TwoPanelTitle>
                     <Text>/ˈædəm jʌŋ/</Text>
                     <Text variant="subtitle" as="i" fontWeight="semibold">
                         noun
@@ -41,7 +42,12 @@ const HeroIntro = () => {
                 </Stack>
             </TwoPanelBlock>
 
-            <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/me.jpg" alt="" />
+            <StaticImage
+                style={{ borderRadius: '12px' }}
+                placeholder="blurred"
+                src="../images/me.jpg"
+                alt="A self portrait of me and my partner"
+            />
         </TwoPanel>
     );
 };
@@ -49,7 +55,7 @@ const HeroIntro = () => {
 const Interests: VFC = () => {
     return (
         <Stack spacing="8">
-            <Heading fontSize={['4xl', null, '5xl']} textAlign={['left', null, 'center']}>
+            <Heading as="h2" fontSize={['4xl', null, '5xl']} textAlign={['left', null, 'center']}>
                 What am I <i>into</i>?
             </Heading>
 
@@ -59,11 +65,11 @@ const Interests: VFC = () => {
                         style={{ borderRadius: '12px' }}
                         placeholder="blurred"
                         src="../images/laptop-on-table.jpeg"
-                        alt=""
+                        alt="Laptop on a table, with code on the screen."
                     />
 
                     <Stack>
-                        <ThreePanelTitle>Programming</ThreePanelTitle>
+                        <ThreePanelTitle as="h3">Programming</ThreePanelTitle>
                         <ThreePanelSubtitle>
                             Currently a Software Engineer at <Link href="https://curve.com">Curve</Link>.
                         </ThreePanelSubtitle>
@@ -74,10 +80,10 @@ const Interests: VFC = () => {
                         style={{ borderRadius: '12px' }}
                         placeholder="blurred"
                         src="../images/photography.jpg"
-                        alt=""
+                        alt="An image of a DSLR camera."
                     />
                     <Stack>
-                        <ThreePanelTitle>Photography</ThreePanelTitle>
+                        <ThreePanelTitle as="h3">Photography</ThreePanelTitle>
                         <ThreePanelSubtitle>My reason to head outside.</ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>
@@ -86,10 +92,10 @@ const Interests: VFC = () => {
                         style={{ borderRadius: '12px' }}
                         placeholder="blurred"
                         src="../images/3d-printing.jpg"
-                        alt=""
+                        alt="A 3D printer midway through printing."
                     />
                     <Stack>
-                        <ThreePanelTitle>3D Printing</ThreePanelTitle>
+                        <ThreePanelTitle as="h3">3D Printing</ThreePanelTitle>
                         <ThreePanelSubtitle>Building the weirdest stuff.</ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>
@@ -98,10 +104,10 @@ const Interests: VFC = () => {
                         style={{ borderRadius: '12px' }}
                         placeholder="blurred"
                         src="../images/cats.jpg"
-                        alt=""
+                        alt="Two cats, one black one tabby, laying together in a cat bed."
                     />
                     <Stack>
-                        <ThreePanelTitle>Cats</ThreePanelTitle>
+                        <ThreePanelTitle as="h3">Cats</ThreePanelTitle>
                         <ThreePanelSubtitle>How could I not include them?</ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>
@@ -113,7 +119,12 @@ const Interests: VFC = () => {
 const WhoAmI = () => {
     return (
         <TwoPanel id="about-me">
-            <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/ne-england.jpg" alt="" />
+            <StaticImage
+                style={{ borderRadius: '12px' }}
+                placeholder="blurred"
+                src="../images/ne-england.jpg"
+                alt="A scenic picture of the english countryside"
+            />
             <TwoPanelBlock>
                 <TwoPanelHeading>
                     <TwoPanelTitle>Who am I?</TwoPanelTitle>
@@ -137,7 +148,12 @@ const WhoAmI = () => {
 const StuffUsed = () => {
     return (
         <TwoPanel>
-            <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/edc.jpg" alt="" />
+            <StaticImage
+                style={{ borderRadius: '12px' }}
+                placeholder="blurred"
+                src="../images/edc.jpg"
+                alt="Various everyday items, such as a watch, wallet and laptop"
+            />
             <TwoPanelBlock>
                 <TwoPanelHeading>
                     <TwoPanelTitle>Curious about what I use?</TwoPanelTitle>
@@ -157,6 +173,7 @@ const StuffUsed = () => {
 const Index: VFC = () => {
     return (
         <Layout>
+            <SEO title="Home" description="The home page of AYDev" />
             <HeroIntro />
             <WhoAmI />
             <Interests />

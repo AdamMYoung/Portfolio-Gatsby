@@ -6,9 +6,16 @@ export type BlogPost = {
     id: string;
     topics: string[];
     title: string;
+    summary: {
+        summary: string;
+    };
     slug: string;
     copy: {
         copy: string;
     };
-    heroImage: ImageDataLike;
+    heroImage: ImageDataLike & {
+        file: {
+            url: string;
+        };
+    };
 };
