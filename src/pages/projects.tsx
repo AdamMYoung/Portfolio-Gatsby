@@ -24,6 +24,7 @@ const HeroIntro = () => {
                 placeholder="blurred"
                 src="../images/projects.jpg"
                 alt="A wireframe sketch of an application"
+                width={1200}
             />
         </TwoPanel>
     );

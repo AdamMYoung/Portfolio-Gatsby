@@ -24,6 +24,7 @@ const HeroIntro = () => {
                 placeholder="blurred"
                 src="../images/edc.jpg"
                 alt="Various everyday items, such as a watch, wallet and laptop"
+                width={1200}
             />
         </TwoPanel>
     );

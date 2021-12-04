@@ -38,6 +38,7 @@ const HeroIntro = () => {
                 placeholder="blurred"
                 src="../images/blog.jpg"
                 alt="Hands ready to type on a laptop"
+                width={900}
             />
         </TwoPanel>
     );

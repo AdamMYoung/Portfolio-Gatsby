@@ -47,6 +47,7 @@ const HeroIntro = () => {
                 placeholder="blurred"
                 src="../images/me.jpg"
                 alt="A self portrait of me and my partner"
+                width={1200}
             />
         </TwoPanel>
     );
@@ -66,6 +67,7 @@ const Interests: VFC = () => {
                         placeholder="blurred"
                         src="../images/laptop-on-table.jpeg"
                         alt="Laptop on a table, with code on the screen."
+                        width={1200}
                     />
 
                     <Stack>
@@ -81,6 +83,7 @@ const Interests: VFC = () => {
                         placeholder="blurred"
                         src="../images/photography.jpg"
                         alt="An image of a DSLR camera."
+                        width={1200}
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">Photography</ThreePanelTitle>
@@ -93,6 +96,7 @@ const Interests: VFC = () => {
                         placeholder="blurred"
                         src="../images/3d-printing.jpg"
                         alt="A 3D printer midway through printing."
+                        width={1200}
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">3D Printing</ThreePanelTitle>
@@ -105,6 +109,7 @@ const Interests: VFC = () => {
                         placeholder="blurred"
                         src="../images/cats.jpg"
                         alt="Two cats, one black one tabby, laying together in a cat bed."
+                        width={1200}
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">Cats</ThreePanelTitle>
@@ -124,6 +129,7 @@ const WhoAmI = () => {
                 placeholder="blurred"
                 src="../images/ne-england.jpg"
                 alt="A scenic picture of the english countryside"
+                width={1200}
             />
             <TwoPanelBlock>
                 <TwoPanelHeading>
@@ -153,6 +159,7 @@ const StuffUsed = () => {
                 placeholder="blurred"
                 src="../images/edc.jpg"
                 alt="Various everyday items, such as a watch, wallet and laptop"
+                width={1200}
             />
             <TwoPanelBlock>
                 <TwoPanelHeading>
