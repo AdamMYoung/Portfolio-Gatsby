@@ -23,7 +23,7 @@ export const useFeaturedArticle = () => {
                         summary
                     }
                     heroImage {
-                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                        gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                     }
                 }
             }
