@@ -66,7 +66,7 @@ module.exports = {
                                     url: site.siteMetadata.siteUrl + '/blog/' + node.slug,
                                     guid: site.siteMetadata.siteUrl + '/blog/' + node.slug,
                                     image: {
-                                        url: node.TwoPanelImage.file.url,
+                                        url: node.heroImage.file.url,
                                         title: node.title,
                                         link: site.siteMetadata.siteUrl,
                                     },
@@ -90,7 +90,7 @@ module.exports = {
                                 copy {
                                     copy
                                 }
-                                TwoPanelImage {
+                                heroImage {
                                   file {
                                       url
                                   }
