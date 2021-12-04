@@ -58,7 +58,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
 
             <Stack spacing="10">
                 <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
-                <Stack spacing="6" fontSize="xl">
+                <Stack spacing="6" fontSize={['md', null, 'xl']}>
                     <ReactMarkdown components={ChakraUIRenderer(newTheme)} children={copy.copy} skipHtml />
                 </Stack>
 

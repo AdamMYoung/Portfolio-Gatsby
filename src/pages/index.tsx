@@ -49,7 +49,7 @@ const HeroIntro = () => {
 const Interests: VFC = () => {
     return (
         <Stack spacing="8">
-            <Heading fontSize={['4xl', null, '5xl']} textAlign={['left', null, 'center']} id="about-me">
+            <Heading fontSize={['4xl', null, '5xl']} textAlign={['left', null, 'center']}>
                 What am I <i>into</i>?
             </Heading>
 
@@ -112,7 +112,7 @@ const Interests: VFC = () => {
 
 const WhoAmI = () => {
     return (
-        <TwoPanel>
+        <TwoPanel id="about-me">
             <StaticImage style={{ borderRadius: '12px' }} placeholder="blurred" src="../images/ne-england.jpg" alt="" />
             <TwoPanelBlock>
                 <TwoPanelHeading>
