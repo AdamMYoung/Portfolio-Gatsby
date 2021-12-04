@@ -8,7 +8,7 @@ import { useIsMobile } from '../../hooks';
 export const DarkModeToggle = () => {
     const { colorMode, toggleColorMode } = useColorMode();
 
-    const isMobile = useIsMobile();
+    const isMobile = useBreakpointValue([true, null, null, false]);
 
     if (isMobile) {
         return (
