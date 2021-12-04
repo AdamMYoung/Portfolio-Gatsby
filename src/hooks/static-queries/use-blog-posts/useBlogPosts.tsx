@@ -2,9 +2,9 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { BlogPost } from '../../../type';
 
 export const useBlogPosts = () => {
-    const posts = useStaticQuery<{ allContentfulBlogPost: { nodes: BlogPost[] } }>(graphql`
+    const posts = useStaticQuery<{ allContentfulPageBlogPost: { nodes: BlogPost[] } }>(graphql`
         {
-            allContentfulBlogPost {
+            allContentfulPageBlogPost {
                 nodes {
                     createdAt
                     updatedAt
@@ -23,5 +23,5 @@ export const useBlogPosts = () => {
         }
     `);
 
-    return posts.allContentfulBlogPost.nodes;
+    return posts.allContentfulPageBlogPost.nodes;
 };

@@ -57,8 +57,8 @@ module.exports = {
               `,
                 feeds: [
                     {
-                        serialize: ({ query: { site, allContentfulBlogPost } }) => {
-                            return allContentfulBlogPost.nodes.map((node) => {
+                        serialize: ({ query: { site, allContentfulPageBlogPost } }) => {
+                            return allContentfulPageBlogPost.nodes.map((node) => {
                                 return {
                                     title: node.title,
                                     description: node.summary.summary,
@@ -76,7 +76,7 @@ module.exports = {
                         },
                         query: `
                     {
-                        allContentfulBlogPost {
+                        allContentfulPageBlogPost {
                             nodes {
                                 createdAt
                                 updatedAt

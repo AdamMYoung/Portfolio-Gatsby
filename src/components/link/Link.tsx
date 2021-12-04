@@ -12,7 +12,7 @@ export const Link: FC<ChakraLinkProps> = ({ children, href, ...rest }) => {
     }
 
     return (
-        <ChakraLink {...rest} href={href}>
+        <ChakraLink {...rest} href={href} target="_blank" rel="noopener noreferrer">
             {children}
         </ChakraLink>
     );

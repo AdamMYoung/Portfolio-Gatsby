@@ -1,11 +1,26 @@
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { useColorMode } from '@chakra-ui/react';
+import { Button, useColorMode } from '@chakra-ui/react';
 import React from 'react';
 
 import { MenuIconButton } from '../../components';
+import { useIsMobile } from '../../hooks';
 
 export const DarkModeToggle = () => {
     const { colorMode, toggleColorMode } = useColorMode();
+
+    const isMobile = useIsMobile();
+
+    if (isMobile) {
+        return (
+            <Button
+                onClick={toggleColorMode}
+                variant="outline"
+                leftIcon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+            >
+                {`${colorMode === 'light' ? 'Dark' : 'Light'} Mode`}
+            </Button>
+        );
+    }
 
     return (
         <MenuIconButton

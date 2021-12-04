@@ -1,4 +1,4 @@
-import { Stack, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, Stack, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 import {
@@ -25,24 +25,24 @@ const HeroIntro = () => {
 
 const ProjectList = () => {
     return (
-        <Table colorScheme="white">
-            <Thead>
-                <Tr>
-                    <Th>Name</Th>
-                    <Th>Description</Th>
-                    <Th>Languages</Th>
-                    <Th>Last Updated</Th>
-                </Tr>
-            </Thead>
-            <Tbody>
-                <Tr>
-                    <Td></Td>
-                    <Td></Td>
-                    <Td></Td>
-                    <Td></Td>
-                </Tr>
-            </Tbody>
-        </Table>
+        <Box overflow="none" overflowX="auto">
+            <Table colorScheme="white">
+                <Thead>
+                    <Tr>
+                        <Th>Name</Th>
+                        <Th>Description</Th>
+                        <Th>Languages</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    <Tr>
+                        <Td></Td>
+                        <Td></Td>
+                        <Td></Td>
+                    </Tr>
+                </Tbody>
+            </Table>
+        </Box>
     );
 };
 

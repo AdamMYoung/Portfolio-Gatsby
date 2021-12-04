@@ -5,10 +5,9 @@ import ReactMarkdown from 'react-markdown';
 
 import { BlogPost } from '../type';
 import { Layout } from '../views';
-import { Box, Divider, Heading, Spacer, Stack, Text } from '@chakra-ui/layout';
+import { Box, Divider, Heading, Stack, Text } from '@chakra-ui/layout';
 import { stringToLongDate } from '../utils/date';
 import { Button } from '@chakra-ui/button';
-import { Image } from '@chakra-ui/image';
 import GatsbyLink from 'gatsby-link';
 import { Link } from '../components';
 import { chakra } from '@chakra-ui/react';
@@ -16,7 +15,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 type BlogPostProps = {
     data: {
-        contentfulBlogPost: BlogPost;
+        contentfulPageBlogPost: BlogPost;
     };
 };
 
@@ -26,16 +25,12 @@ const newTheme = {
     a: (props) => {
         const { href, children } = props;
 
-        return (
-            <Link target="_blank" rel="noopener noreferer" href={href}>
-                {children}
-            </Link>
-        );
+        return <Link href={href}>{children}</Link>;
     },
 };
 
 const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
-    const { title, createdAt, updatedAt, heroImage, copy } = data.contentfulBlogPost;
+    const { title, createdAt, updatedAt, heroImage, copy } = data.contentfulPageBlogPost;
 
     const createdAtText = stringToLongDate(createdAt);
     const updatedAtText = stringToLongDate(updatedAt);
@@ -80,7 +75,7 @@ export default BlogEntry;
 
 export const query = graphql`
     query ($slug: String!) {
-        contentfulBlogPost(slug: { eq: $slug }) {
+        contentfulPageBlogPost(slug: { eq: $slug }) {
             createdAt
             updatedAt
             id

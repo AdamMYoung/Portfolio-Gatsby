@@ -20,7 +20,7 @@ export const BlogCard: VFC<BlogCardProps> = ({ image, title, subtitle, to }) => 
                     image={getImage(image)}
                     alt={title}
                     w="full"
-                    h="40rem"
+                    h={['25rem', null, '40rem']}
                     rounded="xl"
                     fit="cover"
                     pointerEvents="none"

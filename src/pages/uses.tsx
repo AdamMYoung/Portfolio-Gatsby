@@ -1,4 +1,4 @@
-import { Heading, Stack, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, Heading, Stack, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 import {
@@ -27,22 +27,25 @@ const WorkList = () => {
     return (
         <Stack spacing="4">
             <Heading>Software Development</Heading>
-            <Table colorScheme="white">
-                <Thead>
-                    <Tr>
-                        <Th>Name</Th>
-                        <Th>Description</Th>
-                        <Th>Link</Th>
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    <Tr>
-                        <Td></Td>
-                        <Td></Td>
-                        <Td></Td>
-                    </Tr>
-                </Tbody>
-            </Table>
+
+            <Box overflow="none" overflowX="auto">
+                <Table colorScheme="white">
+                    <Thead>
+                        <Tr>
+                            <Th>Name</Th>
+                            <Th>Description</Th>
+                            <Th>Link</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        <Tr>
+                            <Td></Td>
+                            <Td></Td>
+                            <Td></Td>
+                        </Tr>
+                    </Tbody>
+                </Table>
+            </Box>
         </Stack>
     );
 };
@@ -51,22 +54,24 @@ const PrintingList = () => {
     return (
         <Stack spacing="4">
             <Heading>3D Printing</Heading>
-            <Table colorScheme="white">
-                <Thead>
-                    <Tr>
-                        <Th>Name</Th>
-                        <Th>Description</Th>
-                        <Th>Link</Th>
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    <Tr>
-                        <Td></Td>
-                        <Td></Td>
-                        <Td></Td>
-                    </Tr>
-                </Tbody>
-            </Table>
+            <Box overflow="none" overflowX="auto">
+                <Table colorScheme="white">
+                    <Thead>
+                        <Tr>
+                            <Th>Name</Th>
+                            <Th>Description</Th>
+                            <Th>Link</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        <Tr>
+                            <Td></Td>
+                            <Td></Td>
+                            <Td></Td>
+                        </Tr>
+                    </Tbody>
+                </Table>
+            </Box>
         </Stack>
     );
 };
@@ -75,22 +80,24 @@ const PhotographyList = () => {
     return (
         <Stack spacing="4">
             <Heading>Photography</Heading>
-            <Table colorScheme="white">
-                <Thead>
-                    <Tr>
-                        <Th>Name</Th>
-                        <Th>Description</Th>
-                        <Th>Link</Th>
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    <Tr>
-                        <Td></Td>
-                        <Td></Td>
-                        <Td></Td>
-                    </Tr>
-                </Tbody>
-            </Table>
+            <Box overflow="none" overflowX="auto">
+                <Table colorScheme="white">
+                    <Thead>
+                        <Tr>
+                            <Th>Name</Th>
+                            <Th>Description</Th>
+                            <Th>Link</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        <Tr>
+                            <Td></Td>
+                            <Td></Td>
+                            <Td></Td>
+                        </Tr>
+                    </Tbody>
+                </Table>
+            </Box>
         </Stack>
     );
 };

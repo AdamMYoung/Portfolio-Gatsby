@@ -1,8 +1,9 @@
 import React, { VFC } from 'react';
 import { Divider, Flex, Grid, Heading, Stack } from '@chakra-ui/layout';
-import { mode } from '@chakra-ui/theme-tools';
 import { Link } from '../../../components';
-import { IconButton } from '@chakra-ui/react';
+import { Icon, IconButton } from '@chakra-ui/react';
+
+import { FaGithub, FaTwitter, FaDev, FaUnsplash } from 'react-icons/fa';
 
 export const Footer: VFC = () => {
     return (
@@ -17,10 +18,34 @@ export const Footer: VFC = () => {
                 <Stack spacing="6">
                     <Heading fontSize="xl">Socials</Heading>
                     <Flex justifyContent={['center', null, 'flex-start']} sx={{ '* + *': { ml: 2 } }}>
-                        <IconButton />
-                        <IconButton />
-                        <IconButton />
-                        <IconButton />
+                        <IconButton
+                            as={Link}
+                            variant="outline"
+                            href="https://github.com/AdamMYoung"
+                            icon={<Icon as={FaGithub} />}
+                            aria-label="Github"
+                        />
+                        <IconButton
+                            as={Link}
+                            variant="outline"
+                            href="https://twitter.com/AdamMYoung_"
+                            icon={<Icon as={FaTwitter} />}
+                            aria-label="Twitter"
+                        />
+                        <IconButton
+                            as={Link}
+                            variant="outline"
+                            href="https://dev.to/adammyoung"
+                            icon={<Icon as={FaDev} />}
+                            aria-label="Dev.to"
+                        />
+                        <IconButton
+                            as={Link}
+                            variant="outline"
+                            href="https://unsplash.com/@adammyoung"
+                            icon={<Icon as={FaUnsplash} />}
+                            aria-label="Unsplash"
+                        />
                     </Flex>
                 </Stack>
 

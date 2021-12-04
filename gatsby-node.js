@@ -1,7 +1,7 @@
 exports.createPages = async function ({ actions, graphql }) {
     const { data } = await graphql(`
         {
-            allContentfulBlogPost {
+            allContentfulPageBlogPost {
                 nodes {
                     slug
                 }
@@ -9,7 +9,7 @@ exports.createPages = async function ({ actions, graphql }) {
         }
     `);
 
-    data.allContentfulBlogPost.nodes.forEach((edge) => {
+    data.allContentfulPageBlogPost.nodes.forEach((edge) => {
         const slug = edge.slug;
 
         actions.createPage({

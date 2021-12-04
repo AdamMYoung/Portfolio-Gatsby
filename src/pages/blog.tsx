@@ -77,7 +77,7 @@ const Blogs = () => {
                     <Button onClick={loadMoreArticles}>Load more articles</Button>
                 </Box>
             )}
-            <Text variant="subtitle" fontSize="lg" lineHeight="1.12">
+            <Text variant="subtitle" fontSize="lg" lineHeight={['1.3', null, '1.12']}>
                 Prefer an{' '}
                 <Link color="red.400" variant="animate-ltr" href="/rss.xml">
                     RSS Feed
