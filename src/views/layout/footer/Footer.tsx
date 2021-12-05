@@ -1,9 +1,7 @@
+import { Divider, Flex, Grid, Heading, Icon, IconButton, Stack } from '@chakra-ui/react';
 import React, { VFC } from 'react';
-import { Divider, Flex, Grid, Heading, Stack } from '@chakra-ui/layout';
+import { FaDev, FaGithub, FaTwitter, FaUnsplash } from 'react-icons/fa';
 import { Link } from '../../../components';
-import { Icon, IconButton } from '@chakra-ui/react';
-
-import { FaGithub, FaTwitter, FaDev, FaUnsplash } from 'react-icons/fa';
 
 export const Footer: VFC = () => {
     return (
@@ -66,7 +64,7 @@ export const Footer: VFC = () => {
                         <Link color="primary" href="/blog">
                             Blog
                         </Link>
-                        <Link color="primary" href="/blog">
+                        <Link color="primary" href="/q-and-a">
                             Q&A
                         </Link>
                         <Link color="primary" href="/projects">

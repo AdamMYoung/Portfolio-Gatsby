@@ -1,21 +1,22 @@
-import { Divider, Grid, Stack } from '@chakra-ui/layout';
+import { HamburgerIcon } from '@chakra-ui/icons';
 import {
     Box,
+    Divider,
     Drawer,
     DrawerBody,
     DrawerCloseButton,
     DrawerContent,
     DrawerOverlay,
     DrawerProps,
+    Grid,
+    Stack,
     useBreakpointValue,
     useColorMode,
     useDisclosure,
 } from '@chakra-ui/react';
 import React, { VFC } from 'react';
-
 import { DarkModeToggle } from '../..';
 import { Link, LinkButton, MenuIconButton } from '../../../components';
-import { HamburgerIcon } from '@chakra-ui/icons';
 
 const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
     return (
@@ -39,6 +40,9 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                     </LinkButton>
                     <LinkButton w="full" py="2" href="/stats" variant="link">
                         Stats
+                    </LinkButton>
+                    <LinkButton w="full" py="2" href="/uses" variant="link">
+                        Uses
                     </LinkButton>
                     <Divider />
 

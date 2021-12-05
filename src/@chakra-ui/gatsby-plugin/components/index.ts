@@ -1,10 +1,10 @@
-import { Link } from './Link';
-import { Text } from './Text';
 import { Button } from './Button';
 import { Heading } from './Heading';
+import { IconButton } from './IconButton';
 import { Image } from './Image';
 import { Input } from './Input';
-import { IconButton } from './IconButton';
+import { Link } from './Link';
+import { Text } from './Text';
 
 export const components = {
     Link,

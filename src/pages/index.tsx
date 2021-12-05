@@ -1,16 +1,15 @@
+import { Button, Heading, Stack, Text } from '@chakra-ui/react';
+import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-import { Button, Heading, Spacer, Stack, Text } from '@chakra-ui/react';
-import { Link, ThreePanel, ThreePanelBlock, ThreePanelImage, ThreePanelSubtitle, ThreePanelTitle } from '../components';
+import { Link, ThreePanel, ThreePanelBlock, ThreePanelSubtitle, ThreePanelTitle } from '../components';
 import {
     TwoPanel,
-    TwoPanelImage,
     TwoPanelBlock,
-    TwoPanelTitle,
-    TwoPanelSubtitle,
     TwoPanelHeading,
+    TwoPanelSubtitle,
+    TwoPanelTitle,
 } from '../components/sections/two-panel';
 import { FeaturedArticleCard, Layout } from '../views';
-import { StaticImage } from 'gatsby-plugin-image';
 import { SEO } from '../views/seo/SEO';
 
 const HeroIntro = () => {
@@ -25,11 +24,7 @@ const HeroIntro = () => {
                     </Text>
                     <Text pl="4">
                         A front-end software engineer, passionate about creating engaging web experiences in React,
-                        Gatsby and Next.js. Currently working at{' '}
-                        <Link target="_black" rel="noopener" href="https://curve.com">
-                            Curve
-                        </Link>
-                        .
+                        Gatsby and Next.js. Currently working at <Link href="https://curve.com">Curve</Link>.
                     </Text>
                 </Stack>
                 <Stack spacing="4">
@@ -87,7 +82,9 @@ const Interests: VFC = () => {
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">Photography</ThreePanelTitle>
-                        <ThreePanelSubtitle>My reason to head outside.</ThreePanelSubtitle>
+                        <ThreePanelSubtitle>
+                            Check out my <Link href="https://unsplash.com/@adammyoung">Unsplash</Link> page.
+                        </ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>
                 <ThreePanelBlock>
@@ -100,7 +97,7 @@ const Interests: VFC = () => {
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">3D Printing</ThreePanelTitle>
-                        <ThreePanelSubtitle>Building the weirdest stuff.</ThreePanelSubtitle>
+                        <ThreePanelSubtitle>Building stuff for around the house.</ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>
                 <ThreePanelBlock>
@@ -113,7 +110,9 @@ const Interests: VFC = () => {
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">Cats</ThreePanelTitle>
-                        <ThreePanelSubtitle>How could I not include them?</ThreePanelSubtitle>
+                        <ThreePanelSubtitle>
+                            My two cats, <i>Arlo</i> and <i>Theo</i>
+                        </ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>
             </ThreePanel>
@@ -142,9 +141,9 @@ const WhoAmI = () => {
                     technologies ever since.
                 </Text>
                 <Text>
-                    From there, I moved to Birmingham with my partner, and started my career. I worked at a local
-                    software development house as a full stack developer for around 2 years, working with mapping
-                    libraries and design systems before moving into a fully front-end role at Curve.
+                    From there, I moved to Birmingham with my partner, and started my software development career. I
+                    worked at a local software development house as a full stack developer for around 2 years, working
+                    with mapping libraries and design systems before moving into a fully front-end role at Curve.
                 </Text>
             </TwoPanelBlock>
         </TwoPanel>

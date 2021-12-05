@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useBlogTopics } from '../use-blog-topics';
 
 export const usePopularTopic = () => {

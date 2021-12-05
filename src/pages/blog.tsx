@@ -1,6 +1,6 @@
+import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react';
+import { StaticImage } from 'gatsby-plugin-image';
 import React, { useState, VFC } from 'react';
-import { Box, Button, Heading, Input, Stack, Text } from '@chakra-ui/react';
-import { BlogCard, FeaturedArticleCard, Layout } from '../views';
 import { CardList, CategoryList, CategoryListItem, Link } from '../components';
 import {
     TwoPanel,
@@ -9,14 +9,12 @@ import {
     TwoPanelSubtitle,
     TwoPanelTitle,
 } from '../components/sections/two-panel';
-import { useBlogPosts } from '../hooks/static-queries/use-blog-posts';
-import { stringToLongDate } from '../utils/date';
 import { useArrayLimiter } from '../hooks';
+import { useBlogPosts } from '../hooks/static-queries/use-blog-posts';
 import { useBlogTopics } from '../hooks/static-queries/use-blog-topics';
-import { StaticImage } from 'gatsby-plugin-image';
+import { stringToLongDate } from '../utils/date';
+import { BlogCard, FeaturedArticleCard, Layout } from '../views';
 import { SEO } from '../views/seo/SEO';
-import { BlogPost } from '../type';
-import { createContext } from '@chakra-ui/react-utils';
 
 const HeroIntro = () => {
     return (
@@ -27,7 +25,6 @@ const HeroIntro = () => {
                     <TwoPanelSubtitle>Check out the articles below.</TwoPanelSubtitle>
                 </TwoPanelHeading>
                 <Stack pt="4" spacing="4">
-                    <Input borderRadius="full" placeholder="Search for an article" />
                     <Button as={Link} variant="outline" href="#articles">
                         View Articles
                     </Button>

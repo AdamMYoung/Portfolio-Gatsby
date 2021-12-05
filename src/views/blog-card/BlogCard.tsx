@@ -1,4 +1,4 @@
-import { chakra, Heading, Image, LinkBox, LinkOverlay, Stack } from '@chakra-ui/react';
+import { chakra, Heading, LinkBox, LinkOverlay, Stack } from '@chakra-ui/react';
 import GatsbyLink from 'gatsby-link';
 import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';

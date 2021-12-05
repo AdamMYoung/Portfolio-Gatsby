@@ -1,17 +1,14 @@
-import { graphql } from 'gatsby';
-import React, { VFC } from 'react';
+import { Box, Button, chakra, Divider, Heading, Stack, Text } from '@chakra-ui/react';
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
-import ReactMarkdown from 'react-markdown';
-
-import { BlogPost } from '../type';
-import { Layout } from '../views';
-import { Box, Divider, Heading, Stack, Text } from '@chakra-ui/layout';
-import { stringToLongDate } from '../utils/date';
-import { Button } from '@chakra-ui/button';
+import { graphql } from 'gatsby';
 import GatsbyLink from 'gatsby-link';
-import { Link } from '../components';
-import { chakra } from '@chakra-ui/react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import React, { VFC } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { Link } from '../components';
+import { BlogPost } from '../type';
+import { stringToLongDate } from '../utils/date';
+import { Layout } from '../views';
 import { SEO } from '../views/seo/SEO';
 
 type BlogPostProps = {

@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
 import { Link as ChakraLink, LinkProps as ChakraLinkProps } from '@chakra-ui/react';
 import { Link as GatsbyLink } from 'gatsby';
+import React, { FC } from 'react';
 
 export const Link: FC<ChakraLinkProps> = ({ children, href, ...rest }) => {
     if (href?.startsWith('/') || href?.startsWith('#')) {

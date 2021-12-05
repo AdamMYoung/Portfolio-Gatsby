@@ -1,7 +1,5 @@
-import { Box, Grid, Heading, Stack, Text } from '@chakra-ui/layout';
-import { Progress } from '@chakra-ui/progress';
-import { Stat, StatHelpText, StatNumber } from '@chakra-ui/stat';
-import React, { useMemo, VFC } from 'react';
+import { Grid, Heading, Progress, Stack, Stat, StatHelpText, StatNumber, Text } from '@chakra-ui/react';
+import React, { VFC } from 'react';
 import { useBlogPosts } from '../hooks/static-queries/use-blog-posts';
 import { useGithubStats } from '../hooks/static-queries/use-github-stats/useGithubStats';
 import { usePopularLanguage } from '../hooks/static-queries/use-popular-language';

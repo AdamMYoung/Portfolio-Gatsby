@@ -1,4 +1,4 @@
-import React, { FC, VFC } from 'react';
+import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
 
 type SEOProps = {
