@@ -40,7 +40,7 @@ export const TwoPanelTitle: FC<HeadingProps> = ({ children, ...rest }) => {
 
 export const TwoPanelSubtitle: FC<HeadingProps> = ({ children, ...rest }) => {
     return (
-        <Heading as="p" fontSize={['1xl', null, '3xl']} variant="subtitle" {...rest}>
+        <Heading as="p" fontSize={['xl', null, '3xl']} variant="subtitle" {...rest}>
             {children}
         </Heading>
     );

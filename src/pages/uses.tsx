@@ -43,7 +43,7 @@ const WorkList = () => {
                     </Thead>
                     <Tbody>
                         {development.map((d) => (
-                            <Tr>
+                            <Tr key={d.name}>
                                 <Td>
                                     <Link href={d.url}>{d.name}</Link>
                                 </Td>
@@ -73,7 +73,7 @@ const PrintingList = () => {
                     </Thead>
                     <Tbody>
                         {printing.map((p) => (
-                            <Tr>
+                            <Tr key={p.name}>
                                 <Td>
                                     <Link href={p.url}>{p.name}</Link>
                                 </Td>
@@ -103,7 +103,7 @@ const PhotographyList = () => {
                     </Thead>
                     <Tbody>
                         {photography.map((p) => (
-                            <Tr>
+                            <Tr key={p.name}>
                                 <Td>
                                     <Link href={p.url}>{p.name}</Link>
                                 </Td>

@@ -162,7 +162,9 @@ const StuffUsed = () => {
             />
             <TwoPanelBlock>
                 <TwoPanelHeading>
-                    <TwoPanelTitle>Curious about what I use?</TwoPanelTitle>
+                    <TwoPanelTitle>
+                        What do I <i>use</i>?
+                    </TwoPanelTitle>
                     <TwoPanelSubtitle>
                         I've got a uses page listing everything I use day-to-day at the link below.
                     </TwoPanelSubtitle>

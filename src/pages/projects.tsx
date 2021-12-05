@@ -41,7 +41,7 @@ const ProjectList = () => {
                 </Thead>
                 <Tbody>
                     {stats.repositories.map((repo) => (
-                        <Tr>
+                        <Tr key={repo.name}>
                             <Td>
                                 <Link href={`https://github.com/AdamMYoung/${repo.name}`}>{repo.name}</Link>
                             </Td>
@@ -49,7 +49,7 @@ const ProjectList = () => {
                             <Td>
                                 <Flex sx={{ '* + *': { ml: 1 } }}>
                                     {repo.languages.map((l) => (
-                                        <Tag>{l}</Tag>
+                                        <Tag key={l}>{l}</Tag>
                                     ))}
                                 </Flex>
                             </Td>
