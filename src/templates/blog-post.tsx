@@ -46,6 +46,23 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                 {topics.map((t) => (
                     <meta property="og:article:tag" content={t} />
                 ))}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'NewsArticle',
+                        headline: title,
+                        image: [heroImage.file.url],
+                        datePublished: createdAt,
+                        dateModified: updatedAt,
+                        author: [
+                            {
+                                '@type': 'Person',
+                                name: 'Adam Young',
+                                url: 'http://aydev.uk',
+                            },
+                        ],
+                    })}
+                </script>
             </SEO>
             <Stack spacing="6">
                 <Box>

@@ -4,7 +4,6 @@ import { BlogCard, FeaturedArticleCard, Layout } from '../views';
 import { CardList, CategoryList, CategoryListItem, Link } from '../components';
 import {
     TwoPanel,
-    TwoPanelImage,
     TwoPanelBlock,
     TwoPanelHeading,
     TwoPanelSubtitle,
@@ -16,6 +15,8 @@ import { useArrayLimiter } from '../hooks';
 import { useBlogTopics } from '../hooks/static-queries/use-blog-topics';
 import { StaticImage } from 'gatsby-plugin-image';
 import { SEO } from '../views/seo/SEO';
+import { BlogPost } from '../type';
+import { createContext } from '@chakra-ui/react-utils';
 
 const HeroIntro = () => {
     return (
