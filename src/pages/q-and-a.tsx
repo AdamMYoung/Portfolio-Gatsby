@@ -14,6 +14,12 @@ import { SEO } from '../views/seo/SEO';
 const EMAIL_REGEX =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+const encode = (data) => {
+    return Object.keys(data)
+        .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+};
+
 const HeroIntro = () => {
     const [isSubmitting, setSubmitting] = useState(false);
     const [isSubmitted, setSubmitted] = useState(false);
@@ -26,11 +32,15 @@ const HeroIntro = () => {
 
     const onSubmit = (data) => {
         setSubmitting(true);
+        let formData = new FormData(data);
 
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(data).toString(),
+            body: encode({
+                'form-name': 'q-and-a',
+                ...data,
+            }),
         }).then(() => {
             setSubmitted(true);
             setSubmitting(false);
@@ -57,7 +67,7 @@ const HeroIntro = () => {
                         name="q-and-a"
                     >
                         <input type="hidden" name="bot-field" />
-                        <input type="hidden" name="form-name" value="contact" />
+                        <input type="hidden" name="form-name" value="q-and-a" />
 
                         <FormControl id="name" isInvalid={errors.name}>
                             <FormLabel>Name</FormLabel>
