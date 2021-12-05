@@ -1,6 +1,7 @@
 import { Box, Heading, Stack, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
+import { Link } from '../components';
 import {
     TwoPanel,
     TwoPanelImage,
@@ -8,6 +9,7 @@ import {
     TwoPanelSubtitle,
     TwoPanelTitle,
 } from '../components/sections/two-panel';
+import { useUses } from '../hooks/static-queries/use-uses';
 import { Layout } from '../views';
 import { SEO } from '../views/seo/SEO';
 
@@ -31,6 +33,8 @@ const HeroIntro = () => {
 };
 
 const WorkList = () => {
+    const { development } = useUses();
+
     return (
         <Stack spacing="4">
             <Heading>Software Development</Heading>
@@ -41,15 +45,17 @@ const WorkList = () => {
                         <Tr>
                             <Th>Name</Th>
                             <Th>Description</Th>
-                            <Th>Link</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <Tr>
-                            <Td></Td>
-                            <Td></Td>
-                            <Td></Td>
-                        </Tr>
+                        {development.map((d) => (
+                            <Tr>
+                                <Td>
+                                    <Link href={d.url}>{d.name}</Link>
+                                </Td>
+                                <Td>{d.description}</Td>
+                            </Tr>
+                        ))}
                     </Tbody>
                 </Table>
             </Box>
@@ -58,6 +64,8 @@ const WorkList = () => {
 };
 
 const PrintingList = () => {
+    const { printing } = useUses();
+
     return (
         <Stack spacing="4">
             <Heading>3D Printing</Heading>
@@ -67,15 +75,17 @@ const PrintingList = () => {
                         <Tr>
                             <Th>Name</Th>
                             <Th>Description</Th>
-                            <Th>Link</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <Tr>
-                            <Td></Td>
-                            <Td></Td>
-                            <Td></Td>
-                        </Tr>
+                        {printing.map((p) => (
+                            <Tr>
+                                <Td>
+                                    <Link href={p.url}>{p.name}</Link>
+                                </Td>
+                                <Td>{p.description}</Td>
+                            </Tr>
+                        ))}
                     </Tbody>
                 </Table>
             </Box>
@@ -84,6 +94,8 @@ const PrintingList = () => {
 };
 
 const PhotographyList = () => {
+    const { photography } = useUses();
+
     return (
         <Stack spacing="4">
             <Heading>Photography</Heading>
@@ -93,15 +105,17 @@ const PhotographyList = () => {
                         <Tr>
                             <Th>Name</Th>
                             <Th>Description</Th>
-                            <Th>Link</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <Tr>
-                            <Td></Td>
-                            <Td></Td>
-                            <Td></Td>
-                        </Tr>
+                        {photography.map((p) => (
+                            <Tr>
+                                <Td>
+                                    <Link href={p.url}>{p.name}</Link>
+                                </Td>
+                                <Td>{p.description}</Td>
+                            </Tr>
+                        ))}
                     </Tbody>
                 </Table>
             </Box>
@@ -118,8 +132,8 @@ const Uses: VFC = () => {
             />
             <HeroIntro />
             <WorkList />
-            <PrintingList />
             <PhotographyList />
+            <PrintingList />
         </Layout>
     );
 };

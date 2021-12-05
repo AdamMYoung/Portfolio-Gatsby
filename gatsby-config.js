@@ -22,16 +22,27 @@ module.exports = {
         },
 
         'gatsby-plugin-image',
-        // {
-        //     resolve: 'gatsby-plugin-google-analytics',
-        //     options: {
-        //         trackingId: '',
-        //     },
-        // },
+        {
+            resolve: 'gatsby-plugin-google-analytics',
+            options: {
+                trackingId: 'UA-140587584-1',
+            },
+        },
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sitemap',
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
+        {
+            resolve: 'gatsby-source-graphql',
+            options: {
+                typeName: 'GitHub',
+                fieldName: 'github',
+                url: 'https://api.github.com/graphql',
+                headers: {
+                    Authorization: `Bearer ` + process.env.GITHUB_ACCESS_TOKEN,
+                },
+            },
+        },
         {
             resolve: 'gatsby-source-filesystem',
             options: {

@@ -52,7 +52,7 @@ export const Footer: VFC = () => {
                 <Stack spacing="6">
                     <Heading fontSize="xl">Contact</Heading>
                     <Grid gap="1" gridTemplateColumns={['repeat(2, 1fr)', null, '1fr']}>
-                        <Link color="primary" href="/blog">
+                        <Link color="primary" href="/q-and-a">
                             Q&A
                         </Link>
                         <Link color="primary" href="/blog">

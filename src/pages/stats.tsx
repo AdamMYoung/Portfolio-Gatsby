@@ -1,11 +1,21 @@
 import { Box, Grid, Heading, Stack, Text } from '@chakra-ui/layout';
 import { Progress } from '@chakra-ui/progress';
 import { Stat, StatHelpText, StatNumber } from '@chakra-ui/stat';
-import React, { VFC } from 'react';
+import React, { useMemo, VFC } from 'react';
+import { useBlogPosts } from '../hooks/static-queries/use-blog-posts';
+import { useGithubStats } from '../hooks/static-queries/use-github-stats/useGithubStats';
+import { usePopularLanguage } from '../hooks/static-queries/use-popular-language';
+import { usePopularTopic } from '../hooks/static-queries/use-popular-topic';
 import { Layout } from '../views';
 import { SEO } from '../views/seo/SEO';
 
 const Stats: VFC = () => {
+    const stats = useGithubStats();
+    const blogs = useBlogPosts();
+
+    const popularTopic = usePopularTopic();
+    const popularLanguage = usePopularLanguage();
+
     return (
         <Layout>
             <SEO title="Stats" description="Statistics across my development career, skills and more." />
@@ -17,16 +27,16 @@ const Stats: VFC = () => {
                     </Heading>
                     <Grid gridTemplateColumns={['1fr 1fr', null, '1fr 1fr 1fr']}>
                         <Stat>
-                            <StatNumber>42</StatNumber>
-                            <StatHelpText>Commits in the past year</StatHelpText>
+                            <StatNumber>{stats.totalContributions}</StatNumber>
+                            <StatHelpText>Commits on GitHub</StatHelpText>
                         </Stat>
                         <Stat>
-                            <StatNumber>12</StatNumber>
+                            <StatNumber>{stats.repositories.length}</StatNumber>
                             <StatHelpText>Open-source repositories</StatHelpText>
                         </Stat>
                         <Stat>
-                            <StatNumber>469</StatNumber>
-                            <StatHelpText>Something else to report</StatHelpText>
+                            <StatNumber>{popularLanguage}</StatNumber>
+                            <StatHelpText>Most popular language</StatHelpText>
                         </Stat>
                     </Grid>
                 </Stack>
@@ -36,12 +46,12 @@ const Stats: VFC = () => {
                     </Heading>
                     <Grid gridTemplateColumns={['1fr 1fr', null, '1fr 1fr 1fr']}>
                         <Stat>
-                            <StatNumber>42</StatNumber>
+                            <StatNumber>{blogs.length}</StatNumber>
                             <StatHelpText>Articles published</StatHelpText>
                         </Stat>
                         <Stat>
-                            <StatNumber>12</StatNumber>
-                            <StatHelpText>Visitors to the site</StatHelpText>
+                            <StatNumber>{popularTopic}</StatNumber>
+                            <StatHelpText>Most popular topic</StatHelpText>
                         </Stat>
                     </Grid>
                 </Stack>

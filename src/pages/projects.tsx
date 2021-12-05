@@ -1,6 +1,7 @@
-import { Box, Stack, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, Flex, Stack, Table, Tag, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
+import { Link } from '../components';
 import {
     TwoPanel,
     TwoPanelImage,
@@ -8,6 +9,7 @@ import {
     TwoPanelSubtitle,
     TwoPanelTitle,
 } from '../components/sections/two-panel';
+import { useGithubStats } from '../hooks/static-queries/use-github-stats';
 import { Layout } from '../views';
 import { SEO } from '../views/seo/SEO';
 
@@ -31,6 +33,8 @@ const HeroIntro = () => {
 };
 
 const ProjectList = () => {
+    const stats = useGithubStats();
+
     return (
         <Box overflow="none" overflowX="auto">
             <Table colorScheme="white">
@@ -42,11 +46,21 @@ const ProjectList = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    <Tr>
-                        <Td></Td>
-                        <Td></Td>
-                        <Td></Td>
-                    </Tr>
+                    {stats.repositories.map((repo) => (
+                        <Tr>
+                            <Td>
+                                <Link href={`https://github.com/AdamMYoung/${repo.name}`}>{repo.name}</Link>
+                            </Td>
+                            <Td>{repo.description}</Td>
+                            <Td>
+                                <Flex sx={{ '* + *': { ml: 1 } }}>
+                                    {repo.languages.map((l) => (
+                                        <Tag>{l}</Tag>
+                                    ))}
+                                </Flex>
+                            </Td>
+                        </Tr>
+                    ))}
                 </Tbody>
             </Table>
         </Box>

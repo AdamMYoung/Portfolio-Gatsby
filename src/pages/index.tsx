@@ -165,7 +165,7 @@ const StuffUsed = () => {
                 <TwoPanelHeading>
                     <TwoPanelTitle>Curious about what I use?</TwoPanelTitle>
                     <TwoPanelSubtitle>
-                        I've got a "uses" page listing everything I use day-to-day at the link below.
+                        I've got a uses page listing everything I use day-to-day at the link below.
                     </TwoPanelSubtitle>
                 </TwoPanelHeading>
 
