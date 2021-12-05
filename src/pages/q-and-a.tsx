@@ -1,4 +1,4 @@
-import { Button, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react';
+import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input, Stack } from '@chakra-ui/react';
 import React, { useState, VFC } from 'react';
 import { useForm } from 'react-hook-form';
 import {
@@ -47,44 +47,59 @@ const HeroIntro = () => {
             </TwoPanelBlock>
 
             <TwoPanelBlock>
-                <form onSubmit={handleSubmit(onSubmit)} netlify-honeypot="bot-field" data-netlify="true" name="q-and-a">
-                    <input type="hidden" name="bot-field" />
-                    <input type="hidden" name="form-name" value="contact" />
+                {!isSubmitted ? (
+                    <Stack
+                        as="form"
+                        spacing="4"
+                        onSubmit={handleSubmit(onSubmit)}
+                        netlify-honeypot="bot-field"
+                        data-netlify="true"
+                        name="q-and-a"
+                    >
+                        <input type="hidden" name="bot-field" />
+                        <input type="hidden" name="form-name" value="contact" />
 
-                    <FormControl id="name" isRequired isInvalid={errors.name}>
-                        <FormLabel>Name</FormLabel>
-                        <Input borderRadius="full" placeholder="Jane Doe" {...register('name', { required: true })} />
-                        <FormErrorMessage>Name is required.</FormErrorMessage>
-                    </FormControl>
-                    <FormControl id="emailAddress" isRequired isInvalid={errors.emailAddress}>
-                        <FormLabel>Email Address</FormLabel>
-                        <Input
-                            borderRadius="full"
-                            placeholder="janedoe@example.com"
-                            {...register('emailAddress', { required: true, pattern: EMAIL_REGEX })}
-                        />
-                        <FormErrorMessage>Email address is required.</FormErrorMessage>
-                    </FormControl>
-                    <FormControl id="question" isRequired isInvalid={errors.question}>
-                        <FormLabel>Your Question</FormLabel>
-                        <Input
-                            as="textarea"
-                            borderRadius="3xl"
-                            minH="100px"
-                            py="3"
-                            sx={{
-                                '&::-webkit-scrollbar': { width: 0 },
-                                overflow: '-moz-scrollbars-none',
-                                '-ms-overflow-style': 'none',
-                            }}
-                            {...register('question', { required: true, minLength: 30 })}
-                        />
-                        <FormErrorMessage>Please leave a question at least 30 characters long.</FormErrorMessage>
-                    </FormControl>
-                    <Button type="submit" variant="outline">
-                        Submit
-                    </Button>
-                </form>
+                        <FormControl id="name" isInvalid={errors.name}>
+                            <FormLabel>Name</FormLabel>
+                            <Input
+                                borderRadius="full"
+                                placeholder="Jane Doe"
+                                {...register('name', { required: true })}
+                            />
+                            <FormErrorMessage>Name is required.</FormErrorMessage>
+                        </FormControl>
+                        <FormControl id="emailAddress" isInvalid={errors.emailAddress}>
+                            <FormLabel>Email Address</FormLabel>
+                            <Input
+                                borderRadius="full"
+                                placeholder="janedoe@example.com"
+                                {...register('emailAddress', { required: true, pattern: EMAIL_REGEX })}
+                            />
+                            <FormErrorMessage>Email address is required.</FormErrorMessage>
+                        </FormControl>
+                        <FormControl id="question" isInvalid={errors.question}>
+                            <FormLabel>Your Question</FormLabel>
+                            <Input
+                                as="textarea"
+                                borderRadius="3xl"
+                                minH="100px"
+                                py="3"
+                                sx={{
+                                    '&::-webkit-scrollbar': { width: 0 },
+                                    overflow: '-moz-scrollbars-none',
+                                    '-ms-overflow-style': 'none',
+                                }}
+                                {...register('question', { required: true, minLength: 30 })}
+                            />
+                            <FormErrorMessage>Please leave a question at least 30 characters long.</FormErrorMessage>
+                        </FormControl>
+                        <Button type="submit" variant="outline" disabled={isSubmitting}>
+                            Submit
+                        </Button>
+                    </Stack>
+                ) : (
+                    <Heading as="p">Thanks for your question!</Heading>
+                )}
             </TwoPanelBlock>
         </TwoPanel>
     );
