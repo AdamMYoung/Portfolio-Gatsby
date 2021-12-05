@@ -1,41 +1,21 @@
-const path = require(`path`);
-
-exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions;
-
-    const result = await graphql(`
-        query pagesQuery {
-            allContentfulAlbum {
-                edges {
-                    node {
-                        name
-                    }
-                }
-            }
-            allContentfulBlogPost {
-                edges {
-                    node {
-                        title
-                        slug
-                    }
+exports.createPages = async function ({ actions, graphql }) {
+    const { data } = await graphql(`
+        {
+            allContentfulPageBlogPost {
+                nodes {
+                    slug
                 }
             }
         }
     `);
 
-    result.data.allContentfulAlbum.edges.forEach(({ node }) => {
-        createPage({
-            path: `/photography/${encodeURIComponent(node.name.toLowerCase())}`,
-            component: path.resolve('src/templates/album-entry.tsx'),
-            context: { name: node.name },
-        });
-    });
+    data.allContentfulPageBlogPost.nodes.forEach((edge) => {
+        const slug = edge.slug;
 
-    result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
-        createPage({
-            path: `/blog${node.slug}`,
-            component: path.resolve('src/templates/blog-post.tsx'),
-            context: { title: node.title, date: new Date() },
+        actions.createPage({
+            path: `/blog/${slug}`,
+            component: require.resolve(`./src/templates/blog-post.tsx`),
+            context: { slug: slug },
         });
     });
 };

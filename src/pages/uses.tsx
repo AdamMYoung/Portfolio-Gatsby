@@ -1,49 +1,141 @@
-import * as React from 'react';
+import { Box, Heading, Stack, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { StaticImage } from 'gatsby-plugin-image';
+import React, { VFC } from 'react';
+import { Link } from '../components';
+import {
+    TwoPanel,
+    TwoPanelImage,
+    TwoPanelBlock,
+    TwoPanelSubtitle,
+    TwoPanelTitle,
+} from '../components/sections/two-panel';
+import { useUses } from '../hooks/static-queries/use-uses';
+import { Layout } from '../views';
+import { SEO } from '../views/seo/SEO';
 
-import List from '../components/list';
-import image from '../images/Remote working challenges.svg';
-import InfoPage from '../views/info-page';
-
-// markup
-const Index = () => {
+const HeroIntro = () => {
     return (
-        <InfoPage
-            title="Uses"
-            description="Software and hardware that I use day-to-day."
-            src={image}
-            alt="Illustration of man working on a laptop in a tent"
-        >
-            <h1 className="text-5xl font-bold mb-4">Uses</h1>
-            <p className="text-lg font-semibold">
-                Here I've listed the hardware and software I use on a day-to-day basis.
-            </p>
+        <TwoPanel>
+            <TwoPanelBlock>
+                <TwoPanelTitle as="h1">My Uses.</TwoPanelTitle>
+                <TwoPanelSubtitle>Equipment, software, hardware that I use for work and hobbies.</TwoPanelSubtitle>
+            </TwoPanelBlock>
 
-            <div className="mt-16">
-                <section>
-                    <h2 className="text-4xl font-bold mb-4">Hardware</h2>
-                    <List className="list-inside list-disc">
-                        <List.Item>CPU - Intel i5-3570k</List.Item>
-                        <List.Item>Motherboard - ASRock Z170M</List.Item>
-                        <List.Item>RAM - 16GB HyperX Fury</List.Item>
-                        <List.Item>GPU - Nvidia RTX 2060</List.Item>
-                        <List.Item>PSU - Corsair HX1000i</List.Item>
-                    </List>
-                </section>
-
-                <section>
-                    <h2 className="text-4xl font-bold mt-8 mb-4">Software</h2>
-                    <List className="list-inside list-disc">
-                        <List.Item>Browser - Google Chrome</List.Item>
-                        <List.Item>IDE (Front-end) - Visual Studio Code</List.Item>
-                        <List.Item>IDE (Back-end) - Visual Studio</List.Item>
-                        <List.Item>Git Client - GitKraken</List.Item>
-                        <List.Item>API Testing - Postman</List.Item>
-                        <List.Item>Design Tools - Zeplin</List.Item>
-                    </List>
-                </section>
-            </div>
-        </InfoPage>
+            <StaticImage
+                style={{ borderRadius: '12px' }}
+                placeholder="blurred"
+                src="../images/edc.jpg"
+                alt="Various everyday items, such as a watch, wallet and laptop"
+                width={600}
+            />
+        </TwoPanel>
     );
 };
 
-export default Index;
+const WorkList = () => {
+    const { development } = useUses();
+
+    return (
+        <Stack spacing="4">
+            <Heading>Software Development</Heading>
+
+            <Box overflow="none" overflowX="auto">
+                <Table colorScheme="white">
+                    <Thead>
+                        <Tr>
+                            <Th>Name</Th>
+                            <Th>Description</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        {development.map((d) => (
+                            <Tr>
+                                <Td>
+                                    <Link href={d.url}>{d.name}</Link>
+                                </Td>
+                                <Td>{d.description}</Td>
+                            </Tr>
+                        ))}
+                    </Tbody>
+                </Table>
+            </Box>
+        </Stack>
+    );
+};
+
+const PrintingList = () => {
+    const { printing } = useUses();
+
+    return (
+        <Stack spacing="4">
+            <Heading>3D Printing</Heading>
+            <Box overflow="none" overflowX="auto">
+                <Table colorScheme="white">
+                    <Thead>
+                        <Tr>
+                            <Th>Name</Th>
+                            <Th>Description</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        {printing.map((p) => (
+                            <Tr>
+                                <Td>
+                                    <Link href={p.url}>{p.name}</Link>
+                                </Td>
+                                <Td>{p.description}</Td>
+                            </Tr>
+                        ))}
+                    </Tbody>
+                </Table>
+            </Box>
+        </Stack>
+    );
+};
+
+const PhotographyList = () => {
+    const { photography } = useUses();
+
+    return (
+        <Stack spacing="4">
+            <Heading>Photography</Heading>
+            <Box overflow="none" overflowX="auto">
+                <Table colorScheme="white">
+                    <Thead>
+                        <Tr>
+                            <Th>Name</Th>
+                            <Th>Description</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        {photography.map((p) => (
+                            <Tr>
+                                <Td>
+                                    <Link href={p.url}>{p.name}</Link>
+                                </Td>
+                                <Td>{p.description}</Td>
+                            </Tr>
+                        ))}
+                    </Tbody>
+                </Table>
+            </Box>
+        </Stack>
+    );
+};
+
+const Uses: VFC = () => {
+    return (
+        <Layout>
+            <SEO
+                title="Uses"
+                description="The bits and pieces I use daily, from software development to photography."
+            />
+            <HeroIntro />
+            <WorkList />
+            <PhotographyList />
+            <PrintingList />
+        </Layout>
+    );
+};
+
+export default Uses;

@@ -1,53 +1,193 @@
-import { graphql, navigate, useStaticQuery } from 'gatsby';
-import * as React from 'react';
+import React, { VFC } from 'react';
+import { Button, Heading, Spacer, Stack, Text } from '@chakra-ui/react';
+import { Link, ThreePanel, ThreePanelBlock, ThreePanelImage, ThreePanelSubtitle, ThreePanelTitle } from '../components';
+import {
+    TwoPanel,
+    TwoPanelImage,
+    TwoPanelBlock,
+    TwoPanelTitle,
+    TwoPanelSubtitle,
+    TwoPanelHeading,
+} from '../components/sections/two-panel';
+import { FeaturedArticleCard, Layout } from '../views';
+import { StaticImage } from 'gatsby-plugin-image';
+import { SEO } from '../views/seo/SEO';
 
-import List from '../components/list';
-import image from '../images/Work from home.svg';
-import InfoPage from '../views/info-page';
-
-// markup
-const Index = ({ data }) => {
+const HeroIntro = () => {
     return (
-        <InfoPage
-            title="Home"
-            description="Adam Young. Front-end developer working in Birmingham, specializing in React and SPA development."
-            src={image}
-            alt="Illustration of man working on a laptop in a tent"
-        >
-            <h1 className="text-5xl font-bold mb-4">Hi, I'm Adam!</h1>
-            <p className="text-lg font-semibold">
-                I'm a front-end software developer working in Birmingham, with a passion for exploration and learning.
-            </p>
+        <TwoPanel>
+            <TwoPanelBlock>
+                <Stack>
+                    <TwoPanelTitle as="h1">Adam Young</TwoPanelTitle>
+                    <Text>/ˈædəm jʌŋ/</Text>
+                    <Text variant="subtitle" as="i" fontWeight="semibold">
+                        noun
+                    </Text>
+                    <Text pl="4">
+                        A front-end software engineer, passionate about creating engaging web experiences in React,
+                        Gatsby and Next.js. Currently working at{' '}
+                        <Link target="_black" rel="noopener" href="https://curve.com">
+                            Curve
+                        </Link>
+                        .
+                    </Text>
+                </Stack>
+                <Stack spacing="4">
+                    <Button as={Link} href="/blog">
+                        Read the blog
+                    </Button>
+                    <Button as={Link} variant="outline" href="#about-me">
+                        About Me
+                    </Button>
+                </Stack>
+            </TwoPanelBlock>
 
-            <div className="mt-16">
-                <h2 className="text-4xl font-bold mb-4">Recent blog posts</h2>
-                <List active>
-                    {data.allContentfulBlogPost.edges.map(({ node }) => (
-                        <List.Item key={node.slug} onClick={() => navigate(`/blog${node.slug}`)}>
-                            {node.title}
-                        </List.Item>
-                    ))}
-                </List>
-            </div>
-        </InfoPage>
+            <StaticImage
+                style={{ borderRadius: '12px' }}
+                placeholder="blurred"
+                src="../images/me.jpg"
+                alt="A self portrait of me and my partner"
+                width={600}
+            />
+        </TwoPanel>
     );
 };
 
-export const query = graphql`
-    {
-        allContentfulBlogPost(limit: 5, sort: { fields: publishDate, order: DESC }) {
-            edges {
-                node {
-                    title
-                    slug
-                    createdAt
-                    summary {
-                        summary
-                    }
-                }
-            }
-        }
-    }
-`;
+const Interests: VFC = () => {
+    return (
+        <Stack spacing="8">
+            <Heading as="h2" fontSize={['4xl', null, '5xl']} textAlign={['left', null, 'center']}>
+                What am I <i>into</i>?
+            </Heading>
+
+            <ThreePanel>
+                <ThreePanelBlock>
+                    <StaticImage
+                        style={{ borderRadius: '12px' }}
+                        placeholder="blurred"
+                        src="../images/laptop-on-table.jpeg"
+                        alt="Laptop on a table, with code on the screen."
+                        width={400}
+                    />
+
+                    <Stack>
+                        <ThreePanelTitle as="h3">Programming</ThreePanelTitle>
+                        <ThreePanelSubtitle>
+                            Currently a Software Engineer at <Link href="https://curve.com">Curve</Link>.
+                        </ThreePanelSubtitle>
+                    </Stack>
+                </ThreePanelBlock>
+                <ThreePanelBlock>
+                    <StaticImage
+                        style={{ borderRadius: '12px' }}
+                        placeholder="blurred"
+                        src="../images/photography.jpg"
+                        alt="An image of a DSLR camera."
+                        width={400}
+                    />
+                    <Stack>
+                        <ThreePanelTitle as="h3">Photography</ThreePanelTitle>
+                        <ThreePanelSubtitle>My reason to head outside.</ThreePanelSubtitle>
+                    </Stack>
+                </ThreePanelBlock>
+                <ThreePanelBlock>
+                    <StaticImage
+                        style={{ borderRadius: '12px' }}
+                        placeholder="blurred"
+                        src="../images/3d-printing.jpg"
+                        alt="A 3D printer midway through printing."
+                        width={400}
+                    />
+                    <Stack>
+                        <ThreePanelTitle as="h3">3D Printing</ThreePanelTitle>
+                        <ThreePanelSubtitle>Building the weirdest stuff.</ThreePanelSubtitle>
+                    </Stack>
+                </ThreePanelBlock>
+                <ThreePanelBlock>
+                    <StaticImage
+                        style={{ borderRadius: '12px' }}
+                        placeholder="blurred"
+                        src="../images/cats.jpg"
+                        alt="Two cats, one black one tabby, laying together in a cat bed."
+                        width={400}
+                    />
+                    <Stack>
+                        <ThreePanelTitle as="h3">Cats</ThreePanelTitle>
+                        <ThreePanelSubtitle>How could I not include them?</ThreePanelSubtitle>
+                    </Stack>
+                </ThreePanelBlock>
+            </ThreePanel>
+        </Stack>
+    );
+};
+
+const WhoAmI = () => {
+    return (
+        <TwoPanel id="about-me">
+            <StaticImage
+                style={{ borderRadius: '12px' }}
+                placeholder="blurred"
+                src="../images/ne-england.jpg"
+                alt="A scenic picture of the english countryside"
+                width={600}
+            />
+            <TwoPanelBlock>
+                <TwoPanelHeading>
+                    <TwoPanelTitle>Who am I?</TwoPanelTitle>
+                    <TwoPanelSubtitle>I was born in 1997, in the North East of England.</TwoPanelSubtitle>
+                </TwoPanelHeading>
+                <Text>
+                    I attended Teesside University, and graduated in 2018 with a Bachelors in Computer Science. During
+                    my final year of university is when I first started with React, and I've been obsessed with web
+                    technologies ever since.
+                </Text>
+                <Text>
+                    From there, I moved to Birmingham with my partner, and started my career. I worked at a local
+                    software development house as a full stack developer for around 2 years, working with mapping
+                    libraries and design systems before moving into a fully front-end role at Curve.
+                </Text>
+            </TwoPanelBlock>
+        </TwoPanel>
+    );
+};
+
+const StuffUsed = () => {
+    return (
+        <TwoPanel>
+            <StaticImage
+                style={{ borderRadius: '12px' }}
+                placeholder="blurred"
+                src="../images/edc.jpg"
+                alt="Various everyday items, such as a watch, wallet and laptop"
+                width={1200}
+            />
+            <TwoPanelBlock>
+                <TwoPanelHeading>
+                    <TwoPanelTitle>Curious about what I use?</TwoPanelTitle>
+                    <TwoPanelSubtitle>
+                        I've got a uses page listing everything I use day-to-day at the link below.
+                    </TwoPanelSubtitle>
+                </TwoPanelHeading>
+
+                <Button as={Link} variant="outline" href="/uses">
+                    My Uses
+                </Button>
+            </TwoPanelBlock>
+        </TwoPanel>
+    );
+};
+
+const Index: VFC = () => {
+    return (
+        <Layout>
+            <SEO title="Home" description="The home page of AYDev" />
+            <HeroIntro />
+            <WhoAmI />
+            <Interests />
+            <FeaturedArticleCard />
+            <StuffUsed />
+        </Layout>
+    );
+};
 
 export default Index;

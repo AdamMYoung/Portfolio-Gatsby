@@ -1,181 +1,108 @@
-import { renderToStaticMarkup } from 'react-dom/server';
-import { renderRichText } from 'gatsby-source-contentful/rich-text';
-import { graphql, navigate } from 'gatsby';
-import dayjs from 'dayjs';
-import React from 'react';
-import GatsbyImage from 'gatsby-image';
-import { BLOCKS } from '@contentful/rich-text-types';
-import { Disqus } from 'gatsby-plugin-disqus';
-import readingTime from 'reading-time';
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { graphql } from 'gatsby';
+import React, { VFC } from 'react';
+import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { Helmet } from 'react-helmet';
 
-import Layout from '../components/layout';
-import List from '../components/list';
-import Typography from '../components/typography';
+import { BlogPost } from '../type';
+import { Layout } from '../views';
+import { Box, Divider, Heading, Stack, Text } from '@chakra-ui/layout';
+import { stringToLongDate } from '../utils/date';
+import { Button } from '@chakra-ui/button';
+import GatsbyLink from 'gatsby-link';
+import { Link } from '../components';
+import { chakra } from '@chakra-ui/react';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { SEO } from '../views/seo/SEO';
 
-type Props = {
-    data: any;
+type BlogPostProps = {
+    data: {
+        contentfulPageBlogPost: BlogPost;
+    };
 };
 
-const BlogPost = ({ data }: Props) => {
-    const { title, publishDate, summary, content, slug: postSlug } = data.contentfulBlogPost;
-    const { edges: posts } = data.allContentfulBlogPost;
+const ChakraGatsbyImage = chakra(GatsbyImage);
 
-    const disqusConfig = {
-        url: `${data.site.siteMetadata.siteUrl}/blog/${postSlug}`,
-        identifier: postSlug,
-        title,
-    };
+const newTheme = {
+    a: (props) => {
+        const { href, children } = props;
 
-    const renderers = {
-        code: ({ language, value }) => {
-            return <SyntaxHighlighter style={tomorrow} children={value} language={language} />;
-        },
-    };
+        return <Link href={href}>{children}</Link>;
+    },
+};
 
-    const contentfulRenderOptions = {
-        renderNode: {
-            [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                const embeddedElement = node.data.target;
+const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
+    const { title, summary, createdAt, updatedAt, heroImage, copy, topics } = data.contentfulPageBlogPost;
 
-                switch (embeddedElement.internal.type) {
-                    case 'ContentfulAsset':
-                        return (
-                            <div className="mx-auto my-2">
-                                <GatsbyImage
-                                    imgStyle={{ objectFit: 'contain' }}
-                                    style={{ maxHeight: '50vh' }}
-                                    fluid={embeddedElement.fluid}
-                                />
-                            </div>
-                        );
-                }
-            },
-            [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-                const embeddedElement = node.data.target;
-
-                switch (embeddedElement.internal.type) {
-                    case 'ContentfulCodeBlock':
-                        return <ReactMarkdown children={embeddedElement.code.code} renderers={renderers} />;
-                    default:
-                        return null;
-                }
-            },
-        },
-    };
-
-    const blogContent = renderRichText(content, contentfulRenderOptions);
-    const stats = readingTime(renderToStaticMarkup(blogContent as any));
+    const createdAtText = stringToLongDate(createdAt);
+    const updatedAtText = stringToLongDate(updatedAt);
 
     return (
-        <Layout title={title}>
-            <Helmet encodeSpecialCharacters={false}>
-                <meta name="description" content={summary?.summary} />
-
+        <Layout spacing="12">
+            <SEO title={title} description={summary.summary} imageUrl={heroImage.file.url} imageAlt={title}>
                 <meta property="og:type" content="article" />
-                <meta property="og:article:published_time" content={new Date(publishDate).toISOString()} />
-                <meta property="og:article:author:profile:first_name" content="Adam" />
-                <meta property="og:article:author:profile:last_name" content="Young" />
-                <meta property="og:description" content={summary?.summary} />
+                <meta property="og:article:published_time" content={createdAt} />
+                <meta property="og:article:modified_time" content={updatedAt} />
+                <meta property="og:article:section" content="Software Development" />
+                {topics.map((t) => (
+                    <meta property="og:article:tag" content={t} />
+                ))}
+            </SEO>
+            <Stack spacing="6">
+                <Box>
+                    <Button as={GatsbyLink} to="/blog" variant="link" pl="0">
+                        Back to Blog
+                    </Button>
+                </Box>
+                <Stack>
+                    <Heading>{title}</Heading>
+                    <Heading variant="subtitle" fontSize="lg">
+                        {createdAtText} ({createdAtText !== updatedAtText && `Updated on ` + updatedAtText})
+                    </Heading>
+                </Stack>
+            </Stack>
 
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        '@context': 'https://schema.org',
-                        '@type': 'BlogPosting',
-                        datePublished: new Date(publishDate).toISOString(),
-                        headline: title,
-                        author: {
-                            '@type': 'Person',
-                            name: 'Adam Young',
-                        },
-                    })}
-                </script>
-            </Helmet>
+            <Stack spacing="10">
+                <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
+                <Stack spacing="6" fontSize={['md', null, 'xl']}>
+                    <ReactMarkdown components={ChakraUIRenderer(newTheme)} children={copy.copy} skipHtml />
+                </Stack>
 
-            <div className="container lg:flex my-4" style={{ minHeight: '30vh' }}>
-                <div className="w-full lg:w-2/3 px-2">
-                    <h2 className="text-4xl font-bold">{title}</h2>
-                    <p className="my-0 text-md mt-2">{dayjs(publishDate).format('dddd DD MMMM YYYY')}</p>
-                    <p className="text-md">{stats.text}</p>
-                    <hr className="my-4" />
-                    <Typography>{blogContent}</Typography>
-                </div>
-                <div className="w-full lg:w-1/3 px-2">
-                    {posts.length > 0 && (
-                        <div className="mt-4 border rounded-lg p-4">
-                            <p className="my-2 ml-1 text-3xl font-bold">Other posts</p>
-                            <List active>
-                                {posts.map(({ node: post }) => (
-                                    <List.Item key={post.slug} onClick={() => navigate(`/blog${post.slug}`)}>
-                                        {post.title}
-                                    </List.Item>
-                                ))}
-                            </List>
-                        </div>
-                    )}
-                </div>
-            </div>
-            <div className="w-full lg:w-2/3 px-2 mt-8">
-                <Disqus config={disqusConfig} />
-            </div>
+                <Divider />
+                <Stack spacing="4">
+                    <Text fontSize="md">Written by Adam Young</Text>
+                    <Text fontSize="md" variant="subtitle">
+                        Adam Young is a front-end engineer, who specializes in React and modern web technologies. He's
+                        working at <Link href="https://curve.com">Curve</Link> as a front-end engineer. He currently
+                        lives in Birmingham with his fiancé and two cats.
+                    </Text>
+                </Stack>
+            </Stack>
         </Layout>
     );
 };
 
-export default BlogPost;
+export default BlogEntry;
 
 export const query = graphql`
-    query blogPostQuery($title: String!, $date: Date!) {
-        site {
-            siteMetadata {
-                siteUrl
-            }
-        }
-        contentfulBlogPost(title: { eq: $title }) {
+    query ($slug: String!) {
+        contentfulPageBlogPost(slug: { eq: $slug }) {
+            createdAt
+            updatedAt
+            id
+            topics
             title
-            publishDate
             slug
             summary {
                 summary
             }
-            content {
-                raw
-                references {
-                    ... on ContentfulCodeBlock {
-                        contentful_id
-                        code {
-                            code
-                        }
-                        internal {
-                            type
-                        }
-                    }
-                    ... on ContentfulAsset {
-                        contentful_id
-                        fluid {
-                            ...GatsbyContentfulFluid_withWebp
-                        }
-                        internal {
-                            type
-                        }
-                    }
-                }
+            copy {
+                copy
             }
-        }
-        allContentfulBlogPost(
-            limit: 5
-            filter: { title: { ne: $title }, publishDate: { lt: $date } }
-            sort: { fields: publishDate, order: DESC }
-        ) {
-            edges {
-                node {
-                    title
-                    slug
-                    publishDate
+            heroImage {
+                file {
+                    url
                 }
+                gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
             }
         }
     }
