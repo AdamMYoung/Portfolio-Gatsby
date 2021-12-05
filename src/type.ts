@@ -12,6 +12,7 @@ export type BlogPost = {
     slug: string;
     copy: {
         copy: string;
+        readingTime: string;
     };
     heroImage: ImageDataLike & {
         file: {

@@ -1,6 +1,7 @@
 import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { useState, VFC } from 'react';
+
 import { CardList, CategoryList, CategoryListItem, Link } from '../components';
 import {
     TwoPanel,
@@ -67,13 +68,14 @@ const Blogs = () => {
             </CategoryList>
             <FeaturedArticleCard />
             <CardList id="articles">
-                {visibleArticles.map(({ id, title, slug, heroImage, createdAt }) => (
+                {visibleArticles.map(({ id, title, slug, heroImage, createdAt, copy }) => (
                     <BlogCard
                         key={id}
                         to={`/blog/${slug}`}
                         title={title}
                         subtitle={stringToLongDate(createdAt)}
                         image={heroImage}
+                        readingTime={copy.readingTime}
                     />
                 ))}
             </CardList>

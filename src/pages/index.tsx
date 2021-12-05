@@ -94,6 +94,7 @@ const Interests: VFC = () => {
                         src="../images/3d-printing.jpg"
                         alt="A 3D printer midway through printing."
                         width={400}
+                        objectFit="cover"
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">3D Printing</ThreePanelTitle>
@@ -111,7 +112,7 @@ const Interests: VFC = () => {
                     <Stack>
                         <ThreePanelTitle as="h3">Cats</ThreePanelTitle>
                         <ThreePanelSubtitle>
-                            My two cats, <i>Arlo</i> and <i>Theo</i>
+                            My two cats, <i>Arlo</i> and <i>Theo</i>.
                         </ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>

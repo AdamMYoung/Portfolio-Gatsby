@@ -14,6 +14,7 @@ export const useBlogPosts = () => {
                     slug
                     copy {
                         copy
+                        readingTime
                     }
                     heroImage {
                         gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])

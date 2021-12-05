@@ -69,10 +69,14 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                 </Box>
                 <Stack>
                     <Heading>{title}</Heading>
-                    <Heading variant="subtitle" fontSize="lg">
-                        {createdAtText} ({createdAtText !== updatedAtText && `Updated on ` + updatedAtText})
-                    </Heading>
+                    <Text variant="subtitle" fontSize="xl">
+                        {copy.readingTime}
+                    </Text>
                 </Stack>
+                <Divider />
+                <Heading variant="subtitle" fontSize="md">
+                    {createdAtText} ({createdAtText !== updatedAtText && `Updated on ` + updatedAtText})
+                </Heading>
             </Stack>
 
             <Stack spacing="10">
@@ -111,6 +115,7 @@ export const query = graphql`
             }
             copy {
                 copy
+                readingTime
             }
             heroImage {
                 file {

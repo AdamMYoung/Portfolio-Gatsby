@@ -1,4 +1,4 @@
-import { chakra, Heading, LinkBox, LinkOverlay, Stack } from '@chakra-ui/react';
+import { chakra, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
 import GatsbyLink from 'gatsby-link';
 import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
@@ -8,11 +8,12 @@ type BlogCardProps = {
     title: string;
     subtitle: string;
     to: string;
+    readingTime: string;
 };
 
 const ChakraGatsbyImage = chakra(GatsbyImage);
 
-export const BlogCard: VFC<BlogCardProps> = ({ image, title, subtitle, to }) => {
+export const BlogCard: VFC<BlogCardProps> = ({ image, title, subtitle, readingTime, to }) => {
     return (
         <LinkBox _hover={{ '.blog-card-image': { borderColor: 'red' }, cursor: 'pointer' }}>
             <Stack>
@@ -38,6 +39,9 @@ export const BlogCard: VFC<BlogCardProps> = ({ image, title, subtitle, to }) => 
                     <LinkOverlay to={to} as={GatsbyLink} fontSize="4xl">
                         {title}
                     </LinkOverlay>
+                    <Text variant="subtitle" fontSize="md">
+                        {readingTime}
+                    </Text>
                 </Stack>
             </Stack>
         </LinkBox>

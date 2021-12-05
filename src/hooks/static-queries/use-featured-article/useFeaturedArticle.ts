@@ -8,6 +8,9 @@ type FeaturedArticle = {
     summary: {
         summary: string;
     };
+    copy: {
+        readingTime: string;
+    };
     heroImage: IGatsbyImageData;
 };
 
@@ -21,6 +24,9 @@ export const useFeaturedArticle = () => {
                     title
                     summary {
                         summary
+                    }
+                    copy {
+                        readingTime
                     }
                     heroImage {
                         gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])

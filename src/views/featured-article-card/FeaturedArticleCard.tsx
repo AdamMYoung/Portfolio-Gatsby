@@ -8,7 +8,7 @@ import { stringToLongDate } from '../../utils/date';
 const ChakraGatsbyImage = chakra(GatsbyImage);
 
 export const FeaturedArticleCard: VFC = () => {
-    const { title, slug, createdAt, heroImage } = useFeaturedArticle();
+    const { title, slug, createdAt, heroImage, copy } = useFeaturedArticle();
 
     return (
         <LinkBox
@@ -18,7 +18,7 @@ export const FeaturedArticleCard: VFC = () => {
             transition="border 0.2s ease-in-out"
             _hover={{ borderColor: 'red.400' }}
         >
-            <TwoPanel gap="8" gridTemplateColumns={['1fr', null, null, '1fr 1fr']}>
+            <TwoPanel gap="8" gridTemplateColumns={['1fr', null, '1fr 1fr']}>
                 <TwoPanelBlock mb="0" mr={[0, null, null, 16]}>
                     <Text fontWeight="semibold" fontSize="md">
                         Featured Article
@@ -28,7 +28,11 @@ export const FeaturedArticleCard: VFC = () => {
                         <Text color="gray.300" fontSize="xl">
                             {stringToLongDate(createdAt)}
                         </Text>
+                        <Text color="gray.300" fontSize="md">
+                            {copy.readingTime}
+                        </Text>
                     </TwoPanelHeading>
+
                     <Spacer />
                     <LinkOverlay as={LinkButton} href={`/blog/${slug}`} variant="outline">
                         View Article
