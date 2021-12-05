@@ -63,6 +63,7 @@ const Interests: VFC = () => {
                         src="../images/laptop-on-table.jpeg"
                         alt="Laptop on a table, with code on the screen."
                         width={400}
+                        height={275}
                     />
 
                     <Stack>
@@ -79,6 +80,7 @@ const Interests: VFC = () => {
                         src="../images/photography.jpg"
                         alt="An image of a DSLR camera."
                         width={400}
+                        height={275}
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">Photography</ThreePanelTitle>
@@ -94,7 +96,7 @@ const Interests: VFC = () => {
                         src="../images/3d-printing.jpg"
                         alt="A 3D printer midway through printing."
                         width={400}
-                        objectFit="cover"
+                        height={275}
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">3D Printing</ThreePanelTitle>
@@ -108,6 +110,8 @@ const Interests: VFC = () => {
                         src="../images/cats.jpg"
                         alt="Two cats, one black one tabby, laying together in a cat bed."
                         width={400}
+                        height={275}
+                        objectFit="cover"
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">Cats</ThreePanelTitle>
