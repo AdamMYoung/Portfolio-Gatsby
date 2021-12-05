@@ -32,7 +32,6 @@ const HeroIntro = () => {
 
     const onSubmit = (data) => {
         setSubmitting(true);
-        let formData = new FormData(data);
 
         fetch('/', {
             method: 'POST',
