@@ -1,9 +1,7 @@
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Button, useBreakpointValue, useColorMode } from '@chakra-ui/react';
 import React from 'react';
-
 import { MenuIconButton } from '../../components';
-import { useIsMobile } from '../../hooks';
 
 export const DarkModeToggle = () => {
     const { colorMode, toggleColorMode } = useColorMode();

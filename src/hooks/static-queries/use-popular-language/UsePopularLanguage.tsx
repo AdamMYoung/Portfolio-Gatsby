@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useGithubStats } from '../use-github-stats';
 
 export const usePopularLanguage = () => {

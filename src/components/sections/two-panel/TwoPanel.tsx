@@ -1,7 +1,5 @@
-import { Image, ImageProps } from '@chakra-ui/image';
-import { Box, BoxProps, Grid, GridProps, Heading, HeadingProps, Stack, StackProps } from '@chakra-ui/layout';
-
-import React, { FC, VFC } from 'react';
+import { Box, BoxProps, Grid, GridProps, Heading, HeadingProps, Stack, StackProps } from '@chakra-ui/react';
+import React, { FC } from 'react';
 import { useMergedStyles } from '../../../hooks';
 
 export const TwoPanel: FC<GridProps> = ({ children, ...rest }) => {
@@ -42,7 +40,7 @@ export const TwoPanelTitle: FC<HeadingProps> = ({ children, ...rest }) => {
 
 export const TwoPanelSubtitle: FC<HeadingProps> = ({ children, ...rest }) => {
     return (
-        <Heading as="p" fontSize={['2xl', null, '3xl']} variant="subtitle" {...rest}>
+        <Heading as="p" fontSize={['1xl', null, '3xl']} variant="subtitle" {...rest}>
             {children}
         </Heading>
     );

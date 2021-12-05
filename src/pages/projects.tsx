@@ -1,14 +1,8 @@
-import { Box, Flex, Stack, Table, Tag, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, Flex, Table, Tag, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 import { Link } from '../components';
-import {
-    TwoPanel,
-    TwoPanelImage,
-    TwoPanelBlock,
-    TwoPanelSubtitle,
-    TwoPanelTitle,
-} from '../components/sections/two-panel';
+import { TwoPanel, TwoPanelBlock, TwoPanelSubtitle, TwoPanelTitle } from '../components/sections/two-panel';
 import { useGithubStats } from '../hooks/static-queries/use-github-stats';
 import { Layout } from '../views';
 import { SEO } from '../views/seo/SEO';

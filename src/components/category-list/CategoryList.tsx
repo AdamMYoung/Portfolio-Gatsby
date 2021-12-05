@@ -1,7 +1,5 @@
-import { Button, ButtonProps } from '@chakra-ui/button';
-import { Flex, FlexProps } from '@chakra-ui/layout';
+import { Button, ButtonProps, Flex, FlexProps } from '@chakra-ui/react';
 import React, { FC, useMemo } from 'react';
-
 import { useMergedStyles } from '../../hooks';
 import { CategoryListProvider, CategoryListProviderProps, useCategoryList } from './CategoryListProvider';
 

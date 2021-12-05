@@ -1,4 +1,4 @@
-import { Box, BoxProps, Grid, GridProps } from '@chakra-ui/layout';
+import { Box, BoxProps, Grid, GridProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
 export const CardList: FC<GridProps> = ({ children, ...rest }) => {

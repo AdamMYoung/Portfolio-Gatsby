@@ -1,19 +1,7 @@
-import { chakra, Text, Spacer, Button, Box, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { chakra, LinkBox, LinkOverlay, Spacer, Text } from '@chakra-ui/react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-import { Link as GatsbyLink } from 'gatsby';
-
-import {
-    TwoPanel,
-    TwoPanelBlock,
-    TwoPanelImage,
-    TwoPanelSubtitle,
-    TwoPanelTitle,
-    Link,
-    TwoPanelHeading,
-    LinkButton,
-    Card,
-} from '../../components';
+import { Card, LinkButton, TwoPanel, TwoPanelBlock, TwoPanelHeading, TwoPanelTitle } from '../../components';
 import { useFeaturedArticle } from '../../hooks/static-queries/use-featured-article';
 import { stringToLongDate } from '../../utils/date';
 

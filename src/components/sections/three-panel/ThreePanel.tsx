@@ -1,5 +1,5 @@
-import { Image, ImageProps, Grid, GridProps, Heading, HeadingProps, BoxProps, Box } from '@chakra-ui/react';
-import React, { FC, VFC } from 'react';
+import { Box, BoxProps, Grid, GridProps, Heading, HeadingProps } from '@chakra-ui/react';
+import React, { FC } from 'react';
 
 export const ThreePanel: FC<GridProps> = ({ children, ...rest }) => {
     return (

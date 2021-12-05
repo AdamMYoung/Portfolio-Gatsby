@@ -1,8 +1,6 @@
-import { Box, Container, Stack } from '@chakra-ui/layout';
-import { StackProps } from '@chakra-ui/react';
+import { Container, Stack, StackProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { Footer } from './footer';
-
 import { Navigation } from './navigation';
 
 export const Layout: FC<StackProps> = ({ children, ...rest }) => {

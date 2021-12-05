@@ -1,6 +1,4 @@
 import {
-    Divider,
-    Flex,
     Heading,
     Tab,
     TabList,

@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input, Stack } from '@chakra-ui/react';
+import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react';
 import React, { VFC } from 'react';
 import {
     TwoPanel,
