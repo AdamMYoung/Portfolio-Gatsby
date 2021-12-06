@@ -11,6 +11,7 @@ type SEOProps = {
 export const SEO: FC<SEOProps> = ({ title, description, imageUrl, imageAlt, children }) => {
     return (
         <Helmet>
+            <html lang="en" />
             <title>{`AYDev | ${title}`}</title>
             <meta property="og:title" content={title} />
             <meta name="description" content={description} />
