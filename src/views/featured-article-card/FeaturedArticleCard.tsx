@@ -1,4 +1,4 @@
-import { chakra, LinkBox, LinkOverlay, Spacer, Text } from '@chakra-ui/react';
+import { chakra, LinkBox, LinkOverlay, Spacer, Text, useColorMode } from '@chakra-ui/react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 import { Card, LinkButton, TwoPanel, TwoPanelBlock, TwoPanelHeading, TwoPanelTitle } from '../../components';
@@ -8,6 +8,7 @@ import { stringToLongDate } from '../../utils/date';
 const ChakraGatsbyImage = chakra(GatsbyImage);
 
 export const FeaturedArticleCard: VFC = () => {
+    const { colorMode } = useColorMode();
     const { title, slug, createdAt, heroImage, copy } = useFeaturedArticle();
 
     return (
@@ -23,18 +24,19 @@ export const FeaturedArticleCard: VFC = () => {
                     <Text fontWeight="semibold" fontSize="md">
                         Featured Article
                     </Text>
+                    <TwoPanelTitle>{title}</TwoPanelTitle>
                     <TwoPanelHeading>
-                        <TwoPanelTitle>{title}</TwoPanelTitle>
-                        <Text variant="subtitle" fontSize="xl">
-                            {stringToLongDate(createdAt)}
-                        </Text>
-                        <Text variant="subtitle" fontSize="md">
-                            {copy.readingTime}
-                        </Text>
+                        <Text fontSize="xl">{stringToLongDate(createdAt)}</Text>
+                        <Text fontSize="md">{copy.readingTime}</Text>
                     </TwoPanelHeading>
 
                     <Spacer />
-                    <LinkOverlay as={LinkButton} href={`/blog/${slug}`} variant="outline">
+                    <LinkOverlay
+                        color={colorMode === 'dark' ? 'red.100' : 'red.500'}
+                        as={LinkButton}
+                        href={`/blog/${slug}`}
+                        variant="outline"
+                    >
                         View Article
                     </LinkOverlay>
                 </TwoPanelBlock>
