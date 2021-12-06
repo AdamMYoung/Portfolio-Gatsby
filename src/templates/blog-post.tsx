@@ -75,7 +75,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                 </Stack>
                 <Divider />
                 <Heading variant="subtitle" fontSize="md">
-                    {createdAtText} ({createdAtText !== updatedAtText && `Updated on ` + updatedAtText})
+                    {createdAtText} {createdAtText !== updatedAtText && `(Updated on ` + updatedAtText + ')'}
                 </Heading>
             </Stack>
 
