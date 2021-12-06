@@ -1,10 +1,14 @@
-import { Box, Button, chakra, Divider, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, chakra, Code, Divider, Heading, Stack, Text, useColorMode } from '@chakra-ui/react';
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
 import { graphql } from 'gatsby';
 import GatsbyLink from 'gatsby-link';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 import ReactMarkdown from 'react-markdown';
+import Highlight from 'react-highlight';
+
+import 'highlight.js/styles/github-dark.css';
+
 import { Link } from '../components';
 import { BlogPost } from '../type';
 import { stringToLongDate } from '../utils/date';
@@ -24,6 +28,22 @@ const newTheme = {
         const { href, children } = props;
 
         return <Link href={href}>{children}</Link>;
+    },
+    code: ({ children }) => {
+        return <Code p="1">{children}</Code>;
+    },
+    pre: ({ children }) => {
+        return (
+            <Box
+                as="pre"
+                bg="gray.700"
+                boxShadow="xl"
+                rounded="xl"
+                sx={{ code: { w: 'full', color: 'white', bg: 'initial' } }}
+            >
+                <Highlight>{children}</Highlight>
+            </Box>
+        );
     },
 };
 
