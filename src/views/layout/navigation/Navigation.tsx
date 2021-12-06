@@ -61,6 +61,7 @@ export const Navigation: VFC = () => {
     return (
         <>
             <Grid
+                as="nav"
                 sx={{ bg: colorMode == 'dark' ? 'gray.800' : 'white' }}
                 transitionProperty="background-color"
                 transitionDuration="normal"
