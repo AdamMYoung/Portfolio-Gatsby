@@ -29,7 +29,7 @@ module.exports = {
             },
         },
         'gatsby-plugin-react-helmet',
-        'gatsby-plugin-sitemap',
+        'gatsby-plugin-advanced-sitemap',
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
         {
