@@ -24,11 +24,11 @@ export const FeaturedArticleCard: VFC = () => {
                         Featured Article
                     </Text>
                     <TwoPanelHeading>
-                        <TwoPanelTitle color="white">{title}</TwoPanelTitle>
-                        <Text color="gray.300" fontSize="xl">
+                        <TwoPanelTitle>{title}</TwoPanelTitle>
+                        <Text variant="subtitle" fontSize="xl">
                             {stringToLongDate(createdAt)}
                         </Text>
-                        <Text color="gray.300" fontSize="md">
+                        <Text variant="subtitle" fontSize="md">
                             {copy.readingTime}
                         </Text>
                     </TwoPanelHeading>
