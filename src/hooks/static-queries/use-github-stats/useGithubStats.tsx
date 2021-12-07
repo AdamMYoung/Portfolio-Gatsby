@@ -23,7 +23,7 @@ export const useGithubStats = (): GithubStats => {
                     }
                     repositories(
                         first: 100
-                        orderBy: { field: CREATED_AT, direction: DESC }
+                        orderBy: { field: PUSHED_AT, direction: DESC }
                         privacy: PUBLIC
                         isFork: false
                     ) {

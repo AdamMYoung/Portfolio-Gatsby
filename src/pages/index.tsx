@@ -42,7 +42,7 @@ const HeroIntro = () => {
                 placeholder="blurred"
                 src="../images/me.jpg"
                 alt="A self portrait of me and my partner"
-                width={600}
+                width={900}
             />
         </TwoPanel>
     );
@@ -133,7 +133,7 @@ const WhoAmI = () => {
                 placeholder="blurred"
                 src="../images/ne-england.jpg"
                 alt="A scenic picture of the english countryside"
-                width={600}
+                width={900}
             />
             <TwoPanelBlock>
                 <TwoPanelHeading>
