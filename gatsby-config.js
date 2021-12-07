@@ -47,6 +47,7 @@ module.exports = {
             resolve: '@sentry/gatsby',
             options: {
                 dsn: process.env.SENTRY_DSN,
+                autoSessionTracking: true,
                 sampleRate: 0.8,
                 tracesSampleRate: 0.3,
             },
