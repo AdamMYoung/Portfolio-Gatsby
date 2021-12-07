@@ -5,5 +5,6 @@ Sentry.init({
     dsn: process.env.SENTRY_DSN,
     integrations: [new TracingIntegrations.BrowserTracing()],
     autoSessionTracking: true,
-    sampleRate: 1.0,
+    sampleRate: 0.6,
+    tracesSampleRate: 0.6,
 });
