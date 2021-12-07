@@ -43,9 +43,14 @@ module.exports = {
                 },
             },
         },
-
-        '@sentry/gatsby',
-
+        {
+            resolve: '@sentry/gatsby',
+            options: {
+                dsn: process.env.SENTRY_DSN,
+                sampleRate: 0.8,
+                tracesSampleRate: 0.3,
+            },
+        },
         {
             resolve: 'gatsby-source-filesystem',
             options: {
