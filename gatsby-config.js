@@ -25,7 +25,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-google-analytics',
             options: {
-                trackingId: 'UA-140587584-1',
+                trackingId: process.env.GA_TRACKING_ID,
             },
         },
         'gatsby-plugin-react-helmet',
@@ -43,6 +43,9 @@ module.exports = {
                 },
             },
         },
+
+        '@sentry/gatsby',
+
         {
             resolve: 'gatsby-source-filesystem',
             options: {
