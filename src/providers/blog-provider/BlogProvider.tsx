@@ -1,4 +1,4 @@
-import { BlogPost } from '../../type';
+import { BlogPost } from '~types';
 
 type FilterContextOptions = {
     blogResults: BlogPost[];

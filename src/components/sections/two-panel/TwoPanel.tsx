@@ -1,6 +1,6 @@
 import { Box, BoxProps, Grid, GridProps, Heading, HeadingProps, Stack, StackProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import { useMergedStyles } from '../../../hooks';
+import { useMergedStyles } from '~hooks';
 
 export const TwoPanel: FC<GridProps> = ({ children, ...rest }) => {
     return (

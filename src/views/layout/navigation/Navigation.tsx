@@ -15,8 +15,9 @@ import {
     useDisclosure,
 } from '@chakra-ui/react';
 import React, { VFC } from 'react';
-import { DarkModeToggle } from '../..';
-import { Link, LinkButton, MenuIconButton } from '../../../components';
+
+import { DarkModeToggle } from '~views';
+import { Link, LinkButton, MenuIconButton } from '~components';
 
 const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
     return (

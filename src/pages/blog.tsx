@@ -2,20 +2,21 @@ import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { useState, VFC } from 'react';
 
-import { CardList, CategoryList, CategoryListItem, Link } from '../components';
 import {
+    CardList,
+    CategoryList,
+    CategoryListItem,
+    Link,
     TwoPanel,
     TwoPanelBlock,
     TwoPanelHeading,
     TwoPanelSubtitle,
     TwoPanelTitle,
-} from '../components/sections/two-panel';
-import { useArrayLimiter } from '../hooks';
-import { useBlogPosts } from '../hooks/static-queries/use-blog-posts';
-import { useBlogTopics } from '../hooks/static-queries/use-blog-topics';
-import { stringToLongDate } from '../utils/date';
-import { BlogCard, FeaturedArticleCard, Layout } from '../views';
-import { SEO } from '../views/seo/SEO';
+} from '~components';
+import { useArrayLimiter } from '~hooks';
+import { useBlogTopics, useBlogPosts } from '~hooks/static-queries';
+import { BlogCard, FeaturedArticleCard, Layout, SEO } from '~views';
+import { stringToLongDate } from '~utils/date';
 
 const HeroIntro = () => {
     return (

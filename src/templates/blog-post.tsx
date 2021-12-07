@@ -1,4 +1,4 @@
-import { Box, Button, chakra, Code, Divider, Heading, Stack, Text, useColorMode } from '@chakra-ui/react';
+import { Box, Button, chakra, Code, Divider, Heading, Stack, Text } from '@chakra-ui/react';
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
 import { graphql } from 'gatsby';
 import GatsbyLink from 'gatsby-link';
@@ -9,12 +9,11 @@ import Highlight from 'react-highlight';
 
 import 'highlight.js/styles/github-dark.css';
 
-import { CardList, Link } from '../components';
-import { BlogPost } from '../type';
-import { stringToLongDate } from '../utils/date';
-import { BlogCard, Layout } from '../views';
-import { SEO } from '../views/seo/SEO';
-import { useCombinedArray } from '../hooks';
+import { CardList, Link } from '~components';
+import { BlogPost } from '~types';
+import { stringToLongDate } from '~utils/date';
+import { BlogCard, Layout, SEO } from '~views';
+import { useCombinedArray } from '~hooks';
 
 type BlogPostProps = {
     data: {

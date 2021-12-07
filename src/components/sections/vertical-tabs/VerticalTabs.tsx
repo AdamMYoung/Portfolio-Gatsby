@@ -12,7 +12,7 @@ import {
     TabsProps,
 } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import { useMergedStyles } from '../../../hooks';
+import { useMergedStyles } from '~hooks';
 
 export const VerticalTabs: FC<TabsProps> = ({ children, ...rest }) => {
     return (
