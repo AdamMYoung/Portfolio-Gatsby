@@ -1,1 +1,1 @@
-export * from './blog-provider';
+export * from './blog-search-provider';

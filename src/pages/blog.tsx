@@ -17,10 +17,10 @@ import { useArrayLimiter } from '~hooks';
 import { useBlogTopics } from '~hooks/static-queries';
 import { BlogCard, FeaturedArticleCard, Layout, SEO } from '~views';
 import { stringToLongDate } from '~utils/date';
-import { BlogProvider, useBlogs } from '~providers';
+import { BlogSearchProvider, useBlogSearch } from '~providers';
 
 const HeroIntro = () => {
-    const { onSearchTermChanged, searchTerm, results } = useBlogs();
+    const { onSearchTermChanged, searchTerm, results } = useBlogSearch();
 
     const hasNoResults = results.length === 0;
 
@@ -60,7 +60,7 @@ const HeroIntro = () => {
 };
 
 const Blogs = () => {
-    const { results, applicableFilters, selectedFilters, onFilterToggled } = useBlogs();
+    const { results, applicableFilters, selectedFilters, onFilterToggled } = useBlogSearch();
     const topics = useBlogTopics();
 
     const [visibleArticles, isAllArticlesVisible, loadMoreArticles, reset] = useArrayLimiter(results);
@@ -119,14 +119,14 @@ const Blogs = () => {
 const Blog: VFC = () => {
     return (
         <Layout>
-            <BlogProvider>
+            <BlogSearchProvider>
                 <SEO
                     title="Blog"
                     description="The AYDev Blog. Find tips and guides across web development right here."
                 />
                 <HeroIntro />
                 <Blogs />
-            </BlogProvider>
+            </BlogSearchProvider>
         </Layout>
     );
 };
