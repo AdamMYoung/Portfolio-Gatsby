@@ -37,7 +37,7 @@ export const BlogSearchProvider: FC = ({ children }) => {
      * Filters the search result by the blog filters provided.
      */
     const filteredByFiltersBlogs = useFilter(filteredByTermBlogs, selectedFilters, (blog, filters) =>
-        filters.reduce((prev: boolean, curr) => (prev === false ? false : blog.topics.includes(curr)), true)
+        filters.reduce<boolean>((prev, curr) => (prev === false ? false : blog.topics.includes(curr)), true)
     );
 
     /**
