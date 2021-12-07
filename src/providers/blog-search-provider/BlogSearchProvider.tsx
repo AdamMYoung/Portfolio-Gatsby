@@ -5,7 +5,7 @@ import { useBlogPosts } from '~hooks/static-queries';
 import { useFilter, useToggleSet } from '~hooks';
 import { BlogPost } from '~types';
 
-type BlogContextOptions = {
+type BlogSearchContextOptions = {
     results: BlogPost[];
     searchTerm: string;
     applicableFilters: string[];
@@ -15,11 +15,11 @@ type BlogContextOptions = {
     onReset: () => void;
 };
 
-const [BlogContextProvider, useBlogs] = createContext<BlogContextOptions>();
+const [BlogSearchContextProvider, useBlogSearch] = createContext<BlogSearchContextOptions>();
 
-export { useBlogs };
+export { useBlogSearch };
 
-export const BlogProvider: FC = ({ children }) => {
+export const BlogSearchProvider: FC = ({ children }) => {
     const [selectedFilters, toggleFilter, resetFilters] = useToggleSet<string>();
     const [searchTerm, setSearchTerm] = useState<string>('');
     const blogs = useBlogPosts();
@@ -59,7 +59,7 @@ export const BlogProvider: FC = ({ children }) => {
         setSearchTerm('');
     }, [resetFilters, setSearchTerm]);
 
-    const value: BlogContextOptions = {
+    const value: BlogSearchContextOptions = {
         results: filteredByFiltersBlogs,
         applicableFilters,
         selectedFilters,
@@ -69,5 +69,5 @@ export const BlogProvider: FC = ({ children }) => {
         onReset: handleReset,
     };
 
-    return <BlogContextProvider value={value}>{children}</BlogContextProvider>;
+    return <BlogSearchContextProvider value={value}>{children}</BlogSearchContextProvider>;
 };
