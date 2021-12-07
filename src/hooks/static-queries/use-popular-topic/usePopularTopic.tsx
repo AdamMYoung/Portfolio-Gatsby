@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useBlogTopics } from '../use-blog-topics';
+import { useBlogTopics } from '~hooks/static-queries';
 
 export const usePopularTopic = () => {
     const topics = useBlogTopics();

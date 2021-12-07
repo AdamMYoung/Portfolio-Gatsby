@@ -1,4 +1,4 @@
-import { useBlogPosts } from '../use-blog-posts/useBlogPosts';
+import { useBlogPosts } from '~hooks/static-queries';
 
 export const useBlogTopics = () => {
     const topicSet = new Set<string>();

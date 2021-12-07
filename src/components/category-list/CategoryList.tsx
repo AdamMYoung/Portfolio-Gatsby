@@ -1,6 +1,7 @@
 import { Button, ButtonProps, Flex, FlexProps } from '@chakra-ui/react';
 import React, { FC, useMemo } from 'react';
-import { useMergedStyles } from '../../hooks';
+
+import { useMergedStyles } from '~hooks';
 import { CategoryListProvider, CategoryListProviderProps, useCategoryList } from './CategoryListProvider';
 
 type CategoryListProps = CategoryListProviderProps & FlexProps;
@@ -9,11 +10,17 @@ type CategoryListItemProps = ButtonProps & {
     categoryKey: string;
 };
 
-export const CategoryList: FC<CategoryListProps> = ({ onCategoriesChanged, children, sx, ...rest }) => {
+export const CategoryList: FC<CategoryListProps> = ({
+    onCategoriesChanged,
+    onCategorySelected,
+    children,
+    sx,
+    ...rest
+}) => {
     const _sx = useMergedStyles(sx, { '*': { m: 1 } });
 
     return (
-        <CategoryListProvider onCategoriesChanged={onCategoriesChanged}>
+        <CategoryListProvider onCategoriesChanged={onCategoriesChanged} onCategorySelected={onCategorySelected}>
             <Flex flexWrap="wrap" sx={_sx} {...rest}>
                 {children}
             </Flex>

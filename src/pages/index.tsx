@@ -1,16 +1,20 @@
 import { Button, Heading, Stack, Text } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-import { Link, ThreePanel, ThreePanelBlock, ThreePanelSubtitle, ThreePanelTitle } from '../components';
+
 import {
+    Link,
+    ThreePanel,
+    ThreePanelBlock,
+    ThreePanelSubtitle,
+    ThreePanelTitle,
     TwoPanel,
     TwoPanelBlock,
     TwoPanelHeading,
     TwoPanelSubtitle,
     TwoPanelTitle,
-} from '../components/sections/two-panel';
-import { FeaturedArticleCard, Layout } from '../views';
-import { SEO } from '../views/seo/SEO';
+} from '~components';
+import { FeaturedArticleCard, Layout, SEO } from '~views';
 
 const HeroIntro = () => {
     return (

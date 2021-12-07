@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { BlogPost } from '../../../type';
+import { BlogPost } from '~types';
 
 export const useBlogPosts = () => {
     const posts = useStaticQuery<{ allContentfulPageBlogPost: { nodes: BlogPost[] } }>(graphql`

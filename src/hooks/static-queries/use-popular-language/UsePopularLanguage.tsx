@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useGithubStats } from '../use-github-stats';
+import { useGithubStats } from '~hooks/static-queries';
 
 export const usePopularLanguage = () => {
     const stats = useGithubStats();

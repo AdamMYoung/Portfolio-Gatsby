@@ -33,6 +33,23 @@ module.exports = {
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
         {
+            resolve: 'gatsby-plugin-alias-imports',
+            options: {
+                alias: {
+                    '~components': 'src/components',
+                    '~views': 'src/views',
+                    '~providers': 'src/providers',
+                    '~hooks': 'src/hooks',
+                    '~images': 'src/images',
+                    '~utils': 'src/utils',
+                    '~pages': 'src/pages',
+                    '~templates': 'src/templates',
+                    '~types': 'src/types',
+                },
+                extensions: ['ts', 'tsx'],
+            },
+        },
+        {
             resolve: 'gatsby-source-graphql',
             options: {
                 typeName: 'GitHub',

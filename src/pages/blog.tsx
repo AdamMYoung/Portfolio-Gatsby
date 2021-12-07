@@ -1,23 +1,29 @@
-import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Heading, Input, Stack, Text } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
-import React, { useState, VFC } from 'react';
+import React, { useEffect, VFC } from 'react';
 
-import { CardList, CategoryList, CategoryListItem, Link } from '../components';
 import {
+    CardList,
+    CategoryList,
+    CategoryListItem,
+    Link,
     TwoPanel,
     TwoPanelBlock,
     TwoPanelHeading,
     TwoPanelSubtitle,
     TwoPanelTitle,
-} from '../components/sections/two-panel';
-import { useArrayLimiter } from '../hooks';
-import { useBlogPosts } from '../hooks/static-queries/use-blog-posts';
-import { useBlogTopics } from '../hooks/static-queries/use-blog-topics';
-import { stringToLongDate } from '../utils/date';
-import { BlogCard, FeaturedArticleCard, Layout } from '../views';
-import { SEO } from '../views/seo/SEO';
+} from '~components';
+import { useArrayLimiter } from '~hooks';
+import { useBlogTopics } from '~hooks/static-queries';
+import { BlogCard, FeaturedArticleCard, Layout, SEO } from '~views';
+import { stringToLongDate } from '~utils/date';
+import { BlogProvider, useBlogs } from '~providers';
 
 const HeroIntro = () => {
+    const { onSearchTermChanged, searchTerm, results } = useBlogs();
+
+    const hasNoResults = results.length === 0;
+
     return (
         <TwoPanel>
             <TwoPanelBlock>
@@ -26,8 +32,18 @@ const HeroIntro = () => {
                     <TwoPanelSubtitle>Check out the articles below.</TwoPanelSubtitle>
                 </TwoPanelHeading>
                 <Stack pt="4" spacing="4">
-                    <Button as={Link} variant="outline" href="#articles">
-                        View Articles
+                    <Input
+                        value={searchTerm}
+                        placeholder="Search for an article"
+                        rounded="full"
+                        onChange={(e) => onSearchTermChanged(e.target.value)}
+                    />
+                    <Button as={Link} variant="outline" href="#articles" isDisabled={hasNoResults}>
+                        {!searchTerm
+                            ? 'View All Articles'
+                            : hasNoResults
+                            ? 'No Articles Found'
+                            : `View ${results.length} ${results.length === 1 ? 'Article' : 'Articles'} `}
                     </Button>
                 </Stack>
             </TwoPanelBlock>
@@ -44,24 +60,27 @@ const HeroIntro = () => {
 };
 
 const Blogs = () => {
-    const blogPosts = useBlogPosts();
-    const blogTopics = useBlogTopics();
+    const { results, applicableFilters, selectedFilters, onFilterToggled } = useBlogs();
+    const topics = useBlogTopics();
 
-    const [blogFilters, setBlogFilters] = useState<string[]>([]);
+    const [visibleArticles, isAllArticlesVisible, loadMoreArticles, reset] = useArrayLimiter(results);
 
-    const filteredArticles =
-        blogFilters.length === 0
-            ? blogPosts
-            : blogPosts.filter((post) => !!post.topics.find((t) => blogFilters.includes(t)));
-
-    const [visibleArticles, isAllArticlesVisible, loadMoreArticles] = useArrayLimiter(filteredArticles);
+    useEffect(() => {
+        reset();
+    }, [results]);
 
     return (
         <Stack spacing="8">
             <Heading>Filter articles by topic</Heading>
-            <CategoryList onCategoriesChanged={setBlogFilters}>
-                {blogTopics.map((topic) => (
-                    <CategoryListItem categoryKey={topic} key={topic}>
+            <CategoryList>
+                {topics.map((topic) => (
+                    <CategoryListItem
+                        onClick={() => onFilterToggled(topic)}
+                        categoryKey={topic}
+                        key={topic}
+                        isActive={selectedFilters.includes(topic)}
+                        isDisabled={!applicableFilters.includes(topic)}
+                    >
                         {topic}
                     </CategoryListItem>
                 ))}
@@ -100,9 +119,14 @@ const Blogs = () => {
 const Blog: VFC = () => {
     return (
         <Layout>
-            <SEO title="Blog" description="The AYDev Blog. Find tips and guides across web development right here." />
-            <HeroIntro />
-            <Blogs />
+            <BlogProvider>
+                <SEO
+                    title="Blog"
+                    description="The AYDev Blog. Find tips and guides across web development right here."
+                />
+                <HeroIntro />
+                <Blogs />
+            </BlogProvider>
         </Layout>
     );
 };

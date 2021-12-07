@@ -1,11 +1,8 @@
 import { Grid, Heading, Progress, Stack, Stat, StatHelpText, StatNumber, Text } from '@chakra-ui/react';
 import React, { VFC } from 'react';
-import { useBlogPosts } from '../hooks/static-queries/use-blog-posts';
-import { useGithubStats } from '../hooks/static-queries/use-github-stats/useGithubStats';
-import { usePopularLanguage } from '../hooks/static-queries/use-popular-language';
-import { usePopularTopic } from '../hooks/static-queries/use-popular-topic';
-import { Layout } from '../views';
-import { SEO } from '../views/seo/SEO';
+
+import { useBlogPosts, useGithubStats, usePopularLanguage, usePopularTopic } from '~hooks/static-queries';
+import { Layout, SEO } from '~views';
 
 const Stats: VFC = () => {
     const stats = useGithubStats();

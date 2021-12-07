@@ -1,9 +1,10 @@
 import { chakra, LinkBox, LinkOverlay, Spacer, Text, useColorMode } from '@chakra-ui/react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-import { Card, LinkButton, TwoPanel, TwoPanelBlock, TwoPanelHeading, TwoPanelTitle } from '../../components';
-import { useFeaturedArticle } from '../../hooks/static-queries/use-featured-article';
-import { stringToLongDate } from '../../utils/date';
+
+import { Card, LinkButton, TwoPanel, TwoPanelBlock, TwoPanelHeading, TwoPanelTitle } from '~components';
+import { useFeaturedArticle } from '~hooks/static-queries';
+import { stringToLongDate } from '~utils/date';
 
 const ChakraGatsbyImage = chakra(GatsbyImage);
 

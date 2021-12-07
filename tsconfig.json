@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "jsx": "react",
+        "baseUrl": ".",
+        "paths": {
+            "~components/*": ["src/components/*"],
+            "~components": ["src/components"],
+            "~utils/*": ["src/utils/*"],
+            "~utils": ["src/utils"],
+            "~views/*": ["src/views/*"],
+            "~views": ["src/views"],
+            "~hooks/*": ["src/hooks/*"],
+            "~hooks": ["src/hooks"],
+            "~providers/*": ["src/providers/*"],
+            "~providers": ["src/providers"],
+            "~images/*": ["src/images/*"],
+            "~images": ["src/images"],
+            "~templates/*": ["src/templates/*"],
+            "~templates": ["src/templates"],
+            "~pages/*": ["src/pages/*"],
+            "~pages": ["src/pages"],
+            "~types": ["src/types"]
+        }
+    }
+}

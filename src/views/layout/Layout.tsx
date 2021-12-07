@@ -1,5 +1,6 @@
 import { Container, Stack, StackProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
+
 import { Footer } from './footer';
 import { Navigation } from './navigation';
 
