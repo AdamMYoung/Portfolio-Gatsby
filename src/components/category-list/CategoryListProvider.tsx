@@ -6,7 +6,8 @@ type CategoryListContextOptions = {
 };
 
 export type CategoryListProviderProps = {
-    onCategoriesChanged: (categories: string[]) => void;
+    onCategoriesChanged?: (categories: string[]) => void;
+    onCategorySelected?: (category: string) => void;
 };
 
 export const CategoryListContext = React.createContext<CategoryListContextOptions>({
@@ -16,7 +17,11 @@ export const CategoryListContext = React.createContext<CategoryListContextOption
 
 export const useCategoryList = () => React.useContext(CategoryListContext);
 
-export const CategoryListProvider: FC<CategoryListProviderProps> = ({ onCategoriesChanged, children }) => {
+export const CategoryListProvider: FC<CategoryListProviderProps> = ({
+    onCategoriesChanged,
+    onCategorySelected,
+    children,
+}) => {
     const [selectedCategories, setSelectedCategories] = React.useState<string[]>([]);
 
     const handleCategorySelected = (category: string) => {
@@ -29,7 +34,9 @@ export const CategoryListProvider: FC<CategoryListProviderProps> = ({ onCategori
         }
 
         setSelectedCategories(categories);
-        onCategoriesChanged(categories);
+
+        onCategorySelected?.(category);
+        onCategoriesChanged?.(categories);
     };
 
     return (
