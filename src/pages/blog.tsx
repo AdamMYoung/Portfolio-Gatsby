@@ -68,16 +68,18 @@ const Blogs = () => {
             </CategoryList>
             <FeaturedArticleCard />
             <CardList id="articles">
-                {visibleArticles.map(({ id, title, slug, heroImage, createdAt, copy }) => (
-                    <BlogCard
-                        key={id}
-                        to={`/blog/${slug}`}
-                        title={title}
-                        subtitle={stringToLongDate(createdAt)}
-                        image={heroImage}
-                        readingTime={copy.readingTime}
-                    />
-                ))}
+                {visibleArticles.map(({ id, title, slug, heroImage, createdAt, copy }) => {
+                    return (
+                        <BlogCard
+                            key={id}
+                            to={`/blog/${slug}`}
+                            title={title}
+                            subtitle={stringToLongDate(createdAt)}
+                            image={heroImage}
+                            readingTime={copy?.readingTime}
+                        />
+                    );
+                })}
             </CardList>
             {!isAllArticlesVisible && (
                 <Box>

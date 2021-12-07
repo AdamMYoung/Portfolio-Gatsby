@@ -1,12 +1,13 @@
 const readingTime = require('reading-time');
 const { marked } = require('marked');
 
-exports.createPages = async function ({ actions, graphql }) {
+const createBlogPages = async ({ actions, graphql }) => {
     const { data } = await graphql(`
         {
             allContentfulPageBlogPost {
                 nodes {
                     slug
+                    topics
                 }
             }
         }
@@ -14,13 +15,18 @@ exports.createPages = async function ({ actions, graphql }) {
 
     data.allContentfulPageBlogPost.nodes.forEach((edge) => {
         const slug = edge.slug;
+        const topics = edge.topics;
 
         actions.createPage({
             path: `/blog/${slug}`,
             component: require.resolve(`./src/templates/blog-post.tsx`),
-            context: { slug: slug },
+            context: { slug: slug, topics },
         });
     });
+};
+
+exports.createPages = async function ({ actions, graphql }) {
+    await createBlogPages({ actions, graphql });
 };
 
 exports.createSchemaCustomization = ({ actions, schema }) => {

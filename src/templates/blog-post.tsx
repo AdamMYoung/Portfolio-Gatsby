@@ -9,15 +9,18 @@ import Highlight from 'react-highlight';
 
 import 'highlight.js/styles/github-dark.css';
 
-import { Link } from '../components';
+import { CardList, Link } from '../components';
 import { BlogPost } from '../type';
 import { stringToLongDate } from '../utils/date';
-import { Layout } from '../views';
+import { BlogCard, Layout } from '../views';
 import { SEO } from '../views/seo/SEO';
+import { useCombinedArray } from '../hooks';
 
 type BlogPostProps = {
     data: {
         contentfulPageBlogPost: BlogPost;
+        matching: { nodes: BlogPost[] };
+        notMatching: { nodes: BlogPost[] };
     };
 };
 
@@ -49,6 +52,7 @@ const newTheme = {
 
 const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
     const { title, summary, createdAt, updatedAt, heroImage, copy, topics } = data.contentfulPageBlogPost;
+    const relatedBlogs = useCombinedArray(3, [data.matching.nodes, data.notMatching.nodes]);
 
     const createdAtText = stringToLongDate(createdAt);
     const updatedAtText = stringToLongDate(updatedAt);
@@ -115,6 +119,25 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                     </Text>
                 </Stack>
             </Stack>
+
+            {relatedBlogs.length > 0 && (
+                <>
+                    <Divider />
+                    <Heading>Related Articles</Heading>
+                    <CardList>
+                        {relatedBlogs.map(({ id, slug, createdAt, title, heroImage, copy }) => (
+                            <BlogCard
+                                key={id}
+                                to={`/blog/${slug}`}
+                                title={title}
+                                subtitle={stringToLongDate(createdAt)}
+                                image={heroImage}
+                                readingTime={copy.readingTime}
+                            />
+                        ))}
+                    </CardList>
+                </>
+            )}
         </Layout>
     );
 };
@@ -122,7 +145,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
 export default BlogEntry;
 
 export const query = graphql`
-    query ($slug: String!) {
+    query ($slug: String!, $topics: [String]!) {
         contentfulPageBlogPost(slug: { eq: $slug }) {
             createdAt
             updatedAt
@@ -142,6 +165,48 @@ export const query = graphql`
                     url
                 }
                 gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+            }
+        }
+        matching: allContentfulPageBlogPost(
+            filter: { topics: { in: $topics }, slug: { ne: $slug } }
+            limit: 3
+            sort: { fields: createdAt, order: DESC }
+        ) {
+            nodes {
+                createdAt
+                updatedAt
+                id
+                topics
+                title
+                slug
+                copy {
+                    copy
+                    readingTime
+                }
+                heroImage {
+                    gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                }
+            }
+        }
+        notMatching: allContentfulPageBlogPost(
+            filter: { topics: { nin: $topics }, slug: { ne: $slug } }
+            limit: 3
+            sort: { fields: createdAt, order: DESC }
+        ) {
+            nodes {
+                createdAt
+                updatedAt
+                id
+                topics
+                title
+                slug
+                copy {
+                    copy
+                    readingTime
+                }
+                heroImage {
+                    gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                }
             }
         }
     }
