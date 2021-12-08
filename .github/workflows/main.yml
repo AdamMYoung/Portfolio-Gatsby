@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: POST to Build Hook
-        run: curl -X POST -d {} https://api.netlify.com/build_hooks/61acfa9db46d1e78232b4ea3
+        run: curl -X POST -d {} $NETLIFY_WEBHOOK_URL
