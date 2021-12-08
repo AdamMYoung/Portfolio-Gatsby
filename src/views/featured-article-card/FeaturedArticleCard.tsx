@@ -22,12 +22,12 @@ export const FeaturedArticleCard: VFC = () => {
         >
             <TwoPanel gap="8" gridTemplateColumns={['1fr', null, '1fr 1fr']}>
                 <TwoPanelBlock mb="0" mr={[0, null, null, 16]}>
-                    <Text fontWeight="semibold" fontSize={["sm", null, "md"]}>
+                    <Text fontWeight="semibold" fontSize="sm">
                         Featured Article
                     </Text>
                     <TwoPanelTitle>{title}</TwoPanelTitle>
                     <TwoPanelHeading>
-                        <Text fontSize={["md", null, "xl"]}>{stringToLongDate(createdAt)}</Text>
+                        <Text fontSize={["lg", null, "xl"]}>{stringToLongDate(createdAt)}</Text>
                         <Text fontSize={["sm", null, "md"]}>{copy.readingTime}</Text>
                     </TwoPanelHeading>
 
