@@ -36,7 +36,7 @@ export const BlogCard: VFC<BlogCardProps> = ({ image, title, subtitle, readingTi
                         {subtitle}
                     </Heading>
 
-                    <LinkOverlay to={to} as={GatsbyLink} fontSize="4xl">
+                    <LinkOverlay to={to} as={GatsbyLink} fontSize={["3xl", null, "4xl"]}>
                         {title}
                     </LinkOverlay>
                     <Text variant="subtitle" fontSize="md">

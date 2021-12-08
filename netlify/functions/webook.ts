@@ -21,7 +21,7 @@ const handler: Handler = async (event, context) => {
     await axios.post(process.env.IFTTT_WEBHOOK_URL, {
         value1: result.title,
         value2: result.slug,
-        value3: result.topics.reduce((prev, curr) => prev + `#${curr} `, "")
+        value3: result.topics.reduce((prev, curr) => prev + `#${curr.replace("-", "")} `, "")
     })
 
     return { statusCode: 200 };
