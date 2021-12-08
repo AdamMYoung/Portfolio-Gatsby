@@ -12,6 +12,8 @@ type WebhookPayload = {
 const handler: Handler = async (event, context) => {
     const result = JSON.parse(event.body) as WebhookPayload;
 
+    console.log(result)
+
     if (result.createdAt !== result.updatedAt) {
         return { statusCode: 200 }
     }
