@@ -11,7 +11,7 @@ type MarkdownRendererProps = {
 };
 
 const newTheme = {
-    p: (props) => <Text fontSize={['sm', null, 'md']} {...props} />,
+    p: (props) => <Text fontSize="md" {...props} />,
     h1: (props) => <Heading as="h1" pt="8" {...props} />,
     h2: (props) => <Heading as="h2" pt="8" {...props} />,
     h3: (props) => <Heading as="h3" pt="8" {...props} />,
@@ -19,7 +19,11 @@ const newTheme = {
     h5: (props) => <Heading as="h5" pt="8" {...props} />,
     h6: (props) => <Heading as="h6" pt="8" {...props} />,
     a: ({ href, children }) => <Link href={href}>{children}</Link>,
-    code: ({ children }) => <Code p="1">{children}</Code>,
+    code: ({ children }) => (
+        <Code p="1" wordBreak="break-word">
+            {children}
+        </Code>
+    ),
     pre: ({ children }) => {
         return (
             <Box
@@ -27,6 +31,7 @@ const newTheme = {
                 bg="gray.700"
                 boxShadow="xl"
                 rounded="xl"
+                pr="4"
                 sx={{ code: { w: 'full', color: 'white', bg: 'initial' } }}
             >
                 <Highlight>{children}</Highlight>
