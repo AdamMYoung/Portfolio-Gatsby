@@ -2,7 +2,7 @@ import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
 import React, { VFC } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Highlight from 'react-highlight';
-import { Box, Code, Heading } from '@chakra-ui/react';
+import { Text, Box, Code, Heading } from '@chakra-ui/react';
 
 import { Link } from '~components';
 
@@ -11,6 +11,7 @@ type MarkdownRendererProps = {
 };
 
 const newTheme = {
+    p: (props) => <Text fontSize={['sm', null, 'md']} {...props} />,
     h1: (props) => <Heading as="h1" pt="8" {...props} />,
     h2: (props) => <Heading as="h2" pt="8" {...props} />,
     h3: (props) => <Heading as="h3" pt="8" {...props} />,

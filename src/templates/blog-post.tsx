@@ -59,7 +59,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
             </SEO>
             <Stack spacing="6">
                 <Box>
-                    <Link href="/blog" fontSize="xl" pl="0">
+                    <Link href="/blog" fontSize={['md', null, 'lg']} pl="0">
                         Back to Blog
                     </Link>
                 </Box>
@@ -84,7 +84,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
 
             <Stack spacing="10">
                 <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
-                <Stack spacing="6" fontSize={['md', null, 'lg']}>
+                <Stack spacing="6">
                     <MarkdownRenderer markdown={copy.copy} />
                 </Stack>
 
