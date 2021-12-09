@@ -4,7 +4,7 @@ import { BlogPost } from '~types';
 export const useBlogPosts = () => {
     const posts = useStaticQuery<{ allContentfulPageBlogPost: { nodes: BlogPost[] } }>(graphql`
         {
-            allContentfulPageBlogPost {
+            allContentfulPageBlogPost(sort: { order: DESC, fields: createdAt }) {
                 nodes {
                     createdAt
                     updatedAt
