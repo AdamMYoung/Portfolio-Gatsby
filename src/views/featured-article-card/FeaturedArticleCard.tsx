@@ -25,7 +25,7 @@ export const FeaturedArticleCard: VFC = () => {
                     <Stack direction="row">
                         <Tag>featured</Tag>
                         {topics.map((t) => (
-                            <Tag>{t}</Tag>
+                            <Tag key={t}>{t}</Tag>
                         ))}
                     </Stack>
                     <TwoPanelTitle>{title}</TwoPanelTitle>

@@ -59,9 +59,9 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
             </SEO>
             <Stack spacing="6">
                 <Box>
-                    <Button as={GatsbyLink} to="/blog" variant="link" pl="0">
+                    <Link href="/blog" fontSize="xl" pl="0">
                         Back to Blog
-                    </Button>
+                    </Link>
                 </Box>
                 <Stack>
                     <Heading>{title}</Heading>

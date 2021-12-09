@@ -11,8 +11,6 @@ export const useCombinedArray = <T extends any>(limit: number, arrays: T[][]): T
                 return;
             }
 
-            console.log(arr);
-
             limitedSet.push(...arr.slice(0, numOfEntriesNeeded));
         });
 

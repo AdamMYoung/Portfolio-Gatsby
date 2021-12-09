@@ -13,7 +13,9 @@ const NotFound: VFC = () => {
                         <TwoPanelTitle>Page not found.</TwoPanelTitle>
                         <TwoPanelSubtitle>Looks like you've taken a wrong turn...</TwoPanelSubtitle>
                     </TwoPanelHeading>
-                    <LinkButton href="/">Home</LinkButton>
+                    <LinkButton replace href="/">
+                        Home
+                    </LinkButton>
                 </TwoPanelBlock>
 
                 <StaticImage

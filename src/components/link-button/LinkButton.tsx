@@ -1,6 +1,6 @@
-import { Button, ButtonProps, LinkProps } from '@chakra-ui/react';
+import { Button, ButtonProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import { Link } from '~components';
+import { Link, LinkProps } from '~components';
 
 type LinkButtonProps = LinkProps & ButtonProps;
 
