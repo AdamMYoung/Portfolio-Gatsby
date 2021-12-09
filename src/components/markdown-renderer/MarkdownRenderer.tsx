@@ -79,7 +79,7 @@ const newTheme = {
                     ref={preRef}
                     className={`${match[1]}`}
                     as="pre"
-                    sx={{ bg: 'initial !important', overflow="none" overflowX="auto", code: { w: 'full', color: 'white', bg: 'initial' } }}
+                    sx={{ bg: 'initial !important', overflow:"none", overflowX:"auto", code: { w: 'full', color: 'white', bg: 'initial' } }}
                 >
                     {children}
                 </Box>
