@@ -75,9 +75,9 @@ const Blogs = () => {
             <CategoryList>
                 {topics.map((topic) => (
                     <CategoryListItem
+                        key={topic}
                         onClick={() => onFilterToggled(topic)}
                         categoryKey={topic}
-                        key={topic}
                         isActive={selectedFilters.includes(topic)}
                         isDisabled={!applicableFilters.includes(topic)}
                     >
