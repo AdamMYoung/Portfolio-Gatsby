@@ -5,6 +5,7 @@ type FeaturedArticle = {
     createdAt: string;
     slug: string;
     title: string;
+    topics: string[];
     summary: {
         summary: string;
     };
@@ -22,6 +23,7 @@ export const useFeaturedArticle = () => {
                     createdAt
                     slug
                     title
+                    topics
                     summary {
                         summary
                     }
