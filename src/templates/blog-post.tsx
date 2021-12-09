@@ -4,8 +4,6 @@ import GatsbyLink from 'gatsby-link';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
-import 'highlight.js/styles/github-dark.css';
-
 import { CardList, Link, MarkdownRenderer } from '~components';
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
