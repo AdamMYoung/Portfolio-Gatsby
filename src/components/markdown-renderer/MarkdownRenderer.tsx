@@ -71,7 +71,7 @@ const newTheme = {
         }, []);
 
         return (
-            <Box p="4" position="relative" bg="gray.700" boxShadow="xl" rounded="xl" overflow="none" overflowX="auto">
+            <Box p="4" position="relative" bg="gray.700" boxShadow="xl" rounded="xl" >
                 <CopyButton contentToCopy={content} position="absolute" top="4" right="4">
                     Copy
                 </CopyButton>
@@ -79,7 +79,7 @@ const newTheme = {
                     ref={preRef}
                     className={`${match[1]}`}
                     as="pre"
-                    sx={{ bg: 'initial !important', code: { w: 'full', color: 'white', bg: 'initial' } }}
+                    sx={{ bg: 'initial !important', overflow="none" overflowX="auto", code: { w: 'full', color: 'white', bg: 'initial' } }}
                 >
                     {children}
                 </Box>
