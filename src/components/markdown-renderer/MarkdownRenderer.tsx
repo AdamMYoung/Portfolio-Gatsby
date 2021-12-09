@@ -71,7 +71,7 @@ const newTheme = {
         }, []);
 
         return (
-            <Box p="4" position="relative" bg="gray.700" boxShadow="xl" rounded="xl">
+            <Box p="4" position="relative" bg="gray.700" boxShadow="xl" rounded="xl" overflow="none" overflowX="auto">
                 <CopyButton contentToCopy={content} position="absolute" top="4" right="4">
                     Copy
                 </CopyButton>
