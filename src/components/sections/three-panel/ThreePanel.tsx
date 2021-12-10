@@ -8,7 +8,7 @@ export const ThreePanel: FC<MotionGridProps> = ({ children, ...rest }) => {
             variants={getContainerMotion()}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.7 }}
+            viewport={{ once: true }}
             gap="8"
             gridTemplateColumns={['1fr', null, '1fr 1fr', null, '1fr 1fr 1fr']}
             {...rest}
