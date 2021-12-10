@@ -37,6 +37,7 @@ const HeroIntro = () => {
                 <Stack pt="4" spacing="4">
                     <TwoPanelBody>
                         <Input
+                            w="full"
                             value={searchTerm}
                             placeholder="Search for an article"
                             rounded="full"
@@ -44,7 +45,7 @@ const HeroIntro = () => {
                         />
                     </TwoPanelBody>
                     <TwoPanelBody>
-                        <Button as={Link} variant="outline" href="#articles" isDisabled={hasNoResults}>
+                        <Button as={Link} w="full" variant="outline" href="#articles" isDisabled={hasNoResults}>
                             {!searchTerm
                                 ? 'View All Articles'
                                 : hasNoResults

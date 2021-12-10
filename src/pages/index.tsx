@@ -38,12 +38,12 @@ const HeroIntro = () => {
                 </Stack>
                 <Stack spacing="4">
                     <TwoPanelBody>
-                        <Button as={Link} href="/blog">
+                        <Button w="full" as={Link} href="/blog">
                             Read the blog
                         </Button>
                     </TwoPanelBody>
                     <TwoPanelBody>
-                        <Button as={Link} variant="outline" href="#about-me">
+                        <Button w="full" as={Link} variant="outline" href="#about-me">
                             About Me
                         </Button>
                     </TwoPanelBody>
