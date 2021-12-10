@@ -22,36 +22,6 @@ type MarkdownRendererProps = {
 const newTheme = {
     p: ({ children }) => <Text fontSize="md">{children}</Text>,
     li: ({ children }) => <ListItem fontSize="md">{children}</ListItem>,
-    h1: ({ children }) => (
-        <Heading as="h1" fontSize={['2xl', null, '3xl']} pt="6">
-            {children}
-        </Heading>
-    ),
-    h2: ({ children }) => (
-        <Heading as="h2" fontSize={['xl', null, '2xl']} pt="6">
-            {children}
-        </Heading>
-    ),
-    h3: ({ children }) => (
-        <Heading as="h3" fontSize={['xl', null, '2xl']} pt="6">
-            {children}
-        </Heading>
-    ),
-    h4: ({ children }) => (
-        <Heading as="h4" fontSize={['lg', null, 'xl']} pt="6">
-            {children}
-        </Heading>
-    ),
-    h5: ({ children }) => (
-        <Heading as="h5" fontSize={['md', null, 'lg']} pt="6">
-            {children}
-        </Heading>
-    ),
-    h6: ({ children }) => (
-        <Heading as="h6" fontSize={['md', null, 'lg']} pt="6">
-            {children}
-        </Heading>
-    ),
     a: ({ href, children }) => <Link href={href}>{children}</Link>,
     code: ({ children }) => (
         <Code p="1" wordBreak="break-word">
