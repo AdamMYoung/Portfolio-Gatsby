@@ -36,14 +36,18 @@ const HeroIntro = () => {
                         </Text>
                     </TwoPanelBody>
                 </Stack>
-                <TwoPanelBody as={Stack} spacing="4">
-                    <Button as={Link} href="/blog">
-                        Read the blog
-                    </Button>
-                    <Button as={Link} variant="outline" href="#about-me">
-                        About Me
-                    </Button>
-                </TwoPanelBody>
+                <Stack spacing="4">
+                    <TwoPanelBody>
+                        <Button as={Link} href="/blog">
+                            Read the blog
+                        </Button>
+                    </TwoPanelBody>
+                    <TwoPanelBody>
+                        <Button as={Link} variant="outline" href="#about-me">
+                            About Me
+                        </Button>
+                    </TwoPanelBody>
+                </Stack>
             </TwoPanelBlock>
 
             <TwoPanelImage>
@@ -159,19 +163,23 @@ const WhoAmI = () => {
                     <TwoPanelTitle>Who am I?</TwoPanelTitle>
                     <TwoPanelSubtitle>I was born in 1997, in the North East of England.</TwoPanelSubtitle>
                 </TwoPanelHeading>
-                <TwoPanelBody as={Stack} spacing="4">
-                    <Text>
-                        I attended Teesside University, and graduated in 2018 with a Bachelors in Computer Science.
-                        During my final year of university is when I first started with React, and I've been obsessed
-                        with web technologies ever since.
-                    </Text>
-                    <Text>
-                        From there, I moved to Birmingham with my partner, and started my software development career. I
-                        worked at a local software development house as a full stack developer for around 2 years,
-                        working with mapping libraries and design systems before moving into a fully front-end role at
-                        Curve.
-                    </Text>
-                </TwoPanelBody>
+                <Stack spacing="4">
+                    <TwoPanelBody>
+                        <Text>
+                            I attended Teesside University, and graduated in 2018 with a Bachelors in Computer Science.
+                            During my final year of university is when I first started with React, and I've been
+                            obsessed with web technologies ever since.
+                        </Text>
+                    </TwoPanelBody>
+                    <TwoPanelBody>
+                        <Text>
+                            From there, I moved to Birmingham with my partner, and started my software development
+                            career. I worked at a local software development house as a full stack developer for around
+                            2 years, working with mapping libraries and design systems before moving into a fully
+                            front-end role at Curve.
+                        </Text>
+                    </TwoPanelBody>
+                </Stack>
             </TwoPanelBlock>
         </TwoPanel>
     );

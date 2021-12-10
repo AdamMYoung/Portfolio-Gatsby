@@ -34,21 +34,25 @@ const HeroIntro = () => {
                     <TwoPanelTitle as="h1">Learn development tips and tricks.</TwoPanelTitle>
                     <TwoPanelSubtitle>Check out the articles below.</TwoPanelSubtitle>
                 </TwoPanelHeading>
-                <TwoPanelBody as={Stack} pt="4" spacing="4">
-                    <Input
-                        value={searchTerm}
-                        placeholder="Search for an article"
-                        rounded="full"
-                        onChange={(e) => onSearchTermChanged(e.target.value)}
-                    />
-                    <Button as={Link} variant="outline" href="#articles" isDisabled={hasNoResults}>
-                        {!searchTerm
-                            ? 'View All Articles'
-                            : hasNoResults
-                            ? 'No Articles Found'
-                            : `View ${results.length} ${results.length === 1 ? 'Article' : 'Articles'} `}
-                    </Button>
-                </TwoPanelBody>
+                <Stack pt="4" spacing="4">
+                    <TwoPanelBody>
+                        <Input
+                            value={searchTerm}
+                            placeholder="Search for an article"
+                            rounded="full"
+                            onChange={(e) => onSearchTermChanged(e.target.value)}
+                        />
+                    </TwoPanelBody>
+                    <TwoPanelBody>
+                        <Button as={Link} variant="outline" href="#articles" isDisabled={hasNoResults}>
+                            {!searchTerm
+                                ? 'View All Articles'
+                                : hasNoResults
+                                ? 'No Articles Found'
+                                : `View ${results.length} ${results.length === 1 ? 'Article' : 'Articles'} `}
+                        </Button>
+                    </TwoPanelBody>
+                </Stack>
             </TwoPanelBlock>
 
             <TwoPanelImage>
