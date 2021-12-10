@@ -161,7 +161,7 @@ const WhoAmI = () => {
                     <TwoPanelTitle>Who am I?</TwoPanelTitle>
                     <TwoPanelSubtitle>I was born in 1997, in the North East of England.</TwoPanelSubtitle>
                 </TwoPanelHeading>
-                <TwoPanelBody>
+                <TwoPanelBody as={Stack} spacing="4">
                     <Text>
                         I attended Teesside University, and graduated in 2018 with a Bachelors in Computer Science.
                         During my final year of university is when I first started with React, and I've been obsessed
