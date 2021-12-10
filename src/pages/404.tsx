@@ -2,7 +2,16 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
 import { Layout } from '~views';
-import { LinkButton, TwoPanel, TwoPanelBlock, TwoPanelHeading, TwoPanelSubtitle, TwoPanelTitle } from '~components';
+import {
+    LinkButton,
+    TwoPanel,
+    TwoPanelBlock,
+    TwoPanelBody,
+    TwoPanelHeading,
+    TwoPanelImage,
+    TwoPanelSubtitle,
+    TwoPanelTitle,
+} from '~components';
 
 const NotFound: VFC = () => {
     return (
@@ -13,18 +22,22 @@ const NotFound: VFC = () => {
                         <TwoPanelTitle>Page not found.</TwoPanelTitle>
                         <TwoPanelSubtitle>Looks like you've taken a wrong turn...</TwoPanelSubtitle>
                     </TwoPanelHeading>
-                    <LinkButton replace href="/">
-                        Home
-                    </LinkButton>
+                    <TwoPanelBody>
+                        <LinkButton replace href="/">
+                            Home
+                        </LinkButton>
+                    </TwoPanelBody>
                 </TwoPanelBlock>
 
-                <StaticImage
-                    alt="Man lost in a field"
-                    src="../images/404.jpg"
-                    style={{ borderRadius: '12px' }}
-                    placeholder="blurred"
-                    width={900}
-                />
+                <TwoPanelImage>
+                    <StaticImage
+                        alt="Man lost in a field"
+                        src="../images/404.jpg"
+                        style={{ borderRadius: '12px' }}
+                        placeholder="blurred"
+                        width={900}
+                    />
+                </TwoPanelImage>
             </TwoPanel>
         </Layout>
     );

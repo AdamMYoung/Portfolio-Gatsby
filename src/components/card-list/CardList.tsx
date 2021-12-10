@@ -1,18 +1,34 @@
 import { Box, BoxProps, Grid, GridProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
+import {
+    getContainerMotion,
+    getItemMotion,
+    MotionGrid,
+    MotionGridProps,
+    MotionBox,
+    MotionBoxProps,
+} from '~components/motion';
 
-export const CardList: FC<GridProps> = ({ children, ...rest }) => {
+export const CardList: FC<MotionGridProps> = ({ children, ...rest }) => {
     return (
-        <Grid gap="6" gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1fr 1fr']} {...rest}>
+        <MotionGrid
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={getContainerMotion()}
+            gap="6"
+            gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1fr 1fr']}
+            {...rest}
+        >
             {children}
-        </Grid>
+        </MotionGrid>
     );
 };
 
-export const CardListItem: FC<BoxProps> = ({ children, ...rest }) => {
+export const CardListItem: FC<MotionBoxProps> = ({ children, ...rest }) => {
     return (
-        <Box w="full" {...rest}>
+        <MotionBox variants={getItemMotion()} w="full" {...rest}>
             {children}
-        </Box>
+        </MotionBox>
     );
 };

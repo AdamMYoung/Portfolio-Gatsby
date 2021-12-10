@@ -9,7 +9,9 @@ import {
     Link,
     TwoPanel,
     TwoPanelBlock,
+    TwoPanelBody,
     TwoPanelHeading,
+    TwoPanelImage,
     TwoPanelSubtitle,
     TwoPanelTitle,
 } from '~components';
@@ -18,6 +20,7 @@ import { useBlogTopics } from '~hooks/static-queries';
 import { BlogCard, FeaturedArticleCard, Layout, SEO } from '~views';
 import { stringToLongDate } from '~utils/date';
 import { BlogSearchProvider, useBlogSearch } from '~providers';
+import { getItemMotion, MotionHeading } from '~components/motion';
 
 const HeroIntro = () => {
     const { onSearchTermChanged, searchTerm, results } = useBlogSearch();
@@ -31,7 +34,7 @@ const HeroIntro = () => {
                     <TwoPanelTitle as="h1">Learn development tips and tricks.</TwoPanelTitle>
                     <TwoPanelSubtitle>Check out the articles below.</TwoPanelSubtitle>
                 </TwoPanelHeading>
-                <Stack pt="4" spacing="4">
+                <TwoPanelBody as={Stack} pt="4" spacing="4">
                     <Input
                         value={searchTerm}
                         placeholder="Search for an article"
@@ -45,16 +48,18 @@ const HeroIntro = () => {
                             ? 'No Articles Found'
                             : `View ${results.length} ${results.length === 1 ? 'Article' : 'Articles'} `}
                     </Button>
-                </Stack>
+                </TwoPanelBody>
             </TwoPanelBlock>
 
-            <StaticImage
-                style={{ borderRadius: '12px' }}
-                placeholder="blurred"
-                src="../images/blog.jpg"
-                alt="Hands ready to type on a laptop"
-                width={900}
-            />
+            <TwoPanelImage>
+                <StaticImage
+                    style={{ borderRadius: '12px' }}
+                    placeholder="blurred"
+                    src="../images/blog.jpg"
+                    alt="Hands ready to type on a laptop"
+                    width={900}
+                />
+            </TwoPanelImage>
         </TwoPanel>
     );
 };
@@ -71,7 +76,14 @@ const Blogs = () => {
 
     return (
         <Stack spacing="8">
-            <Heading>Filter articles by topic</Heading>
+            <MotionHeading
+                variants={getItemMotion()}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.7 }}
+            >
+                Filter articles by topic
+            </MotionHeading>
             <CategoryList>
                 {topics.map((topic) => (
                     <CategoryListItem

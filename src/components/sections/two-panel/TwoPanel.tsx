@@ -1,16 +1,37 @@
 import { Box, BoxProps, Grid, GridProps, Heading, HeadingProps, Stack, StackProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
+
+import {
+    getContainerMotion,
+    getItemMotion,
+    MotionBox,
+    MotionBoxProps,
+    MotionGrid,
+    MotionGridProps,
+    MotionStack,
+    MotionStackProps,
+    MotionHeading,
+    MotionHeadingProps,
+} from '~components/motion';
 import { useMergedStyles } from '~hooks';
 
-export const TwoPanel: FC<GridProps> = ({ children, ...rest }) => {
+export const TwoPanel: FC<MotionGridProps> = ({ children, ...rest }) => {
     return (
-        <Grid as="section" gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1.2fr']} {...rest}>
+        <MotionGrid
+            as="section"
+            variants={getContainerMotion()}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.7 }}
+            gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1.2fr']}
+            {...rest}
+        >
             {children}
-        </Grid>
+        </MotionGrid>
     );
 };
 
-export const TwoPanelBlock: FC<StackProps> = ({ children, sx, ...rest }) => {
+export const TwoPanelBlock: FC<MotionStackProps> = ({ children, sx, ...rest }) => {
     const _sx = useMergedStyles(sx, {
         mr: [0, null, 16],
         '&:last-child': {
@@ -20,9 +41,9 @@ export const TwoPanelBlock: FC<StackProps> = ({ children, sx, ...rest }) => {
     });
 
     return (
-        <Stack sx={_sx} order={[1, null, 'initial']} my="8" spacing="8" {...rest}>
+        <MotionStack sx={_sx} order={[1, null, 'initial']} my="8" spacing="8" {...rest}>
             {children}
-        </Stack>
+        </MotionStack>
     );
 };
 
@@ -30,26 +51,34 @@ export const TwoPanelHeading: FC<StackProps> = ({ children, ...rest }) => {
     return <Stack {...rest}>{children}</Stack>;
 };
 
-export const TwoPanelTitle: FC<HeadingProps> = ({ children, ...rest }) => {
+export const TwoPanelTitle: FC<MotionHeadingProps> = ({ children, ...rest }) => {
     return (
-        <Heading as="h2" fontSize={['4xl', null, '5xl']} {...rest}>
+        <MotionHeading as="h2" variants={getItemMotion()} fontSize={['4xl', null, '5xl']} {...rest}>
             {children}
-        </Heading>
+        </MotionHeading>
     );
 };
 
-export const TwoPanelSubtitle: FC<HeadingProps> = ({ children, ...rest }) => {
+export const TwoPanelSubtitle: FC<MotionHeadingProps> = ({ children, ...rest }) => {
     return (
-        <Heading as="p" fontSize={['xl', null, '3xl']} variant="subtitle" {...rest}>
+        <MotionHeading as="p" variants={getItemMotion()} fontSize={['xl', null, '3xl']} variant="subtitle" {...rest}>
             {children}
-        </Heading>
+        </MotionHeading>
     );
 };
 
-export const TwoPanelImage: FC<BoxProps> = ({ children, ...rest }) => {
+export const TwoPanelBody: FC<MotionBoxProps> = ({ children, ...rest }) => {
     return (
-        <Box order={[0, null, 'initial']} rounded="xl" maxH={[null, null, '70vh']} mx={[null, null, 'auto']} {...rest}>
+        <MotionBox variants={getItemMotion()} w="full" {...rest}>
             {children}
-        </Box>
+        </MotionBox>
+    );
+};
+
+export const TwoPanelImage: FC<MotionBoxProps> = ({ children, ...rest }) => {
+    return (
+        <MotionBox variants={getItemMotion()} order={[0, null, 'initial']} h="full" objectFit="fill" {...rest}>
+            {children}
+        </MotionBox>
     );
 };

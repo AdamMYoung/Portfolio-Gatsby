@@ -2,7 +2,7 @@ import { Box, Flex, Table, Tag, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/reac
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
-import { TwoPanel, TwoPanelBlock, TwoPanelSubtitle, TwoPanelTitle, Link } from '~components';
+import { TwoPanel, TwoPanelBlock, TwoPanelSubtitle, TwoPanelTitle, Link, TwoPanelImage } from '~components';
 import { useGithubStats } from '~hooks/static-queries';
 import { Layout, SEO } from '~views';
 
@@ -14,13 +14,15 @@ const HeroIntro = () => {
                 <TwoPanelSubtitle>Libraries, applications, and proof of concepts.</TwoPanelSubtitle>
             </TwoPanelBlock>
 
-            <StaticImage
-                style={{ borderRadius: '12px' }}
-                placeholder="blurred"
-                src="../images/projects.jpg"
-                alt="A wireframe sketch of an application"
-                width={900}
-            />
+            <TwoPanelImage>
+                <StaticImage
+                    style={{ height: '100%', borderRadius: '12px' }}
+                    placeholder="blurred"
+                    src="../images/projects.jpg"
+                    alt="A wireframe sketch of an application"
+                    width={900}
+                />
+            </TwoPanelImage>
         </TwoPanel>
     );
 };

@@ -2,7 +2,18 @@ import { chakra, LinkBox, LinkOverlay, Spacer, Stack, Tag, Text, useColorMode } 
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
-import { Card, LinkButton, TwoPanel, TwoPanelBlock, TwoPanelHeading, TwoPanelTitle } from '~components';
+import {
+    Card,
+    LinkButton,
+    TwoPanel,
+    TwoPanelBlock,
+    TwoPanelBody,
+    TwoPanelHeading,
+    TwoPanelImage,
+    TwoPanelSubtitle,
+    TwoPanelTitle,
+} from '~components';
+import { getContainerMotion } from '~components/motion';
 import { useFeaturedArticle } from '~hooks/static-queries';
 import { stringToLongDate } from '~utils/date';
 
@@ -20,7 +31,7 @@ export const FeaturedArticleCard: VFC = () => {
             transition="border 0.2s ease-in-out"
             _hover={{ borderColor: 'red.400' }}
         >
-            <TwoPanel gap="8" gridTemplateColumns={['1fr', null, '1fr 1fr']}>
+            <TwoPanel variants={getContainerMotion('fast')} gap="8" gridTemplateColumns={['1fr', null, '1fr 1fr']}>
                 <TwoPanelBlock mb="0" mr={[0, null, null, 16]}>
                     <Stack direction="row">
                         <Tag>featured</Tag>
@@ -30,20 +41,31 @@ export const FeaturedArticleCard: VFC = () => {
                     </Stack>
                     <TwoPanelTitle>{title}</TwoPanelTitle>
                     <TwoPanelHeading>
-                        <Text fontSize={['lg', null, 'xl']}>{stringToLongDate(createdAt)}</Text>
-                        <Text fontSize={['sm', null, 'md']}>{copy.readingTime}</Text>
+                        <TwoPanelSubtitle fontSize={['lg', null, 'xl']}>{stringToLongDate(createdAt)}</TwoPanelSubtitle>
+                        <TwoPanelSubtitle fontSize={['sm', null, 'md']}>{copy.readingTime}</TwoPanelSubtitle>
                     </TwoPanelHeading>
 
-                    <LinkOverlay
-                        color={colorMode === 'dark' ? 'red.100' : 'red.500'}
-                        as={LinkButton}
-                        href={`/blog/${slug}`}
-                        variant="outline"
-                    >
-                        View Article
-                    </LinkOverlay>
+                    <TwoPanelBody>
+                        <LinkOverlay
+                            color={colorMode === 'dark' ? 'red.100' : 'red.500'}
+                            as={LinkButton}
+                            href={`/blog/${slug}`}
+                            variant="outline"
+                            w="full"
+                        >
+                            View Article
+                        </LinkOverlay>
+                    </TwoPanelBody>
                 </TwoPanelBlock>
-                <ChakraGatsbyImage pointerEvents="none" rounded="xl" image={getImage(heroImage)} alt={title} />
+                <TwoPanelImage>
+                    <ChakraGatsbyImage
+                        h="full"
+                        pointerEvents="none"
+                        rounded="xl"
+                        image={getImage(heroImage)}
+                        alt={title}
+                    />
+                </TwoPanelImage>
             </TwoPanel>
         </LinkBox>
     );

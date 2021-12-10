@@ -1,19 +1,28 @@
 import { Box, BoxProps, Grid, GridProps, Heading, HeadingProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
+import { getContainerMotion, getItemMotion, MotionGrid, MotionGridProps } from '~components/motion';
 
-export const ThreePanel: FC<GridProps> = ({ children, ...rest }) => {
+export const ThreePanel: FC<MotionGridProps> = ({ children, ...rest }) => {
     return (
-        <Grid gap="8" gridTemplateColumns={['1fr', null, '1fr 1fr', null, '1fr 1fr 1fr']} {...rest}>
+        <MotionGrid
+            variants={getContainerMotion()}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.7 }}
+            gap="8"
+            gridTemplateColumns={['1fr', null, '1fr 1fr', null, '1fr 1fr 1fr']}
+            {...rest}
+        >
             {children}
-        </Grid>
+        </MotionGrid>
     );
 };
 
-export const ThreePanelBlock: FC<GridProps> = ({ children, ...rest }) => {
+export const ThreePanelBlock: FC<MotionGridProps> = ({ children, ...rest }) => {
     return (
-        <Grid gap="8" gridTemplateColumns="1fr" mb="auto" {...rest}>
+        <MotionGrid variants={getItemMotion()} gap="8" gridTemplateColumns="1fr" mb="auto" {...rest}>
             {children}
-        </Grid>
+        </MotionGrid>
     );
 };
 

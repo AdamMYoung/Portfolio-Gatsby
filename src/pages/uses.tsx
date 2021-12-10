@@ -2,7 +2,7 @@ import { Box, Heading, Stack, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
-import { TwoPanel, TwoPanelBlock, TwoPanelSubtitle, TwoPanelTitle, Link } from '~components';
+import { TwoPanel, TwoPanelBlock, TwoPanelSubtitle, TwoPanelTitle, Link, TwoPanelImage } from '~components';
 import { useUses } from '~hooks/static-queries';
 import { Layout, SEO } from '~views';
 
@@ -14,13 +14,15 @@ const HeroIntro = () => {
                 <TwoPanelSubtitle>Equipment, software, hardware that I use for work and hobbies.</TwoPanelSubtitle>
             </TwoPanelBlock>
 
-            <StaticImage
-                style={{ borderRadius: '12px' }}
-                placeholder="blurred"
-                src="../images/edc.jpg"
-                alt="Various everyday items, such as a watch, wallet and laptop"
-                width={900}
-            />
+            <TwoPanelImage>
+                <StaticImage
+                    style={{ width: '100%', borderRadius: '12px' }}
+                    placeholder="blurred"
+                    src="../images/edc.jpg"
+                    alt="Various everyday items, such as a watch, wallet and laptop"
+                    width={900}
+                />
+            </TwoPanelImage>
         </TwoPanel>
     );
 };

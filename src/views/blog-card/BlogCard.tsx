@@ -2,6 +2,7 @@ import { chakra, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/r
 import GatsbyLink from 'gatsby-link';
 import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
+import { CardListItem } from '~components/card-list';
 
 type BlogCardProps = {
     image: ImageDataLike;
@@ -16,7 +17,7 @@ const ChakraGatsbyImage = chakra(GatsbyImage);
 export const BlogCard: VFC<BlogCardProps> = ({ image, title, subtitle, readingTime, to }) => {
     return (
         <LinkBox _hover={{ '.blog-card-image': { borderColor: 'red' }, cursor: 'pointer' }}>
-            <Stack>
+            <CardListItem as={Stack}>
                 <ChakraGatsbyImage
                     image={getImage(image)}
                     alt={title}
@@ -36,14 +37,14 @@ export const BlogCard: VFC<BlogCardProps> = ({ image, title, subtitle, readingTi
                         {subtitle}
                     </Heading>
 
-                    <LinkOverlay to={to} as={GatsbyLink} fontSize={["3xl", null, "4xl"]}>
+                    <LinkOverlay to={to} as={GatsbyLink} fontSize={['3xl', null, '4xl']}>
                         {title}
                     </LinkOverlay>
                     <Text variant="subtitle" fontSize="md">
                         {readingTime}
                     </Text>
                 </Stack>
-            </Stack>
+            </CardListItem>
         </LinkBox>
     );
 };

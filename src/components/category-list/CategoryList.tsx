@@ -1,12 +1,20 @@
 import { Button, ButtonProps, Flex, FlexProps } from '@chakra-ui/react';
 import React, { FC, useMemo } from 'react';
+import {
+    getItemMotion,
+    getContainerMotion,
+    MotionButton,
+    MotionButtonProps,
+    MotionFlex,
+    MotionFlexProps,
+} from '~components/motion';
 
 import { useMergedStyles } from '~hooks';
 import { CategoryListProvider, CategoryListProviderProps, useCategoryList } from './CategoryListProvider';
 
-type CategoryListProps = CategoryListProviderProps & FlexProps;
+type CategoryListProps = CategoryListProviderProps & MotionFlexProps;
 
-type CategoryListItemProps = ButtonProps & {
+type CategoryListItemProps = MotionButtonProps & {
     categoryKey: string;
 };
 
@@ -21,9 +29,17 @@ export const CategoryList: FC<CategoryListProps> = ({
 
     return (
         <CategoryListProvider onCategoriesChanged={onCategoriesChanged} onCategorySelected={onCategorySelected}>
-            <Flex flexWrap="wrap" sx={_sx} {...rest}>
+            <MotionFlex
+                variants={getContainerMotion('fast')}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 'all' }}
+                flexWrap="wrap"
+                sx={_sx}
+                {...rest}
+            >
                 {children}
-            </Flex>
+            </MotionFlex>
         </CategoryListProvider>
     );
 };
@@ -39,8 +55,14 @@ export const CategoryListItem: FC<CategoryListItemProps> = ({ children, category
     };
 
     return (
-        <Button onClick={handleClick} variant="outline" isActive={isSelected} {...rest}>
+        <MotionButton
+            variants={getItemMotion()}
+            onClick={handleClick}
+            variant="outline"
+            isActive={isSelected}
+            {...rest}
+        >
             {children}
-        </Button>
+        </MotionButton>
     );
 };

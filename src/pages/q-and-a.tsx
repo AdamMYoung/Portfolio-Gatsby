@@ -3,6 +3,7 @@ import React, { useState, VFC } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { TwoPanel, TwoPanelBlock, TwoPanelHeading, TwoPanelSubtitle, TwoPanelTitle } from '~components';
+import { getItemMotion } from '~components/motion';
 import { Layout, SEO } from '~views';
 
 const EMAIL_REGEX =
@@ -42,14 +43,14 @@ const HeroIntro = () => {
 
     return (
         <TwoPanel>
-            <TwoPanelBlock>
+            <TwoPanelBlock variants={getItemMotion()}>
                 <TwoPanelHeading>
                     <TwoPanelTitle as="h1">Ask me a question.</TwoPanelTitle>
                     <TwoPanelSubtitle>Check out some previous questions below.</TwoPanelSubtitle>
                 </TwoPanelHeading>
             </TwoPanelBlock>
 
-            <TwoPanelBlock>
+            <TwoPanelBlock variants={getItemMotion()}>
                 {!isSubmitted ? (
                     <Stack
                         as="form"

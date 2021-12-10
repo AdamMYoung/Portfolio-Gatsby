@@ -1,6 +1,5 @@
-import { Box, Button, chakra, Code, Divider, Heading, Stack, Tag, Text } from '@chakra-ui/react';
+import { Box, chakra, Divider, Heading, Stack, Tag, Text } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
-import GatsbyLink from 'gatsby-link';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
