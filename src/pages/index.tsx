@@ -16,7 +16,7 @@ import {
     TwoPanelSubtitle,
     TwoPanelTitle,
 } from '~components';
-import { getItemMotion, MotionHeading } from '~components/motion';
+import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
 import { FeaturedArticleCard, Layout, SEO } from '~views';
 
 const HeroIntro = () => {
@@ -64,9 +64,7 @@ const Interests: VFC = () => {
         <Stack spacing="8">
             <MotionHeading
                 variants={getItemMotion()}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
+                {...useViewportTransition()}
                 as="h2"
                 fontSize={['4xl', null, '5xl']}
                 textAlign={['left', null, 'center']}

@@ -31,9 +31,7 @@ export const CategoryList: FC<CategoryListProps> = ({
         <CategoryListProvider onCategoriesChanged={onCategoriesChanged} onCategorySelected={onCategorySelected}>
             <MotionFlex
                 variants={getContainerMotion('fast')}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 'all' }}
+                {...useViewportTransition()}
                 flexWrap="wrap"
                 sx={_sx}
                 {...rest}

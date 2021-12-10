@@ -54,7 +54,10 @@ export const getItemMotion = () => ({
     show: { opacity: 1 },
 });
 
-export const viewportAnimate = {
-    whileInView: 'show',
-    viewport: { once: true, amount: 0.7 },
+export const useViewportTransition = (visibilityThreshold: number | 'some' = 'some') => {
+    return {
+        initial: 'hidden',
+        whileInView: 'show',
+        viewport: { once: true, amount: visibilityThreshold },
+    };
 };

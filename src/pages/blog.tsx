@@ -20,7 +20,7 @@ import { useBlogTopics } from '~hooks/static-queries';
 import { BlogCard, FeaturedArticleCard, Layout, SEO } from '~views';
 import { stringToLongDate } from '~utils/date';
 import { BlogSearchProvider, useBlogSearch } from '~providers';
-import { getItemMotion, MotionHeading } from '~components/motion';
+import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
 
 const HeroIntro = () => {
     const { onSearchTermChanged, searchTerm, results } = useBlogSearch();
@@ -76,12 +76,7 @@ const Blogs = () => {
 
     return (
         <Stack spacing="8">
-            <MotionHeading
-                variants={getItemMotion()}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.7 }}
-            >
+            <MotionHeading variants={getItemMotion()} {...useViewportTransition(0.7)}>
                 Filter articles by topic
             </MotionHeading>
             <CategoryList>

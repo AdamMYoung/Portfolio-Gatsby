@@ -7,17 +7,16 @@ import {
     MotionGridProps,
     MotionBox,
     MotionBoxProps,
+    useViewportTransition,
 } from '~components/motion';
 
 export const CardList: FC<MotionGridProps> = ({ children, ...rest }) => {
     return (
         <MotionGrid
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
             variants={getContainerMotion()}
             gap="6"
             gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1fr 1fr']}
+            {...useViewportTransition()}
             {...rest}
         >
             {children}

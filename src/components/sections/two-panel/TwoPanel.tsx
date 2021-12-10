@@ -1,4 +1,4 @@
-import { Box, BoxProps, Grid, GridProps, Heading, HeadingProps, Stack, StackProps } from '@chakra-ui/react';
+import { Stack, StackProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
 import {
@@ -12,20 +12,13 @@ import {
     MotionStackProps,
     MotionHeading,
     MotionHeadingProps,
+    useViewportTransition,
 } from '~components/motion';
 import { useMergedStyles } from '~hooks';
 
 export const TwoPanel: FC<MotionGridProps> = ({ children, ...rest }) => {
     return (
-        <MotionGrid
-            as="section"
-            variants={getContainerMotion()}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.7 }}
-            gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1.2fr']}
-            {...rest}
-        >
+        <MotionGrid as="section" gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1.2fr']} {...rest}>
             {children}
         </MotionGrid>
     );
@@ -41,7 +34,15 @@ export const TwoPanelBlock: FC<MotionStackProps> = ({ children, sx, ...rest }) =
     });
 
     return (
-        <MotionStack sx={_sx} order={[1, null, 'initial']} my="8" spacing="8" {...rest}>
+        <MotionStack
+            variants={getContainerMotion()}
+            {...useViewportTransition(0.7)}
+            sx={_sx}
+            order={[1, null, 'initial']}
+            my="8"
+            spacing="8"
+            {...rest}
+        >
             {children}
         </MotionStack>
     );
@@ -77,7 +78,7 @@ export const TwoPanelBody: FC<MotionBoxProps> = ({ children, ...rest }) => {
 
 export const TwoPanelImage: FC<MotionBoxProps> = ({ children, ...rest }) => {
     return (
-        <MotionBox variants={getItemMotion()} order={[0, null, 'initial']} h="full" objectFit="fill" {...rest}>
+        <MotionBox variants={getItemMotion()} {...useViewportTransition(0.7)} order={[0, null, 'initial']} {...rest}>
             {children}
         </MotionBox>
     );

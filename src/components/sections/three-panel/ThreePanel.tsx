@@ -1,16 +1,22 @@
-import { Box, BoxProps, Grid, GridProps, Heading, HeadingProps } from '@chakra-ui/react';
+import { Box, BoxProps, Grid, GridProps, Heading, HeadingProps, useBreakpointValue } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import { getContainerMotion, getItemMotion, MotionGrid, MotionGridProps } from '~components/motion';
+import {
+    getContainerMotion,
+    getItemMotion,
+    MotionGrid,
+    MotionGridProps,
+    useViewportTransition,
+} from '~components/motion';
 
 export const ThreePanel: FC<MotionGridProps> = ({ children, ...rest }) => {
+    const viewportThreshold: 'some' | number = useBreakpointValue(['some', null, 0.3]);
+
     return (
         <MotionGrid
             variants={getContainerMotion()}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
             gap="8"
             gridTemplateColumns={['1fr', null, '1fr 1fr', null, '1fr 1fr 1fr']}
+            {...useViewportTransition(viewportThreshold)}
             {...rest}
         >
             {children}
