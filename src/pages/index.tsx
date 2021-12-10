@@ -66,7 +66,7 @@ const Interests: VFC = () => {
                 variants={getItemMotion()}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0.7 }}
+                viewport={{ once: true }}
                 as="h2"
                 fontSize={['4xl', null, '5xl']}
                 textAlign={['left', null, 'center']}
