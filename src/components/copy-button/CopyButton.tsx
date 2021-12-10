@@ -11,7 +11,6 @@ export const CopyButton: FC<CopyButtonProps> = ({ contentToCopy, onClick, ...res
     const copyContentToClipboard = useCallback(() => {
         navigator.clipboard.writeText(contentToCopy);
 
-        console.log(contentToCopy);
         toast({ title: 'Copied!', description: 'Content copied to clipboard', status: 'success', duration: 3000 });
     }, [contentToCopy]);
 
