@@ -43,8 +43,8 @@ export const getContainerMotion = (speed: Speed = 'normal') => ({
         delay: 2,
         opacity: 1,
         transition: {
-            delayChildren: speed === 'normal' ? 0.5 : 0.3,
-            staggerChildren: speed === 'normal' ? 0.4 : 0.2,
+            delayChildren: speed === 'normal' ? 0.4 : 0.3,
+            staggerChildren: speed === 'normal' ? 0.3 : 0.2,
         },
     },
 });
