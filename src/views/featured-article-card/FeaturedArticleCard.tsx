@@ -31,7 +31,7 @@ export const FeaturedArticleCard: VFC = () => {
             transition="border 0.2s ease-in-out"
             _hover={{ borderColor: 'red.400' }}
         >
-            <TwoPanel variants={getContainerMotion('fast')} gap="8" gridTemplateColumns={['1fr', null, '1fr 1fr']}>
+            <TwoPanel variants={getContainerMotion('fast')} gap={[4, null, 8]} gridTemplateColumns={['1fr', null, '1fr 1fr']}>
                 <TwoPanelBlock mb="0" mr={[0, null, null, 16]}>
                     <Stack direction="row">
                         <Tag>featured</Tag>
