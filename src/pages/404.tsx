@@ -23,7 +23,7 @@ const NotFound: VFC = () => {
                         <TwoPanelSubtitle>Looks like you've taken a wrong turn...</TwoPanelSubtitle>
                     </TwoPanelHeading>
                     <TwoPanelBody>
-                        <LinkButton replace href="/">
+                        <LinkButton w="full" replace href="/">
                             Home
                         </LinkButton>
                     </TwoPanelBody>
