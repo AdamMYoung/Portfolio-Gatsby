@@ -33,7 +33,7 @@ const handler: Handler = async (event) => {
     await axios.post(process.env.IFTTT_WEBHOOK_URL, {
         value1: result.title,
         value2: result.slug,
-        value3: result.topics.reduce((prev, curr) => prev + `#${curr.replace('-', '')} `, ''),
+        value3: result.topics.reduce((prev, curr) => prev + `#${curr.replace('-', '')} `, '#dev #blog #blogpost'),
     });
 
     return { statusCode: 200, body: 'Article is a new post, social media posts have been submitted' };
