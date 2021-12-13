@@ -32,9 +32,9 @@ const newTheme = {
         const preRef = useRef();
         //Odd prop drilling, since the code component is used for both single line code and pre,
         //and we only need it for pre.
-        const { properties, children: code } = node.children[0];
+        const { properties, children: code } = node?.children[0];
 
-        const content = code[0].value;
+        const content = code[0]?.value;
         const match = /language-(\w+)/.exec(properties.className || '');
 
         useEffect(() => {
@@ -48,7 +48,7 @@ const newTheme = {
                 </CopyButton>
                 <Box
                     ref={preRef}
-                    className={`${match[1]}`}
+                    className={`${match?.[1]}`}
                     as="pre"
                     sx={{
                         bg: 'initial !important',

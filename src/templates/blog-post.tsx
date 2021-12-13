@@ -1,4 +1,4 @@
-import { Box, chakra, Divider, Heading, Stack, Tag, Text } from '@chakra-ui/react';
+import { Box, chakra, Divider, Flex, Heading, Spacer, Stack, Tag, Text } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
@@ -20,11 +20,15 @@ type BlogPostProps = {
 const ChakraGatsbyImage = chakra(GatsbyImage);
 
 const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
-    const { title, summary, createdAt, updatedAt, heroImage, copy, topics } = data.contentfulPageBlogPost;
+    const { title, summary, createdAt, updatedAt, heroImage, copy, topics, slug } = data.contentfulPageBlogPost;
     const relatedBlogs = useCombinedArray(3, [data.matching.nodes, data.notMatching.nodes]);
 
     const createdAtText = stringToLongDate(createdAt);
     const updatedAtText = stringToLongDate(updatedAt);
+
+    const pageUrl = `https://aydev.uk/blog/${slug}`
+
+    console.log(encodeURI(title))
 
     return (
         <Layout spacing="12">
@@ -81,9 +85,14 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
 
             <Stack spacing="10">
                 <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
-                <Stack spacing="6">
-                    <MarkdownRenderer markdown={copy.copy} />
-                </Stack>
+
+                <MarkdownRenderer markdown={copy.copy} />
+                <Flex pt="12" wrap="wrap" sx={{ "*+*": { ml: 8 } }}>
+                    <Link fontSize="md" href={encodeURI(`https://twitter.com/search?q=${pageUrl}`)}>Discuss on Twitter</Link>
+                    <Spacer />
+                    <Link fontSize="md" href={`https://twitter.com/intent/tweet?url=${pageUrl}&text=${encodeURIComponent(`I just read ${title} \nby @AdamMYoung_\n\n`)}`}>Share on Twitter</Link>
+                </Flex>
+
 
                 <Divider />
                 <Stack spacing="4">
@@ -104,7 +113,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                         {relatedBlogs.map(({ id, slug, createdAt, title, heroImage, copy }) => (
                             <BlogCard
                                 key={id}
-                                to={`/blog/${slug}`}
+                                to={`/ blog / ${slug}`}
                                 title={title}
                                 subtitle={stringToLongDate(createdAt)}
                                 image={heroImage}
@@ -121,69 +130,69 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
 export default BlogEntry;
 
 export const query = graphql`
-    query ($slug: String!, $topics: [String]!) {
-        contentfulPageBlogPost(slug: { eq: $slug }) {
-            createdAt
+    query($slug: String!, $topics: [String]!) {
+                        contentfulPageBlogPost(slug: {eq: $slug }) {
+                        createdAt
             updatedAt
-            id
-            topics
-            title
-            slug
-            summary {
-                summary
-            }
-            copy {
-                copy
+                    id
+                    topics
+                    title
+                    slug
+                    summary {
+                        summary
+                    }
+                    copy {
+                        copy
                 readingTime
             }
-            heroImage {
-                file {
-                    url
-                }
-                gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                    heroImage {
+                        file {
+                        url
+                    }
+                    gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
             }
         }
-        matching: allContentfulPageBlogPost(
-            filter: { topics: { in: $topics }, slug: { ne: $slug } }
-            limit: 3
-            sort: { fields: createdAt, order: DESC }
-        ) {
-            nodes {
-                createdAt
+                    matching: allContentfulPageBlogPost(
+                    filter: {topics: { in: $topics }, slug: {ne: $slug } }
+                    limit: 3
+                    sort: {fields: createdAt, order: DESC }
+                    ) {
+                        nodes {
+                        createdAt
                 updatedAt
-                id
-                topics
-                title
-                slug
-                copy {
-                    copy
+                    id
+                    topics
+                    title
+                    slug
+                    copy {
+                        copy
                     readingTime
                 }
-                heroImage {
-                    gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                    heroImage {
+                        gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
             }
         }
-        notMatching: allContentfulPageBlogPost(
-            filter: { topics: { nin: $topics }, slug: { ne: $slug } }
-            limit: 3
-            sort: { fields: createdAt, order: DESC }
-        ) {
-            nodes {
-                createdAt
+                    notMatching: allContentfulPageBlogPost(
+                    filter: {topics: {nin: $topics }, slug: {ne: $slug } }
+                    limit: 3
+                    sort: {fields: createdAt, order: DESC }
+                    ) {
+                        nodes {
+                        createdAt
                 updatedAt
-                id
-                topics
-                title
-                slug
-                copy {
-                    copy
+                    id
+                    topics
+                    title
+                    slug
+                    copy {
+                        copy
                     readingTime
                 }
-                heroImage {
-                    gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                    heroImage {
+                        gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
             }
         }
     }
-`;
+                    `;

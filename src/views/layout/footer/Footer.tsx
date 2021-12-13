@@ -6,7 +6,7 @@ import { Link } from '~components';
 
 export const Footer: VFC = () => {
     return (
-        <Stack as="footer" spacing="12" mt="12">
+        <Stack as="footer" spacing="12" mt="12" py="12">
             <Divider />
 
             <Grid
