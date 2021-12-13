@@ -1,4 +1,4 @@
-import { Grid, Heading, Progress, Stack, Stat, StatHelpText, StatNumber, Text } from '@chakra-ui/react';
+import { Grid, Heading, Progress, Stack, Stat, StatHelpText, StatNumber, Tag, Text } from '@chakra-ui/react';
 import React, { VFC } from 'react';
 
 import { useBlogPosts, useGithubStats, usePopularLanguage, usePopularTopic } from '~hooks/static-queries';
@@ -30,7 +30,9 @@ const Stats: VFC = () => {
                             <StatHelpText>Open-source repositories</StatHelpText>
                         </Stat>
                         <Stat>
-                            <StatNumber>{popularLanguage}</StatNumber>
+                            <StatNumber>
+                                <Tag size="lg">{popularLanguage}</Tag>
+                            </StatNumber>
                             <StatHelpText>Most popular language</StatHelpText>
                         </Stat>
                     </Grid>
@@ -45,7 +47,9 @@ const Stats: VFC = () => {
                             <StatHelpText>Articles published</StatHelpText>
                         </Stat>
                         <Stat>
-                            <StatNumber>{popularTopic}</StatNumber>
+                            <StatNumber>
+                                <Tag size="lg">{popularTopic}</Tag>
+                            </StatNumber>
                             <StatHelpText>Most popular topic</StatHelpText>
                         </Stat>
                     </Grid>

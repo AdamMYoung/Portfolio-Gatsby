@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useBlogTopics } from '~hooks/static-queries';
 
 export const usePopularTopic = () => {
-    const topics = useBlogTopics();
+    const topics = useBlogTopics('array');
 
     return useMemo(() => {
         const entries = {};

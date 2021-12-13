@@ -1,9 +1,10 @@
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
 import React, { useEffect, useRef, VFC } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Text, Box, Code, Heading, ListItem } from '@chakra-ui/react';
+import { Text, Box, Code, Heading, ListItem, Stack } from '@chakra-ui/react';
 import hljs from 'highlight.js/lib/common';
 import hljsDefineGraphQL from 'highlightjs-graphql';
+import camelcase from 'camelcase';
 
 import 'highlight.js/styles/github-dark.css';
 
@@ -20,9 +21,20 @@ type MarkdownRendererProps = {
 };
 
 const newTheme = {
-    p: ({ children }) => <Text fontSize="md">{children}</Text>,
-    li: ({ children }) => <ListItem fontSize="md">{children}</ListItem>,
     a: ({ href, children }) => <Link href={href}>{children}</Link>,
+    h2: ({ children }) => {
+        const id = camelcase(children);
+        return (
+            <Heading as={Link} pt="8" size="lg" id={id} href={`#${id}`}>
+                {children}
+            </Heading>
+        );
+    },
+    h3: ({ children }) => (
+        <Heading as="h3" size="md">
+            {children}
+        </Heading>
+    ),
     code: ({ children }) => (
         <Code p="1" wordBreak="break-word">
             {children}
@@ -65,5 +77,9 @@ const newTheme = {
 };
 
 export const MarkdownRenderer: VFC<MarkdownRendererProps> = ({ markdown }) => {
-    return <ReactMarkdown components={ChakraUIRenderer(newTheme)} children={markdown} skipHtml />;
+    return (
+        <Stack spacing="6">
+            <ReactMarkdown components={ChakraUIRenderer(newTheme)} children={markdown} skipHtml />
+        </Stack>
+    );
 };

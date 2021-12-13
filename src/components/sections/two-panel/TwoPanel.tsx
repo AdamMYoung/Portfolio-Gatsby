@@ -40,7 +40,7 @@ export const TwoPanelBlock: FC<MotionStackProps> = ({ children, sx, ...rest }) =
             sx={_sx}
             order={[1, null, 'initial']}
             my="8"
-            spacing="8"
+            spacing={[4, null, 8]}
             {...rest}
         >
             {children}
@@ -54,7 +54,7 @@ export const TwoPanelHeading: FC<StackProps> = ({ children, ...rest }) => {
 
 export const TwoPanelTitle: FC<MotionHeadingProps> = ({ children, ...rest }) => {
     return (
-        <MotionHeading as="h2" variants={getItemMotion()} fontSize={['4xl', null, '5xl']} {...rest}>
+        <MotionHeading as="h2" variants={getItemMotion()} fontSize={['3xl', null, '5xl']} {...rest}>
             {children}
         </MotionHeading>
     );
