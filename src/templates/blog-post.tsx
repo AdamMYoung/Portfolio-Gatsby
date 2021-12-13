@@ -87,11 +87,11 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                 <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
 
                 <MarkdownRenderer markdown={copy.copy} />
-                <Flex pt="12" wrap="wrap" sx={{ "*+*": { ml: 8 } }}>
+                <Stack pt="12" direction={["column",null,"row"]}>
                     <Link fontSize="md" href={encodeURI(`https://twitter.com/search?q=${pageUrl}`)}>Discuss on Twitter</Link>
                     <Spacer />
                     <Link fontSize="md" href={`https://twitter.com/intent/tweet?url=${pageUrl}&text=${encodeURIComponent(`I just read ${title} \nby @AdamMYoung_\n\n`)}`}>Share on Twitter</Link>
-                </Flex>
+                </Stack>
 
 
                 <Divider />
