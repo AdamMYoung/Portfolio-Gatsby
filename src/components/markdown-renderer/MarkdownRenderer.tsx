@@ -4,12 +4,13 @@ import ReactMarkdown from 'react-markdown';
 import { Text, Box, Code, Heading, ListItem, Stack } from '@chakra-ui/react';
 import hljs from 'highlight.js/lib/common';
 import hljsDefineGraphQL from 'highlightjs-graphql';
-import camelcase from 'camelcase';
+import { paramCase } from 'param-case';
 
 import 'highlight.js/styles/github-dark.css';
 
 import { Link } from '~components';
 import { CopyButton } from '~components/copy-button/CopyButton';
+import { getTextFromMarkdownNode } from '~utils/markdown';
 
 hljsDefineGraphQL(hljs);
 hljs.configure({
@@ -22,8 +23,9 @@ type MarkdownRendererProps = {
 
 const newTheme = {
     a: ({ href, children }) => <Link href={href}>{children}</Link>,
-    h2: ({ children }) => {
-        const id = camelcase(children);
+    h2: ({ children, node }) => {
+        const id = paramCase(getTextFromMarkdownNode(node));
+
         return (
             <Heading as={Link} pt="8" size="lg" id={id} href={`#${id}`}>
                 {children}
