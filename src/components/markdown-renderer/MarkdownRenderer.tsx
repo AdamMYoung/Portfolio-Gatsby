@@ -1,14 +1,14 @@
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
 import React, { useEffect, useRef, VFC } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Text, Box, Code, Heading, ListItem, Stack } from '@chakra-ui/react';
+import { Text, Box, Code, Heading, ListItem, BoxProps } from '@chakra-ui/react';
 import hljs from 'highlight.js/lib/common';
 import hljsDefineGraphQL from 'highlightjs-graphql';
 import { paramCase } from 'param-case';
 
 import 'highlight.js/styles/github-dark.css';
 
-import { Link } from '~components';
+import { AnchorHeading, Link } from '~components';
 import { CopyButton } from '~components/copy-button/CopyButton';
 import { getTextFromMarkdownNode } from '~utils/markdown';
 
@@ -17,24 +17,33 @@ hljs.configure({
     ignoreUnescapedHTML: true,
 });
 
-type MarkdownRendererProps = {
+type MarkdownRendererProps = BoxProps & {
     markdown: string;
 };
 
 const newTheme = {
     a: ({ href, children }) => <Link href={href}>{children}</Link>,
-    p: ({ children }) => <Text fontSize={['19', null, 'md']}>{children}</Text>,
+    p: ({ children }) => (
+        <Text my="4" fontSize={['19', null, 'md']}>
+            {children}
+        </Text>
+    ),
+    li: ({ children }) => (
+        <ListItem my="2" fontSize={['19', null, 'md']}>
+            {children}
+        </ListItem>
+    ),
     h2: ({ children, node }) => {
         const id = paramCase(getTextFromMarkdownNode(node));
 
         return (
-            <Heading as={Link} pt="8" size="lg" id={id} href={`#${id}`}>
+            <AnchorHeading as="h2" mt="12" fontSize={['xl', null, '2xl']} id={id}>
                 {children}
-            </Heading>
+            </AnchorHeading>
         );
     },
     h3: ({ children }) => (
-        <Heading as="h3" size="md">
+        <Heading as="h3" my="4" size="md">
             {children}
         </Heading>
     ),
@@ -52,9 +61,7 @@ const newTheme = {
         const content = code[0]?.value;
         const match = /language-(\w+)/.exec(properties.className || '');
 
-        useEffect(() => {
-            hljs.highlightElement(preRef.current);
-        }, []);
+        useEffect(() => hljs.highlightElement(preRef.current), []);
 
         return (
             <Box p="4" position="relative" bg="gray.700" boxShadow="xl" rounded="xl">
@@ -79,10 +86,10 @@ const newTheme = {
     },
 };
 
-export const MarkdownRenderer: VFC<MarkdownRendererProps> = ({ markdown }) => {
+export const MarkdownRenderer: VFC<MarkdownRendererProps> = ({ markdown, ...rest }) => {
     return (
-        <Stack spacing="6">
+        <Box {...rest}>
             <ReactMarkdown components={ChakraUIRenderer(newTheme)} children={markdown} skipHtml />
-        </Stack>
+        </Box>
     );
 };
