@@ -23,6 +23,7 @@ type MarkdownRendererProps = {
 
 const newTheme = {
     a: ({ href, children }) => <Link href={href}>{children}</Link>,
+    p: ({ children }) => <Text fontSize={['19', null, 'md']}>{children}</Text>,
     h2: ({ children, node }) => {
         const id = paramCase(getTextFromMarkdownNode(node));
 
