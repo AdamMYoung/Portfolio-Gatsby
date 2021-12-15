@@ -37,7 +37,7 @@ const newTheme = {
         const id = paramCase(getTextFromMarkdownNode(node));
 
         return (
-            <AnchorHeading as="h2" mt="12" fontSize={['xl', null, '2xl']} id={id}>
+            <AnchorHeading as="h2" mt="12" fontSize={['2xl', null, '3xl']} id={id}>
                 {children}
             </AnchorHeading>
         );
