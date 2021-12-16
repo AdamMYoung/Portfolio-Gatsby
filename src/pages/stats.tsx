@@ -11,8 +11,6 @@ dayjs.extend(relativeTime);
 const Stats: VFC = () => {
     const { buildTime } = useSiteInfo();
 
-    console.log(buildTime);
-
     const stats = useGithubStats();
     const blogs = useBlogPosts();
 
@@ -23,7 +21,7 @@ const Stats: VFC = () => {
         <Layout>
             <SEO title="Stats" description="Statistics across my development career, skills and more." />
             <Stack spacing="4">
-                <Heading as="h1">My Stats</Heading>
+                <Heading as="h1">Stats</Heading>
                 <Stack>
                     <Heading as="h2" fontSize="lg">
                         Github
