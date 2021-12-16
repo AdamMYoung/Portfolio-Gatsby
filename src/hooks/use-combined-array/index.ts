@@ -1,1 +1,1 @@
-export * from './useCombinedArray';
+export * from './useCombinedSubset';

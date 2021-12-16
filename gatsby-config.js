@@ -6,7 +6,8 @@ require('dotenv').config({
 
 module.exports = {
     siteMetadata: {
-        siteUrl: 'https://www.aydev.uk',
+        siteUrl: 'https://aydev.uk',
+        siteWwwUrl: 'https://www.aydev.uk',
         title: 'AYDev',
         description:
             "Hi, I'm Adam Young, a Software Engineer from Birmingham currently working at Curve. Here, you'll find articles about software development, my interests, and the projects I've currently got on the go.",
