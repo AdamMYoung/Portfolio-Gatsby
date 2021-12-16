@@ -26,7 +26,7 @@ const Stats: VFC = () => {
                     <Heading as="h2" fontSize="lg">
                         Github
                     </Heading>
-                    <Grid gridTemplateColumns={['1fr 1fr', null, '1fr 1fr 1fr']}>
+                    <Grid gridTemplateColumns={['1fr', null, '1fr 1fr 1fr']}>
                         <Stat>
                             <StatNumber>{stats.totalContributions}</StatNumber>
                             <StatHelpText>Commits on GitHub</StatHelpText>
@@ -47,7 +47,7 @@ const Stats: VFC = () => {
                     <Heading as="h2" fontSize="lg">
                         Blog
                     </Heading>
-                    <Grid gridTemplateColumns={['1fr 1fr', null, '1fr 1fr 1fr']}>
+                    <Grid gridTemplateColumns={['1fr', null, '1fr 1fr 1fr']}>
                         <Stat>
                             <StatNumber>{blogs.length}</StatNumber>
                             <StatHelpText>Articles published</StatHelpText>
