@@ -24,12 +24,12 @@ type MarkdownRendererProps = BoxProps & {
 const newTheme = {
     a: ({ href, children }) => <Link href={href}>{children}</Link>,
     p: ({ children }) => (
-        <Text my="4" fontSize={['19', null, 'md']}>
+        <Text my="4" fontSize="19">
             {children}
         </Text>
     ),
     li: ({ children }) => (
-        <ListItem my="2" fontSize={['19', null, 'md']}>
+        <ListItem my="2" fontSize="19">
             {children}
         </ListItem>
     ),
@@ -37,13 +37,13 @@ const newTheme = {
         const id = paramCase(getTextFromMarkdownNode(node));
 
         return (
-            <AnchorHeading as="h2" mt="12" fontSize={['2xl', null, '3xl']} id={id}>
+            <AnchorHeading as="h2" mt="16" mb="2" fontSize={['2xl', null, '3xl']} id={id}>
                 {children}
             </AnchorHeading>
         );
     },
     h3: ({ children }) => (
-        <Heading as="h3" my="4" size="md">
+        <Heading as="h3" mt="4" mb="6" fontSize="xl">
             {children}
         </Heading>
     ),
