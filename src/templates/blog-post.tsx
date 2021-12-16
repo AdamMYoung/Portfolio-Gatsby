@@ -1,12 +1,12 @@
-import { Box, chakra, Divider, Flex, Heading, Spacer, Stack, Tag, Text } from '@chakra-ui/react';
+import { Box, chakra, Divider, Heading, Spacer, Stack, Tag, Text } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
-import { CardList, Link, MarkdownRenderer } from '~components';
+import { CardList, Link, MarkdownRenderer, BlogCard } from '~components';
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
-import { BlogCard, Layout, SEO } from '~views';
+import { Layout, SEO } from '~views';
 import { useCombinedArray } from '~hooks';
 
 type BlogPostProps = {
@@ -121,7 +121,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                         {relatedBlogs.map(({ id, slug, createdAt, title, heroImage, copy }) => (
                             <BlogCard
                                 key={id}
-                                to={`/ blog / ${slug}`}
+                                to={`/blog/${slug}`}
                                 title={title}
                                 subtitle={stringToLongDate(createdAt)}
                                 image={heroImage}
@@ -157,7 +157,7 @@ export const query = graphql`
                 file {
                     url
                 }
-                gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                gatsbyImageData(height: 500, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
             }
         }
         matching: allContentfulPageBlogPost(

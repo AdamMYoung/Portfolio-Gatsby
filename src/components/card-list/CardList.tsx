@@ -16,7 +16,7 @@ export const CardList: FC<MotionGridProps> = ({ children, ...rest }) => {
             variants={getContainerMotion()}
             gap="6"
             gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1fr 1fr']}
-            {...useViewportTransition()}
+            {...useViewportTransition('normal')}
             {...rest}
         >
             {children}

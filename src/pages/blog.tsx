@@ -14,10 +14,11 @@ import {
     TwoPanelImage,
     TwoPanelSubtitle,
     TwoPanelTitle,
+    BlogCard,
 } from '~components';
 import { useArrayLimiter } from '~hooks';
 import { useBlogTopics } from '~hooks/static-queries';
-import { BlogCard, FeaturedArticleCard, Layout, SEO } from '~views';
+import { FeaturedArticleCard, Layout, SEO } from '~views';
 import { stringToLongDate } from '~utils/date';
 import { BlogSearchProvider, useBlogSearch } from '~providers';
 import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';

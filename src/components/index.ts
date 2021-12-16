@@ -6,4 +6,6 @@ export * from './link-button';
 export * from './menu-icon-button';
 export * from './sections';
 export * from './markdown-renderer';
+export * from './dark-mode-toggle';
+export * from './blog-card';
 export * from './anchor-heading';

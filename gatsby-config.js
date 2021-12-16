@@ -8,7 +8,8 @@ module.exports = {
     siteMetadata: {
         siteUrl: 'https://www.aydev.uk',
         title: 'AYDev',
-        description: 'AYDev - Web development, programming and other interesting topics.',
+        description:
+            "Hi, I'm Adam Young, a Software Engineer from Birmingham currently working at Curve. Here, you'll find articles about software development, my interests, and the projects I've currently got on the go.",
     },
     plugins: [
         '@chakra-ui/gatsby-plugin',

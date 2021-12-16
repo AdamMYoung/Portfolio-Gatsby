@@ -1,11 +1,11 @@
 import { LinkIcon } from '@chakra-ui/icons';
-import { Button, ButtonProps, useToast } from '@chakra-ui/react';
+import { Button, ButtonProps, useBreakpointValue, useToast } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
 import { useMergedStyles, useIsMobile } from '~hooks';
 
 export const AnchorHeading: FC<ButtonProps> = ({ children, sx, id, onClick, ...rest }) => {
-    const isMobile = useIsMobile();
+    const isMobile = useBreakpointValue([true, null, false]);
     const toast = useToast();
 
     const _sx = useMergedStyles(sx, {
@@ -15,6 +15,11 @@ export const AnchorHeading: FC<ButtonProps> = ({ children, sx, id, onClick, ...r
         cursor: 'pointer',
         textDecoration: 'none',
         _hover: {
+            '.copy-link-icon': {
+                opacity: 0.7,
+            },
+        },
+        _active: {
             '.copy-link-icon': {
                 opacity: 1,
             },
@@ -33,11 +38,12 @@ export const AnchorHeading: FC<ButtonProps> = ({ children, sx, id, onClick, ...r
             {children}
             {!isMobile && (
                 <LinkIcon
-                    left="-10"
+                    right="-10"
                     className="copy-link-icon"
                     position="absolute"
                     color="gray.500"
                     opacity="0"
+                    size="sm"
                     transition="all 0.2s ease-in-out"
                 />
             )}

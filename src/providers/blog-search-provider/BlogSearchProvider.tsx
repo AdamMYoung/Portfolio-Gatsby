@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { createContext } from '@chakra-ui/react-utils';
 
 import { useBlogPosts } from '~hooks/static-queries';
-import { useFilter, useToggleSet } from '~hooks';
+import { useFilter, useParamsEvent, useToggleSet } from '~hooks';
 import { BlogPost } from '~types';
 
 type BlogSearchContextOptions = {
@@ -23,6 +23,9 @@ export const BlogSearchProvider: FC = ({ children }) => {
     const [selectedFilters, toggleFilter, resetFilters] = useToggleSet<string>();
     const [searchTerm, setSearchTerm] = useState<string>('');
     const blogs = useBlogPosts();
+
+    //Filters the blog posts based on the search term if applicable.
+    useParamsEvent('filters', (matched) => matched.forEach(toggleFilter));
 
     /**
      * Filters the existing blog posts by the search term provided.

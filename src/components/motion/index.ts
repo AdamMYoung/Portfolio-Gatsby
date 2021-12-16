@@ -35,16 +35,23 @@ export const MotionHeading = m<HeadingProps>(Heading);
 export const MotionText = m<TextProps>(Text);
 export const MotionButton = m<ButtonProps>(Button);
 
-type Speed = 'normal' | 'fast';
+type Speed = 'normal' | 'fast' | 'faster' | 'fastest';
 
-export const getContainerMotion = (speed: Speed = 'normal') => ({
+const speedMap = {
+    normal: 0.4,
+    fast: 0.3,
+    faster: 0.2,
+    fastest: 0.1,
+};
+
+export const getContainerMotion = (speed: Speed = 'fast') => ({
     hidden: { opacity: 0 },
     show: {
         delay: 2,
         opacity: 1,
         transition: {
-            delayChildren: speed === 'normal' ? 0.4 : 0.3,
-            staggerChildren: speed === 'normal' ? 0.3 : 0.2,
+            delayChildren: speedMap[speed],
+            staggerChildren: speedMap[speed],
         },
     },
 });
