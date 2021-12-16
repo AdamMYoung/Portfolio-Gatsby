@@ -7,7 +7,7 @@ import { CardList, Link, MarkdownRenderer, BlogCard } from '~components';
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
 import { Layout, SEO } from '~views';
-import { useCombinedArray } from '~hooks';
+import { useCombinedSubset } from '~hooks';
 
 type BlogPostProps = {
     data: {
@@ -21,7 +21,7 @@ const ChakraGatsbyImage = chakra(GatsbyImage);
 
 const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
     const { title, summary, createdAt, updatedAt, heroImage, copy, topics, slug } = data.contentfulPageBlogPost;
-    const relatedBlogs = useCombinedArray(3, [data.matching.nodes, data.notMatching.nodes]);
+    const relatedBlogs = useCombinedSubset(3, [data.matching.nodes, data.notMatching.nodes]);
 
     const createdAtText = stringToLongDate(createdAt);
     const updatedAtText = stringToLongDate(updatedAt);

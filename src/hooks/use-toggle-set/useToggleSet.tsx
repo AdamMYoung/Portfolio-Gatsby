@@ -1,5 +1,10 @@
 import { useCallback, useState } from 'react';
 
+/**
+ * Hook to allow toggling of values within an array. Toggling once will add it to the state array, toggling again will remove it.
+ * @param initialValue Initial value of the state array.
+ * @returns
+ */
 export const useToggleSet = <T extends any>(initialValue?: T[]): [T[], (toggle: T) => void, () => void] => {
     const [internalState, setInternalState] = useState<T[]>(initialValue ?? []);
 

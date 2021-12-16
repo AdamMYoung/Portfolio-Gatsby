@@ -2,17 +2,28 @@ import { Link as ChakraLink, LinkProps as ChakraLinkProps } from '@chakra-ui/rea
 import { Link as GatsbyLink } from 'gatsby';
 import React, { FC } from 'react';
 
-import { useSiteInfo } from '~hooks/static-queries';
+import { SiteInfo, useSiteInfo } from '~hooks/static-queries';
 
 export type LinkProps = ChakraLinkProps & {
     replace?: boolean;
 };
 
-export const Link: FC<LinkProps> = ({ children, href, ...rest }) => {
-    const { siteMetadata } = useSiteInfo();
-    const { siteUrl } = siteMetadata;
+const parseHref = (href: string, siteInfo: SiteInfo): string => {
+    const { siteUrl, siteWwwUrl } = siteInfo.siteMetadata;
 
-    const url = href.startsWith(siteUrl) ? href.substring(siteUrl.length) : href;
+    if (href.startsWith(siteUrl)) {
+        return href.substring(siteUrl.length);
+    }
+    if (href.startsWith(siteWwwUrl)) {
+        return href.substring(siteWwwUrl.length);
+    }
+
+    return href;
+};
+
+export const Link: FC<LinkProps> = ({ children, href, ...rest }) => {
+    const siteInfo = useSiteInfo();
+    const url = parseHref(href, siteInfo);
 
     if (url?.startsWith('/') || url?.startsWith('#')) {
         return (

@@ -1,9 +1,10 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-type SiteInfo = {
+export type SiteInfo = {
     buildTime: string;
     siteMetadata: {
         siteUrl: string;
+        siteWwwUrl: string;
         title: string;
         description: string;
     };
@@ -16,6 +17,7 @@ export const useSiteInfo = (): SiteInfo => {
                 siteMetadata {
                     title
                     siteUrl
+                    siteWwwUrl
                     description
                 }
                 buildTime
