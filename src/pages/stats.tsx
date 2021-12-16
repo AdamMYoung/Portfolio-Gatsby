@@ -1,10 +1,18 @@
 import { Grid, Heading, Progress, Stack, Stat, StatHelpText, StatNumber, Tag, Text } from '@chakra-ui/react';
 import React, { VFC } from 'react';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
-import { useBlogPosts, useGithubStats, usePopularLanguage, usePopularTopic } from '~hooks/static-queries';
+import { useBlogPosts, useGithubStats, usePopularLanguage, usePopularTopic, useSiteInfo } from '~hooks/static-queries';
 import { Layout, SEO } from '~views';
 
+dayjs.extend(relativeTime);
+
 const Stats: VFC = () => {
+    const { buildTime } = useSiteInfo();
+
+    console.log(buildTime);
+
     const stats = useGithubStats();
     const blogs = useBlogPosts();
 
@@ -51,6 +59,10 @@ const Stats: VFC = () => {
                                 <Tag size="lg">{popularTopic}</Tag>
                             </StatNumber>
                             <StatHelpText>Most popular topic</StatHelpText>
+                        </Stat>
+                        <Stat>
+                            <StatNumber>{dayjs().to(buildTime)}</StatNumber>
+                            <StatHelpText>Last built</StatHelpText>
                         </Stat>
                     </Grid>
                 </Stack>

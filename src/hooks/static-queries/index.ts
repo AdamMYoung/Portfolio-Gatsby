@@ -5,3 +5,4 @@ export * from './use-github-stats';
 export * from './use-popular-language';
 export * from './use-popular-topic';
 export * from './use-uses';
+export * from './use-site-info';
