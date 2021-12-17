@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
 import { useGithubStats } from '~hooks/static-queries';
 
+/**
+ * Static query hook to return a ranked list of languages I use from the Github API.
+ */
 export const usePopularLanguage = () => {
     const stats = useGithubStats();
 

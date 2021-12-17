@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
 import { useBlogTopics } from '~hooks/static-queries';
 
+/**
+ * Static query hook to return my most popular blog topic from the CMS.
+ */
 export const usePopularTopic = () => {
     const topics = useBlogTopics('array');
 

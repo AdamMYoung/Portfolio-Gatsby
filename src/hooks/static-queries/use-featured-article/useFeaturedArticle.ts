@@ -15,6 +15,9 @@ type FeaturedArticle = {
     heroImage: IGatsbyImageData;
 };
 
+/**
+ * Static query hook to return the currently featured article from the CMS.
+ */
 export const useFeaturedArticle = () => {
     const data = useStaticQuery<{ contentfulGlobal: { featuredArticle: FeaturedArticle } }>(graphql`
         {

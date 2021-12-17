@@ -11,6 +11,9 @@ type Repository = {
     languages: string[];
 };
 
+/**
+ * Static query hook to return my Github contribution data from the Github API.
+ */
 export const useGithubStats = (): GithubStats => {
     const { github } = useStaticQuery(graphql`
         {

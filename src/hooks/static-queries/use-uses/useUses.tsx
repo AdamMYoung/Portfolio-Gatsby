@@ -72,6 +72,9 @@ const photographyUses: Use[] = [
     },
 ];
 
+/**
+ * Static data hook to return the things I use on a day-to-day basis.
+ */
 export const useUses = () => {
     return { development: developmentUses, printing: printingUses, photography: photographyUses };
 };

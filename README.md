@@ -1,54 +1,32 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# AYDev Portfolio
 
-## 🚀 Quick start
+## Overview
 
-1.  **Create a Gatsby site.**
+This repo is my current portfolio, found at [aydev.uk](https://aydev.uk). It's built with Gatsby 4, Chakra UI, and backed by Contentful.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Structure
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+The project is broken down into the following structure
 
-2.  **Start developing.**
+-   @chakra-ui // Style overrides for Chakra-UI.
+-   components // All re-usable components used within the site.
+-   hooks // Custom utility and static content hooks.
+-   images // Images used within the site.
+-   pages // Static pages within the site.
+-   providers // All context providers.
+-   templates // Dynamic pages within the site.
+-   utils // A collection of utility functions.
+-   views // Stand-alone components used within the site.
 
-    Navigate into your new site’s directory and start it up.
+## Setup
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+You will need the following variables defined in your `.env.development` file:
 
-3.  **Open the code and start customizing!**
+-   CONTENTFUL_ACCESS_TOKEN // Access token for contentful
+-   CONTENTFUL_SPACE_ID // Space ID for contentful
+-   CONTENTFUL_HOST // Host for contentful (live/preview)
+-   GA_TRACKING_ID // Google Analytics tracking ID.
+-   GITHUB_ACCESS_TOKEN // Access token for Github to pull analytics
+-   SENTRY_DSN // DSN for sentry performance monitoring.
 
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+Once these are defined, simply run `yarn install` and then `yarn start`.

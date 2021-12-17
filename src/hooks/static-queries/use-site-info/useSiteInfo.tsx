@@ -10,6 +10,9 @@ export type SiteInfo = {
     };
 };
 
+/**
+ * Static query hook to return site info from gatsby-config.
+ */
 export const useSiteInfo = (): SiteInfo => {
     const data = useStaticQuery(graphql`
         {

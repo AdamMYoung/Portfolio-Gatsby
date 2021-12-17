@@ -4,6 +4,11 @@ type MarkdownNode = {
     children?: MarkdownNode[];
 };
 
+/**
+ * Iterates through a markdown node, building together a string of the text inside.
+ * Useful when italics and bold text are split by contentful.
+ * @param node Contentful markdown node to parse
+ */
 export const getTextFromMarkdownNode = (node: MarkdownNode): string => {
     if (!node.children) {
         return node.value;
