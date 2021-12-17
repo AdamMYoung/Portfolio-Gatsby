@@ -19,6 +19,9 @@ const [BlogSearchContextProvider, useBlogSearch] = createContext<BlogSearchConte
 
 export { useBlogSearch };
 
+/**
+ * Provides blog and topic search and filtering to consuming components.
+ */
 export const BlogSearchProvider: FC = ({ children }) => {
     const [selectedFilters, toggleFilter, resetFilters] = useToggleSet<string>();
     const [searchTerm, setSearchTerm] = useState<string>('');

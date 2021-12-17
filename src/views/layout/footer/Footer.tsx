@@ -79,6 +79,10 @@ export const Footer: VFC = () => {
                         </Link>
                     </Grid>
                 </Stack>
+                <Stack spacing="2">
+                    <Heading fontSize="medium">All rights reserved © Adam Young {new Date().getFullYear()}</Heading>
+                    <Link href="https://github.com/AdamMYoung/Portfolio">Source code on Github</Link>
+                </Stack>
             </Grid>
         </Stack>
     );

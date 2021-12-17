@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { BlogPost } from '~types';
 
 /**
- * Static query hook to return all blog posts within the site.
+ * Static query hook to return all blog posts from the CMS.
  */
 export const useBlogPosts = () => {
     const posts = useStaticQuery<{ allContentfulPageBlogPost: { nodes: BlogPost[] } }>(graphql`

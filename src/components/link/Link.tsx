@@ -8,13 +8,13 @@ export type LinkProps = ChakraLinkProps & {
     replace?: boolean;
 };
 
-const parseHref = (href: string, siteInfo: SiteInfo): string => {
+const parseHref = (href?: string, siteInfo: SiteInfo): string => {
     const { siteUrl, siteWwwUrl } = siteInfo.siteMetadata;
 
-    if (href.startsWith(siteUrl)) {
+    if (href?.startsWith(siteUrl)) {
         return href.substring(siteUrl.length);
     }
-    if (href.startsWith(siteWwwUrl)) {
+    if (href?.startsWith(siteWwwUrl)) {
         return href.substring(siteWwwUrl.length);
     }
 
