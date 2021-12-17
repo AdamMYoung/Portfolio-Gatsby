@@ -8,6 +8,8 @@ import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
 import { Layout, SEO } from '~views';
 import { useCombinedSubset } from '~hooks';
+import { ContentsProvider } from '~providers/contents-provider';
+import { Contents } from '~views/contents/Contents';
 
 type BlogPostProps = {
     data: {
@@ -85,8 +87,12 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
 
             <Stack spacing="10">
                 <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
+                <ContentsProvider>
+                    <Contents />
 
-                <MarkdownRenderer markdown={copy.copy} />
+                    <MarkdownRenderer markdown={copy.copy} />
+                </ContentsProvider>
+
                 <Stack pt="12" direction={['column', null, 'row']}>
                     <Link fontSize="md" href={encodeURI(`https://twitter.com/search?q=${pageUrl}`)}>
                         Discuss on Twitter

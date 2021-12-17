@@ -3,10 +3,10 @@ import { createContext } from '@chakra-ui/react-utils';
 
 import { useBlogPosts } from '~hooks/static-queries';
 import { useFilter, useParamsEvent, useToggleSet } from '~hooks';
-import { BlogPost } from '~types';
+import { BlogPostOverview } from '~types';
 
 type BlogSearchContextOptions = {
-    results: BlogPost[];
+    results: BlogPostOverview[];
     searchTerm: string;
     applicableFilters: string[];
     selectedFilters: string[];

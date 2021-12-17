@@ -90,7 +90,6 @@ const Blogs = () => {
                     <CategoryListItem
                         key={topic}
                         onClick={() => onFilterToggled(topic)}
-                        categoryKey={topic}
                         isActive={selectedFilters.includes(topic)}
                         isDisabled={!applicableFilters.includes(topic)}
                     >

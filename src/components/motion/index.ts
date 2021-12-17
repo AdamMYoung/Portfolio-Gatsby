@@ -61,10 +61,10 @@ export const getItemMotion = () => ({
     show: { opacity: 1 },
 });
 
-export const useViewportTransition = (visibilityThreshold: number | 'some' = 'some') => {
+export const useViewportTransition = (once: boolean = true, amount: number | 'some' = 'some') => {
     return {
         initial: 'hidden',
         whileInView: 'show',
-        viewport: { once: true, amount: visibilityThreshold },
+        viewport: { once, amount },
     };
 };

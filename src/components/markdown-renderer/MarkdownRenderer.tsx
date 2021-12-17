@@ -11,6 +11,7 @@ import 'highlight.js/styles/github-dark.css';
 import { AnchorHeading, Link } from '~components';
 import { CopyButton } from '~components/copy-button/CopyButton';
 import { getTextFromMarkdownNode } from '~utils/markdown';
+import { useContents } from '~providers';
 
 hljsDefineGraphQL(hljs);
 hljs.configure({
@@ -34,7 +35,12 @@ const newTheme = {
         </ListItem>
     ),
     h2: ({ children, node }) => {
-        const id = paramCase(getTextFromMarkdownNode(node));
+        const { register } = useContents();
+
+        const title = getTextFromMarkdownNode(node);
+        const id = paramCase(title);
+
+        useEffect(() => register({ title, anchor: id, heading: 'h2' }), []);
 
         return (
             <AnchorHeading as="h2" mt="16" mb="2" fontSize={['2xl', null, '3xl']} id={id}>
@@ -42,11 +48,34 @@ const newTheme = {
             </AnchorHeading>
         );
     },
-    h3: ({ children }) => (
-        <Heading as="h3" mt="4" mb="6" fontSize="xl">
-            {children}
-        </Heading>
-    ),
+    h3: ({ children, node }) => {
+        const { register } = useContents();
+
+        const title = getTextFromMarkdownNode(node);
+        const id = paramCase(title);
+
+        useEffect(() => register({ title, anchor: id, heading: 'h3' }), []);
+
+        return (
+            <Heading as="h3" mt="4" mb="6" fontSize="xl" id={id}>
+                {children}
+            </Heading>
+        );
+    },
+    h4: ({ children, node }) => {
+        const { register } = useContents();
+
+        const title = getTextFromMarkdownNode(node);
+        const id = paramCase(title);
+
+        useEffect(() => register({ title, anchor: id, heading: 'h4' }), []);
+
+        return (
+            <Heading as="h4" mt="4" mb="6" fontSize="lg" id={id}>
+                {children}
+            </Heading>
+        );
+    },
     code: ({ children }) => (
         <Code p="1" wordBreak="break-word">
             {children}
