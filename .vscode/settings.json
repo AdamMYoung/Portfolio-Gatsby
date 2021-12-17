@@ -1,3 +1,16 @@
 {
-    "cSpell.words": ["ˈædəm", "AVIF", "semibold", "Teesside", "unstyled", "WEBP"]
+  "cSpell.words": [
+    "ˈædəm",
+    "AVIF",
+    "semibold",
+    "Teesside",
+    "unstyled",
+    "WEBP"
+  ],
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
