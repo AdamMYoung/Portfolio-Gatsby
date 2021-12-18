@@ -8,8 +8,7 @@ import { paramCase } from 'param-case';
 
 import 'highlight.js/styles/github-dark.css';
 
-import { AnchorHeading, Link } from '~components';
-import { CopyButton } from '~components/copy-button/CopyButton';
+import { AnchorHeading, Link, CopyButton } from '~components';
 import { getTextFromMarkdownNode } from '~utils/markdown';
 import { useContents } from '~providers';
 
@@ -43,7 +42,7 @@ const newTheme = {
         useEffect(() => register({ title, anchor: id, heading: 'h2' }), []);
 
         return (
-            <AnchorHeading as="h2" mt="16" mb="2" fontSize={['2xl', null, '3xl']} id={id}>
+            <AnchorHeading as="h2" _notFirst={{ mt: 16 }} mb="2" fontSize={['2xl', null, '3xl']} id={id}>
                 {children}
             </AnchorHeading>
         );

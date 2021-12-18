@@ -9,3 +9,4 @@ export * from './markdown-renderer';
 export * from './dark-mode-toggle';
 export * from './blog-card';
 export * from './anchor-heading';
+export * from './copy-button';

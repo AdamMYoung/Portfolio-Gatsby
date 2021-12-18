@@ -1,4 +1,4 @@
-import { Heading, List, ListItem, Stack } from '@chakra-ui/react';
+import { Divider, Heading, List, ListItem, Stack } from '@chakra-ui/react';
 import React, { useRef, VFC } from 'react';
 
 import { Link } from '~components';
@@ -45,6 +45,7 @@ export const Contents: VFC = () => {
                     );
                 })}
             </List>
+            <Divider />
         </Stack>
     );
 };
