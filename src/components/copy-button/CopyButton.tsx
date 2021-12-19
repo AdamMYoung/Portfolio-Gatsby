@@ -1,21 +1,17 @@
 import React, { FC, MouseEventHandler, useCallback } from 'react';
-import { Button, ButtonProps, useToast } from '@chakra-ui/react';
+import { Button, ButtonProps } from '@chakra-ui/react';
+
+import { useCopyToClipboard } from '~hooks';
 
 type CopyButtonProps = ButtonProps & {
     contentToCopy: string;
 };
 
 export const CopyButton: FC<CopyButtonProps> = ({ contentToCopy, onClick, ...rest }) => {
-    const toast = useToast();
-
-    const copyContentToClipboard = useCallback(() => {
-        navigator.clipboard.writeText(contentToCopy);
-
-        toast({ title: 'Copied!', description: 'Content copied to clipboard', status: 'success', duration: 3000 });
-    }, [contentToCopy]);
+    const handleCopy = useCopyToClipboard();
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-        copyContentToClipboard();
+        handleCopy(contentToCopy);
         onClick?.(e);
     };
 

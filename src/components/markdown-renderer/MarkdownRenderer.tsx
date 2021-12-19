@@ -28,6 +28,11 @@ const newTheme = {
             {children}
         </Text>
     ),
+    em: ({ children }) => (
+        <Text as="em" mx="2">
+            {children}
+        </Text>
+    ),
     li: ({ children }) => (
         <ListItem my="2" fontSize="19">
             {children}

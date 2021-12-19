@@ -10,6 +10,7 @@ import { Layout, SEO } from '~views';
 import { useCombinedSubset } from '~hooks';
 import { ContentsProvider } from '~providers/contents-provider';
 import { Contents } from '~views/contents/Contents';
+import { ArrowBackIcon } from '@chakra-ui/icons';
 
 type BlogPostProps = {
     data: {
@@ -63,7 +64,8 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
             <Stack spacing="6">
                 <Box>
                     <Link href="/blog" fontSize={['md', null, 'lg']} pl="0">
-                        Back to Blog
+                        <ArrowBackIcon mb="1" />
+                        {` Back to Blog`}
                     </Link>
                 </Box>
                 <Stack>
@@ -88,7 +90,11 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
             <Stack spacing="10">
                 <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
                 <ContentsProvider>
-                    <Contents />
+                    <Stack spacing="6">
+                        <Heading as="h2">Contents</Heading>
+                        <Contents />
+                        <Divider />
+                    </Stack>
 
                     <MarkdownRenderer markdown={copy.copy} />
                 </ContentsProvider>

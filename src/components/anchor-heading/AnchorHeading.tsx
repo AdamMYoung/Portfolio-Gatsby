@@ -2,11 +2,11 @@ import { LinkIcon } from '@chakra-ui/icons';
 import { Button, ButtonProps, useBreakpointValue, useToast } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
-import { useMergedStyles, useIsMobile } from '~hooks';
+import { useMergedStyles, useCopyToClipboard } from '~hooks';
 
 export const AnchorHeading: FC<ButtonProps> = ({ children, sx, id, onClick, ...rest }) => {
+    const handleCopy = useCopyToClipboard('Link copied to clipboard');
     const isMobile = useBreakpointValue([true, null, false]);
-    const toast = useToast();
 
     const _sx = useMergedStyles(sx, {
         position: 'relative',
@@ -27,9 +27,7 @@ export const AnchorHeading: FC<ButtonProps> = ({ children, sx, id, onClick, ...r
     });
 
     const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-        navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}#${id}`);
-
-        toast({ title: 'Copied!', description: 'Link copied to clipboard', status: 'success', duration: 3000 });
+        handleCopy(`${window.location.origin}${window.location.pathname}#${id}`);
         onClick?.(e);
     };
 
