@@ -9,7 +9,7 @@ import { paramCase } from 'param-case';
 import 'highlight.js/styles/github-dark.css';
 
 import { AnchorHeading, Link, CopyButton } from '~components';
-import { getTextFromMarkdownNode } from '~utils/markdown';
+import { getTextFromMarkdownNode, MarkdownNode } from '~utils/markdown';
 import { useContents } from '~providers';
 
 hljsDefineGraphQL(hljs);
@@ -19,6 +19,23 @@ hljs.configure({
 
 type MarkdownRendererProps = BoxProps & {
     markdown: string;
+};
+
+/**
+ * Hook to register the heading, and return the ID for anchor linking.
+ * @param node Node to register.
+ * @param heading Heading size of the node.
+ * @returns
+ */
+const useRegisteredHeading = (node: MarkdownNode, heading: 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
+    const { register } = useContents();
+
+    const title = getTextFromMarkdownNode(node);
+    const id = paramCase(title);
+
+    useEffect(() => register({ title, anchor: id, heading }), []);
+
+    return id;
 };
 
 const newTheme = {
@@ -39,43 +56,35 @@ const newTheme = {
         </ListItem>
     ),
     h2: ({ children, node }) => {
-        const { register } = useContents();
-
-        const title = getTextFromMarkdownNode(node);
-        const id = paramCase(title);
-
-        useEffect(() => register({ title, anchor: id, heading: 'h2' }), []);
+        const id = useRegisteredHeading(node, 'h2');
 
         return (
-            <AnchorHeading as="h2" _notFirst={{ mt: 16 }} mb="2" fontSize={['2xl', null, '3xl']} id={id}>
+            <AnchorHeading
+                as="h2"
+                mb="2"
+                fontSize={['2xl', null, '3xl']}
+                whiteSpace="normal"
+                _notFirst={{ mt: 16 }}
+                id={id}
+            >
                 {children}
             </AnchorHeading>
         );
     },
     h3: ({ children, node }) => {
-        const { register } = useContents();
-
-        const title = getTextFromMarkdownNode(node);
-        const id = paramCase(title);
-
-        useEffect(() => register({ title, anchor: id, heading: 'h3' }), []);
+        const id = useRegisteredHeading(node, 'h3');
 
         return (
-            <Heading as="h3" mt="4" mb="6" fontSize="xl" id={id}>
+            <Heading as="h3" mt="4" mb="6" fontSize="xl" whiteSpace="normal" id={id}>
                 {children}
             </Heading>
         );
     },
     h4: ({ children, node }) => {
-        const { register } = useContents();
-
-        const title = getTextFromMarkdownNode(node);
-        const id = paramCase(title);
-
-        useEffect(() => register({ title, anchor: id, heading: 'h4' }), []);
+        const id = useRegisteredHeading(node, 'h4');
 
         return (
-            <Heading as="h4" mt="4" mb="6" fontSize="lg" id={id}>
+            <Heading as="h4" mt="4" mb="6" fontSize="lg" whiteSpace="normal" id={id}>
                 {children}
             </Heading>
         );
