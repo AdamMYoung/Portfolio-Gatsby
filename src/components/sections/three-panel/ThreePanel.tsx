@@ -16,7 +16,7 @@ export const ThreePanel: FC<MotionGridProps> = ({ children, ...rest }) => {
             variants={getContainerMotion()}
             gap="8"
             gridTemplateColumns={['1fr', null, '1fr 1fr', null, '1fr 1fr 1fr']}
-            {...useViewportTransition(viewportThreshold)}
+            {...useViewportTransition(true, viewportThreshold)}
             {...rest}
         >
             {children}

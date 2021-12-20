@@ -82,7 +82,7 @@ const Blogs = () => {
 
     return (
         <Stack spacing="8">
-            <MotionHeading variants={getItemMotion()} {...useViewportTransition(0.7)}>
+            <MotionHeading variants={getItemMotion()} {...useViewportTransition(true, 0.7)}>
                 Filter articles by topic
             </MotionHeading>
             <CategoryList>

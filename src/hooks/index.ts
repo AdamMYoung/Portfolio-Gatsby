@@ -6,6 +6,7 @@ export * from './use-filter';
 export * from './use-toggle-set';
 export * from './use-params-event';
 export * from './use-copy-to-clipboard';
+export * from './use-distance-from-document';
 
 //Intentionally not exporting ./static-queries as to not pollute
 //the import autocomplete of the hooks folder.

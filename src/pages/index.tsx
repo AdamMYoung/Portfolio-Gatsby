@@ -25,7 +25,7 @@ const HeroIntro = () => {
             <TwoPanelBlock>
                 <Stack>
                     <TwoPanelTitle as="h1">Adam Young</TwoPanelTitle>
-                    <TwoPanelBody>
+                    <TwoPanelBody as={Stack}>
                         <Text>/ˈædəm jʌŋ/</Text>
                         <Text variant="subtitle" as="i" fontWeight="semibold">
                             noun
@@ -68,7 +68,7 @@ const Interests: VFC = () => {
         <Stack spacing="8">
             <MotionHeading
                 variants={getItemMotion()}
-                {...useViewportTransition()}
+                {...useViewportTransition(true, 1)}
                 as="h2"
                 fontSize={['4xl', null, '5xl']}
                 textAlign={['left', null, 'center']}

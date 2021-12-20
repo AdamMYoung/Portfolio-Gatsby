@@ -1,16 +1,17 @@
-import { Box, chakra, Divider, Heading, Spacer, Stack, Tag, Text } from '@chakra-ui/react';
+import { Box, chakra, Divider, Heading, Progress, Spacer, Stack, Tag, Text } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import React, { VFC } from 'react';
+import React, { useMemo, VFC } from 'react';
 
 import { CardList, Link, MarkdownRenderer, BlogCard } from '~components';
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
 import { Layout, SEO } from '~views';
-import { useCombinedSubset } from '~hooks';
+import { useCombinedSubset, useDistanceFromDocument } from '~hooks';
 import { ContentsProvider } from '~providers/contents-provider';
 import { Contents } from '~views/contents/Contents';
 import { ArrowBackIcon } from '@chakra-ui/icons';
+import { useWindowScroll } from 'react-use';
 
 type BlogPostProps = {
     data: {
@@ -26,12 +27,17 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
     const { title, summary, createdAt, updatedAt, heroImage, copy, topics, slug } = data.contentfulPageBlogPost;
     const relatedBlogs = useCombinedSubset(3, [data.matching.nodes, data.notMatching.nodes]);
 
+    const [ref, { distance }] = useDistanceFromDocument();
+    const { y } = useWindowScroll();
+
+    const percentageComplete = useMemo(() => {
+        return 100 - ((distance - y) / distance) * 100;
+    }, [distance, y]);
+
     const createdAtText = stringToLongDate(createdAt);
     const updatedAtText = stringToLongDate(updatedAt);
 
     const pageUrl = `https://aydev.uk/blog/${slug}`;
-
-    console.log(encodeURI(title));
 
     return (
         <Layout spacing="12">
@@ -62,6 +68,9 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                 </script>
             </SEO>
             <Stack spacing="6">
+                <Box position="fixed" p="4" zIndex="100" bottom={0} left={0} right={0}>
+                    <Progress orientation="vertical" rounded="xl" value={percentageComplete} max={100} />
+                </Box>
                 <Box>
                     <Link href="/blog" fontSize={['md', null, 'lg']} pl="0">
                         <ArrowBackIcon mb="1" />
@@ -97,6 +106,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                     </Stack>
 
                     <MarkdownRenderer markdown={copy.copy} />
+                    <Box ref={ref} />
                 </ContentsProvider>
 
                 <Stack pt="12" direction={['column', null, 'row']}>

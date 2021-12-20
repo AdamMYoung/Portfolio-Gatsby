@@ -12,7 +12,14 @@ export const Card: FC<MotionBoxProps> = ({ children, sx, ...rest }) => {
     });
 
     return (
-        <MotionBox p="8" variants={getItemMotion()} {...useViewportTransition(0.7)} rounded="xl" sx={_sx} {...rest}>
+        <MotionBox
+            p="8"
+            variants={getItemMotion()}
+            {...useViewportTransition(true, 0.7)}
+            rounded="xl"
+            sx={_sx}
+            {...rest}
+        >
             {children}
         </MotionBox>
     );
