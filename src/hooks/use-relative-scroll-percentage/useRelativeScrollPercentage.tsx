@@ -1,5 +1,5 @@
-import React, { MutableRefObject, useMemo } from 'react';
-import { useDebounce, useWindowScroll } from 'react-use';
+import { MutableRefObject, useMemo } from 'react';
+import { useWindowScroll } from 'react-use';
 
 import { useDistanceFromTop } from '..';
 
