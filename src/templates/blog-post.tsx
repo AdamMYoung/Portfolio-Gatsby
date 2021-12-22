@@ -1,4 +1,4 @@
-import { Box, Button, chakra, Divider, Heading, Spacer, Stack, Tag, Text } from '@chakra-ui/react';
+import { Box, Button, chakra, Divider, Heading, Spacer, Stack, Tag, Text, Flex } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { useMemo, useState, VFC } from 'react';
@@ -7,7 +7,7 @@ import { CardList, Link, MarkdownRenderer, BlogCard, Progress } from '~component
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
 import { Layout, SEO } from '~views';
-import { useCombinedSubset, useDistanceFromDocument, useIsMobile } from '~hooks';
+import { useCombinedSubset, useIsMobile, useScrollPercentage } from '~hooks';
 import { ContentsProvider } from '~providers/contents-provider';
 import { Contents } from '~views/contents/Contents';
 import { ArrowBackIcon } from '@chakra-ui/icons';
@@ -27,17 +27,13 @@ const ChakraGatsbyImage = chakra(GatsbyImage);
 const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
     const { title, summary, createdAt, updatedAt, heroImage, copy, topics, slug } = data.contentfulPageBlogPost;
     const relatedBlogs = useCombinedSubset(3, [data.matching.nodes, data.notMatching.nodes]);
+
     const isMobile = useIsMobile();
     const [isReturnButtonVisible, setReturnButtonVisible] = useState(false);
 
-    const [ref, { distance }] = useDistanceFromDocument();
-    const { y } = useWindowScroll();
+    const [fromRef, toRef, { percentage }] = useScrollPercentage(400);
 
-    const percentageComplete = useMemo(() => {
-        return 100 - ((distance - (y + 500)) / distance) * 100;
-    }, [distance, y]);
-
-    useDebounce(() => setReturnButtonVisible(percentageComplete > 20), 50, [percentageComplete]);
+    useDebounce(() => setReturnButtonVisible(percentage > 20), 50, [percentage]);
 
     const createdAtText = stringToLongDate(createdAt);
     const updatedAtText = stringToLongDate(updatedAt);
@@ -45,135 +41,141 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
     const pageUrl = `https://aydev.uk/blog/${slug}`;
 
     return (
-        <Layout spacing="12">
-            <SEO title={title} description={summary.summary} imageUrl={heroImage.file.url} imageAlt={title}>
-                <meta property="og:type" content="article" />
-                <meta property="og:article:published_time" content={createdAt} />
-                <meta property="og:article:modified_time" content={updatedAt} />
-                <meta property="og:article:section" content="Software Development" />
-                {topics.map((t) => (
-                    <meta key={t} property="og:article:tag" content={t} />
-                ))}
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        '@context': 'https://schema.org',
-                        '@type': 'NewsArticle',
-                        headline: title,
-                        image: [heroImage.file.url],
-                        datePublished: createdAt,
-                        dateModified: updatedAt,
-                        author: [
-                            {
-                                '@type': 'Person',
-                                name: 'Adam Young',
-                                url: 'http://aydev.uk',
-                            },
-                        ],
-                    })}
-                </script>
-            </SEO>
+        <ContentsProvider>
+            <Layout spacing="12">
+                <SEO title={title} description={summary.summary} imageUrl={heroImage.file.url} imageAlt={title}>
+                    <meta property="og:type" content="article" />
+                    <meta property="og:article:published_time" content={createdAt} />
+                    <meta property="og:article:modified_time" content={updatedAt} />
+                    <meta property="og:article:section" content="Software Development" />
+                    {topics.map((t) => (
+                        <meta key={t} property="og:article:tag" content={t} />
+                    ))}
+                    <script type="application/ld+json">
+                        {JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'NewsArticle',
+                            headline: title,
+                            image: [heroImage.file.url],
+                            datePublished: createdAt,
+                            dateModified: updatedAt,
+                            author: [
+                                {
+                                    '@type': 'Person',
+                                    name: 'Adam Young',
+                                    url: 'http://aydev.uk',
+                                },
+                            ],
+                        })}
+                    </script>
+                </SEO>
 
-            <Stack spacing="6">
-                <Box position="fixed" py="32" px={[4, null, 5]} zIndex="100" right="0" top="0" bottom="0">
-                    <Progress direction="column" amount={percentageComplete} />
-                    {isMobile && (
-                        <MotionFlex
-                            position="fixed"
-                            animate={{ bottom: isReturnButtonVisible ? 0 : -70, transition: { duration: 0.4 } }}
-                            left="0"
-                            right="0"
-                            bottom="-100"
-                            pb="4"
-                            justifyContent="center"
-                        >
-                            <Button py="0" onClick={() => window.scrollTo(0, 0)}>
-                                Back to top
-                            </Button>
-                        </MotionFlex>
-                    )}
-                </Box>
-
-                <Box>
-                    <Link href="/blog" fontSize={['md', null, 'lg']} pl="0">
-                        <ArrowBackIcon mb="1" />
-                        {` Back to Blog`}
-                    </Link>
-                </Box>
-                <Stack>
-                    <Heading>{title}</Heading>
-                    <Stack spacing={4}>
-                        <Text variant="subtitle" fontSize="xl">
-                            {copy.readingTime}
-                        </Text>
-                        <Stack direction="row">
-                            {topics.map((t) => (
-                                <Tag key={t}>{t}</Tag>
-                            ))}
+                <Stack spacing="6">
+                    <Box>
+                        <Link href="/blog" fontSize={['md', null, 'lg']} pl="0">
+                            <ArrowBackIcon mb="1" />
+                            {` Back to Blog`}
+                        </Link>
+                    </Box>
+                    <Stack>
+                        <Heading>{title}</Heading>
+                        <Stack spacing={4}>
+                            <Text variant="subtitle" fontSize="xl">
+                                {copy.readingTime}
+                            </Text>
+                            <Stack direction="row">
+                                {topics.map((t) => (
+                                    <Tag key={t}>{t}</Tag>
+                                ))}
+                            </Stack>
                         </Stack>
                     </Stack>
+                    <Divider />
+                    <Heading variant="subtitle" fontSize="md">
+                        {createdAtText} {createdAtText !== updatedAtText && `(Updated on ` + updatedAtText + ')'}
+                    </Heading>
                 </Stack>
-                <Divider />
-                <Heading variant="subtitle" fontSize="md">
-                    {createdAtText} {createdAtText !== updatedAtText && `(Updated on ` + updatedAtText + ')'}
-                </Heading>
-            </Stack>
-            <Stack spacing="10">
-                <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" zIndex="-1" />
-                <ContentsProvider>
+                <Stack spacing="10">
+                    <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" zIndex="-1" />
+
                     <Stack spacing="6">
                         <Heading as="h2">Contents</Heading>
                         <Contents />
                         <Divider />
                     </Stack>
 
-                    <MarkdownRenderer markdown={copy.copy} />
-                    <Box ref={ref} />
-                </ContentsProvider>
+                    <Box ref={fromRef} />
+                    <Flex>
+                        <MarkdownRenderer w="full" pr={[0, null, 6]} markdown={copy.copy} />
+                        {!isMobile && (
+                            <Progress position="sticky" top="120" height={['80vh', null, '85vh']} amount={percentage} />
+                        )}
+                    </Flex>
+                    <Box ref={toRef} />
 
-                <Stack pt="12" direction={['column', null, 'row']}>
-                    <Link fontSize="md" href={encodeURI(`https://twitter.com/search?q=${pageUrl}`)}>
-                        Discuss on Twitter
-                    </Link>
-                    <Spacer />
-                    <Link
-                        fontSize="md"
-                        href={`https://twitter.com/intent/tweet?url=${pageUrl}&text=${encodeURIComponent(
-                            `I just read ${title} \nby @AdamMYoung_\n\n`
-                        )}`}
-                    >
-                        Share on Twitter
-                    </Link>
-                </Stack>
+                    {isMobile && (
+                        <Box zIndex="1000">
+                            <MotionFlex
+                                position="fixed"
+                                animate={{ bottom: isReturnButtonVisible ? 0 : -70, transition: { duration: 0.4 } }}
+                                left="0"
+                                right="0"
+                                bottom="-100"
+                                pb="4"
+                                justifyContent="center"
+                            >
+                                <Button py="0" fontSize="sm" onClick={() => window.scrollTo(0, 0)}>
+                                    Back to top
+                                </Button>
+                            </MotionFlex>
+                        </Box>
+                    )}
 
-                <Divider />
-                <Stack spacing="4">
-                    <Text fontSize="md">Written by Adam Young</Text>
-                    <Text fontSize="md" variant="subtitle">
-                        Adam Young is a front-end engineer, who specializes in React and modern web technologies. He's
-                        working at <Link href="https://curve.com">Curve</Link> as a front-end engineer. He currently
-                        lives in Birmingham with his fiancé and two cats.
-                    </Text>
-                </Stack>
-            </Stack>
-            {relatedBlogs.length > 0 && (
-                <>
+                    <Stack pt="12" direction={['column', null, 'row']}>
+                        <Link fontSize="md" href={encodeURI(`https://twitter.com/search?q=${pageUrl}`)}>
+                            Discuss on Twitter
+                        </Link>
+                        <Spacer />
+                        <Link
+                            fontSize="md"
+                            href={`https://twitter.com/intent/tweet?url=${pageUrl}&text=${encodeURIComponent(
+                                `I just read ${title} \nby @AdamMYoung_\n\n`
+                            )}`}
+                        >
+                            Share on Twitter
+                        </Link>
+                    </Stack>
+
                     <Divider />
-                    <Heading>Related Articles</Heading>
-                    <CardList>
-                        {relatedBlogs.map(({ id, slug, createdAt, title, heroImage, copy }) => (
-                            <BlogCard
-                                key={id}
-                                to={`/blog/${slug}`}
-                                title={title}
-                                subtitle={stringToLongDate(createdAt)}
-                                image={heroImage}
-                                readingTime={copy.readingTime}
-                            />
-                        ))}
-                    </CardList>
-                </>
-            )}
-        </Layout>
+                    <Stack spacing="4">
+                        <Text fontSize="md">Written by Adam Young</Text>
+                        <Text fontSize="md" variant="subtitle">
+                            Adam Young is a front-end engineer, who specializes in React and modern web technologies.
+                            He's working at <Link href="https://curve.com">Curve</Link> as a front-end engineer. He
+                            currently lives in Birmingham with his fiancé and two cats.
+                        </Text>
+                    </Stack>
+                </Stack>
+                {relatedBlogs.length > 0 && (
+                    <>
+                        <Divider />
+                        <Heading>Related Articles</Heading>
+                        <CardList>
+                            {relatedBlogs.map(({ id, slug, createdAt, title, heroImage, copy }) => (
+                                <BlogCard
+                                    key={id}
+                                    to={`/blog/${slug}`}
+                                    title={title}
+                                    subtitle={stringToLongDate(createdAt)}
+                                    image={heroImage}
+                                    readingTime={copy.readingTime}
+                                />
+                            ))}
+                        </CardList>
+                    </>
+                )}
+            </Layout>
+        </ContentsProvider>
     );
 };
 
