@@ -3,7 +3,6 @@ import React, { useState, VFC } from 'react';
 import { useDebounce } from 'react-use';
 
 import { MotionBox, MotionText } from '~components/motion';
-import { useIsMobile } from '~hooks/use-is-mobile';
 
 type ProgressProps = BoxProps & {
     amount: number;
@@ -23,9 +22,8 @@ const getPercentage = (amount: number) => {
     return percentage.toFixed(0);
 };
 
-export const Progress: VFC<ProgressProps> = ({ amount, ...rest }) => {
+export const Progress: VFC<ProgressProps> = ({ amount, 'aria-label': label, ...rest }) => {
     const [percentage, setPercentage] = useState(getPercentage(0));
-    const isLargeScreen = useBreakpointValue([false, null, null, null, true]);
 
     useDebounce(() => setPercentage(getPercentage(amount)), 10, [amount]);
 
@@ -46,7 +44,16 @@ export const Progress: VFC<ProgressProps> = ({ amount, ...rest }) => {
                     opacity="0.1"
                 />
                 <MotionBox rounded="xl" position="absolute" w="2" animate={{ height: `${percentage}%` }} bg={bg} />
-                <MotionBox position="absolute" top="0" right="-6" w="10" animate={{ top: `${percentage - 2}%` }}>
+                <MotionBox
+                    role="progressbar"
+                    aria-valuenow={percentage}
+                    aria-label={label}
+                    position="absolute"
+                    top="0"
+                    right="-6"
+                    w="10"
+                    animate={{ top: `${percentage - 2}%` }}
+                >
                     <MotionText bg={bg} rounded="xl" color="black" fontSize="xs" p="1" textAlign="center">
                         {percentage}%
                     </MotionText>

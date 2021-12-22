@@ -107,7 +107,13 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                     <Flex>
                         <MarkdownRenderer w="full" pr={[0, null, 6]} markdown={copy.copy} />
                         {!isMobile && (
-                            <Progress position="sticky" top="120" height={['80vh', null, '85vh']} amount={percentage} />
+                            <Progress
+                                position="sticky"
+                                top="120"
+                                height={['80vh', null, '85vh']}
+                                aria-label="Article progress"
+                                amount={percentage}
+                            />
                         )}
                     </Flex>
                     <Box ref={toRef} />
