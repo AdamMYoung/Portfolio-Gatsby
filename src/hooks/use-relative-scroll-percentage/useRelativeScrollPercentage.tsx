@@ -3,9 +3,13 @@ import { useWindowScroll } from 'react-use';
 
 import { useDistanceFromTop } from '..';
 
-export const useScrollPercentage = (
-    offset = 0
-): [MutableRefObject<HTMLElement>, MutableRefObject<HTMLElement>, { percentage: number }] => {
+type UseRelativeScrollPercentageResult = [
+    MutableRefObject<HTMLElement>,
+    MutableRefObject<HTMLElement>,
+    { percentage: number }
+];
+
+export const useRelativeScrollPercentage = (offset = 0): UseRelativeScrollPercentageResult => {
     const [fromRef, { distance: fromDistance }] = useDistanceFromTop();
     const [toRef, { distance: toDistance }] = useDistanceFromTop();
     const { y } = useWindowScroll();

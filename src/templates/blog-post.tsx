@@ -7,7 +7,7 @@ import { CardList, Link, MarkdownRenderer, BlogCard, Progress } from '~component
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
 import { Layout, SEO } from '~views';
-import { useCombinedSubset, useIsMobile, useScrollPercentage } from '~hooks';
+import { useCombinedSubset, useIsMobile, useRelativeScrollPercentage } from '~hooks';
 import { ContentsProvider } from '~providers/contents-provider';
 import { Contents } from '~views/contents/Contents';
 import { ArrowBackIcon } from '@chakra-ui/icons';
@@ -30,8 +30,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
 
     const isMobile = useIsMobile();
     const [isReturnButtonVisible, setReturnButtonVisible] = useState(false);
-
-    const [fromRef, toRef, { percentage }] = useScrollPercentage(400);
+    const [fromRef, toRef, { percentage }] = useRelativeScrollPercentage(400);
 
     useDebounce(() => setReturnButtonVisible(percentage > 20), 50, [percentage]);
 
