@@ -4,5 +4,5 @@
  */
 export const useIfClient = <T extends any>(func: () => T, defaultValue?: T): T | undefined => {
     const isSsr = typeof window !== 'undefined';
-    return isSsr ? defaultValue : func();
+    return isSsr ? func() : defaultValue;
 };
