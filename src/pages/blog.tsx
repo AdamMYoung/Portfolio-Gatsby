@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Input, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Heading, HStack, Input, Stack, Text } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { useEffect, VFC } from 'react';
 
@@ -24,9 +24,13 @@ import { BlogSearchProvider, useBlogSearch } from '~providers';
 import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
 
 const HeroIntro = () => {
-    const { onSearchTermChanged, searchTerm, results } = useBlogSearch();
+    const { onSearchTermChanged, searchTerm, results, selectedFilters, onReset } = useBlogSearch();
 
     const hasNoResults = results.length === 0;
+    const isTopicsSelected = selectedFilters.length > 0;
+    const isSearchResultPresent = !!searchTerm;
+
+    const hasUserInput = isSearchResultPresent || isTopicsSelected;
 
     return (
         <TwoPanel>
@@ -47,11 +51,16 @@ const HeroIntro = () => {
                     </TwoPanelBody>
                     <TwoPanelBody>
                         <Button as={Link} w="full" variant="outline" href="#articles" isDisabled={hasNoResults}>
-                            {!searchTerm
+                            {!hasUserInput
                                 ? 'View All Articles'
                                 : hasNoResults
                                 ? 'No Articles Found'
                                 : `View ${results.length} ${results.length === 1 ? 'Article' : 'Articles'} `}
+                        </Button>
+                    </TwoPanelBody>
+                    <TwoPanelBody>
+                        <Button variant="ghost" w="full" onClick={onReset} opacity={!hasUserInput ? 0 : 1}>
+                            Reset Search
                         </Button>
                     </TwoPanelBody>
                 </Stack>
@@ -71,20 +80,19 @@ const HeroIntro = () => {
 };
 
 const Blogs = () => {
-    const { results, applicableFilters, selectedFilters, onFilterToggled } = useBlogSearch();
+    const { results, applicableFilters, selectedFilters, onFilterToggled, onReset } = useBlogSearch();
     const topics = useBlogTopics();
 
     const [visibleArticles, isAllArticlesVisible, loadMoreArticles, reset] = useArrayLimiter(results);
 
-    useEffect(() => {
-        reset();
-    }, [results]);
+    useEffect(() => reset(), [results]);
 
     return (
         <Stack spacing="8">
-            <MotionHeading variants={getItemMotion()} {...useViewportTransition(true, 0.7)}>
+            <MotionHeading py="2" variants={getItemMotion()} {...useViewportTransition(true, 0.7)}>
                 Filter articles by topic
             </MotionHeading>
+
             <CategoryList>
                 {topics.map((topic) => (
                     <CategoryListItem

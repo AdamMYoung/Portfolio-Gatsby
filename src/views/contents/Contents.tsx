@@ -38,7 +38,7 @@ const buildContents = (entries: ContentsEntry[]) => {
 
         return (
             <ListItem
-                key={e.anchor}
+                key={e.title}
                 as={Link}
                 sx={{ display: 'block', ml: listItemIndentMap[e.heading], mt: shouldAddSpacing ? 3 : 0 }}
                 href={`#${e.anchor}`}
