@@ -36,7 +36,7 @@ export const TwoPanelBlock: FC<MotionStackProps> = ({ children, sx, ...rest }) =
     return (
         <MotionStack
             variants={getContainerMotion()}
-            {...useViewportTransition(0.7)}
+            {...useViewportTransition(true, 0.7)}
             sx={_sx}
             order={[1, null, 'initial']}
             my="8"
@@ -78,7 +78,12 @@ export const TwoPanelBody: FC<MotionBoxProps> = ({ children, ...rest }) => {
 
 export const TwoPanelImage: FC<MotionBoxProps> = ({ children, ...rest }) => {
     return (
-        <MotionBox variants={getItemMotion()} {...useViewportTransition(0.7)} order={[0, null, 'initial']} {...rest}>
+        <MotionBox
+            variants={getItemMotion()}
+            {...useViewportTransition(true, 0.7)}
+            order={[0, null, 'initial']}
+            {...rest}
+        >
             {children}
         </MotionBox>
     );

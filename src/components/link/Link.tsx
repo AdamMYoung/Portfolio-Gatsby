@@ -8,7 +8,7 @@ export type LinkProps = ChakraLinkProps & {
     replace?: boolean;
 };
 
-const parseHref = (href?: string, siteInfo: SiteInfo): string => {
+const parseHref = (href: string, siteInfo: SiteInfo): string => {
     const { siteUrl, siteWwwUrl } = siteInfo.siteMetadata;
 
     if (href?.startsWith(siteUrl)) {
@@ -27,7 +27,7 @@ export const Link: FC<LinkProps> = ({ children, href, ...rest }) => {
 
     if (url?.startsWith('/') || url?.startsWith('#')) {
         return (
-            <ChakraLink as={GatsbyLink} to={href} {...rest}>
+            <ChakraLink as={GatsbyLink} to={url} {...rest}>
                 {children}
             </ChakraLink>
         );

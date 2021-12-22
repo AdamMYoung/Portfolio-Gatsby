@@ -1,16 +1,18 @@
-import { Box, chakra, Divider, Heading, Spacer, Stack, Tag, Text } from '@chakra-ui/react';
+import { Box, Button, chakra, Divider, Heading, Spacer, Stack, Tag, Text } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import React, { VFC } from 'react';
+import React, { useMemo, useState, VFC } from 'react';
 
-import { CardList, Link, MarkdownRenderer, BlogCard } from '~components';
+import { CardList, Link, MarkdownRenderer, BlogCard, Progress } from '~components';
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
 import { Layout, SEO } from '~views';
-import { useCombinedSubset } from '~hooks';
+import { useCombinedSubset, useDistanceFromDocument, useIsMobile } from '~hooks';
 import { ContentsProvider } from '~providers/contents-provider';
 import { Contents } from '~views/contents/Contents';
 import { ArrowBackIcon } from '@chakra-ui/icons';
+import { useDebounce, useWindowScroll } from 'react-use';
+import { MotionFlex } from '~components/motion';
 
 type BlogPostProps = {
     data: {
@@ -25,13 +27,22 @@ const ChakraGatsbyImage = chakra(GatsbyImage);
 const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
     const { title, summary, createdAt, updatedAt, heroImage, copy, topics, slug } = data.contentfulPageBlogPost;
     const relatedBlogs = useCombinedSubset(3, [data.matching.nodes, data.notMatching.nodes]);
+    const isMobile = useIsMobile();
+    const [isReturnButtonVisible, setReturnButtonVisible] = useState(false);
+
+    const [ref, { distance }] = useDistanceFromDocument();
+    const { y } = useWindowScroll();
+
+    const percentageComplete = useMemo(() => {
+        return 100 - ((distance - (y + 500)) / distance) * 100;
+    }, [distance, y]);
+
+    useDebounce(() => setReturnButtonVisible(percentageComplete > 20), 50, [percentageComplete]);
 
     const createdAtText = stringToLongDate(createdAt);
     const updatedAtText = stringToLongDate(updatedAt);
 
     const pageUrl = `https://aydev.uk/blog/${slug}`;
-
-    console.log(encodeURI(title));
 
     return (
         <Layout spacing="12">
@@ -61,7 +72,27 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                     })}
                 </script>
             </SEO>
+
             <Stack spacing="6">
+                <Box position="fixed" py="32" px={[4, null, 5]} zIndex="100" right="0" top="0" bottom="0">
+                    <Progress direction="column" amount={percentageComplete} />
+                    {isMobile && (
+                        <MotionFlex
+                            position="fixed"
+                            animate={{ bottom: isReturnButtonVisible ? 0 : -70, transition: { duration: 0.4 } }}
+                            left="0"
+                            right="0"
+                            bottom="-100"
+                            pb="4"
+                            justifyContent="center"
+                        >
+                            <Button py="0" onClick={() => window.scrollTo(0, 0)}>
+                                Back to top
+                            </Button>
+                        </MotionFlex>
+                    )}
+                </Box>
+
                 <Box>
                     <Link href="/blog" fontSize={['md', null, 'lg']} pl="0">
                         <ArrowBackIcon mb="1" />
@@ -86,9 +117,8 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                     {createdAtText} {createdAtText !== updatedAtText && `(Updated on ` + updatedAtText + ')'}
                 </Heading>
             </Stack>
-
             <Stack spacing="10">
-                <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" />
+                <ChakraGatsbyImage image={getImage(heroImage)} alt={title} rounded="xl" zIndex="-1" />
                 <ContentsProvider>
                     <Stack spacing="6">
                         <Heading as="h2">Contents</Heading>
@@ -97,6 +127,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                     </Stack>
 
                     <MarkdownRenderer markdown={copy.copy} />
+                    <Box ref={ref} />
                 </ContentsProvider>
 
                 <Stack pt="12" direction={['column', null, 'row']}>
@@ -124,7 +155,6 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                     </Text>
                 </Stack>
             </Stack>
-
             {relatedBlogs.length > 0 && (
                 <>
                     <Divider />

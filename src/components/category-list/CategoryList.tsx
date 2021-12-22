@@ -29,7 +29,12 @@ export const CategoryList: FC<MotionFlexProps> = ({ children, sx, ...rest }) => 
 
 export const CategoryListItem: FC<MotionButtonProps> = ({ children, ...rest }) => {
     return (
-        <MotionButton variants={getItemMotion()} variant="outline" {...rest}>
+        <MotionButton
+            variants={getItemMotion()}
+            variant="outline"
+            _disabled={{ color: 'gray.400', cursor: 'not-allowed' }}
+            {...rest}
+        >
             {children}
         </MotionButton>
     );
