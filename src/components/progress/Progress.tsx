@@ -27,7 +27,7 @@ export const Progress: VFC<ProgressProps> = ({ amount, ...rest }) => {
     const [percentage, setPercentage] = useState(getPercentage(0));
     const isLargeScreen = useBreakpointValue([false, null, null, null, true]);
 
-    useDebounce(() => setPercentage(getPercentage(amount)), 50, [amount]);
+    useDebounce(() => setPercentage(getPercentage(amount)), 10, [amount]);
 
     const bg = amount < 100 ? 'red.300' : 'green.300';
 
