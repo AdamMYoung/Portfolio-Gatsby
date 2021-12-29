@@ -28,7 +28,7 @@ const PrintsIntro = () => {
                     style={{ width: '100%', borderRadius: '12px' }}
                     placeholder="blurred"
                     src="../images/3d-printing-2.jpg"
-                    alt="Various everyday items, such as a watch, wallet and laptop"
+                    alt="3D printer starting a print"
                     width={900}
                 />
             </TwoPanelImage>

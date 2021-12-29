@@ -52,7 +52,6 @@ const PrintEntryPage: VFC<PrintEntryProps> = ({ data }) => {
             </TwoPanel>
 
             <Stack spacing="4">
-                <Heading>Images</Heading>
                 <ThreePanel>
                     {printImages.map((image) => (
                         <ThreePanelBlock>
