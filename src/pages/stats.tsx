@@ -36,7 +36,6 @@ const Stats: VFC = () => {
         <Layout>
             <SEO title="Stats" description="Statistics across my development career, skills and more." />
             <Stack spacing="4">
-                <Heading as="h1">Stats</Heading>
                 <Stack spacing="4">
                     <Heading as="h2" fontSize="xl" fontWeight="bold">
                         Github
@@ -52,7 +51,16 @@ const Stats: VFC = () => {
                         </Stat>
                         <Stat>
                             <StatNumber>
-                                <Tag size="lg">{popularLanguage}</Tag>
+                                <Tag
+                                    as={LinkButton}
+                                    size="lg"
+                                    py="0"
+                                    mb="2"
+                                    _hover={{ bg: 'red.600' }}
+                                    href={`/projects`}
+                                >
+                                    {popularLanguage}
+                                </Tag>
                             </StatNumber>
                             <StatHelpText>Most popular language</StatHelpText>
                         </Stat>
