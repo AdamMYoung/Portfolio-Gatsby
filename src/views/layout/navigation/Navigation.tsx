@@ -94,6 +94,9 @@ export const Navigation: VFC = () => {
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/projects">
                                 Current Projects
                             </Link>
+                            <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/prints">
+                                Prints
+                            </Link>
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/stats">
                                 My Stats
                             </Link>

@@ -34,7 +34,6 @@ const NotFound: VFC = () => {
                         alt="Man lost in a field"
                         src="../images/404.jpg"
                         style={{ borderRadius: '12px' }}
-                        placeholder="blurred"
                         width={900}
                     />
                 </TwoPanelImage>

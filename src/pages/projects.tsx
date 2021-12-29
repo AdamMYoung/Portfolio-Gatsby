@@ -17,7 +17,6 @@ const ProjectsIntro = () => {
             <TwoPanelImage>
                 <StaticImage
                     style={{ height: '100%', borderRadius: '12px' }}
-                    placeholder="blurred"
                     src="../images/projects.jpg"
                     alt="A wireframe sketch of an application"
                     width={900}

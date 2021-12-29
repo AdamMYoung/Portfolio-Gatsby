@@ -13,7 +13,7 @@ type STLFileRendererProps = {
 
 export const STLFileRenderer: VFC<STLFileRendererProps> = ({ file }) => {
     return (
-        <Box h="full" minH={[250, null, 400]}>
+        <Box h="full" minH={[250, null, 400]} cursor="pointer">
             <Canvas>
                 <OrbitControls maxDistance={175} autoRotate zoomSpeed={0.6} />
                 <Suspense fallback={null}>

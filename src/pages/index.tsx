@@ -4,6 +4,7 @@ import React, { VFC } from 'react';
 
 import {
     Link,
+    LinkButton,
     ThreePanel,
     ThreePanelBlock,
     ThreePanelSubtitle,
@@ -38,14 +39,14 @@ const HomeIntro = () => {
                 </Stack>
                 <Stack spacing="4">
                     <TwoPanelBody>
-                        <Button w="full" as={Link} href="/blog">
+                        <LinkButton w="full" href="/blog">
                             Read the blog
-                        </Button>
+                        </LinkButton>
                     </TwoPanelBody>
                     <TwoPanelBody>
-                        <Button w="full" as={Link} variant="outline" href="#about-me">
+                        <LinkButton w="full" variant="outline" href="#about-me">
                             About Me
-                        </Button>
+                        </LinkButton>
                     </TwoPanelBody>
                 </Stack>
             </TwoPanelBlock>
@@ -53,7 +54,6 @@ const HomeIntro = () => {
             <TwoPanelImage>
                 <StaticImage
                     style={{ height: '100%', borderRadius: '12px' }}
-                    placeholder="blurred"
                     src="../images/me.jpg"
                     alt="A self portrait of me and my partner"
                     width={900}
@@ -80,7 +80,6 @@ const HomeInterests: VFC = () => {
                 <ThreePanelBlock>
                     <StaticImage
                         style={{ borderRadius: '12px' }}
-                        placeholder="blurred"
                         src="../images/laptop-on-table.jpeg"
                         alt="Laptop on a table, with code on the screen."
                         width={400}
@@ -97,7 +96,6 @@ const HomeInterests: VFC = () => {
                 <ThreePanelBlock>
                     <StaticImage
                         style={{ borderRadius: '12px' }}
-                        placeholder="blurred"
                         src="../images/photography.jpg"
                         alt="An image of a DSLR camera."
                         width={400}
@@ -113,7 +111,6 @@ const HomeInterests: VFC = () => {
                 <ThreePanelBlock>
                     <StaticImage
                         style={{ borderRadius: '12px' }}
-                        placeholder="blurred"
                         src="../images/3d-printing.jpg"
                         alt="A 3D printer midway through printing."
                         width={400}
@@ -127,7 +124,6 @@ const HomeInterests: VFC = () => {
                 <ThreePanelBlock>
                     <StaticImage
                         style={{ borderRadius: '12px' }}
-                        placeholder="blurred"
                         src="../images/cats.jpg"
                         alt="Two cats, one black one tabby, laying together in a cat bed."
                         width={400}
@@ -152,7 +148,6 @@ const HomeWhoAmI = () => {
             <TwoPanelImage>
                 <StaticImage
                     style={{ height: '100%', borderRadius: '12px' }}
-                    placeholder="blurred"
                     src="../images/ne-england.jpg"
                     alt="A scenic picture of the english countryside"
                     width={900}
@@ -191,7 +186,6 @@ const HomeStuffUsed = () => {
             <TwoPanelImage>
                 <StaticImage
                     style={{ height: '100%', borderRadius: '12px' }}
-                    placeholder="blurred"
                     src="../images/edc.jpg"
                     alt="Various everyday items, such as a watch, wallet and laptop"
                     width={1200}

@@ -17,7 +17,6 @@ const UsesIntro = () => {
             <TwoPanelImage>
                 <StaticImage
                     style={{ width: '100%', borderRadius: '12px' }}
-                    placeholder="blurred"
                     src="../images/edc.jpg"
                     alt="Various everyday items, such as a watch, wallet and laptop"
                     width={900}

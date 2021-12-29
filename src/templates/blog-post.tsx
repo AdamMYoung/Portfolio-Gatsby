@@ -264,7 +264,7 @@ export const query = graphql`
                 localFile {
                     publicURL
                     childImageSharp {
-                        gatsbyImageData(height: 500, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                        gatsbyImageData(height: 500)
                     }
                 }
             }
@@ -288,7 +288,7 @@ export const query = graphql`
                 heroImage {
                     localFile {
                         childImageSharp {
-                            gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                            gatsbyImageData(width: 600)
                         }
                     }
                 }
@@ -313,7 +313,7 @@ export const query = graphql`
                 heroImage {
                     localFile {
                         childImageSharp {
-                            gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                            gatsbyImageData(width: 600)
                         }
                     }
                 }

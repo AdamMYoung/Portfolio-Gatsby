@@ -9,6 +9,8 @@ import {
     TwoPanelImage,
     PrintCard,
     CardList,
+    TwoPanelBody,
+    LinkButton,
 } from '~components';
 import { usePrintsOverview } from '~hooks/static-queries';
 import { Layout, SEO } from '~views';
@@ -21,12 +23,16 @@ const PrintsIntro = () => {
                 <TwoPanelSubtitle>
                     Find my various 3D prints below, with interactive models, images, and download links.
                 </TwoPanelSubtitle>
+                <TwoPanelBody>
+                    <LinkButton w="full" variant="outline" href="#prints">
+                        View Prints
+                    </LinkButton>
+                </TwoPanelBody>
             </TwoPanelBlock>
 
             <TwoPanelImage>
                 <StaticImage
                     style={{ width: '100%', borderRadius: '12px' }}
-                    placeholder="blurred"
                     src="../images/3d-printing-2.jpg"
                     alt="3D printer starting a print"
                     width={900}

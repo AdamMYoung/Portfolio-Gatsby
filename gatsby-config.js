@@ -25,6 +25,7 @@ module.exports = {
         },
 
         'gatsby-plugin-image',
+
         {
             resolve: 'gatsby-plugin-google-analytics',
             options: {
@@ -33,7 +34,15 @@ module.exports = {
         },
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-advanced-sitemap',
-        'gatsby-plugin-sharp',
+        {
+            resolve: `gatsby-plugin-sharp`,
+            options: {
+                defaults: {
+                    formats: [`auto`, `webp`, 'avif'],
+                    placeholder: `blurred`,
+                },
+            },
+        },
         'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-plugin-alias-imports',
