@@ -6,3 +6,4 @@ export * from './use-popular-language';
 export * from './use-popular-topic';
 export * from './use-uses';
 export * from './use-site-info';
+export * from './use-prints-overview';

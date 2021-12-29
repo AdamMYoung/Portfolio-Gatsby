@@ -9,7 +9,7 @@ export type BlogPostOverview = {
     copy: {
         readingTime: string;
     };
-    heroImage: ImageDataLike;
+    heroImage: { localFile: ImageDataLike };
 };
 
 export type BlogPost = {
@@ -26,9 +26,25 @@ export type BlogPost = {
         copy: string;
         readingTime: string;
     };
-    heroImage: ImageDataLike & {
-        file: {
-            url: string;
+    heroImage: {
+        localFile: ImageDataLike & {
+            publicURL: string;
         };
     };
+};
+
+export type PrintEntry = {
+    name: string;
+    slug: string;
+    description: {
+        description: string;
+    };
+    stlFile: {
+        localFile: {
+            publicURL: string;
+        };
+    };
+    printImages: {
+        localFile: ImageDataLike;
+    }[];
 };

@@ -20,6 +20,7 @@ module.exports = {
                 accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
                 spaceId: process.env.CONTENTFUL_SPACE_ID,
                 host: process.env.CONTENTFUL_HOST,
+                downloadLocal: true,
             },
         },
 
@@ -105,7 +106,7 @@ module.exports = {
                                     url: site.siteMetadata.siteUrl + '/blog/' + node.slug,
                                     guid: site.siteMetadata.siteUrl + '/blog/' + node.slug,
                                     image: {
-                                        url: node.heroImage.file.url,
+                                        url: node.heroImage.localFile.publicURL,
                                         title: node.title,
                                         link: site.siteMetadata.siteUrl,
                                     },
@@ -130,8 +131,8 @@ module.exports = {
                                     copy
                                 }
                                 heroImage {
-                                  file {
-                                      url
+                                  localFile {
+                                      publicURL
                                   }
                                 }
                             }

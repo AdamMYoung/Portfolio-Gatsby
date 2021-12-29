@@ -23,7 +23,7 @@ import { stringToLongDate } from '~utils/date';
 import { BlogSearchProvider, useBlogSearch } from '~providers';
 import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
 
-const HeroIntro = () => {
+const BlogIntro = () => {
     const { onSearchTermChanged, searchTerm, results, selectedFilters, onReset } = useBlogSearch();
 
     const hasNoResults = results.length === 0;
@@ -79,8 +79,8 @@ const HeroIntro = () => {
     );
 };
 
-const Blogs = () => {
-    const { results, applicableFilters, selectedFilters, onFilterToggled, onReset } = useBlogSearch();
+const BlogPost = () => {
+    const { results, applicableFilters, selectedFilters, onFilterToggled } = useBlogSearch();
     const topics = useBlogTopics();
 
     const [visibleArticles, isAllArticlesVisible, loadMoreArticles, reset] = useArrayLimiter(results);
@@ -114,7 +114,7 @@ const Blogs = () => {
                             to={`/blog/${slug}`}
                             title={title}
                             subtitle={stringToLongDate(createdAt)}
-                            image={heroImage}
+                            image={heroImage.localFile}
                             readingTime={copy?.readingTime}
                         />
                     );
@@ -144,8 +144,8 @@ const Blog: VFC = () => {
                     title="Blog"
                     description="The AYDev Blog. Find tips and guides across web development right here."
                 />
-                <HeroIntro />
-                <Blogs />
+                <BlogIntro />
+                <BlogPost />
             </BlogSearchProvider>
         </Layout>
     );

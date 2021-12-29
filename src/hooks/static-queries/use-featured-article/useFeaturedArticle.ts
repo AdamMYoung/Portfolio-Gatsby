@@ -12,7 +12,7 @@ type FeaturedArticle = {
     copy: {
         readingTime: string;
     };
-    heroImage: IGatsbyImageData;
+    heroImage: { localFile: IGatsbyImageData };
 };
 
 /**
@@ -34,7 +34,11 @@ export const useFeaturedArticle = () => {
                         readingTime
                     }
                     heroImage {
-                        gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                            }
+                        }
                     }
                 }
             }

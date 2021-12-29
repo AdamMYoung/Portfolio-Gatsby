@@ -19,7 +19,7 @@ import {
 import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
 import { FeaturedArticleCard, Layout, SEO } from '~views';
 
-const HeroIntro = () => {
+const HomeIntro = () => {
     return (
         <TwoPanel>
             <TwoPanelBlock>
@@ -63,7 +63,7 @@ const HeroIntro = () => {
     );
 };
 
-const Interests: VFC = () => {
+const HomeInterests: VFC = () => {
     return (
         <Stack spacing="8">
             <MotionHeading
@@ -146,7 +146,7 @@ const Interests: VFC = () => {
     );
 };
 
-const WhoAmI = () => {
+const HomeWhoAmI = () => {
     return (
         <TwoPanel id="about-me">
             <TwoPanelImage>
@@ -185,7 +185,7 @@ const WhoAmI = () => {
     );
 };
 
-const StuffUsed = () => {
+const HomeStuffUsed = () => {
     return (
         <TwoPanel>
             <TwoPanelImage>
@@ -219,12 +219,15 @@ const StuffUsed = () => {
 const Index: VFC = () => {
     return (
         <Layout>
-            <SEO title="Home" />
-            <HeroIntro />
-            <WhoAmI />
-            <Interests />
+            <SEO
+                title="Home"
+                description="Hi, I'm Adam Young, a Software Engineer from Birmingham currently working at Curve. Here, you'll find articles about software development, my interests, and the projects I've currently got on the go."
+            />
+            <HomeIntro />
+            <HomeWhoAmI />
+            <HomeInterests />
             <FeaturedArticleCard />
-            <StuffUsed />
+            <HomeStuffUsed />
         </Layout>
     );
 };

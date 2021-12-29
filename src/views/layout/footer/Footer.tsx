@@ -74,6 +74,9 @@ export const Footer: VFC = () => {
                         <Link color="primary" href="/stats">
                             Stats
                         </Link>
+                        <Link color="primary" href="/prints">
+                            Prints
+                        </Link>
                         <Link color="primary" href="/uses">
                             Uses
                         </Link>

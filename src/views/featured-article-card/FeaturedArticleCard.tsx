@@ -62,7 +62,7 @@ export const FeaturedArticleCard: VFC = () => {
                         h="full"
                         pointerEvents="none"
                         rounded="xl"
-                        image={getImage(heroImage)}
+                        image={getImage(heroImage.localFile)}
                         alt={title}
                     />
                 </TwoPanelImage>

@@ -6,7 +6,7 @@ import { TwoPanel, TwoPanelBlock, TwoPanelSubtitle, TwoPanelTitle, Link, TwoPane
 import { useGithubStats } from '~hooks/static-queries';
 import { Layout, SEO } from '~views';
 
-const HeroIntro = () => {
+const ProjectsIntro = () => {
     return (
         <TwoPanel>
             <TwoPanelBlock>
@@ -27,7 +27,7 @@ const HeroIntro = () => {
     );
 };
 
-const ProjectList = () => {
+const ProjectsList = () => {
     const stats = useGithubStats();
 
     return (
@@ -66,8 +66,8 @@ const Projects: VFC = () => {
     return (
         <Layout>
             <SEO title="Projects" description="All websites, libraries and other bits of code I've developed." />
-            <HeroIntro />
-            <ProjectList />
+            <ProjectsIntro />
+            <ProjectsList />
         </Layout>
     );
 };

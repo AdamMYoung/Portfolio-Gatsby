@@ -41,6 +41,9 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                     <LinkButton w="full" py="2" href="/stats" variant="link">
                         Stats
                     </LinkButton>
+                    <LinkButton w="full" py="2" href="/prints" variant="link">
+                        Prints
+                    </LinkButton>
                     <LinkButton w="full" py="2" href="/uses" variant="link">
                         Uses
                     </LinkButton>

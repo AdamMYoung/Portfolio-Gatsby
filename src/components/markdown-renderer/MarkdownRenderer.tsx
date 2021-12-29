@@ -65,6 +65,7 @@ const newTheme = {
                 fontSize={['2xl', null, '3xl']}
                 whiteSpace="normal"
                 _notFirst={{ mt: 16 }}
+                wordBreak="break-all"
                 id={id}
             >
                 {children}
@@ -75,7 +76,7 @@ const newTheme = {
         const id = useRegisteredHeading(node, 'h3');
 
         return (
-            <Heading as="h3" mt="4" mb="6" fontSize="xl" whiteSpace="normal" id={id}>
+            <Heading as="h3" mt="4" mb="6" fontSize="xl" whiteSpace="normal" wordBreak="break-all" id={id}>
                 {children}
             </Heading>
         );
@@ -84,7 +85,7 @@ const newTheme = {
         const id = useRegisteredHeading(node, 'h4');
 
         return (
-            <Heading as="h4" mt="4" mb="6" fontSize="lg" whiteSpace="normal" id={id}>
+            <Heading as="h4" mt="4" mb="6" fontSize="lg" whiteSpace="normal" wordBreak="break-all" id={id}>
                 {children}
             </Heading>
         );

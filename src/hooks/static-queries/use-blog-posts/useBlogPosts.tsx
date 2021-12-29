@@ -18,7 +18,11 @@ export const useBlogPosts = () => {
                         readingTime
                     }
                     heroImage {
-                        gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData(width: 600, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                            }
+                        }
                     }
                 }
             }

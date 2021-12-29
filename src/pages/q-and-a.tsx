@@ -15,7 +15,7 @@ const encode = (data) => {
         .join('&');
 };
 
-const HeroIntro = () => {
+const QAndAIntro = () => {
     const [isSubmitting, setSubmitting] = useState(false);
     const [isSubmitted, setSubmitted] = useState(false);
 
@@ -116,7 +116,7 @@ const QAndA: VFC = () => {
                 title="Q&A"
                 description="Ask a question, get a response. Have a look through questions asked by others too."
             />
-            <HeroIntro />
+            <QAndAIntro />
         </Layout>
     );
 };
