@@ -15,7 +15,7 @@ export const STLFileRenderer: VFC<STLFileRendererProps> = ({ file, ...rest }) =>
     return (
         <Box h="full" cursor="pointer" {...rest}>
             <Canvas>
-                <OrbitControls maxDistance={175} autoRotate zoomSpeed={0.6} />
+                <OrbitControls autoRotate zoomSpeed={0.6} />
                 <Suspense fallback={null}>
                     <Model file={file} />
                 </Suspense>
