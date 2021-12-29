@@ -89,7 +89,8 @@ const HomeInterests: VFC = () => {
                     <Stack>
                         <ThreePanelTitle as="h3">Programming</ThreePanelTitle>
                         <ThreePanelSubtitle>
-                            Currently a Software Engineer at <Link href="https://curve.com">Curve</Link>.
+                            Currently a Software Engineer at <Link href="https://curve.com">Curve</Link>, and on some{' '}
+                            <Link href="/projects">public projects</Link>.
                         </ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>
@@ -118,7 +119,9 @@ const HomeInterests: VFC = () => {
                     />
                     <Stack>
                         <ThreePanelTitle as="h3">3D Printing</ThreePanelTitle>
-                        <ThreePanelSubtitle>Building stuff for around the house.</ThreePanelSubtitle>
+                        <ThreePanelSubtitle>
+                            Find my designs on the <Link href="/prints">prints page</Link>.
+                        </ThreePanelSubtitle>
                     </Stack>
                 </ThreePanelBlock>
                 <ThreePanelBlock>
