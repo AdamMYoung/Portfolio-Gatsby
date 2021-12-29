@@ -37,11 +37,7 @@ const PrintEntryPage: VFC<PrintEntryProps> = ({ data }) => {
                         <TwoPanelSubtitle fontSize="md">{description.description}</TwoPanelSubtitle>
                     </TwoPanelHeading>
                     <TwoPanelBody>
-                        <LinkButton
-                            href={window.location.href + stlFile.localFile.publicURL}
-                            w="full"
-                            variant="outline"
-                        >
+                        <LinkButton href={stlFile.localFile.publicURL} download w="full" variant="outline">
                             Download STL
                         </LinkButton>
                     </TwoPanelBody>
