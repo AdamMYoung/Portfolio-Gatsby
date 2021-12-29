@@ -40,7 +40,7 @@ export const usePrintsOverview = (): PrintOverview[] => {
         name,
         slug,
         description: description.description,
-        image: printImages[0].localFile,
+        image: printImages?.[0].localFile,
         publicUrl: stlFile.localFile.publicURL,
     }));
 };

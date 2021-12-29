@@ -1,31 +1,50 @@
-import React, { Suspense, useEffect, useState, VFC } from 'react';
-import { Canvas, useLoader, useFrame } from '@react-three/fiber';
-import { Stage, OrbitControls } from '@react-three/drei';
+import React, { Suspense, useEffect, useRef, useState, VFC } from 'react';
+import { Canvas, MeshProps } from '@react-three/fiber';
+import { Center, Bounds, OrbitControls, PerspectiveCamera, useBounds } from '@react-three/drei';
 
 import { BufferGeometry } from 'three';
 
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
-import { Box, BoxProps, useTheme } from '@chakra-ui/react';
+import { Box, BoxProps } from '@chakra-ui/react';
 
 type STLFileRendererProps = BoxProps & {
     file: string;
 };
 
+type ModelProps = STLFileRendererProps &
+    MeshProps & {
+        onLoad: () => void;
+    };
+
 export const STLFileRenderer: VFC<STLFileRendererProps> = ({ file, ...rest }) => {
+    const controlsRef = useRef();
+    const cameraRef = useRef();
+
+    const handleLoad = () => {
+        cameraRef.current.position.set(0, 0.7, 1);
+    };
+
     return (
         <Box h="full" cursor="pointer" {...rest}>
             <Canvas>
-                <OrbitControls autoRotate zoomSpeed={0.6} />
+                <PerspectiveCamera ref={cameraRef} makeDefault />
+                <OrbitControls ref={controlsRef} makeDefault autoRotate zoomSpeed={0.6} position={[0, 100, 0]} />
+                <ambientLight />
+                <pointLight position={[10, 10, 10]} />
+
                 <Suspense fallback={null}>
-                    <Model file={file} />
+                    <Bounds fit damping={2} margin={1}>
+                        <Model file={file} onLoad={handleLoad} />
+                    </Bounds>
                 </Suspense>
             </Canvas>
         </Box>
     );
 };
 
-const Model: VFC<STLFileRendererProps> = ({ file }) => {
+const Model: VFC<ModelProps> = ({ file, onLoad, ...rest }) => {
     const [geometry, setGeometry] = useState<BufferGeometry>();
+    const bounds = useBounds();
 
     useEffect(() => {
         const stlLoader = new STLLoader();
@@ -34,13 +53,16 @@ const Model: VFC<STLFileRendererProps> = ({ file }) => {
         });
     }, []);
 
+    useEffect(() => {
+        bounds.refresh().clip().fit();
+        onLoad();
+    }, [geometry, bounds]);
+
     return (
-        <Suspense fallback={null}>
-            <Stage intensity={0.7}>
-                <mesh geometry={geometry} rotation={[-Math.PI / 2, 0, 0]}>
-                    <meshStandardMaterial color="#C53030" />
-                </mesh>
-            </Stage>
-        </Suspense>
+        <Center>
+            <mesh geometry={geometry} rotation={[-Math.PI / 2, 0, 0]} {...rest}>
+                <meshStandardMaterial color="#C53030" />
+            </mesh>
+        </Center>
     );
 };
