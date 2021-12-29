@@ -53,7 +53,7 @@ const Prints: VFC = () => {
             />
             <PrintsIntro />
             <CardList id="prints">
-                {prints.map(({ name, description, slug, image }) => {
+                {prints.map(({ name, description, slug, image, publicUrl }) => {
                     return (
                         <PrintCard
                             key={slug}
@@ -61,6 +61,7 @@ const Prints: VFC = () => {
                             title={name}
                             description={description}
                             image={image}
+                            modelUrl={publicUrl}
                         />
                     );
                 })}

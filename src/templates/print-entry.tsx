@@ -1,5 +1,5 @@
 import React, { VFC } from 'react';
-import { Button, chakra, Heading, Stack } from '@chakra-ui/react';
+import { Box, chakra, Heading, Stack } from '@chakra-ui/react';
 
 import { graphql } from 'gatsby';
 import { Layout, STLFileRenderer } from '~views';
@@ -13,9 +13,11 @@ import {
     TwoPanelHeading,
     TwoPanelSubtitle,
     TwoPanelTitle,
-} from '~components/sections';
+    Link,
+    LinkButton,
+} from '~components';
+import { ArrowBackIcon } from '@chakra-ui/icons';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { LinkButton } from '~components/link-button';
 
 type PrintEntryProps = {
     data: {
@@ -25,11 +27,25 @@ type PrintEntryProps = {
 
 const ChakraGatsbyImage = chakra(GatsbyImage);
 
+const PrintsNavigation: VFC = () => {
+    return (
+        <Stack spacing="6">
+            <Box>
+                <Link href="/prints" fontSize={['md', null, 'lg']} pl="0">
+                    <ArrowBackIcon mb="1" />
+                    {` Back to Prints`}
+                </Link>
+            </Box>
+        </Stack>
+    );
+};
+
 const PrintEntryPage: VFC<PrintEntryProps> = ({ data }) => {
     const { name, description, printImages, stlFile } = data.contentful3DPrintModel;
 
     return (
         <Layout spacing="12">
+            <PrintsNavigation />
             <TwoPanel>
                 <TwoPanelBlock>
                     <TwoPanelHeading>
@@ -43,11 +59,12 @@ const PrintEntryPage: VFC<PrintEntryProps> = ({ data }) => {
                     </TwoPanelBody>
                 </TwoPanelBlock>
                 <TwoPanelBlock>
-                    <STLFileRenderer file={stlFile.localFile.publicURL} />
+                    <STLFileRenderer file={stlFile.localFile.publicURL} minH={[250, null, 400]} />
                 </TwoPanelBlock>
             </TwoPanel>
 
             <Stack spacing="4">
+                <Heading>Images</Heading>
                 <ThreePanel>
                     {printImages.map((image) => (
                         <ThreePanelBlock>

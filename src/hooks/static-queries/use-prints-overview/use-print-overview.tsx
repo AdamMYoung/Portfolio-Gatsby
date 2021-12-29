@@ -6,6 +6,7 @@ type PrintOverview = {
     slug: string;
     description: string;
     image: IGatsbyImageData;
+    publicUrl: string;
 };
 
 export const usePrintsOverview = (): PrintOverview[] => {
@@ -17,6 +18,11 @@ export const usePrintsOverview = (): PrintOverview[] => {
                     slug
                     description {
                         description
+                    }
+                    stlFile {
+                        localFile {
+                            publicURL
+                        }
                     }
                     printImages {
                         localFile {
@@ -30,10 +36,11 @@ export const usePrintsOverview = (): PrintOverview[] => {
         }
     `);
 
-    return data.allContentful3DPrintModel.nodes.map(({ name, description, slug, printImages }) => ({
+    return data.allContentful3DPrintModel.nodes.map(({ name, description, slug, printImages, stlFile }) => ({
         name,
         slug,
         description: description.description,
         image: printImages[0].localFile,
+        publicUrl: stlFile.localFile.publicURL,
     }));
 };

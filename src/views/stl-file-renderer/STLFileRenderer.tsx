@@ -5,15 +5,15 @@ import { Stage, OrbitControls } from '@react-three/drei';
 import { BufferGeometry } from 'three';
 
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
-import { Box, useTheme } from '@chakra-ui/react';
+import { Box, BoxProps, useTheme } from '@chakra-ui/react';
 
-type STLFileRendererProps = {
+type STLFileRendererProps = BoxProps & {
     file: string;
 };
 
-export const STLFileRenderer: VFC<STLFileRendererProps> = ({ file }) => {
+export const STLFileRenderer: VFC<STLFileRendererProps> = ({ file, ...rest }) => {
     return (
-        <Box h="full" minH={[250, null, 400]} cursor="pointer">
+        <Box h="full" cursor="pointer" {...rest}>
             <Canvas>
                 <OrbitControls maxDistance={175} autoRotate zoomSpeed={0.6} />
                 <Suspense fallback={null}>
