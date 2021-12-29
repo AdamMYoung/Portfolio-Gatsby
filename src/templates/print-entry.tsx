@@ -45,23 +45,25 @@ const PrintEntryPage: VFC<PrintEntryProps> = ({ data }) => {
 
     return (
         <Layout spacing="12">
-            <PrintsNavigation />
-            <TwoPanel>
-                <TwoPanelBlock>
-                    <TwoPanelHeading>
-                        <TwoPanelTitle>{name}</TwoPanelTitle>
-                        <TwoPanelSubtitle fontSize="md">{description.description}</TwoPanelSubtitle>
-                    </TwoPanelHeading>
-                    <TwoPanelBody>
-                        <LinkButton href={stlFile.localFile.publicURL} download w="full" variant="outline">
-                            Download STL
-                        </LinkButton>
-                    </TwoPanelBody>
-                </TwoPanelBlock>
-                <TwoPanelBlock>
-                    <STLFileRenderer file={stlFile.localFile.publicURL} minH={[250, null, 400]} />
-                </TwoPanelBlock>
-            </TwoPanel>
+            <Stack spacing="4">
+                <PrintsNavigation />
+                <TwoPanel>
+                    <TwoPanelBlock>
+                        <TwoPanelHeading>
+                            <TwoPanelTitle>{name}</TwoPanelTitle>
+                            <TwoPanelSubtitle fontSize="md">{description.description}</TwoPanelSubtitle>
+                        </TwoPanelHeading>
+                        <TwoPanelBody>
+                            <LinkButton href={stlFile.localFile.publicURL} download w="full" variant="outline">
+                                Download STL
+                            </LinkButton>
+                        </TwoPanelBody>
+                    </TwoPanelBlock>
+                    <TwoPanelBlock>
+                        <STLFileRenderer file={stlFile.localFile.publicURL} minH={[250, null, 400]} />
+                    </TwoPanelBlock>
+                </TwoPanel>
+            </Stack>
 
             <Stack spacing="4">
                 <Heading>Images</Heading>

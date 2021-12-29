@@ -92,13 +92,13 @@ export const Navigation: VFC = () => {
                                 Q&A
                             </Link>
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/projects">
-                                Current Projects
+                                Projects
                             </Link>
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/prints">
                                 Prints
                             </Link>
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/stats">
-                                My Stats
+                                Stats
                             </Link>
                         </Stack>
                     )}
