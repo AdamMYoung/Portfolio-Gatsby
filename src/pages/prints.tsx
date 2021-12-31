@@ -19,13 +19,13 @@ const PrintsIntro = () => {
     return (
         <TwoPanel>
             <TwoPanelBlock>
-                <TwoPanelTitle as="h1">My Prints.</TwoPanelTitle>
+                <TwoPanelTitle as="h1">3D Models.</TwoPanelTitle>
                 <TwoPanelSubtitle>
-                    Find my various 3D prints below, with interactive models, images, and download links.
+                    Find my various 3D models below, with interactivity, images, and download links.
                 </TwoPanelSubtitle>
                 <TwoPanelBody>
                     <LinkButton w="full" variant="outline" href="#prints">
-                        View Prints
+                        View Models
                     </LinkButton>
                 </TwoPanelBody>
             </TwoPanelBlock>
