@@ -71,14 +71,14 @@ export const Footer: VFC = () => {
                         <Link color="primary" href="/projects">
                             Projects
                         </Link>
-                        <Link color="primary" href="/stats">
-                            Stats
-                        </Link>
                         <Link color="primary" href="/prints">
-                            Prints
+                            3D Models
                         </Link>
                         <Link color="primary" href="/uses">
                             Uses
+                        </Link>
+                        <Link color="primary" href="/stats">
+                            Stats
                         </Link>
                     </Grid>
                 </Stack>

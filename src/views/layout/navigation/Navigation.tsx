@@ -9,10 +9,16 @@ import {
     DrawerOverlay,
     DrawerProps,
     Grid,
+    Menu,
+    MenuList,
     Stack,
     useBreakpointValue,
     useColorMode,
     useDisclosure,
+    MenuButton,
+    Button,
+    MenuItem,
+    Portal,
 } from '@chakra-ui/react';
 import React, { VFC } from 'react';
 
@@ -35,18 +41,28 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                     <LinkButton w="full" py="2" href="/q-and-a" variant="link">
                         Q&A
                     </LinkButton>
-                    <LinkButton w="full" py="2" href="/projects" variant="link">
-                        Projects
-                    </LinkButton>
-                    <LinkButton w="full" py="2" href="/stats" variant="link">
-                        Stats
-                    </LinkButton>
-                    <LinkButton w="full" py="2" href="/prints" variant="link">
-                        Prints
-                    </LinkButton>
-                    <LinkButton w="full" py="2" href="/uses" variant="link">
-                        Uses
-                    </LinkButton>
+                    <Menu matchWidth>
+                        <MenuButton as={LinkButton} w="full" variant="link" textAlign="center">
+                            My Stuff
+                        </MenuButton>
+                        <Portal>
+                            <MenuList>
+                                <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
+                                    Projects
+                                </MenuItem>
+                                <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/prints">
+                                    3D Models
+                                </MenuItem>
+                                <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/uses">
+                                    Uses
+                                </MenuItem>
+                                <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/stats">
+                                    Stats
+                                </MenuItem>
+                            </MenuList>
+                        </Portal>
+                    </Menu>
+
                     <Divider />
 
                     <DarkModeToggle />
@@ -91,15 +107,26 @@ export const Navigation: VFC = () => {
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/q-and-a">
                                 Q&A
                             </Link>
-                            <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/projects">
-                                Projects
-                            </Link>
-                            <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/prints">
-                                Prints
-                            </Link>
-                            <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/stats">
-                                Stats
-                            </Link>
+
+                            <Menu>
+                                <MenuButton as={Link} variant="animate-ltr" fontWeight="semibold" fontSize="md">
+                                    My Stuff
+                                </MenuButton>
+                                <MenuList>
+                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
+                                        Projects
+                                    </MenuItem>
+                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/prints">
+                                        3D Models
+                                    </MenuItem>
+                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/uses">
+                                        Uses
+                                    </MenuItem>
+                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/stats">
+                                        Stats
+                                    </MenuItem>
+                                </MenuList>
+                            </Menu>
                         </Stack>
                     )}
                 </Box>

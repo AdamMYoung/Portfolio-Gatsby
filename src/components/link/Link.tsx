@@ -1,6 +1,6 @@
 import { Link as ChakraLink, LinkProps as ChakraLinkProps } from '@chakra-ui/react';
 import { Link as GatsbyLink } from 'gatsby';
-import React, { FC } from 'react';
+import React, { FC, forwardRef } from 'react';
 
 import { SiteInfo, useSiteInfo } from '~hooks/static-queries';
 
@@ -21,21 +21,21 @@ const parseHref = (href: string, siteInfo: SiteInfo): string => {
     return href;
 };
 
-export const Link: FC<LinkProps> = ({ children, href, ...rest }) => {
+export const Link = forwardRef<HTMLElement, LinkProps>(({ children, href, ...rest }, ref) => {
     const siteInfo = useSiteInfo();
     const url = parseHref(href, siteInfo);
 
     if (url?.startsWith('/') || url?.startsWith('#')) {
         return (
-            <ChakraLink as={GatsbyLink} to={url} {...rest}>
+            <ChakraLink ref={ref} as={GatsbyLink} to={url} {...rest}>
                 {children}
             </ChakraLink>
         );
     }
 
     return (
-        <ChakraLink {...rest} href={url} target="_blank" rel="noopener noreferrer">
+        <ChakraLink ref={ref} {...rest} href={url} target="_blank" rel="noopener noreferrer">
             {children}
         </ChakraLink>
     );
-};
+});
