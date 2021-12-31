@@ -42,7 +42,7 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                         Q&A
                     </LinkButton>
                     <Menu matchWidth>
-                        <MenuButton as={LinkButton} w="full" variant="link" textAlign="center">
+                        <MenuButton as={LinkButton} w="full" variant="link" textAlign="center" pt="2" pb="4">
                             My Stuff
                         </MenuButton>
                         <Portal>
