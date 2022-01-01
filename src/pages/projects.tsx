@@ -1,12 +1,23 @@
-import { Box, Flex, Table, Tag, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, Flex, Heading, Stack, Table, Tag, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
-import { TwoPanel, TwoPanelBlock, TwoPanelSubtitle, TwoPanelTitle, Link, TwoPanelImage } from '~components';
+import {
+    TwoPanel,
+    TwoPanelBlock,
+    TwoPanelSubtitle,
+    TwoPanelTitle,
+    Link,
+    TwoPanelImage,
+    Card,
+    TwoPanelHeading,
+    TwoPanelBody,
+    LinkButton,
+} from '~components';
 import { useGithubStats } from '~hooks/static-queries';
 import { Layout, SEO } from '~views';
 
-const ProjectsIntro = () => {
+const ProjectsIntro: VFC = () => {
     return (
         <TwoPanel>
             <TwoPanelBlock>
@@ -26,38 +37,73 @@ const ProjectsIntro = () => {
     );
 };
 
-const ProjectsList = () => {
+const ActiveProjects: VFC = () => {
+    return (
+        <Stack spacing="8">
+            <Heading>Active Projects</Heading>
+            <Card>
+                <TwoPanel height={['auto', null, null, '20rem']}>
+                    <TwoPanelBlock>
+                        <TwoPanelHeading>
+                            <TwoPanelTitle>eBay Heuristics</TwoPanelTitle>
+                            <TwoPanelSubtitle>
+                                Plots sales onto a world map using eBay and geocoding APIs.
+                            </TwoPanelSubtitle>
+                        </TwoPanelHeading>
+                        <TwoPanelBody>
+                            <LinkButton w="full" href="https://ebay-heuristics-v2.netlify.app/">
+                                Open
+                            </LinkButton>
+                        </TwoPanelBody>
+                    </TwoPanelBlock>
+
+                    <StaticImage
+                        style={{ borderRadius: '12px' }}
+                        src="../images/ebay-heuristics.png"
+                        alt="A map of london, a screenshot from eBay Heuristics"
+                        width={900}
+                    />
+                </TwoPanel>
+            </Card>
+        </Stack>
+    );
+};
+
+const ProjectsList: VFC = () => {
     const stats = useGithubStats();
 
     return (
-        <Box overflow="none" overflowX="auto">
-            <Table colorScheme="white">
-                <Thead>
-                    <Tr>
-                        <Th>Name</Th>
-                        <Th>Description</Th>
-                        <Th>Languages</Th>
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    {stats.repositories.map((repo) => (
-                        <Tr key={repo.name}>
-                            <Td>
-                                <Link href={`https://github.com/AdamMYoung/${repo.name}`}>{repo.name}</Link>
-                            </Td>
-                            <Td>{repo.description}</Td>
-                            <Td>
-                                <Flex sx={{ '* + *': { ml: 1 } }}>
-                                    {repo.languages.map((l) => (
-                                        <Tag key={l}>{l}</Tag>
-                                    ))}
-                                </Flex>
-                            </Td>
+        <Stack spacing="8">
+            <Heading>GitHub Projects</Heading>
+            <Box overflow="none" overflowX="auto">
+                <Table colorScheme="white">
+                    <Thead>
+                        <Tr>
+                            <Th>Name</Th>
+                            <Th>Description</Th>
+                            <Th>Languages</Th>
                         </Tr>
-                    ))}
-                </Tbody>
-            </Table>
-        </Box>
+                    </Thead>
+                    <Tbody>
+                        {stats.repositories.map((repo) => (
+                            <Tr key={repo.name}>
+                                <Td>
+                                    <Link href={`https://github.com/AdamMYoung/${repo.name}`}>{repo.name}</Link>
+                                </Td>
+                                <Td>{repo.description}</Td>
+                                <Td>
+                                    <Flex sx={{ '* + *': { ml: 1 } }}>
+                                        {repo.languages.map((l) => (
+                                            <Tag key={l}>{l}</Tag>
+                                        ))}
+                                    </Flex>
+                                </Td>
+                            </Tr>
+                        ))}
+                    </Tbody>
+                </Table>
+            </Box>
+        </Stack>
     );
 };
 
@@ -66,6 +112,7 @@ const Projects: VFC = () => {
         <Layout>
             <SEO title="Projects" description="All websites, libraries and other bits of code I've developed." />
             <ProjectsIntro />
+            <ActiveProjects />
             <ProjectsList />
         </Layout>
     );
