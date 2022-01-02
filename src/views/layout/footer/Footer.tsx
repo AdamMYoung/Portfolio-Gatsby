@@ -80,6 +80,12 @@ export const Footer: VFC = () => {
                         <Link color="primary" href="/stats">
                             Stats
                         </Link>
+                        <Link
+                            color="primary"
+                            href="https://drive.google.com/file/d/1Ws1_C6_3ryHWTol3ZSRxq3vFrrag5WfT/view?usp=sharing"
+                        >
+                            Resumé
+                        </Link>
                     </Grid>
                 </Stack>
                 <Stack spacing="2">
