@@ -2,11 +2,15 @@ import { Container, Flex, Heading, Stack } from '@chakra-ui/react';
 import React from 'react';
 
 import { LinkButton } from '~components';
-import { Layout } from '~views';
+import { Layout, SEO } from '~views';
 
 const Links = () => {
     return (
         <Container mt="12" maxW="container.xl">
+            <SEO
+                title="Links"
+                description="A collection of social platforms, websites and email links relevant to me."
+            />
             <Stack>
                 <Heading fontWeight="semibold">My Links</Heading>
                 <Flex w="full" sx={{ '*': { mt: 4, mr: 4 } }} flexWrap="wrap">
