@@ -1,9 +1,9 @@
-import React, { createContext, FC, useCallback, useContext, useState } from 'react';
+import React, { createContext, FC, useCallback, useContext, useMemo, useState } from 'react';
 
 export type ContentsEntry = {
     title: string;
     anchor: string;
-    heading: 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    heading: 'h2' | 'h3';
 };
 
 type ContentsContextOptions = {
@@ -23,10 +23,10 @@ export const ContentsProvider: FC = ({ children }) => {
         [setContents]
     );
 
+    const entries = useMemo(() => contents.filter((c) => c.heading === 'h2' || c.heading === 'h3'), [contents]);
+
     return (
-        <ContentsContext.Provider value={{ entries: contents, register: handleRegister }}>
-            {children}
-        </ContentsContext.Provider>
+        <ContentsContext.Provider value={{ entries, register: handleRegister }}>{children}</ContentsContext.Provider>
     );
 };
 

@@ -7,13 +7,6 @@ import { ContentsEntry, useContents } from '~providers';
 const listItemIndentMap = {
     h2: 0,
     h3: 4,
-    h4: 8,
-    h5: 12,
-    h6: 16,
-};
-
-const getHeadingNumber = (heading: string) => {
-    return parseInt(heading.charAt(1));
 };
 
 /**
@@ -22,28 +15,28 @@ const getHeadingNumber = (heading: string) => {
  */
 const buildContents = (entries: ContentsEntry[]) => {
     let heading = 0;
+    let subheading = 0;
     let prevElement = 'h1';
 
     return entries.map((e) => {
-        const previousNumber = getHeadingNumber(prevElement);
-        const currentNumber = getHeadingNumber(e.heading);
-
-        const isSubheading = e.heading !== 'h2';
-        const shouldAddSpacing = currentNumber < previousNumber;
-
+        const isSubheading = e.heading === 'h3';
         prevElement = e.heading;
 
-        //Only increment the heading number if the heading isn't a subheading.
-        if (!isSubheading) heading += 1;
+        if (isSubheading) {
+            subheading += 1;
+        } else {
+            heading += 1;
+            subheading = 0;
+        }
 
         return (
             <ListItem
                 key={e.title}
                 as={Link}
-                sx={{ display: 'block', ml: listItemIndentMap[e.heading], mt: shouldAddSpacing ? 3 : 0 }}
+                sx={{ display: 'block', ml: listItemIndentMap[e.heading] }}
                 href={`#${e.anchor}`}
             >
-                {!isSubheading && `${heading}.`} {e.title}
+                {isSubheading ? `${heading}.${subheading}.` : `${heading}.`} {e.title}
             </ListItem>
         );
     });
