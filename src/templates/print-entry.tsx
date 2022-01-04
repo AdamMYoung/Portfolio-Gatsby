@@ -2,7 +2,7 @@ import React, { VFC } from 'react';
 import { Box, chakra, Heading, Stack } from '@chakra-ui/react';
 
 import { graphql } from 'gatsby';
-import { Layout, STLFileRenderer } from '~views';
+import { Layout, SEO, STLFileRenderer } from '~views';
 import { PrintEntry } from '~types';
 import {
     ThreePanel,
@@ -41,10 +41,11 @@ const PrintsNavigation: VFC = () => {
 };
 
 const PrintEntryPage: VFC<PrintEntryProps> = ({ data }) => {
-    const { name, description, printImages, stlFile } = data.contentful3DPrintModel;
+    const { name, description, printImages, slug, stlFile } = data.contentful3DPrintModel;
 
     return (
         <Layout spacing="12">
+            <SEO title={name} description={description.description} canonical={`/prints/${slug}`} />
             <Stack spacing="4">
                 <PrintsNavigation />
                 <TwoPanel>

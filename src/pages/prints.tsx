@@ -12,7 +12,7 @@ import {
     TwoPanelBody,
     LinkButton,
 } from '~components';
-import { usePrintsOverview } from '~hooks/static-queries';
+import { usePrintsOverview, useSiteInfo } from '~hooks/static-queries';
 import { Layout, SEO } from '~views';
 
 const PrintsIntro = () => {
@@ -44,12 +44,14 @@ const PrintsIntro = () => {
 
 const Prints: VFC = () => {
     const prints = usePrintsOverview();
+    const { siteMetadata } = useSiteInfo();
 
     return (
         <Layout>
             <SEO
                 title="Prints"
                 description="3D printing projects I've made, with interactive models, pictures and downloads."
+                canonical="/prints"
             />
             <PrintsIntro />
             <CardList id="prints">

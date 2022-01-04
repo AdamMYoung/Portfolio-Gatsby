@@ -10,6 +10,7 @@ const Links = () => {
             <SEO
                 title="Links"
                 description="A collection of social platforms, websites and email links relevant to me."
+                canonical="/links"
             />
             <Stack>
                 <Heading fontWeight="semibold">My Links</Heading>

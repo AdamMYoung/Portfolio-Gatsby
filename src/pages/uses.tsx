@@ -34,6 +34,7 @@ const Uses: VFC = () => {
             <SEO
                 title="Uses"
                 description="The bits and pieces I use daily, from software development to photography."
+                canonical="/uses"
             />
             <UsesIntro />
 

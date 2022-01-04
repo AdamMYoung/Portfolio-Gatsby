@@ -110,7 +110,11 @@ const ProjectsList: VFC = () => {
 const Projects: VFC = () => {
     return (
         <Layout>
-            <SEO title="Projects" description="All websites, libraries and other bits of code I've developed." />
+            <SEO
+                title="Projects"
+                description="All websites, libraries and other bits of code I've developed."
+                canonical="/projects"
+            />
             <ProjectsIntro />
             <ActiveProjects />
             <ProjectsList />

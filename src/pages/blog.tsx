@@ -17,7 +17,7 @@ import {
     BlogCard,
 } from '~components';
 import { useArrayLimiter } from '~hooks';
-import { useBlogTopics } from '~hooks/static-queries';
+import { useBlogTopics, useSiteInfo } from '~hooks/static-queries';
 import { FeaturedArticleCard, Layout, SEO } from '~views';
 import { stringToLongDate } from '~utils/date';
 import { BlogSearchProvider, useBlogSearch } from '~providers';
@@ -136,13 +136,14 @@ const BlogPost = () => {
 };
 
 const Blog: VFC = () => {
+    const { siteMetadata } = useSiteInfo();
+
     return (
         <Layout>
             <BlogSearchProvider>
-                <SEO
-                    title="Blog"
-                    description="The AYDev Blog. Find tips and guides across web development right here."
-                />
+                <SEO title="Blog" description="The AYDev Blog. Find tips and guides across web development right here.">
+                    <link rel="canonical" href={`${siteMetadata.siteUrl}/blog`} />
+                </SEO>
                 <BlogIntro />
                 <BlogPost />
             </BlogSearchProvider>

@@ -29,10 +29,16 @@ const [BlogPostProvider, useBlogPost] = createContext<{ blogPost: BlogPost }>();
 // SEO information of the blog post.
 const BlogSEO: VFC = () => {
     const { blogPost } = useBlogPost();
-    const { title, summary, heroImage, createdAt, updatedAt, topics } = blogPost;
+    const { title, summary, heroImage, createdAt, updatedAt, topics, slug } = blogPost;
 
     return (
-        <SEO title={title} description={summary.summary} imageUrl={heroImage.localFile.publicURL} imageAlt={title}>
+        <SEO
+            title={title}
+            description={summary.summary}
+            canonical={`/blog/${slug}`}
+            imageUrl={heroImage.localFile.publicURL}
+            imageAlt={title}
+        >
             <meta property="og:type" content="article" />
             <meta property="og:article:published_time" content={createdAt} />
             <meta property="og:article:modified_time" content={updatedAt} />
