@@ -17,14 +17,21 @@ export const SEO: FC<SEOProps> = ({ title, description, imageUrl, imageAlt, chil
         <Helmet>
             <html lang="en" />
             <title>{`AYDev | ${title}`}</title>
-            <meta property="og:title" content={title} />
             <meta name="description" content={description} />
-            <meta property="og:locale" content="en_GB" />
             <link rel="canonical" href={`${siteMetadata.siteUrl}/prints`} />
+
+            <meta property="og:title" content={title} />
+            <meta property="og:site_name" content="AYDev" />
+            <meta property="og:locale" content="en_GB" />
+
             <meta property="og:description" content={description} />
+
             {imageUrl && <meta property="og:image" content={imageUrl} />}
             {imageAlt && <meta property="og:image:alt" content={title} />}
-            <meta property="og:site_name" content={imageAlt} />
+
+            <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+            <meta name="theme-color" content="#1A202C" media="(prefers-color-scheme: dark)" />
+
             {children}
         </Helmet>
     );
