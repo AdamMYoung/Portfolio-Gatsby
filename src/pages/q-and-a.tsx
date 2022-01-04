@@ -115,7 +115,7 @@ const QAndA: VFC = () => {
             <SEO
                 title="Q&A"
                 description="Ask a question, get a response. Have a look through questions asked by others too."
-                canonical="/q-and-a"
+                canonical="/q-and-a/"
             />
             <QAndAIntro />
         </Layout>

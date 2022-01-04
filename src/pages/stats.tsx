@@ -37,7 +37,7 @@ const Stats: VFC = () => {
             <SEO
                 title="Stats"
                 description="Statistics across my development career, skills and more."
-                canonical="/stats"
+                canonical="/stats/"
             />
             <Stack spacing="4">
                 <Stack spacing="4">

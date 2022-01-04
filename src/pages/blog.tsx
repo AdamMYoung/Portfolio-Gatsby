@@ -141,9 +141,11 @@ const Blog: VFC = () => {
     return (
         <Layout>
             <BlogSearchProvider>
-                <SEO title="Blog" description="The AYDev Blog. Find tips and guides across web development right here.">
-                    <link rel="canonical" href={`${siteMetadata.siteUrl}/blog`} />
-                </SEO>
+                <SEO
+                    title="Blog"
+                    description="The AYDev Blog. Find tips and guides across web development right here."
+                    canonical="/blog/"
+                />
                 <BlogIntro />
                 <BlogPost />
             </BlogSearchProvider>

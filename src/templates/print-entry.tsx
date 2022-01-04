@@ -45,7 +45,7 @@ const PrintEntryPage: VFC<PrintEntryProps> = ({ data }) => {
 
     return (
         <Layout spacing="12">
-            <SEO title={name} description={description.description} canonical={`/prints/${slug}`} />
+            <SEO title={name} description={description.description} canonical={`/prints/${slug}/`} />
             <Stack spacing="4">
                 <PrintsNavigation />
                 <TwoPanel>

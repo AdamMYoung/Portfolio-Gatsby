@@ -113,7 +113,7 @@ const Projects: VFC = () => {
             <SEO
                 title="Projects"
                 description="All websites, libraries and other bits of code I've developed."
-                canonical="/projects"
+                canonical="/projects/"
             />
             <ProjectsIntro />
             <ActiveProjects />

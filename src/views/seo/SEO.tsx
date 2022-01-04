@@ -10,7 +10,7 @@ type SEOProps = {
     imageAlt?: string;
 };
 
-export const SEO: FC<SEOProps> = ({ title, description, imageUrl, imageAlt, children }) => {
+export const SEO: FC<SEOProps> = ({ title, description, imageUrl, imageAlt, canonical, children }) => {
     const { siteMetadata } = useSiteInfo();
 
     return (
@@ -18,12 +18,11 @@ export const SEO: FC<SEOProps> = ({ title, description, imageUrl, imageAlt, chil
             <html lang="en" />
             <title>{`AYDev | ${title}`}</title>
             <meta name="description" content={description} />
-            <link rel="canonical" href={`${siteMetadata.siteUrl}/prints`} />
+            <link rel="canonical" href={canonical} />
 
             <meta property="og:title" content={title} />
             <meta property="og:site_name" content="AYDev" />
             <meta property="og:locale" content="en_GB" />
-
             <meta property="og:description" content={description} />
 
             {imageUrl && <meta property="og:image" content={imageUrl} />}

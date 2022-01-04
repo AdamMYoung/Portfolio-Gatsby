@@ -35,7 +35,7 @@ const BlogSEO: VFC = () => {
         <SEO
             title={title}
             description={summary.summary}
-            canonical={`/blog/${slug}`}
+            canonical={`/blog/${slug}/`}
             imageUrl={heroImage.localFile.publicURL}
             imageAlt={title}
         >

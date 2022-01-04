@@ -51,7 +51,7 @@ const Prints: VFC = () => {
             <SEO
                 title="Prints"
                 description="3D printing projects I've made, with interactive models, pictures and downloads."
-                canonical="/prints"
+                canonical="/prints/"
             />
             <PrintsIntro />
             <CardList id="prints">
