@@ -23,13 +23,19 @@ module.exports = {
                 downloadLocal: true,
             },
         },
-
         'gatsby-plugin-image',
-
         {
-            resolve: 'gatsby-plugin-google-analytics',
+            resolve: `gatsby-plugin-gdpr-cookies`,
             options: {
-                trackingId: process.env.GA_TRACKING_ID,
+                googleAnalytics: {
+                    trackingId: process.env.GA_TRACKING_ID,
+                    cookieName: 'gatsby-gdpr-google-analytics',
+                },
+                hotjar: {
+                    hjid: process.env.HJ_TRACKING_ID,
+                    hjsv: process.env.HJ_SNIPPET_VERSION,
+                    cookieName: 'gatsby-gdpr-hotjar',
+                },
             },
         },
         'gatsby-plugin-react-helmet',

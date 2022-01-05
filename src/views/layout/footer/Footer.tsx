@@ -51,10 +51,10 @@ export const Footer: VFC = () => {
                 <Stack spacing="6">
                     <Heading fontSize="xl">Contact</Heading>
                     <Grid gap="1" gridTemplateColumns={['repeat(2, 1fr)', null, '1fr']}>
-                        <Link color="primary" href="/q-and-a">
+                        <Link fontSize="sm" color="primary" href="/q-and-a">
                             Q&A
                         </Link>
-                        <Link color="primary" href="/blog">
+                        <Link fontSize="sm" color="primary" href="/blog">
                             Email
                         </Link>
                     </Grid>
@@ -62,29 +62,33 @@ export const Footer: VFC = () => {
                 <Stack spacing="6">
                     <Heading fontSize="xl">Sitemap</Heading>
                     <Grid gap="1" gridTemplateColumns={['repeat(2, 1fr)', null, '1fr']}>
-                        <Link color="primary" href="/blog">
+                        <Link fontSize="sm" color="primary" href="/blog">
                             Blog
                         </Link>
-                        <Link color="primary" href="/q-and-a">
+                        <Link fontSize="sm" color="primary" href="/q-and-a">
                             Q&A
                         </Link>
-                        <Link color="primary" href="/projects">
+                        <Link fontSize="sm" color="primary" href="/projects">
                             Projects
                         </Link>
-                        <Link color="primary" href="/prints">
+                        <Link fontSize="sm" color="primary" href="/prints">
                             3D Models
                         </Link>
-                        <Link color="primary" href="/uses">
+                        <Link fontSize="sm" color="primary" href="/uses">
                             Uses
                         </Link>
-                        <Link color="primary" href="/stats">
+                        <Link fontSize="sm" color="primary" href="/stats">
                             Stats
                         </Link>
                         <Link
+                            fontSize="sm"
                             color="primary"
                             href="https://drive.google.com/file/d/1Ws1_C6_3ryHWTol3ZSRxq3vFrrag5WfT/view?usp=sharing"
                         >
                             Resumé
+                        </Link>
+                        <Link fontSize="sm" color="primary" href="/cookies">
+                            Cookies
                         </Link>
                     </Grid>
                 </Stack>

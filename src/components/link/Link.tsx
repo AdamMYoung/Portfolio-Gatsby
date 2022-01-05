@@ -21,7 +21,7 @@ const parseHref = (href: string, siteInfo: SiteInfo): string => {
     return href;
 };
 
-export const Link = forwardRef<HTMLElement, LinkProps>(({ children, href, ...rest }, ref) => {
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(({ children, href, ...rest }, ref) => {
     const siteInfo = useSiteInfo();
     const url = parseHref(href, siteInfo);
 

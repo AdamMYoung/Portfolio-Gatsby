@@ -2,7 +2,7 @@ import { Container, Flex, Heading, Stack } from '@chakra-ui/react';
 import React from 'react';
 
 import { LinkButton } from '~components';
-import { Layout, SEO } from '~views';
+import { SEO } from '~views';
 
 const Links = () => {
     return (

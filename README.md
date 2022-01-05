@@ -26,6 +26,8 @@ You will need the following variables defined in your `.env.development` file:
 -   `CONTENTFUL_SPACE_ID` - Space ID for contentful
 -   `CONTENTFUL_HOST` - Host for contentful (live/preview)
 -   `GA_TRACKING_ID` - Google Analytics tracking ID.
+-   `HJ_TRACKING_ID` - Hotjar tracking ID.
+-   `HJ_SNIPPET_VERSION` - Version of the Hotjar snippet version used.
 -   `GITHUB_ACCESS_TOKEN` - Access token for Github to pull analytics
 -   `SENTRY_DSN` - DSN for sentry performance monitoring.
 

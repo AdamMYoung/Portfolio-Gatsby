@@ -104,7 +104,7 @@ const BlogPost = () => {
                     </CategoryListItem>
                 ))}
             </CategoryList>
-            <FeaturedArticleCard />
+            {selectedFilters.length === 0 && <FeaturedArticleCard />}
             <CardList id="articles">
                 {visibleArticles.map(({ id, title, slug, heroImage, createdAt, copy }) => {
                     return (
