@@ -8,7 +8,7 @@ This repo is my current portfolio, found at [aydev.uk](https://aydev.uk). It's b
 
 The project is broken down into the following structure
 
--   `@chakra-ui` - Style overrides for Chakra-UI.
+-   `theme` - Style overrides for Chakra-UI.
 -   `components` - All re-usable components used within the site.
 -   `hooks` - Custom utility and static content hooks.
 -   `images` - Images used within the site.

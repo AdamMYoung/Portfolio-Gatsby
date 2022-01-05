@@ -1,3 +1,4 @@
+import { Stack } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
@@ -44,10 +45,9 @@ const PrintsIntro = () => {
 
 const Prints: VFC = () => {
     const prints = usePrintsOverview();
-    const { siteMetadata } = useSiteInfo();
 
     return (
-        <Layout>
+        <Stack spacing={[16, null, 24]}>
             <SEO
                 title="Prints"
                 description="3D printing projects I've made, with interactive models, pictures and downloads."
@@ -67,7 +67,7 @@ const Prints: VFC = () => {
                     );
                 })}
             </CardList>
-        </Layout>
+        </Stack>
     );
 };
 

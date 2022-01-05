@@ -30,7 +30,7 @@ const Uses: VFC = () => {
     const categories = useUses();
 
     return (
-        <Layout>
+        <Stack spacing={[16, null, 24]}>
             <SEO
                 title="Uses"
                 description="The bits and pieces I use daily, from software development to photography."
@@ -63,7 +63,7 @@ const Uses: VFC = () => {
                     </Box>
                 </Stack>
             ))}
-        </Layout>
+        </Stack>
     );
 };
 

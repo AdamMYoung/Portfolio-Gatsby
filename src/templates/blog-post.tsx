@@ -205,7 +205,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
     return (
         <ContentsProvider>
             <BlogPostProvider value={{ blogPost: data.contentfulPageBlogPost }}>
-                <Layout spacing="12">
+                <Stack spacing="12">
                     <BlogSEO />
                     <BlogNavigation />
 
@@ -242,7 +242,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                             </CardList>
                         </>
                     )}
-                </Layout>
+                </Stack>
             </BlogPostProvider>
         </ContentsProvider>
     );

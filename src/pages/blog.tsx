@@ -139,7 +139,7 @@ const Blog: VFC = () => {
     const { siteMetadata } = useSiteInfo();
 
     return (
-        <Layout>
+        <Stack spacing={[16, null, 24]}>
             <BlogSearchProvider>
                 <SEO
                     title="Blog"
@@ -149,7 +149,7 @@ const Blog: VFC = () => {
                 <BlogIntro />
                 <BlogPost />
             </BlogSearchProvider>
-        </Layout>
+        </Stack>
     );
 };
 

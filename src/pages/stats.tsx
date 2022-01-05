@@ -16,7 +16,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
 import { useBlogPosts, useGithubStats, usePopularLanguage, usePopularTopic, useSiteInfo } from '~hooks/static-queries';
-import { Layout, SEO } from '~views';
+import { SEO } from '~views';
 import { useIsMobile } from '~hooks/use-is-mobile';
 import { LinkButton } from '~components/link-button';
 
@@ -33,7 +33,7 @@ const Stats: VFC = () => {
     const popularLanguage = usePopularLanguage();
 
     return (
-        <Layout>
+        <Stack spacing={[16, null, 24]}>
             <SEO
                 title="Stats"
                 description="Statistics across my development career, skills and more."
@@ -132,7 +132,7 @@ const Stats: VFC = () => {
                     </Stack>
                 </Stack>
             </Stack>
-        </Layout>
+        </Stack>
     );
 };
 

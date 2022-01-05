@@ -109,7 +109,7 @@ const ProjectsList: VFC = () => {
 
 const Projects: VFC = () => {
     return (
-        <Layout>
+        <Stack spacing={[16, null, 24]}>
             <SEO
                 title="Projects"
                 description="All websites, libraries and other bits of code I've developed."
@@ -118,7 +118,7 @@ const Projects: VFC = () => {
             <ProjectsIntro />
             <ActiveProjects />
             <ProjectsList />
-        </Layout>
+        </Stack>
     );
 };
 

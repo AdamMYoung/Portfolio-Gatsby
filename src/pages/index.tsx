@@ -215,7 +215,7 @@ const HomeStuffUsed = () => {
 
 const Index: VFC = () => {
     return (
-        <Layout>
+        <Stack spacing={[16, null, 24]}>
             <SEO
                 title="Home"
                 description="Hi, I'm Adam Young, a Software Engineer from Birmingham currently working at Curve. Here, you'll find articles about software development, my interests, and the projects I've currently got on the go."
@@ -226,7 +226,7 @@ const Index: VFC = () => {
             <HomeInterests />
             <FeaturedArticleCard />
             <HomeStuffUsed />
-        </Layout>
+        </Stack>
     );
 };
 

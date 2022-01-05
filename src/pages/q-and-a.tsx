@@ -111,14 +111,14 @@ const QAndAIntro = () => {
 
 const QAndA: VFC = () => {
     return (
-        <Layout>
+        <Stack spacing={[16, null, 24]}>
             <SEO
                 title="Q&A"
                 description="Ask a question, get a response. Have a look through questions asked by others too."
                 canonical="/q-and-a/"
             />
             <QAndAIntro />
-        </Layout>
+        </Stack>
     );
 };
 
