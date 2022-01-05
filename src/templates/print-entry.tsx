@@ -66,22 +66,24 @@ const PrintEntryPage: VFC<PrintEntryProps> = ({ data }) => {
                 </TwoPanel>
             </Stack>
 
-            <Stack spacing="4">
-                <Heading>Images</Heading>
-                <ThreePanel>
-                    {printImages?.map((image) => (
-                        <ThreePanelBlock>
-                            <ChakraGatsbyImage
-                                h="full"
-                                pointerEvents="none"
-                                rounded="xl"
-                                image={getImage(image.localFile)}
-                                alt={name}
-                            />
-                        </ThreePanelBlock>
-                    ))}
-                </ThreePanel>
-            </Stack>
+            {printImages && printImages.length > 0 && (
+                <Stack spacing="4">
+                    <Heading>Images</Heading>
+                    <ThreePanel>
+                        {printImages.map((image) => (
+                            <ThreePanelBlock>
+                                <ChakraGatsbyImage
+                                    h="full"
+                                    pointerEvents="none"
+                                    rounded="xl"
+                                    image={getImage(image.localFile)}
+                                    alt={name}
+                                />
+                            </ThreePanelBlock>
+                        ))}
+                    </ThreePanel>
+                </Stack>
+            )}
         </Stack>
     );
 };

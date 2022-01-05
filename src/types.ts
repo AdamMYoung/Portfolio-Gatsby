@@ -44,7 +44,7 @@ export type PrintEntry = {
             publicURL: string;
         };
     };
-    printImages: {
+    printImages?: {
         localFile: ImageDataLike;
     }[];
 };
