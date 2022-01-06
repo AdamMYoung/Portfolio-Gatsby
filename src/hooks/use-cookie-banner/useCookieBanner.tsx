@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Button, HStack, ToastId, useToast, Box, chakra } from '@chakra-ui/react';
+import { Text, Button, HStack, ToastId, useToast, Box, chakra, Stack } from '@chakra-ui/react';
 import { useEffect, useRef } from 'react';
 
 import { Link as GatsbyLink } from 'gatsby';
@@ -43,7 +43,7 @@ export const useCookieBanner = () => {
                 duration: null,
                 render: () => (
                     <Box p="4" bg="blue.800" rounded="xl">
-                        <HStack spacing="4">
+                        <Stack direction={['column', null, 'row']} spacing="4" alignItems={['end', null, 'initial']}>
                             <Text fontSize="sm">
                                 This site uses cookies to track performance and to understand how the site is used. For
                                 more information, see the{' '}
@@ -53,14 +53,22 @@ export const useCookieBanner = () => {
                                 .
                             </Text>
 
-                            <Button size="sm" py={2} minW="24" variant="outline" onClick={() => handleResponse(false)}>
-                                Decline
-                            </Button>
+                            <HStack spacing="2">
+                                <Button
+                                    size="sm"
+                                    py={2}
+                                    minW="24"
+                                    variant="outline"
+                                    onClick={() => handleResponse(false)}
+                                >
+                                    Decline
+                                </Button>
 
-                            <Button size="sm" py={2} minW="24" onClick={() => handleResponse(true)}>
-                                Accept
-                            </Button>
-                        </HStack>
+                                <Button size="sm" py={2} minW="24" onClick={() => handleResponse(true)}>
+                                    Accept
+                                </Button>
+                            </HStack>
+                        </Stack>
                     </Box>
                 ),
             });
