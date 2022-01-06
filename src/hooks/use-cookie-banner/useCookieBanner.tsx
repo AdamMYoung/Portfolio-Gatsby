@@ -24,21 +24,13 @@ const setCookieAcceptance = (accepted: boolean) => {
 };
 
 export const useCookieBanner = () => {
-    const [trackPageView, setTrackPageView] = useState(false);
     const toast = useToast();
     const toastId = useRef<ToastId>();
 
     const handleResponse = (accepted: boolean) => {
         setCookieAcceptance(accepted);
         toast.close(toastId.current);
-        setTrackPageView(true)
     };
-
-    useEffect(() => {
-        (window as any).gtag('event', 'page-view', {
-            page_location: window.location.href,
-        });
-    }, [trackPageView])
 
     useEffect(() => {
         useIfClient(() => {
