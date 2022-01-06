@@ -21,6 +21,9 @@ const isCookieRequestSet = (): boolean => {
 const setCookieAcceptance = (accepted: boolean) => {
     document.cookie = createCookieEntry(gaCookie, accepted);
     document.cookie = createCookieEntry(hotjarCookie, accepted);
+    (window as any).gtag('event', 'page-view', {
+        page_location: window.location.href,
+    });
 };
 
 export const useCookieBanner = () => {
