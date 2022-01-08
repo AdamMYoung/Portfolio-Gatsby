@@ -3,10 +3,11 @@ import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { useEffect, useState, VFC } from 'react';
 
+
 import { CardList, Link, MarkdownRenderer, BlogCard, Progress } from '~components';
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
-import { Layout, SEO } from '~views';
+import { LengthIcon, SEO } from '~views';
 import { useCombinedSubset, useIsMobile, useRelativeScrollPercentage } from '~hooks';
 import { ContentsProvider } from '~providers/contents-provider';
 import { Contents } from '~views/contents/Contents';
@@ -25,6 +26,16 @@ type BlogPostProps = {
 const ChakraGatsbyImage = chakra(GatsbyImage);
 
 const [BlogPostProvider, useBlogPost] = createContext<{ blogPost: BlogPost }>();
+
+const getLength = (duration: number) => {
+    if (duration < 5) {
+        return "short";
+    }
+    if (duration >= 5 && duration < 10) {
+        return "medium";
+    }
+    return "long"
+}
 
 // SEO information of the blog post.
 const BlogSEO: VFC = () => {
@@ -81,6 +92,8 @@ const BlogNavigation: VFC = () => {
     );
 };
 
+
+
 // Header and contents navigation of the blog post.
 const BlogHeader: VFC = () => {
     const { blogPost } = useBlogPost();
@@ -89,13 +102,16 @@ const BlogHeader: VFC = () => {
     const createdAtText = stringToLongDate(createdAt);
     const updatedAtText = stringToLongDate(updatedAt);
 
+    const duration = Number(copy.readingTime.replace(/\D+/g, ""))
+
+
     return (
         <>
             <Stack>
                 <Heading>{title}</Heading>
                 <Stack spacing={4}>
                     <Text variant="subtitle" fontSize="xl">
-                        {copy.readingTime}
+                        <LengthIcon length={getLength(duration)} /> {copy.readingTime}
                     </Text>
                     <Stack direction="row">
                         {topics.map((t) => (
