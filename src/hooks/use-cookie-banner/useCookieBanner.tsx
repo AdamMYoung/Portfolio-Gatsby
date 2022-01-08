@@ -32,8 +32,11 @@ export const useCookieBanner = () => {
 
     const handleResponse = (accepted: boolean) => {
         setCookieAcceptance(accepted);
-        initializeAndTrack(location)
         toast.close(toastId.current);
+
+        if (accepted) {
+            initializeAndTrack(location)
+        }
     };
 
     useEffect(() => {
