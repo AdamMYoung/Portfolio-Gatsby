@@ -27,7 +27,7 @@ type MarkdownRendererProps = BoxProps & {
  * @param heading Heading size of the node.
  * @returns
  */
-const useRegisteredHeading = (node: MarkdownNode, heading: 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
+const useRegisteredHeading = (node: MarkdownNode, heading: 'h2' | 'h3') => {
     const { register } = useContents();
 
     const title = getTextFromMarkdownNode(node);
@@ -41,7 +41,7 @@ const useRegisteredHeading = (node: MarkdownNode, heading: 'h2' | 'h3' | 'h4' | 
 const newTheme = {
     a: ({ href, children }) => <Link href={href}>{children}</Link>,
     p: ({ children }) => (
-        <Text my="4" fontSize="19">
+        <Text mt="4" mb="8" fontSize="19">
             {children}
         </Text>
     ),
@@ -51,7 +51,7 @@ const newTheme = {
         </Text>
     ),
     li: ({ children }) => (
-        <ListItem my="2" fontSize="19">
+        <ListItem lineHeight={1.3} fontSize="19">
             {children}
         </ListItem>
     ),
@@ -64,7 +64,7 @@ const newTheme = {
                 mb="2"
                 fontSize={['2xl', null, '3xl']}
                 whiteSpace="normal"
-                _notFirst={{ mt: 16 }}
+                _notFirst={{ mt: 12 }}
                 wordBreak="break-all"
                 id={id}
             >
@@ -76,16 +76,16 @@ const newTheme = {
         const id = useRegisteredHeading(node, 'h3');
 
         return (
-            <Heading as="h3" mt="4" mb="6" fontSize="xl" whiteSpace="normal" wordBreak="break-all" id={id}>
-                {children}
-            </Heading>
+            <Box>
+                <AnchorHeading as="h3" mt="8" mb="2" fontSize="xl" whiteSpace="normal" wordBreak="break-all" id={id}>
+                    {children}
+                </AnchorHeading>
+            </Box>
         );
     },
     h4: ({ children, node }) => {
-        const id = useRegisteredHeading(node, 'h4');
-
         return (
-            <Heading as="h4" mt="4" mb="6" fontSize="lg" whiteSpace="normal" wordBreak="break-all" id={id}>
+            <Heading as="h4" mt="4" mb="6" fontSize="lg" whiteSpace="normal" wordBreak="break-all">
                 {children}
             </Heading>
         );
