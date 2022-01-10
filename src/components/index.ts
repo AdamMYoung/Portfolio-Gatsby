@@ -12,3 +12,4 @@ export * from './anchor-heading';
 export * from './copy-button';
 export * from './progress';
 export * from './print-card';
+export * from './interaction-tag';

@@ -27,9 +27,6 @@ export const BlogSearchProvider: FC = ({ children }) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const blogs = useBlogPosts();
 
-    //Filters the blog posts based on the search term if applicable.
-    useParamsEvent('filters', (matched) => matched.forEach(toggleFilter));
-
     /**
      * Filters the existing blog posts by the search term provided.
      */

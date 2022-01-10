@@ -2,18 +2,16 @@ import { Box, Button, chakra, Divider, Heading, Spacer, Stack, Tag, Text, Flex }
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { useEffect, useState, VFC } from 'react';
+import { ArrowBackIcon } from '@chakra-ui/icons';
+import { createContext } from '@chakra-ui/react-utils';
 
-
-import { CardList, Link, MarkdownRenderer, BlogCard, Progress } from '~components';
+import { CardList, Link, MarkdownRenderer, BlogCard, Progress, InteractionTag } from '~components';
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
-import { LengthIcon, SEO } from '~views';
+import { LengthIcon, SEO, Contents } from '~views';
 import { useCombinedSubset, useIsMobile, useRelativeScrollPercentage } from '~hooks';
-import { ContentsProvider } from '~providers/contents-provider';
-import { Contents } from '~views/contents/Contents';
-import { ArrowBackIcon } from '@chakra-ui/icons';
+import { ContentsProvider } from '~providers';
 import { MotionFlex } from '~components/motion';
-import { createContext } from '@chakra-ui/react-utils';
 
 type BlogPostProps = {
     data: {
@@ -29,13 +27,13 @@ const [BlogPostProvider, useBlogPost] = createContext<{ blogPost: BlogPost }>();
 
 const getLength = (duration: number) => {
     if (duration < 5) {
-        return "short";
+        return 'short';
     }
     if (duration >= 5 && duration < 10) {
-        return "medium";
+        return 'medium';
     }
-    return "long"
-}
+    return 'long';
+};
 
 // SEO information of the blog post.
 const BlogSEO: VFC = () => {
@@ -92,8 +90,6 @@ const BlogNavigation: VFC = () => {
     );
 };
 
-
-
 // Header and contents navigation of the blog post.
 const BlogHeader: VFC = () => {
     const { blogPost } = useBlogPost();
@@ -102,8 +98,7 @@ const BlogHeader: VFC = () => {
     const createdAtText = stringToLongDate(createdAt);
     const updatedAtText = stringToLongDate(updatedAt);
 
-    const duration = Number(copy.readingTime.replace(/\D+/g, ""))
-
+    const duration = Number(copy.readingTime.replace(/\D+/g, ''));
 
     return (
         <>
@@ -115,7 +110,9 @@ const BlogHeader: VFC = () => {
                     </Text>
                     <Stack direction="row">
                         {topics.map((t) => (
-                            <Tag key={t}>{t}</Tag>
+                            <InteractionTag href={`/blog?filters=${t}`} key={t}>
+                                {t}
+                            </InteractionTag>
                         ))}
                     </Stack>
                 </Stack>

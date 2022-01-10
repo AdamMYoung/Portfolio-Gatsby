@@ -16,7 +16,7 @@ import {
     TwoPanelTitle,
     BlogCard,
 } from '~components';
-import { useArrayLimiter } from '~hooks';
+import { useArrayLimiter, useIfClient, useParamsEvent } from '~hooks';
 import { useBlogTopics, useSiteInfo } from '~hooks/static-queries';
 import { FeaturedArticleCard, Layout, SEO } from '~views';
 import { stringToLongDate } from '~utils/date';
@@ -86,13 +86,19 @@ const BlogPost = () => {
 
     useEffect(() => reset(), [results]);
 
+    //Filters the blog posts based on the search term if applicable.
+    useParamsEvent('filters', (matched) => {
+        matched.forEach(onFilterToggled);
+        useIfClient(() => document.getElementById('filters').scrollIntoView({ behavior: 'smooth' }));
+    });
+
     return (
         <Stack spacing="8">
             <MotionHeading py="2" variants={getItemMotion()} {...useViewportTransition(true, 0.7)}>
                 Filter articles by topic
             </MotionHeading>
 
-            <CategoryList>
+            <CategoryList id="filters">
                 {topics.map((topic) => (
                     <CategoryListItem
                         key={topic}
@@ -136,8 +142,6 @@ const BlogPost = () => {
 };
 
 const Blog: VFC = () => {
-    const { siteMetadata } = useSiteInfo();
-
     return (
         <Stack spacing={[16, null, 24]}>
             <BlogSearchProvider>

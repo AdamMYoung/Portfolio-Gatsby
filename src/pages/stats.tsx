@@ -8,7 +8,6 @@ import {
     Stat,
     StatHelpText,
     StatNumber,
-    Tag,
     Text,
 } from '@chakra-ui/react';
 import React, { VFC } from 'react';
@@ -17,8 +16,8 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 import { useBlogPosts, useGithubStats, usePopularLanguage, usePopularTopic, useSiteInfo } from '~hooks/static-queries';
 import { SEO } from '~views';
-import { useIsMobile } from '~hooks/use-is-mobile';
-import { LinkButton } from '~components/link-button';
+import { useIsMobile } from '~hooks';
+import { InteractionTag } from '~components';
 
 dayjs.extend(relativeTime);
 
@@ -55,16 +54,7 @@ const Stats: VFC = () => {
                         </Stat>
                         <Stat>
                             <StatNumber>
-                                <Tag
-                                    as={LinkButton}
-                                    size="lg"
-                                    py="0"
-                                    mb="2"
-                                    _hover={{ bg: 'red.600' }}
-                                    href={`/projects`}
-                                >
-                                    {popularLanguage}
-                                </Tag>
+                                <InteractionTag href={`/projects`}>{popularLanguage}</InteractionTag>
                             </StatNumber>
                             <StatHelpText>Most popular language</StatHelpText>
                         </Stat>
@@ -82,16 +72,7 @@ const Stats: VFC = () => {
                         </Stat>
                         <Stat>
                             <StatNumber>
-                                <Tag
-                                    as={LinkButton}
-                                    size="lg"
-                                    py="0"
-                                    mb="2"
-                                    _hover={{ bg: 'red.600' }}
-                                    href={`/blog?filters=${popularTopic}`}
-                                >
-                                    {popularTopic}
-                                </Tag>
+                                <InteractionTag href={`/blog?filters=${popularTopic}`}>{popularTopic}</InteractionTag>
                             </StatNumber>
                             <StatHelpText>Most popular topic</StatHelpText>
                         </Stat>
