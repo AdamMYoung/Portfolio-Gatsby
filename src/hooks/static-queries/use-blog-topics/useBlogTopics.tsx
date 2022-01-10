@@ -10,8 +10,8 @@ export const useBlogTopics = (as: 'set' | 'array' = 'set') => {
     posts.forEach((p) => p.topics.forEach((t) => topicSet.push(t)));
 
     if (as === 'set') {
-        return Array.from(new Set(topicSet));
+        return Array.from(new Set(topicSet)).sort((a, b) => a.length - b.length);
     }
 
-    return Array.from(topicSet);
+    return Array.from(topicSet).sort((a, b) => b.length - a.length);
 };

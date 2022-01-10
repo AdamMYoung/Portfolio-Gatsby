@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, Button, HStack, ToastId, useToast, Box, chakra, Stack } from '@chakra-ui/react';
 import { useEffect, useRef } from 'react';
-import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies'
+import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
+import { useLocation } from '@reach/router';
 
 import { Link as GatsbyLink } from 'gatsby';
 import { useIfClient } from '~hooks';
@@ -26,15 +27,15 @@ const setCookieAcceptance = (accepted: boolean) => {
 
 export const useCookieBanner = () => {
     const toast = useToast();
+    const location = useLocation();
     const toastId = useRef<ToastId>();
-
 
     const handleResponse = (accepted: boolean) => {
         setCookieAcceptance(accepted);
         toast.close(toastId.current);
 
         if (accepted) {
-            initializeAndTrack(window.location)
+            initializeAndTrack(location);
         }
     };
 

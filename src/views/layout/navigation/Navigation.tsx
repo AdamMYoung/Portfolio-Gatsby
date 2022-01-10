@@ -20,7 +20,8 @@ import {
     MenuItem,
     Portal,
 } from '@chakra-ui/react';
-import React, { VFC } from 'react';
+import React, { useEffect, VFC } from 'react';
+import { useLocation } from '@reach/router';
 
 import { Link, LinkButton, MenuIconButton, DarkModeToggle } from '~components';
 
@@ -75,7 +76,11 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
 export const Navigation: VFC = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { colorMode } = useColorMode();
+    const location = useLocation();
     const isMobile = useBreakpointValue([true, null, null, false]);
+
+    // Close the nav drawer whenever the location changes.
+    useEffect(() => onClose(), [location]);
 
     return (
         <>
