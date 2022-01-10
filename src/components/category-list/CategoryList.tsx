@@ -33,6 +33,7 @@ export const CategoryListItem: FC<MotionButtonProps> = ({ children, ...rest }) =
             variants={getItemMotion()}
             variant="outline"
             _disabled={{ color: 'gray.400', cursor: 'not-allowed' }}
+            p={['1', null, '7']}
             {...rest}
         >
             {children}
