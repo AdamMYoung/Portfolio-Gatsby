@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Button, HStack, ToastId, useToast, Box, chakra, Stack } from '@chakra-ui/react';
 import { useEffect, useRef } from 'react';
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
-import { useLocation } from '@reach/router';
+import { useLocation } from 'react-use';
 
 import { Link as GatsbyLink } from 'gatsby';
 import { useIfClient } from '~hooks';

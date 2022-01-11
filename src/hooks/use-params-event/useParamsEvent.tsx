@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from '@reach/router';
+import { useLocation } from 'react-use';
+import { useIfClient } from '..';
 
 /**
  * Hook to fire an event when a specific URL parameter is matched against.
@@ -7,22 +8,24 @@ import { useLocation } from '@reach/router';
  * @param onMatched Event fired when the query parameter is matched.
  */
 export const useParamsEvent = (key: string, onMatched: (matched: string[]) => void): void => {
-    const location = useLocation();
     const [hasMatched, setHasMatched] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
-        const matched = location.search;
-        const params = new URLSearchParams(matched);
+        useIfClient(() => {
+            const matched = location.search;
+            const params = new URLSearchParams(matched);
 
-        if (params.has(key) && !hasMatched) {
-            setHasMatched(true);
+            if (params.has(key) && !hasMatched) {
+                setHasMatched(true);
 
-            const matchedParam = params.get(key);
-            if (matchedParam.includes(',')) {
-                onMatched(matchedParam.split(','));
+                const matchedParam = params.get(key);
+                if (matchedParam.includes(',')) {
+                    onMatched(matchedParam.split(','));
+                }
+
+                onMatched([matchedParam]);
             }
-
-            onMatched([matchedParam]);
-        }
+        });
     }, [location, key, onMatched]);
 };

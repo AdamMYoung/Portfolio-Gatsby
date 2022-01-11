@@ -37,16 +37,17 @@ module.exports = {
                 },
             },
         },
+        'gatsby-plugin-netlify',
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-advanced-sitemap',
         {
             resolve: 'gatsby-plugin-react-svg',
             options: {
-              rule: {
-                include: /\.inline\.svg$/
-              }
-            }
-          },
+                rule: {
+                    include: /\.inline\.svg$/,
+                },
+            },
+        },
         {
             resolve: `gatsby-plugin-sharp`,
             options: {

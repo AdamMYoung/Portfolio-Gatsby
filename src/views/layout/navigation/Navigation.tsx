@@ -16,12 +16,11 @@ import {
     useColorMode,
     useDisclosure,
     MenuButton,
-    Button,
     MenuItem,
     Portal,
 } from '@chakra-ui/react';
 import React, { useEffect, VFC } from 'react';
-import { useLocation } from '@reach/router';
+import { useLocation } from 'react-use';
 
 import { Link, LinkButton, MenuIconButton, DarkModeToggle } from '~components';
 

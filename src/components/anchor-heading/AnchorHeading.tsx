@@ -1,7 +1,7 @@
 import { LinkIcon } from '@chakra-ui/icons';
 import { Button, ButtonProps, useBreakpointValue } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import { useLocation } from '@reach/router';
+import { useLocation } from 'react-use';
 
 import { useMergedStyles, useCopyToClipboard } from '~hooks';
 
