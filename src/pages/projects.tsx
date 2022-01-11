@@ -92,7 +92,7 @@ const ProjectsList: VFC = () => {
                                 </Td>
                                 <Td>{repo.description}</Td>
                                 <Td>
-                                    <Flex sx={{ '* + *': { ml: 1 } }}>
+                                    <Flex gap="2">
                                         {repo.languages.map((l) => (
                                             <Tag key={l}>{l}</Tag>
                                         ))}

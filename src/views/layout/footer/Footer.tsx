@@ -16,7 +16,7 @@ export const Footer: VFC = () => {
             >
                 <Stack spacing="6">
                     <Heading fontSize="xl">Socials</Heading>
-                    <Flex flexWrap="wrap" justifyContent={['center', null, 'flex-start']} sx={{ '* + *': { ml: 2 } }}>
+                    <Flex flexWrap="wrap" justifyContent={['center', null, 'flex-start']} gap="2">
                         <IconButton
                             as={Link}
                             variant="outline"

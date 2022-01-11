@@ -108,13 +108,13 @@ const BlogHeader: VFC = () => {
                     <Text variant="subtitle" fontSize="xl">
                         <LengthIcon length={getLength(duration)} /> {copy.readingTime}
                     </Text>
-                    <Stack direction="row">
+                    <Flex wrap="wrap" gap={2}>
                         {topics.map((t) => (
                             <InteractionTag href={`/blog?filters=${t}`} key={t}>
                                 {t}
                             </InteractionTag>
                         ))}
-                    </Stack>
+                    </Flex>
                 </Stack>
             </Stack>
             <Divider />

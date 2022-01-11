@@ -7,7 +7,6 @@ import {
     MotionGridProps,
     MotionBox,
     MotionBoxProps,
-    useViewportTransition,
 } from '~components/motion';
 
 export const CardList: FC<MotionGridProps> = ({ children, ...rest }) => {
@@ -15,7 +14,7 @@ export const CardList: FC<MotionGridProps> = ({ children, ...rest }) => {
         <MotionGrid
             variants={getContainerMotion()}
             gap="6"
-            gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1fr 1fr']}
+            gridTemplateColumns={['1fr', null, 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
             initial="hidden"
             animate="show"
             layout

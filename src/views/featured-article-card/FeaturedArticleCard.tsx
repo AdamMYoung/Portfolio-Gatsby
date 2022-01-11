@@ -1,4 +1,4 @@
-import { chakra, LinkBox, LinkOverlay, Spacer, Stack, Tag, Text, useColorMode } from '@chakra-ui/react';
+import { chakra, Flex, LinkBox, LinkOverlay, Spacer, Stack, Tag, Text, useColorMode } from '@chakra-ui/react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
@@ -33,12 +33,12 @@ export const FeaturedArticleCard: VFC = () => {
         >
             <TwoPanel gap={[0, null, 8]} gridTemplateColumns={['1fr', null, '1fr 1fr']}>
                 <TwoPanelBlock mb="0" mr={[0, null, null, 16]} variants={getContainerMotion('faster')}>
-                    <Stack direction="row" wrap="wrap">
+                    <Flex gap="2" wrap="wrap">
                         <Tag>featured</Tag>
                         {topics.map((t) => (
                             <Tag key={t}>{t}</Tag>
                         ))}
-                    </Stack>
+                    </Flex>
                     <TwoPanelTitle>{title}</TwoPanelTitle>
                     <TwoPanelHeading>
                         <TwoPanelSubtitle fontSize={['lg', null, 'xl']}>{stringToLongDate(createdAt)}</TwoPanelSubtitle>

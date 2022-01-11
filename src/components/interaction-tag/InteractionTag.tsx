@@ -7,7 +7,7 @@ type InteractionTagProps = TagProps & LinkButtonProps;
 
 export const InteractionTag: FC<InteractionTagProps> = ({ children, ...rest }) => {
     return (
-        <Tag as={LinkButton} size="lg" py="0" mb="2" _hover={{ bg: 'red.600' }} {...rest}>
+        <Tag as={LinkButton} size="lg" py="0" _hover={{ bg: 'red.600' }} {...rest}>
             {children}
         </Tag>
     );
