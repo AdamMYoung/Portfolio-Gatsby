@@ -116,20 +116,22 @@ export const Navigation: VFC = () => {
                                 <MenuButton as={Link} variant="animate-ltr" fontWeight="semibold" fontSize="md">
                                     My Stuff
                                 </MenuButton>
-                                <MenuList>
-                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
-                                        Projects
-                                    </MenuItem>
-                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/prints">
-                                        3D Models
-                                    </MenuItem>
-                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/uses">
-                                        Uses
-                                    </MenuItem>
-                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/stats">
-                                        Stats
-                                    </MenuItem>
-                                </MenuList>
+                                <Portal>
+                                    <MenuList>
+                                        <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
+                                            Projects
+                                        </MenuItem>
+                                        <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/prints">
+                                            3D Models
+                                        </MenuItem>
+                                        <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/uses">
+                                            Uses
+                                        </MenuItem>
+                                        <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/stats">
+                                            Stats
+                                        </MenuItem>
+                                    </MenuList>
+                                </Portal>
                             </Menu>
                         </Stack>
                     )}
