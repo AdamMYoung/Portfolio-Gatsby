@@ -33,7 +33,7 @@ export const FeaturedArticleCard: VFC = () => {
         >
             <TwoPanel gap={[0, null, 8]} gridTemplateColumns={['1fr', null, '1fr 1fr']}>
                 <TwoPanelBlock mb="0" mr={[0, null, null, 16]} variants={getContainerMotion('faster')}>
-                    <Stack direction="row">
+                    <Stack direction="row" wrap="wrap">
                         <Tag>featured</Tag>
                         {topics.map((t) => (
                             <Tag key={t}>{t}</Tag>
