@@ -45,22 +45,21 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                         <MenuButton as={LinkButton} w="full" variant="link" textAlign="center" pt="2" pb="4">
                             My Stuff
                         </MenuButton>
-                        <Portal>
-                            <MenuList>
-                                <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
-                                    Projects
-                                </MenuItem>
-                                <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/prints">
-                                    3D Models
-                                </MenuItem>
-                                <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/uses">
-                                    Uses
-                                </MenuItem>
-                                <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/stats">
-                                    Stats
-                                </MenuItem>
-                            </MenuList>
-                        </Portal>
+
+                        <MenuList>
+                            <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
+                                Projects
+                            </MenuItem>
+                            <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/prints">
+                                3D Models
+                            </MenuItem>
+                            <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/uses">
+                                Uses
+                            </MenuItem>
+                            <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/stats">
+                                Stats
+                            </MenuItem>
+                        </MenuList>
                     </Menu>
 
                     <Divider />
@@ -116,22 +115,20 @@ export const Navigation: VFC = () => {
                                 <MenuButton as={Link} variant="animate-ltr" fontWeight="semibold" fontSize="md">
                                     My Stuff
                                 </MenuButton>
-                                <Portal>
-                                    <MenuList>
-                                        <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
-                                            Projects
-                                        </MenuItem>
-                                        <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/prints">
-                                            3D Models
-                                        </MenuItem>
-                                        <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/uses">
-                                            Uses
-                                        </MenuItem>
-                                        <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/stats">
-                                            Stats
-                                        </MenuItem>
-                                    </MenuList>
-                                </Portal>
+                                <MenuList>
+                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
+                                        Projects
+                                    </MenuItem>
+                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/prints">
+                                        3D Models
+                                    </MenuItem>
+                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/uses">
+                                        Uses
+                                    </MenuItem>
+                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/stats">
+                                        Stats
+                                    </MenuItem>
+                                </MenuList>
                             </Menu>
                         </Stack>
                     )}
