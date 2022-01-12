@@ -1,4 +1,4 @@
-import { Box, Button, Heading, HStack, Input, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Heading, HStack, Input, Stack, Text, useDisclosure } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { useEffect, VFC } from 'react';
 
@@ -17,20 +17,20 @@ import {
     BlogCard,
 } from '~components';
 import { useArrayLimiter, useIfClient, useParamsEvent } from '~hooks';
-import { useBlogTopics, useSiteInfo } from '~hooks/static-queries';
-import { FeaturedArticleCard, Layout, SEO } from '~views';
+import { useBlogTopics } from '~hooks/static-queries';
+import { FeaturedArticleCard, SEO } from '~views';
 import { stringToLongDate } from '~utils/date';
-import { BlogSearchProvider, useBlogSearch } from '~providers';
+import { BlogSearchProvider, useBlogFilter } from '~providers';
 import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
+import { BlogSearchModal } from '~components/modals';
+import { SearchIcon } from '@chakra-ui/icons';
 
 const BlogIntro = () => {
-    const { onSearchTermChanged, searchTerm, results, selectedFilters, onReset } = useBlogSearch();
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { results, selectedFilters, onReset } = useBlogFilter();
 
     const hasNoResults = results.length === 0;
     const isTopicsSelected = selectedFilters.length > 0;
-    const isSearchResultPresent = !!searchTerm;
-
-    const hasUserInput = isSearchResultPresent || isTopicsSelected;
 
     return (
         <TwoPanel>
@@ -41,17 +41,13 @@ const BlogIntro = () => {
                 </TwoPanelHeading>
                 <Stack pt="4" spacing="4">
                     <TwoPanelBody>
-                        <Input
-                            w="full"
-                            value={searchTerm}
-                            placeholder="Search for an article"
-                            rounded="full"
-                            onChange={(e) => onSearchTermChanged(e.target.value)}
-                        />
+                        <Button leftIcon={<SearchIcon />} w="full" rounded="full" onClick={onOpen}>
+                            Search for an article
+                        </Button>
                     </TwoPanelBody>
                     <TwoPanelBody>
                         <Button as={Link} w="full" variant="outline" href="#articles" isDisabled={hasNoResults}>
-                            {!hasUserInput
+                            {!isTopicsSelected
                                 ? 'View All Articles'
                                 : hasNoResults
                                 ? 'No Articles Found'
@@ -59,7 +55,7 @@ const BlogIntro = () => {
                         </Button>
                     </TwoPanelBody>
                     <TwoPanelBody>
-                        <Button variant="ghost" w="full" onClick={onReset} opacity={!hasUserInput ? 0 : 1}>
+                        <Button variant="ghost" w="full" onClick={onReset} opacity={!isTopicsSelected ? 0 : 1}>
                             Reset Search
                         </Button>
                     </TwoPanelBody>
@@ -74,12 +70,13 @@ const BlogIntro = () => {
                     width={900}
                 />
             </TwoPanelImage>
+            <BlogSearchModal isOpen={isOpen} onClose={onClose} />
         </TwoPanel>
     );
 };
 
 const BlogPost = () => {
-    const { results, applicableFilters, selectedFilters, onFilterToggled } = useBlogSearch();
+    const { results, applicableFilters, selectedFilters, onFilterToggled } = useBlogFilter();
     const topics = useBlogTopics();
 
     const [visibleArticles, isAllArticlesVisible, loadMoreArticles, reset] = useArrayLimiter(results);

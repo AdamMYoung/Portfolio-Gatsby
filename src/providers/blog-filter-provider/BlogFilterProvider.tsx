@@ -1,45 +1,34 @@
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { FC, useCallback, useMemo } from 'react';
 import { createContext } from '@chakra-ui/react-utils';
 
 import { useBlogPosts } from '~hooks/static-queries';
-import { useFilter, useParamsEvent, useToggleSet } from '~hooks';
+import { useFilter, useToggleSet } from '~hooks';
 import { BlogPostOverview } from '~types';
 
-type BlogSearchContextOptions = {
+type BlogFilterContextOptions = {
     results: BlogPostOverview[];
-    searchTerm: string;
     applicableFilters: string[];
     selectedFilters: string[];
     onFilterToggled: (filter: string) => void;
-    onSearchTermChanged: (searchTerm: string) => void;
     onReset: () => void;
 };
 
-const [BlogSearchContextProvider, useBlogSearch] = createContext<BlogSearchContextOptions>();
+const [BlogFilterContextProvider, useBlogFilter] = createContext<BlogFilterContextOptions>();
 
-export { useBlogSearch };
+export { useBlogFilter };
 
 /**
  * Provides blog and topic search and filtering to consuming components.
  */
 export const BlogSearchProvider: FC = ({ children }) => {
     const [selectedFilters, toggleFilter, resetFilters] = useToggleSet<string>();
-    const [searchTerm, setSearchTerm] = useState<string>('');
-    const blogs = useBlogPosts();
 
-    /**
-     * Filters the existing blog posts by the search term provided.
-     */
-    const filteredByTermBlogs = useFilter(
-        blogs,
-        searchTerm,
-        (blog, filter) => blog.title.includes(filter) || !!blog.topics.find((topic) => topic.includes(filter))
-    );
+    const blogs = useBlogPosts();
 
     /**
      * Filters the search result by the blog filters provided.
      */
-    const filteredByFiltersBlogs = useFilter(filteredByTermBlogs, selectedFilters, (blog, filters) =>
+    const filteredByFiltersBlogs = useFilter(blogs, selectedFilters, (blog, filters) =>
         filters.reduce<boolean>((prev, curr) => (prev === false ? false : blog.topics.includes(curr)), true)
     );
 
@@ -59,18 +48,15 @@ export const BlogSearchProvider: FC = ({ children }) => {
      */
     const handleReset = useCallback(() => {
         resetFilters();
-        setSearchTerm('');
-    }, [resetFilters, setSearchTerm]);
+    }, [resetFilters]);
 
-    const value: BlogSearchContextOptions = {
+    const value: BlogFilterContextOptions = {
         results: filteredByFiltersBlogs,
         applicableFilters,
         selectedFilters,
-        searchTerm,
         onFilterToggled: toggleFilter,
-        onSearchTermChanged: setSearchTerm,
         onReset: handleReset,
     };
 
-    return <BlogSearchContextProvider value={value}>{children}</BlogSearchContextProvider>;
+    return <BlogFilterContextProvider value={value}>{children}</BlogFilterContextProvider>;
 };
