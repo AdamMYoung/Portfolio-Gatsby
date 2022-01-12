@@ -127,7 +127,7 @@ module.exports = {
                     data.allContentfulPageBlogPost.nodes.map((node) => ({
                         id: node.id,
                         title: node.title,
-                        topics: node.topics.join(),
+                        topics: node.topics,
                         slug: node.slug,
                         createdAt: node.createdAt,
                     })),

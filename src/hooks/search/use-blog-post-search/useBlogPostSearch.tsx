@@ -30,9 +30,6 @@ const useSearchData = (): SearchData => {
 export const useBlogPostSearch = (term: string): BlogSearchResult[] => {
     const { index, store } = useSearchData();
     const results = useFlexSearch(term, index, store, { tokenizer: 'full' });
-    console.log(results);
-
-    if (term.length < 3) return [];
 
     return results;
 };

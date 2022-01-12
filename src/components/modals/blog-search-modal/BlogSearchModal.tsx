@@ -1,3 +1,4 @@
+import React from 'react';
 import { SearchIcon } from '@chakra-ui/icons';
 import {
     Input,
@@ -8,16 +9,21 @@ import {
     ModalProps,
     HStack,
     Divider,
-    ListItem,
-    List,
     Stack,
-    Box,
+    Text,
+    LinkOverlay,
+    LinkBox,
+    Flex,
+    Tag,
 } from '@chakra-ui/react';
-import React from 'react';
-import { LinkButton } from '~components/link-button';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
+import { InteractionTag, LinkButton } from '~components';
 import { useInputState } from '~hooks';
 import { useBlogPostSearch } from '~hooks/search';
+
+dayjs.extend(relativeTime);
 
 export const BlogSearchModal = ({ onClose, ...rest }: Omit<ModalProps, 'children'>): React.ReactElement => {
     const [search, setSearch] = useInputState('');
@@ -43,39 +49,27 @@ export const BlogSearchModal = ({ onClose, ...rest }: Omit<ModalProps, 'children
                 {results.length > 0 && (
                     <>
                         <Divider />
-                        <Stack p="4" maxHeight="400" overflow="none" overflowY="auto">
-                            {results.map((res) => (
-                                <LinkButton
-                                    variant="ghost"
-                                    justifyContent="left"
-                                    whiteSpace="normal"
-                                    key={res.slug}
-                                    href={`/blog/${res.slug}`}
-                                >
-                                    {res.title}
-                                </LinkButton>
-                            ))}
-                            {results.map((res) => (
-                                <LinkButton
-                                    variant="ghost"
-                                    justifyContent="left"
-                                    whiteSpace="normal"
-                                    key={res.slug}
-                                    href={`/blog/${res.slug}`}
-                                >
-                                    {res.title}
-                                </LinkButton>
-                            ))}
-                            {results.map((res) => (
-                                <LinkButton
-                                    variant="ghost"
-                                    justifyContent="left"
-                                    whiteSpace="normal"
-                                    key={res.slug}
-                                    href={`/blog/${res.slug}`}
-                                >
-                                    {res.title}
-                                </LinkButton>
+                        <Stack p="4" spacing="4" maxHeight="400" overflow="none" overflowY="auto" divider={<Divider />}>
+                            {results.map(({ title, slug, topics, createdAt }) => (
+                                <LinkBox as={Stack} spacing="2">
+                                    <LinkOverlay
+                                        px="0"
+                                        variant="link"
+                                        justifyContent="left"
+                                        whiteSpace="normal"
+                                        as={LinkButton}
+                                        href={`/blog/${slug}`}
+                                        w="full"
+                                    >
+                                        {title}
+                                    </LinkOverlay>
+                                    <Flex wrap="wrap" gap="2">
+                                        {topics.map((t) => (
+                                            <Tag size="sm">{t}</Tag>
+                                        ))}
+                                    </Flex>
+                                    <Text variant="subtitle">{dayjs().to(new Date(createdAt))}</Text>
+                                </LinkBox>
                             ))}
                         </Stack>
                     </>
