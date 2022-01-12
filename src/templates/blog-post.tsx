@@ -8,6 +8,7 @@ import { createContext } from '@chakra-ui/react-utils';
 import { CardList, Link, MarkdownRenderer, BlogCard, Progress, InteractionTag } from '~components';
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
+import { getTwitterIntent } from '~utils/twitter';
 import { LengthIcon, SEO, Contents } from '~views';
 import { useCombinedSubset, useIsMobile, useRelativeScrollPercentage } from '~hooks';
 import { ContentsProvider } from '~providers';
@@ -180,8 +181,6 @@ const BlogContent: VFC = () => {
     );
 };
 
-const getTwitterIntent = (url: string, text) => {
-
 // Social links displayed under the blog content.
 export const BlogSocial: VFC = () => {
     const { blogPost } = useBlogPost();
@@ -195,10 +194,7 @@ export const BlogSocial: VFC = () => {
                 Discuss on Twitter
             </Link>
             <Spacer />
-            <Link
-                fontSize="md"
-                href={getTwitterIntent(pageUrl, `I just read ${title} \nby @AdamMYoung_\n\n`)}
-            >
+            <Link fontSize="md" href={getTwitterIntent(pageUrl, `I just read ${title} \nby @AdamMYoung_\n\n`)}>
                 Share on Twitter
             </Link>
         </Stack>
