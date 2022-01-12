@@ -1,2 +1,2 @@
-export * from './blog-search-provider';
+export * from './blog-filter-provider';
 export * from './contents-provider';

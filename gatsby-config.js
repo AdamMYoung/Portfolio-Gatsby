@@ -103,6 +103,37 @@ module.exports = {
             __key: 'images',
         },
         {
+            resolve: 'gatsby-plugin-local-search',
+            options: {
+                name: 'blog-posts',
+                engine: 'flexsearch',
+                query: `#graphql
+                {
+                    allContentfulPageBlogPost(sort: { order: DESC, fields: createdAt }) {
+                        nodes {
+                            createdAt
+                            id
+                            topics
+                            title
+                            slug
+                        }
+                    }
+                }
+                `,
+                ref: 'id',
+                index: ['title', 'topics'],
+                store: ['title', 'topics', 'slug', 'createdAt'],
+                normalizer: ({ data }) =>
+                    data.allContentfulPageBlogPost.nodes.map((node) => ({
+                        id: node.id,
+                        title: node.title,
+                        topics: node.topics.join(),
+                        slug: node.slug,
+                        createdAt: node.createdAt,
+                    })),
+            },
+        },
+        {
             resolve: `gatsby-plugin-feed`,
             options: {
                 query: `
