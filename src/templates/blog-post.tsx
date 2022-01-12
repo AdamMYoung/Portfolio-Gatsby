@@ -137,18 +137,11 @@ const BlogContent: VFC = () => {
     const { blogPost } = useBlogPost();
     const { copy } = blogPost;
 
-    const [fromRef, toRef, { percentage }] = useRelativeScrollPercentage<HTMLDivElement, HTMLDivElement>(400);
-
     const isMobile = useIsMobile();
     const [isReturnButtonVisible, setReturnButtonVisible] = useState(false);
+    const [fromRef, toRef, { percentage }] = useRelativeScrollPercentage<HTMLDivElement, HTMLDivElement>(400);
 
-    useEffect(() => {
-        if (percentage > 20 && !isReturnButtonVisible) {
-            setReturnButtonVisible(true);
-        } else if (percentage < 20 && isReturnButtonVisible) {
-            setReturnButtonVisible(false);
-        }
-    }, [percentage, isReturnButtonVisible]);
+    useEffect(() => setReturnButtonVisible(percentage > 20), [percentage, isReturnButtonVisible]);
 
     return (
         <>
@@ -187,6 +180,8 @@ const BlogContent: VFC = () => {
     );
 };
 
+const getTwitterIntent = (url: string, text) => {
+
 // Social links displayed under the blog content.
 export const BlogSocial: VFC = () => {
     const { blogPost } = useBlogPost();
@@ -202,9 +197,7 @@ export const BlogSocial: VFC = () => {
             <Spacer />
             <Link
                 fontSize="md"
-                href={`https://twitter.com/intent/tweet?url=${pageUrl}&text=${encodeURIComponent(
-                    `I just read ${title} \nby @AdamMYoung_\n\n`
-                )}`}
+                href={getTwitterIntent(pageUrl, `I just read ${title} \nby @AdamMYoung_\n\n`)}
             >
                 Share on Twitter
             </Link>
