@@ -10,8 +10,11 @@ import {
     Divider,
     ListItem,
     List,
+    Stack,
+    Box,
 } from '@chakra-ui/react';
 import React from 'react';
+import { LinkButton } from '~components/link-button';
 
 import { useInputState } from '~hooks';
 import { useBlogPostSearch } from '~hooks/search';
@@ -19,8 +22,6 @@ import { useBlogPostSearch } from '~hooks/search';
 export const BlogSearchModal = ({ onClose, ...rest }: Omit<ModalProps, 'children'>): React.ReactElement => {
     const [search, setSearch] = useInputState('');
     const results = useBlogPostSearch(search);
-
-    console.log(results);
 
     return (
         <Modal onClose={onClose} {...rest}>
@@ -42,11 +43,41 @@ export const BlogSearchModal = ({ onClose, ...rest }: Omit<ModalProps, 'children
                 {results.length > 0 && (
                     <>
                         <Divider />
-                        <List>
+                        <Stack p="4" maxHeight="400" overflow="none" overflowY="auto">
                             {results.map((res) => (
-                                <ListItem key={res.slug}>{res.title}</ListItem>
+                                <LinkButton
+                                    variant="ghost"
+                                    justifyContent="left"
+                                    whiteSpace="normal"
+                                    key={res.slug}
+                                    href={`/blog/${res.slug}`}
+                                >
+                                    {res.title}
+                                </LinkButton>
                             ))}
-                        </List>
+                            {results.map((res) => (
+                                <LinkButton
+                                    variant="ghost"
+                                    justifyContent="left"
+                                    whiteSpace="normal"
+                                    key={res.slug}
+                                    href={`/blog/${res.slug}`}
+                                >
+                                    {res.title}
+                                </LinkButton>
+                            ))}
+                            {results.map((res) => (
+                                <LinkButton
+                                    variant="ghost"
+                                    justifyContent="left"
+                                    whiteSpace="normal"
+                                    key={res.slug}
+                                    href={`/blog/${res.slug}`}
+                                >
+                                    {res.title}
+                                </LinkButton>
+                            ))}
+                        </Stack>
                     </>
                 )}
             </ModalContent>
