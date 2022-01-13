@@ -1,1 +1,1 @@
-export * from "./LengthIcon"
+export * from './LengthIcon';

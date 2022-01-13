@@ -1,25 +1,24 @@
-import { Box, Button, chakra, Divider, Heading, Spacer, Stack, Tag, Text, Flex } from '@chakra-ui/react';
+import { ArrowBackIcon } from '@chakra-ui/icons';
+import { Box, Button, chakra, Divider, Flex, Heading, Spacer, Stack, Text } from '@chakra-ui/react';
+import { createContext } from '@chakra-ui/react-utils';
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { useEffect, useState, VFC } from 'react';
-import { ArrowBackIcon } from '@chakra-ui/icons';
-import { createContext } from '@chakra-ui/react-utils';
-
-import { CardList } from '~components/card-list';
 import { BlogCard } from '~components/blog-card';
-import { Progress } from '~components/progress';
+import { CardList } from '~components/card-list';
 import { InteractionTag } from '~components/interaction-tag';
+import { Link } from '~components/link';
 import { MarkdownRenderer } from '~components/markdown-renderer';
+import { MotionFlex } from '~components/motion';
+import { Progress } from '~components/progress';
+import { useCombinedSubset, useIsMobile, useRelativeScrollPercentage } from '~hooks';
+import { ContentsProvider } from '~providers';
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
 import { getTwitterIntent } from '~utils/twitter';
+import { Contents } from '~views/contents';
 import { LengthIcon } from '~views/length-icon';
 import { SEO } from '~views/seo';
-import { Contents } from '~views/contents';
-import { useCombinedSubset, useIsMobile, useRelativeScrollPercentage } from '~hooks';
-import { ContentsProvider } from '~providers';
-import { MotionFlex } from '~components/motion';
-import { Link } from '~components/link';
 
 type BlogPostProps = {
     data: {

@@ -1,19 +1,18 @@
 import { Box, Flex, Heading, Stack, Table, Tag, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-
+import { Card } from '~components/card';
+import { Link } from '~components/link';
+import { LinkButton } from '~components/link-button';
 import {
     TwoPanel,
     TwoPanelBlock,
+    TwoPanelBody,
+    TwoPanelHeading,
+    TwoPanelImage,
     TwoPanelSubtitle,
     TwoPanelTitle,
-    TwoPanelImage,
-    TwoPanelHeading,
-    TwoPanelBody,
 } from '~components/sections/two-panel';
-import { LinkButton } from '~components/link-button';
-import { Link } from '~components/link';
-import { Card } from '~components/card';
 import { useGithubStats } from '~hooks/static-queries';
 import { SEO } from '~views/seo';
 

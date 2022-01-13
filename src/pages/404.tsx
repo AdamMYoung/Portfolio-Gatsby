@@ -1,6 +1,5 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-
 import { LinkButton } from '~components/link-button';
 import {
     TwoPanel,

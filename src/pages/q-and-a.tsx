@@ -1,7 +1,7 @@
 import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input, Stack } from '@chakra-ui/react';
 import React, { useState, VFC } from 'react';
 import { useForm } from 'react-hook-form';
-
+import { getItemMotion } from '~components/motion';
 import {
     TwoPanel,
     TwoPanelBlock,
@@ -9,7 +9,6 @@ import {
     TwoPanelSubtitle,
     TwoPanelTitle,
 } from '~components/sections/two-panel';
-import { getItemMotion } from '~components/motion';
 import { SEO } from '~views/seo';
 
 const EMAIL_REGEX =

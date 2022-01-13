@@ -1,7 +1,5 @@
 import { Heading, List, ListItem, Stack, Text } from '@chakra-ui/react';
-import React from 'react';
-import { VFC } from 'react';
-
+import React, { VFC } from 'react';
 import { SEO } from '~views/seo';
 
 const Cookies: VFC = () => {

@@ -1,7 +1,6 @@
-import { chakra, Heading, LinkBox, LinkOverlay, Stack } from '@chakra-ui/react';
+import { Heading, LinkBox, LinkOverlay, Stack } from '@chakra-ui/react';
 import GatsbyLink from 'gatsby-link';
 import React, { VFC } from 'react';
-
 import { CardListItem } from '~components/card-list';
 import { STLFileRenderer } from '~views/stl-file-renderer';
 

@@ -1,6 +1,9 @@
 import { Stack } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
+import { CardList } from '~components/card-list';
+import { LinkButton } from '~components/link-button';
+import { PrintCard } from '~components/print-card';
 import {
     TwoPanel,
     TwoPanelBlock,
@@ -9,10 +12,6 @@ import {
     TwoPanelSubtitle,
     TwoPanelTitle,
 } from '~components/sections/two-panel';
-import { CardList } from '~components/card-list';
-import { LinkButton } from '~components/link-button';
-
-import { PrintCard } from '~components/print-card';
 import { usePrintsOverview } from '~hooks/static-queries';
 import { SEO } from '~views/seo';
 

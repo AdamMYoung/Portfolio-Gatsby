@@ -6,7 +6,6 @@ import hljsDefineGraphQL from 'highlightjs-graphql';
 import { paramCase } from 'param-case';
 import React, { useEffect, useRef, VFC } from 'react';
 import ReactMarkdown from 'react-markdown';
-
 import { AnchorHeading } from '~components/anchor-heading';
 import { CopyButton } from '~components/copy-button';
 import { Link } from '~components/link';

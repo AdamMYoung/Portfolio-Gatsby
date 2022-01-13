@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from '@chakra-ui/react';
-import React, { FC, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { Link, LinkProps } from '~components/link';
 
 export type LinkButtonProps = LinkProps & ButtonProps;

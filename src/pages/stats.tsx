@@ -1,23 +1,11 @@
-import {
-    Button,
-    Divider,
-    Grid,
-    Heading,
-    Progress,
-    Stack,
-    Stat,
-    StatHelpText,
-    StatNumber,
-    Text,
-} from '@chakra-ui/react';
-import React, { VFC } from 'react';
+import { Divider, Grid, Heading, Progress, Stack, Stat, StatHelpText, StatNumber, Text } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-
+import React, { VFC } from 'react';
+import { InteractionTag } from '~components/interaction-tag';
+import { useIsMobile } from '~hooks';
 import { useBlogPosts, useGithubStats, usePopularLanguage, usePopularTopic, useSiteInfo } from '~hooks/static-queries';
 import { SEO } from '~views/seo';
-import { useIsMobile } from '~hooks';
-import { InteractionTag } from '~components/interaction-tag';
 
 dayjs.extend(relativeTime);
 
