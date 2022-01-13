@@ -13,7 +13,7 @@ const gaCookie = 'gatsby-gdpr-google-analytics';
 const hotjarCookie = 'gatsby-gdpr-hotjar';
 
 const createCookieEntry = (name: string, accepted: boolean) => {
-    return `${name}=${accepted}; max-age=31536000;`;
+    return `${name}=${accepted}; max-age=31536000; SameSite=Lax;`;
 };
 
 const isCookieRequestSet = (): boolean => {
