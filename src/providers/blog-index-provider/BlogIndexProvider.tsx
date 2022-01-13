@@ -36,8 +36,6 @@ const useSearchData = (): BlogIndexContextProps => {
             const index = await fetch(publicIndexURL).then((res) => res.text());
             const store = await fetch(publicStoreURL).then((res) => res.json());
 
-            console.log(index, store);
-
             setIndex(index);
             setStore(store);
         };
