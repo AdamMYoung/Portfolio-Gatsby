@@ -1,5 +1,5 @@
 import { Divider, Heading, List, ListItem, Stack } from '@chakra-ui/react';
-import React, { useRef, VFC } from 'react';
+import React, { useMemo, useRef, VFC } from 'react';
 
 import { Link } from '~components';
 import { ContentsEntry, useContents } from '~providers';
@@ -16,11 +16,9 @@ const listItemIndentMap = {
 const buildContents = (entries: ContentsEntry[]) => {
     let heading = 0;
     let subheading = 0;
-    let prevElement = 'h1';
 
     return entries.map((e) => {
         const isSubheading = e.heading === 'h3';
-        prevElement = e.heading;
 
         if (isSubheading) {
             subheading += 1;
@@ -30,12 +28,7 @@ const buildContents = (entries: ContentsEntry[]) => {
         }
 
         return (
-            <ListItem
-                key={e.title}
-                as={Link}
-                sx={{ display: 'block', ml: listItemIndentMap[e.heading] }}
-                href={`#${e.anchor}`}
-            >
+            <ListItem as={Link} sx={{ display: 'block', ml: listItemIndentMap[e.heading] }} href={`#${e.anchor}`}>
                 {isSubheading ? `${heading}.${subheading}.` : `${heading}.`} {e.title}
             </ListItem>
         );
@@ -44,12 +37,13 @@ const buildContents = (entries: ContentsEntry[]) => {
 
 export const Contents: VFC = () => {
     const { entries } = useContents();
+    const contentsEntries = useMemo(() => buildContents(entries ?? []), [entries]);
 
     if (entries.length === 0) return null;
 
     return (
         <List as="ol" fontSize="md">
-            {buildContents(entries)}
+            {contentsEntries}
         </List>
     );
 };
