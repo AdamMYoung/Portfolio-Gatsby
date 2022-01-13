@@ -15,9 +15,9 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
 import { useBlogPosts, useGithubStats, usePopularLanguage, usePopularTopic, useSiteInfo } from '~hooks/static-queries';
-import { SEO } from '~views';
+import { SEO } from '~views/seo';
 import { useIsMobile } from '~hooks';
-import { InteractionTag } from '~components';
+import { InteractionTag } from '~components/interaction-tag';
 
 dayjs.extend(relativeTime);
 

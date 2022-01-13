@@ -2,9 +2,15 @@ import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input, Stack
 import React, { useState, VFC } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { TwoPanel, TwoPanelBlock, TwoPanelHeading, TwoPanelSubtitle, TwoPanelTitle } from '~components';
+import {
+    TwoPanel,
+    TwoPanelBlock,
+    TwoPanelHeading,
+    TwoPanelSubtitle,
+    TwoPanelTitle,
+} from '~components/sections/two-panel';
 import { getItemMotion } from '~components/motion';
-import { Layout, SEO } from '~views';
+import { SEO } from '~views/seo';
 
 const EMAIL_REGEX =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

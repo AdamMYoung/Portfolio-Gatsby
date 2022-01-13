@@ -40,7 +40,12 @@ module.exports = {
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-advanced-sitemap',
         `gatsby-plugin-perf-budgets`,
-        `gatsby-plugin-webpack-bundle-analyser-v2`,
+        {
+            resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+            options: {
+                disable: true,
+            },
+        },
         {
             resolve: 'gatsby-plugin-react-svg',
             options: {

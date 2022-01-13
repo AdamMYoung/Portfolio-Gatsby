@@ -18,7 +18,7 @@ import {
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import React from 'react';
-import { LinkButton } from '~components';
+import { LinkButton } from '~components/link-button';
 import { useInputState } from '~hooks';
 import { useBlogPostSearch } from '~hooks/search';
 

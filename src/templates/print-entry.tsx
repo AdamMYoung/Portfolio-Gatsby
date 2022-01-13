@@ -2,22 +2,23 @@ import React, { VFC } from 'react';
 import { Box, chakra, Heading, Stack } from '@chakra-ui/react';
 
 import { graphql } from 'gatsby';
-import { SEO, STLFileRenderer } from '~views';
+import { SEO } from '~views/seo';
+import { STLFileRenderer } from '~views/stl-file-renderer';
 import { PrintEntry } from '~types';
+
+import { ThreePanel, ThreePanelBlock } from '~components/sections/three-panel';
 import {
-    ThreePanel,
-    ThreePanelBlock,
     TwoPanel,
     TwoPanelBlock,
     TwoPanelBody,
     TwoPanelHeading,
     TwoPanelSubtitle,
     TwoPanelTitle,
-    Link,
-    LinkButton,
-} from '~components';
+} from '~components/sections/two-panel';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { Link } from '~components/link';
+import { LinkButton } from '~components/link-button';
 
 type PrintEntryProps = {
     data: {

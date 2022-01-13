@@ -1,7 +1,8 @@
 import { Container, Heading, Stack } from '@chakra-ui/react';
 import React from 'react';
-import { CategoryList, CategoryListItem, LinkButton } from '~components';
-import { SEO } from '~views';
+import { CategoryList, CategoryListItem } from '~components/category-list';
+import { LinkButton } from '~components/link-button';
+import { SEO } from '~views/seo';
 
 const Links = () => {
     return (

@@ -2,9 +2,16 @@ import { Box, Heading, Stack, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
-import { TwoPanel, TwoPanelBlock, TwoPanelSubtitle, TwoPanelTitle, Link, TwoPanelImage } from '~components';
+import {
+    TwoPanel,
+    TwoPanelBlock,
+    TwoPanelSubtitle,
+    TwoPanelTitle,
+    TwoPanelImage,
+} from '~components/sections/two-panel';
+import { Link } from '~components/link';
 import { useUses } from '~hooks/static-queries';
-import { Layout, SEO } from '~views';
+import { SEO } from '~views/seo';
 
 const UsesIntro = () => {
     return (

@@ -5,14 +5,21 @@ import React, { useEffect, useState, VFC } from 'react';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { createContext } from '@chakra-ui/react-utils';
 
-import { CardList, Link, MarkdownRenderer, BlogCard, Progress, InteractionTag } from '~components';
+import { CardList } from '~components/card-list';
+import { BlogCard } from '~components/blog-card';
+import { Progress } from '~components/progress';
+import { InteractionTag } from '~components/interaction-tag';
+import { MarkdownRenderer } from '~components/markdown-renderer';
 import { BlogPost } from '~types';
 import { stringToLongDate } from '~utils/date';
 import { getTwitterIntent } from '~utils/twitter';
-import { LengthIcon, SEO, Contents } from '~views';
+import { LengthIcon } from '~views/length-icon';
+import { SEO } from '~views/seo';
+import { Contents } from '~views/contents';
 import { useCombinedSubset, useIsMobile, useRelativeScrollPercentage } from '~hooks';
 import { ContentsProvider } from '~providers';
 import { MotionFlex } from '~components/motion';
+import { Link } from '~components/link';
 
 type BlogPostProps = {
     data: {

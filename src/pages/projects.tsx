@@ -7,15 +7,15 @@ import {
     TwoPanelBlock,
     TwoPanelSubtitle,
     TwoPanelTitle,
-    Link,
     TwoPanelImage,
-    Card,
     TwoPanelHeading,
     TwoPanelBody,
-    LinkButton,
-} from '~components';
+} from '~components/sections/two-panel';
+import { LinkButton } from '~components/link-button';
+import { Link } from '~components/link';
+import { Card } from '~components/card';
 import { useGithubStats } from '~hooks/static-queries';
-import { Layout, SEO } from '~views';
+import { SEO } from '~views/seo';
 
 const ProjectsIntro: VFC = () => {
     return (

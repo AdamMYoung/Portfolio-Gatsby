@@ -2,11 +2,11 @@ import { Box, Button, Heading, HStack, Input, Stack, Text, useDisclosure } from 
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { useEffect, VFC } from 'react';
 
+import { BlogCard } from '~components/blog-card';
+import { Link } from '~components/link';
+import { CategoryList, CategoryListItem } from '~components/category-list';
+import { CardList } from '~components/card-list';
 import {
-    CardList,
-    CategoryList,
-    CategoryListItem,
-    Link,
     TwoPanel,
     TwoPanelBlock,
     TwoPanelBody,
@@ -14,11 +14,11 @@ import {
     TwoPanelImage,
     TwoPanelSubtitle,
     TwoPanelTitle,
-    BlogCard,
-} from '~components';
+} from '~components/sections/two-panel';
 import { useArrayLimiter, useIfClient, useParamsEvent } from '~hooks';
 import { useBlogTopics } from '~hooks/static-queries';
-import { FeaturedArticleCard, SEO } from '~views';
+import { FeaturedArticleCard } from '~views/featured-article-card';
+import { SEO } from '~views/seo';
 import { stringToLongDate } from '~utils/date';
 import { BlogSearchProvider, useBlogFilter, useBlogIndex } from '~providers';
 import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
