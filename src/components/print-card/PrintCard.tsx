@@ -1,10 +1,8 @@
-import { chakra, Heading, LinkBox, LinkOverlay, Stack } from '@chakra-ui/react';
+import { Heading, LinkBox, LinkOverlay, Stack } from '@chakra-ui/react';
 import GatsbyLink from 'gatsby-link';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-import { CardListItem } from '~components';
-import { useIsMobile } from '~hooks';
-import { STLFileRenderer } from '~views';
+import { CardListItem } from '~components/card-list';
+import { STLFileRenderer } from '~views/stl-file-renderer';
 
 type PrintCardProps = {
     title: string;
@@ -13,11 +11,7 @@ type PrintCardProps = {
     modelUrl: string;
 };
 
-const ChakraGatsbyImage = chakra(GatsbyImage);
-
 export const PrintCard: VFC<PrintCardProps> = ({ title, description, to, modelUrl }) => {
-    const isMobile = useIsMobile();
-
     return (
         <LinkBox _hover={{ '.blog-card-image': { borderColor: 'red' }, cursor: 'pointer' }}>
             <CardListItem as={Stack}>

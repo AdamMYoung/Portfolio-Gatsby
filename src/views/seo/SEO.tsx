@@ -15,7 +15,7 @@ export const SEO: FC<SEOProps> = ({ title, description, imageUrl, imageAlt, cano
             <html lang="en" />
             <title>{`AYDev | ${title}`}</title>
             <meta name="description" content={description} />
-            <link rel="canonical" href={canonical} />
+            <link rel="canonical" href={`https://aydev.uk${canonical}`} />
 
             <meta property="og:title" content={title} />
             <meta property="og:site_name" content="AYDev" />

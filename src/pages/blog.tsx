@@ -1,12 +1,14 @@
-import { Box, Button, Heading, HStack, Input, Stack, Text, useDisclosure } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
+import { Box, Button, Stack, Text, useDisclosure } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { useEffect, VFC } from 'react';
-
+import { BlogCard } from '~components/blog-card';
+import { CardList } from '~components/card-list';
+import { CategoryList, CategoryListItem } from '~components/category-list';
+import { Link } from '~components/link';
+import { BlogSearchModal } from '~components/modals';
+import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
 import {
-    CardList,
-    CategoryList,
-    CategoryListItem,
-    Link,
     TwoPanel,
     TwoPanelBlock,
     TwoPanelBody,
@@ -14,16 +16,13 @@ import {
     TwoPanelImage,
     TwoPanelSubtitle,
     TwoPanelTitle,
-    BlogCard,
-} from '~components';
+} from '~components/sections/two-panel';
 import { useArrayLimiter, useIfClient, useParamsEvent } from '~hooks';
 import { useBlogTopics } from '~hooks/static-queries';
-import { FeaturedArticleCard, SEO } from '~views';
-import { stringToLongDate } from '~utils/date';
 import { BlogSearchProvider, useBlogFilter, useBlogIndex } from '~providers';
-import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
-import { BlogSearchModal } from '~components/modals';
-import { SearchIcon } from '@chakra-ui/icons';
+import { stringToLongDate } from '~utils/date';
+import { FeaturedArticleCard } from '~views/featured-article-card';
+import { SEO } from '~views/seo';
 
 const BlogIntro = () => {
     const { isIndexLoaded } = useBlogIndex();

@@ -1,14 +1,11 @@
-import { Button, Heading, Stack, Text } from '@chakra-ui/react';
+import { Button, Stack, Text } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-
+import { Link } from '~components/link';
+import { LinkButton } from '~components/link-button';
+import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
+import { ThreePanel, ThreePanelBlock, ThreePanelSubtitle, ThreePanelTitle } from '~components/sections/three-panel';
 import {
-    Link,
-    LinkButton,
-    ThreePanel,
-    ThreePanelBlock,
-    ThreePanelSubtitle,
-    ThreePanelTitle,
     TwoPanel,
     TwoPanelBlock,
     TwoPanelBody,
@@ -16,9 +13,9 @@ import {
     TwoPanelImage,
     TwoPanelSubtitle,
     TwoPanelTitle,
-} from '~components';
-import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
-import { FeaturedArticleCard, Layout, SEO } from '~views';
+} from '~components/sections/two-panel';
+import { FeaturedArticleCard } from '~views/featured-article-card';
+import { SEO } from '~views/seo';
 
 const HomeIntro = () => {
     return (

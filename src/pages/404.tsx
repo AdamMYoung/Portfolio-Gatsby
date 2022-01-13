@@ -1,9 +1,7 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-
-import { Layout } from '~views';
+import { LinkButton } from '~components/link-button';
 import {
-    LinkButton,
     TwoPanel,
     TwoPanelBlock,
     TwoPanelBody,
@@ -11,7 +9,7 @@ import {
     TwoPanelImage,
     TwoPanelSubtitle,
     TwoPanelTitle,
-} from '~components';
+} from '~components/sections/two-panel';
 
 const NotFound: VFC = () => {
     return (

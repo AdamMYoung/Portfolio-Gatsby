@@ -1,6 +1,6 @@
 import { List, ListItem } from '@chakra-ui/react';
 import React, { useMemo, VFC } from 'react';
-import { Link } from '~components';
+import { Link } from '~components/link';
 import { ContentsEntry, useContents } from '~providers';
 
 const listItemIndentMap = {

@@ -1,7 +1,6 @@
 import { Tag, TagProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
-
-import { LinkButton, LinkButtonProps } from '..';
+import { LinkButton, LinkButtonProps } from '~components/link-button';
 
 type InteractionTagProps = TagProps & LinkButtonProps;
 

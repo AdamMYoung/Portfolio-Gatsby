@@ -34,7 +34,5 @@ export const useUses = (): UseCategory[] => {
         }
     `);
 
-    console.log(data.allContentfulUsesCollection);
-
     return data.allContentfulUsesCollection.nodes;
 };

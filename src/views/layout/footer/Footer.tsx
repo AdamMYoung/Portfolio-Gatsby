@@ -1,8 +1,7 @@
 import { Divider, Flex, Grid, Heading, Icon, IconButton, Stack } from '@chakra-ui/react';
 import React, { VFC } from 'react';
 import { FaDev, FaGithub, FaTwitter, FaUnsplash } from 'react-icons/fa';
-
-import { Link } from '~components';
+import { Link } from '~components/link';
 
 export const Footer: VFC = () => {
     return (

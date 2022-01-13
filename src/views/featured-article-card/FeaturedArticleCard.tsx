@@ -3,8 +3,6 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
 
 import {
-    Card,
-    LinkButton,
     TwoPanel,
     TwoPanelBlock,
     TwoPanelBody,
@@ -12,7 +10,9 @@ import {
     TwoPanelImage,
     TwoPanelSubtitle,
     TwoPanelTitle,
-} from '~components';
+} from '~components/sections/two-panel';
+import { Card } from '~components/card';
+import { LinkButton } from '~components/link-button';
 import { getContainerMotion } from '~components/motion';
 import { useFeaturedArticle } from '~hooks/static-queries';
 import { stringToLongDate } from '~utils/date';
