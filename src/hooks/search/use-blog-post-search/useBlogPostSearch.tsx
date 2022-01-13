@@ -1,11 +1,5 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import { useEffect, useState } from 'react';
 import { useFlexSearch } from 'react-use-flexsearch';
-
-type SearchData = {
-    index: string;
-    store: any;
-};
+import { useBlogIndex } from '~providers';
 
 type BlogSearchResult = {
     title: string;
@@ -14,21 +8,8 @@ type BlogSearchResult = {
     createdAt: string;
 };
 
-const useSearchData = (): SearchData => {
-    const data = useStaticQuery(graphql`
-        {
-            localSearchBlogPosts {
-                store
-                index
-            }
-        }
-    `);
-
-    return data.localSearchBlogPosts;
-};
-
 export const useBlogPostSearch = (term: string): BlogSearchResult[] => {
-    const { index, store } = useSearchData();
+    const { index, store } = useBlogIndex();
     const results = useFlexSearch(term, index, store, { tokenizer: 'full' });
 
     return results;
