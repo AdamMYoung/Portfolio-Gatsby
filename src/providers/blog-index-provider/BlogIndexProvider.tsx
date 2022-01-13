@@ -5,16 +5,14 @@ import React, { FC, useEffect, useState } from 'react';
 type BlogIndexContextProps = {
     index: string;
     store: any;
+    isIndexLoaded: boolean;
 };
 
 const [_, useBlogIndex, BlogIndexContext] = createContext<BlogIndexContextProps>();
 
 export { useBlogIndex };
 
-const useSearchData = (): BlogIndexContextProps => {
-    const [index, setIndex] = useState<string>();
-    const [store, setStore] = useState();
-
+const getIndexes = () => {
     const data = useStaticQuery(graphql`
         {
             localSearchBlogPosts {
@@ -24,10 +22,21 @@ const useSearchData = (): BlogIndexContextProps => {
         }
     `);
 
+    return data?.localSearchBlogPosts ?? {};
+};
+
+const useSearchData = (): BlogIndexContextProps => {
+    const [index, setIndex] = useState<string>();
+    const [store, setStore] = useState<string | Object>();
+
+    const { publicIndexURL, publicStoreURL } = getIndexes();
+
     useEffect(() => {
         const getData = async () => {
-            const index = await fetch(data.localSearchBlogPosts.publicIndexURL).then((res) => res.json());
-            const store = await fetch(data.localSearchBlogPosts.publicStoreURL).then((res) => res.json());
+            const index = await fetch(publicIndexURL).then((res) => res.text());
+            const store = await fetch(publicStoreURL).then((res) => res.json());
+
+            console.log(index, store);
 
             setIndex(index);
             setStore(store);
@@ -36,11 +45,11 @@ const useSearchData = (): BlogIndexContextProps => {
         getData();
     }, []);
 
-    return { index, store };
+    return { index, store, isIndexLoaded: !!index && !!store };
 };
 
 export const BlogIndexProvider: FC = ({ children }) => {
-    const { index, store } = useSearchData();
+    const { index, store, isIndexLoaded } = useSearchData();
 
-    return <BlogIndexContext.Provider value={{ index, store }}>{children}</BlogIndexContext.Provider>;
+    return <BlogIndexContext.Provider value={{ index, store, isIndexLoaded }}>{children}</BlogIndexContext.Provider>;
 };

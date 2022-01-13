@@ -20,12 +20,13 @@ import { useArrayLimiter, useIfClient, useParamsEvent } from '~hooks';
 import { useBlogTopics } from '~hooks/static-queries';
 import { FeaturedArticleCard, SEO } from '~views';
 import { stringToLongDate } from '~utils/date';
-import { BlogSearchProvider, useBlogFilter } from '~providers';
+import { BlogSearchProvider, useBlogFilter, useBlogIndex } from '~providers';
 import { getItemMotion, MotionHeading, useViewportTransition } from '~components/motion';
 import { BlogSearchModal } from '~components/modals';
 import { SearchIcon } from '@chakra-ui/icons';
 
 const BlogIntro = () => {
+    const { isIndexLoaded } = useBlogIndex();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { results, selectedFilters, onReset } = useBlogFilter();
 
@@ -70,7 +71,7 @@ const BlogIntro = () => {
                     width={900}
                 />
             </TwoPanelImage>
-            <BlogSearchModal isOpen={isOpen} onClose={onClose} />
+            {isIndexLoaded && <BlogSearchModal isOpen={isOpen} onClose={onClose} />}
         </TwoPanel>
     );
 };
