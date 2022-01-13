@@ -1,7 +1,6 @@
-import { Box, BoxProps, useColorMode } from '@chakra-ui/react';
+import { useColorMode } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { getItemMotion, MotionBox, MotionBoxProps, useViewportTransition } from '~components/motion';
-
 import { useMergedStyles } from '~hooks';
 
 export const Card: FC<MotionBoxProps> = ({ children, sx, ...rest }) => {

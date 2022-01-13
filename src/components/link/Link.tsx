@@ -1,7 +1,6 @@
 import { Link as ChakraLink, LinkProps as ChakraLinkProps } from '@chakra-ui/react';
 import { Link as GatsbyLink } from 'gatsby';
-import React, { FC, forwardRef } from 'react';
-
+import React, { forwardRef } from 'react';
 import { SiteInfo, useSiteInfo } from '~hooks/static-queries';
 
 export type LinkProps = ChakraLinkProps & {

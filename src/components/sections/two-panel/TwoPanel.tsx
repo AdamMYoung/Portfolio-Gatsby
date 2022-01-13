@@ -1,6 +1,5 @@
 import { Stack, StackProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
-
 import {
     getContainerMotion,
     getItemMotion,
@@ -8,10 +7,10 @@ import {
     MotionBoxProps,
     MotionGrid,
     MotionGridProps,
-    MotionStack,
-    MotionStackProps,
     MotionHeading,
     MotionHeadingProps,
+    MotionStack,
+    MotionStackProps,
     useViewportTransition,
 } from '~components/motion';
 import { useMergedStyles } from '~hooks';

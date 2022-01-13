@@ -1,6 +1,5 @@
-import { Container, Flex, Heading, Stack } from '@chakra-ui/react';
+import { Container, Heading, Stack } from '@chakra-ui/react';
 import React from 'react';
-
 import { CategoryList, CategoryListItem, LinkButton } from '~components';
 import { SEO } from '~views';
 

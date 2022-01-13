@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 import {
-    useViewportTransition,
-    getItemMotion,
     getContainerMotion,
+    getItemMotion,
     MotionButton,
     MotionButtonProps,
     MotionFlex,
     MotionFlexProps,
+    useViewportTransition,
 } from '~components/motion';
-
 import { useMergedStyles } from '~hooks';
 
 export const CategoryList: FC<MotionFlexProps> = ({ children, sx, ...rest }) => {

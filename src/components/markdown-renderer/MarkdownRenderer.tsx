@@ -1,16 +1,14 @@
+import { Box, BoxProps, Code, Heading, ListItem, Text } from '@chakra-ui/react';
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
-import React, { useEffect, useRef, VFC } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { Text, Box, Code, Heading, ListItem, BoxProps } from '@chakra-ui/react';
 import hljs from 'highlight.js/lib/common';
+import 'highlight.js/styles/github-dark.css';
 import hljsDefineGraphQL from 'highlightjs-graphql';
 import { paramCase } from 'param-case';
-
-import 'highlight.js/styles/github-dark.css';
-
-import { AnchorHeading, Link, CopyButton } from '~components';
-import { getTextFromMarkdownNode, MarkdownNode } from '~utils/markdown';
+import React, { useEffect, useRef, VFC } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { AnchorHeading, CopyButton, Link } from '~components';
 import { useContents } from '~providers';
+import { getTextFromMarkdownNode, MarkdownNode } from '~utils/markdown';
 
 hljsDefineGraphQL(hljs);
 hljs.configure({

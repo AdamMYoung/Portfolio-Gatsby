@@ -1,6 +1,5 @@
 import { MutableRefObject, useMemo } from 'react';
 import { useWindowScroll } from 'react-use';
-
 import { useDistanceFromTop } from '..';
 
 type UseRelativeScrollPercentageResult<TStartElement, TEndElement> = [

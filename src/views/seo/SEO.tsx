@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
-import { useSiteInfo } from '~hooks/static-queries';
 
 type SEOProps = {
     title: string;
@@ -11,8 +10,6 @@ type SEOProps = {
 };
 
 export const SEO: FC<SEOProps> = ({ title, description, imageUrl, imageAlt, canonical, children }) => {
-    const { siteMetadata } = useSiteInfo();
-
     return (
         <Helmet>
             <html lang="en" />

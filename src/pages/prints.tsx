@@ -1,20 +1,19 @@
 import { Stack } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-
 import {
+    CardList,
+    LinkButton,
+    PrintCard,
     TwoPanel,
     TwoPanelBlock,
+    TwoPanelBody,
+    TwoPanelImage,
     TwoPanelSubtitle,
     TwoPanelTitle,
-    TwoPanelImage,
-    PrintCard,
-    CardList,
-    TwoPanelBody,
-    LinkButton,
 } from '~components';
-import { usePrintsOverview, useSiteInfo } from '~hooks/static-queries';
-import { Layout, SEO } from '~views';
+import { usePrintsOverview } from '~hooks/static-queries';
+import { SEO } from '~views';
 
 const PrintsIntro = () => {
     return (

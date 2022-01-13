@@ -1,6 +1,5 @@
-import { Divider, Heading, List, ListItem, Stack } from '@chakra-ui/react';
-import React, { useMemo, useRef, VFC } from 'react';
-
+import { List, ListItem } from '@chakra-ui/react';
+import React, { useMemo, VFC } from 'react';
 import { Link } from '~components';
 import { ContentsEntry, useContents } from '~providers';
 

@@ -1,25 +1,24 @@
-import React from 'react';
 import { SearchIcon } from '@chakra-ui/icons';
 import {
+    Divider,
+    Flex,
+    HStack,
     Input,
+    LinkBox,
+    LinkOverlay,
     Modal,
     ModalBody,
     ModalContent,
     ModalOverlay,
     ModalProps,
-    HStack,
-    Divider,
     Stack,
-    Text,
-    LinkOverlay,
-    LinkBox,
-    Flex,
     Tag,
+    Text,
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-
-import { InteractionTag, LinkButton } from '~components';
+import React from 'react';
+import { LinkButton } from '~components';
 import { useInputState } from '~hooks';
 import { useBlogPostSearch } from '~hooks/search';
 

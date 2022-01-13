@@ -1,7 +1,6 @@
-import { Box, BoxProps, Text, useBreakpointValue } from '@chakra-ui/react';
+import { Box, BoxProps } from '@chakra-ui/react';
 import React, { useState, VFC } from 'react';
 import { useDebounce } from 'react-use';
-
 import { MotionBox, MotionText } from '~components/motion';
 
 type ProgressProps = BoxProps & {

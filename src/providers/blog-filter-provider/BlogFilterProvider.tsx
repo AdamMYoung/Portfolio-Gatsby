@@ -1,8 +1,7 @@
-import React, { FC, useCallback, useMemo } from 'react';
 import { createContext } from '@chakra-ui/react-utils';
-
-import { useBlogPosts } from '~hooks/static-queries';
+import React, { FC, useCallback, useMemo } from 'react';
 import { useFilter, useToggleSet } from '~hooks';
+import { useBlogPosts } from '~hooks/static-queries';
 import { BlogPostOverview } from '~types';
 
 type BlogFilterContextOptions = {

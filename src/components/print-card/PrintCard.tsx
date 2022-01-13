@@ -2,7 +2,6 @@ import { chakra, Heading, LinkBox, LinkOverlay, Stack } from '@chakra-ui/react';
 import GatsbyLink from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
-
 import { CardListItem } from '~components';
 import { useIsMobile } from '~hooks';
 import { STLFileRenderer } from '~views';

@@ -1,6 +1,5 @@
-import React, { FC, MouseEventHandler, useCallback } from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
-
+import React, { FC, MouseEventHandler } from 'react';
 import { useCopyToClipboard } from '~hooks';
 
 type CopyButtonProps = ButtonProps & {

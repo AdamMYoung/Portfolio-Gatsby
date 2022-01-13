@@ -1,12 +1,11 @@
-import { Box, BoxProps, Grid, GridProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import {
     getContainerMotion,
     getItemMotion,
-    MotionGrid,
-    MotionGridProps,
     MotionBox,
     MotionBoxProps,
+    MotionGrid,
+    MotionGridProps,
 } from '~components/motion';
 
 export const CardList: FC<MotionGridProps> = ({ children, ...rest }) => {

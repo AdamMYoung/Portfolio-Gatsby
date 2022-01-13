@@ -2,8 +2,7 @@ import { LinkIcon } from '@chakra-ui/icons';
 import { Button, ButtonProps, useBreakpointValue } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { useLocation } from 'react-use';
-
-import { useMergedStyles, useCopyToClipboard } from '~hooks';
+import { useCopyToClipboard, useMergedStyles } from '~hooks';
 
 export const AnchorHeading: FC<ButtonProps> = ({ children, sx, id, onClick, ...rest }) => {
     const handleCopy = useCopyToClipboard('Link copied to clipboard');
