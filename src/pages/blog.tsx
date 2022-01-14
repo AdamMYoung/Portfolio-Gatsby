@@ -33,7 +33,7 @@ const BlogIntro = () => {
     const isTopicsSelected = selectedFilters.length > 0;
 
     return (
-        <TwoPanel>
+        <TwoPanel disableMotion>
             <TwoPanelBlock>
                 <TwoPanelHeading>
                     <TwoPanelTitle as="h1">Learn development tips and tricks.</TwoPanelTitle>

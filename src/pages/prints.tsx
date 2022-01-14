@@ -17,7 +17,7 @@ import { SEO } from '~views/seo';
 
 const PrintsIntro = () => {
     return (
-        <TwoPanel>
+        <TwoPanel disableMotion>
             <TwoPanelBlock>
                 <TwoPanelTitle as="h1">3D Models.</TwoPanelTitle>
                 <TwoPanelSubtitle>

@@ -14,7 +14,7 @@ import { SEO } from '~views/seo';
 
 const UsesIntro = () => {
     return (
-        <TwoPanel>
+        <TwoPanel disableMotion>
             <TwoPanelBlock>
                 <TwoPanelTitle as="h1">My Uses.</TwoPanelTitle>
                 <TwoPanelSubtitle>Equipment, software, hardware that I use for work and hobbies.</TwoPanelSubtitle>

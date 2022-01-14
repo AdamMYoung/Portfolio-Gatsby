@@ -19,7 +19,7 @@ import { SEO } from '~views/seo';
 
 const HomeIntro = () => {
     return (
-        <TwoPanel>
+        <TwoPanel disableMotion>
             <TwoPanelBlock>
                 <Stack>
                     <TwoPanelTitle as="h1">Adam Young</TwoPanelTitle>

@@ -18,7 +18,7 @@ import { SEO } from '~views/seo';
 
 const ProjectsIntro: VFC = () => {
     return (
-        <TwoPanel>
+        <TwoPanel disableMotion>
             <TwoPanelBlock>
                 <TwoPanelTitle as="h1">Current and past projects.</TwoPanelTitle>
                 <TwoPanelSubtitle>Libraries, applications, and proof of concepts.</TwoPanelSubtitle>

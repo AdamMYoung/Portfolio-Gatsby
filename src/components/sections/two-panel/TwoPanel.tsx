@@ -1,5 +1,7 @@
 import { Stack, StackProps } from '@chakra-ui/react';
+import { createContext } from '@chakra-ui/react-utils';
 import React, { FC } from 'react';
+
 import {
     getContainerMotion,
     getItemMotion,
@@ -7,23 +9,33 @@ import {
     MotionBoxProps,
     MotionGrid,
     MotionGridProps,
-    MotionHeading,
-    MotionHeadingProps,
     MotionStack,
     MotionStackProps,
+    MotionHeading,
+    MotionHeadingProps,
     useViewportTransition,
 } from '~components/motion';
 import { useMergedStyles } from '~hooks';
 
-export const TwoPanel: FC<MotionGridProps> = ({ children, ...rest }) => {
+type TwoPanelContextProps = {
+    disableMotion?: boolean;
+};
+
+type TwoPanelProps = TwoPanelContextProps & MotionGridProps;
+
+const [TwoPanelProvider, useTwoPanelContext] = createContext<TwoPanelContextProps>();
+
+export const TwoPanel: FC<TwoPanelProps> = ({ children, disableMotion, ...rest }) => {
     return (
         <MotionGrid as="section" gridTemplateColumns={['1fr', null, '1fr 1fr', '1fr 1.2fr']} {...rest}>
-            {children}
+            <TwoPanelProvider value={{ disableMotion }}>{children}</TwoPanelProvider>
         </MotionGrid>
     );
 };
 
 export const TwoPanelBlock: FC<MotionStackProps> = ({ children, sx, ...rest }) => {
+    const { disableMotion } = useTwoPanelContext();
+
     const _sx = useMergedStyles(sx, {
         mr: [0, null, 16],
         '&:last-child': {
@@ -34,7 +46,7 @@ export const TwoPanelBlock: FC<MotionStackProps> = ({ children, sx, ...rest }) =
 
     return (
         <MotionStack
-            variants={getContainerMotion()}
+            variants={!disableMotion && getContainerMotion()}
             {...useViewportTransition(true, 0.7)}
             sx={_sx}
             order={[1, null, 'initial']}
@@ -52,33 +64,47 @@ export const TwoPanelHeading: FC<StackProps> = ({ children, ...rest }) => {
 };
 
 export const TwoPanelTitle: FC<MotionHeadingProps> = ({ children, ...rest }) => {
+    const { disableMotion } = useTwoPanelContext();
+
     return (
-        <MotionHeading as="h2" variants={getItemMotion()} fontSize={['3xl', null, '5xl']} {...rest}>
+        <MotionHeading as="h2" variants={!disableMotion && getItemMotion()} fontSize={['3xl', null, '5xl']} {...rest}>
             {children}
         </MotionHeading>
     );
 };
 
 export const TwoPanelSubtitle: FC<MotionHeadingProps> = ({ children, ...rest }) => {
+    const { disableMotion } = useTwoPanelContext();
+
     return (
-        <MotionHeading as="p" variants={getItemMotion()} fontSize={['xl', null, '3xl']} variant="subtitle" {...rest}>
+        <MotionHeading
+            as="p"
+            variants={!disableMotion && getItemMotion()}
+            fontSize={['xl', null, '3xl']}
+            variant="subtitle"
+            {...rest}
+        >
             {children}
         </MotionHeading>
     );
 };
 
 export const TwoPanelBody: FC<MotionBoxProps> = ({ children, ...rest }) => {
+    const { disableMotion } = useTwoPanelContext();
+
     return (
-        <MotionBox variants={getItemMotion()} w="full" {...rest}>
+        <MotionBox variants={!disableMotion && getItemMotion()} w="full" {...rest}>
             {children}
         </MotionBox>
     );
 };
 
 export const TwoPanelImage: FC<MotionBoxProps> = ({ children, ...rest }) => {
+    const { disableMotion } = useTwoPanelContext();
+
     return (
         <MotionBox
-            variants={getItemMotion()}
+            variants={!disableMotion && getItemMotion()}
             {...useViewportTransition(true, 0.7)}
             order={[0, null, 'initial']}
             {...rest}

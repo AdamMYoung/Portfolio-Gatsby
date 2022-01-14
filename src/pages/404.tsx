@@ -13,7 +13,7 @@ import {
 
 const NotFound: VFC = () => {
     return (
-        <TwoPanel>
+        <TwoPanel disableMotion>
             <TwoPanelBlock>
                 <TwoPanelHeading>
                     <TwoPanelTitle>Page not found.</TwoPanelTitle>

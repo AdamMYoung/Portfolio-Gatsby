@@ -47,7 +47,7 @@ const QAndAIntro = () => {
     };
 
     return (
-        <TwoPanel>
+        <TwoPanel disableMotion>
             <TwoPanelBlock variants={getItemMotion()}>
                 <TwoPanelHeading>
                     <TwoPanelTitle as="h1">Ask me a question.</TwoPanelTitle>
