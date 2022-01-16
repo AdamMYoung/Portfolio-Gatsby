@@ -33,10 +33,10 @@ const ChakraGatsbyImage = chakra(GatsbyImage);
 const [BlogPostProvider, useBlogPost] = createContext<{ blogPost: BlogPost }>();
 
 const getLength = (duration: number) => {
-    if (duration < 5) {
+    if (duration < 3) {
         return 'short';
     }
-    if (duration >= 5 && duration < 10) {
+    if (duration >= 3 && duration < 7) {
         return 'medium';
     }
     return 'long';
