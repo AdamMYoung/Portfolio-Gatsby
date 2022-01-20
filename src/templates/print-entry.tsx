@@ -50,7 +50,7 @@ const PrintEntryPage: VFC<PrintEntryProps> = ({ data }) => {
                 <TwoPanel>
                     <TwoPanelBlock>
                         <TwoPanelHeading>
-                            <TwoPanelTitle>{name}</TwoPanelTitle>
+                            <TwoPanelTitle as="h1">{name}</TwoPanelTitle>
                             <TwoPanelSubtitle fontSize="md">{description.description}</TwoPanelSubtitle>
                         </TwoPanelHeading>
                         <TwoPanelBody>

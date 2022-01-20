@@ -13,7 +13,9 @@ const Links = () => {
                 canonical="/links/"
             />
             <Stack>
-                <Heading fontWeight="semibold">My Links</Heading>
+                <Heading as="h1" fontWeight="semibold">
+                    My Links
+                </Heading>
                 <CategoryList w="full" gap="2" flexWrap="wrap">
                     <CategoryListItem as={LinkButton} href="/">
                         Website

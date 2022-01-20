@@ -110,7 +110,7 @@ const BlogHeader: VFC = () => {
     return (
         <>
             <Stack>
-                <Heading>{title}</Heading>
+                <Heading as="h1">{title}</Heading>
                 <Stack spacing={4}>
                     <Text variant="subtitle" fontSize="xl">
                         <LengthIcon length={getLength(duration)} /> {copy.readingTime}

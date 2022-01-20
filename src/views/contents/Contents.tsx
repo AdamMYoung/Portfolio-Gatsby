@@ -27,8 +27,10 @@ const buildContents = (entries: ContentsEntry[]) => {
         }
 
         return (
-            <ListItem as={Link} sx={{ display: 'block', ml: listItemIndentMap[e.heading] }} href={`#${e.anchor}`}>
-                {isSubheading ? `${heading}.${subheading}.` : `${heading}.`} {e.title}
+            <ListItem sx={{ display: 'block', ml: listItemIndentMap[e.heading] }}>
+                <Link href={`#${e.anchor}`}>
+                    {isSubheading ? `${heading}.${subheading}.` : `${heading}.`} {e.title}
+                </Link>
             </ListItem>
         );
     });
