@@ -1,8 +1,10 @@
-import { chakra, Flex, Stack } from "@chakra-ui/react";
+import { chakra, Text, Flex, Stack, Tag } from "@chakra-ui/react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React, { VFC } from "react";
+
 import { TwoPanel, TwoPanelBlock, TwoPanelBody, TwoPanelHeading, TwoPanelImage, TwoPanelSubtitle, TwoPanelTitle } from "~components/sections/two-panel";
 import { useJobs } from "~hooks/static-queries";
+import { stringToMonthYear } from "~utils/date";
 
 import { SEO } from "~views/seo";
 
@@ -19,10 +21,10 @@ const Career: VFC = () => {
                 canonical="/"
             />
 
-            {jobs.map((job, index) => <TwoPanel key={job.companyName}>
-                {index % 2 === 0 && <TwoPanelImage>
+            {jobs.map((job, index) => <TwoPanel gridTemplateColumns={['1fr', null, null, '1fr 1.2fr']} key={job.companyName}>
+                {index % 2 === 0 && <TwoPanelImage alignSelf="center">
                     <ChakraGatsbyImage
-                        h="full"
+                        w="full"
                         pointerEvents="none"
                         rounded="xl"
                         image={getImage(job.image)}
@@ -34,17 +36,25 @@ const Career: VFC = () => {
                     <TwoPanelHeading>
                         <TwoPanelTitle>{job.companyName}</TwoPanelTitle>
                         <TwoPanelSubtitle>{job.role}</TwoPanelSubtitle>
-                        <TwoPanelBody>
-                            <Flex gap="2">
 
-                            </Flex>
-                        </TwoPanelBody>
+                        <TwoPanelSubtitle fontSize="md">{stringToMonthYear(job.startDate)} - {job.endDate ? stringToMonthYear(job.endDate) : "Now"}</TwoPanelSubtitle>
                     </TwoPanelHeading>
+                    <TwoPanelBody>
+                        <Flex gap="2" wrap="wrap">
+                            {job.languages.map(lang => <Tag colorScheme="green">{lang}</Tag>)}
+                            {job.technologies.map(tech => <Tag colorScheme="red">{tech}</Tag>)}
+                            {job.services.map(service => <Tag colorScheme="blue">{service}</Tag>)}
+                        </Flex>
+
+                    </TwoPanelBody>
+                    <TwoPanelBody>
+                        <Text>{job.description}</Text>
+                    </TwoPanelBody>
                 </TwoPanelBlock>
 
-                {index % 2 !== 0 && <TwoPanelImage>
+                {index % 2 !== 0 && <TwoPanelImage alignSelf="center">
                     <ChakraGatsbyImage
-                        h="full"
+                        w="full"
                         pointerEvents="none"
                         rounded="xl"
                         image={getImage(job.image)}
