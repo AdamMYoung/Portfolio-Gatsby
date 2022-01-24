@@ -52,7 +52,7 @@ const Career: VFC = () => {
             <SEO
                 title="Career"
                 description="A breakdown of my career and experience with languages, technologies and services."
-                canonical="/"
+                canonical="/career"
             />
 
             <CareerIntro />

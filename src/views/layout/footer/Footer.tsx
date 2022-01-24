@@ -13,7 +13,7 @@ export const Footer: VFC = () => {
                 textAlign={['center', null, 'left']}
                 gridTemplateColumns={['1fr', null, '2fr 1fr 1fr']}
             >
-                <Stack spacing="6">
+                <Stack spacing="4">
                     <Heading fontSize="xl">Socials</Heading>
                     <Flex flexWrap="wrap" justifyContent={['center', null, 'flex-start']} gap="2">
                         <IconButton
@@ -48,24 +48,44 @@ export const Footer: VFC = () => {
                 </Stack>
 
                 <Stack spacing="6">
-                    <Heading fontSize="xl">Contact</Heading>
-                    <Grid gap="1" gridTemplateColumns={['repeat(2, 1fr)', null, '1fr']}>
-                        <Link fontSize="sm" color="primary" href="/q-and-a">
-                            Q&A
-                        </Link>
-                        <Link fontSize="sm" color="primary" href="/blog">
-                            Email
-                        </Link>
-                    </Grid>
+                    <Stack>
+                        <Heading fontSize="xl">Contact</Heading>
+                        <Grid gap="1" gridTemplateColumns={['repeat(2, 1fr)', null, '1fr']}>
+                            <Link fontSize="sm" color="primary" href="/q-and-a">
+                                Q&A
+                            </Link>
+                            <Link fontSize="sm" color="primary" href="/blog">
+                                Email
+                            </Link>
+                        </Grid>
+                    </Stack>
+                    <Stack>
+                        <Heading fontSize="xl">Quick Links</Heading>
+                        <Grid gap="1" gridTemplateColumns={['repeat(2, 1fr)', null, '1fr']}>
+                            <Link fontSize="sm" color="primary" href="/blog">
+                                Blog
+                            </Link>
+                            <Link fontSize="sm" color="primary" href="/about">
+                                About
+                            </Link>
+                            <Link
+                                fontSize="sm"
+                                color="primary"
+                                href="https://drive.google.com/file/d/1Ws1_C6_3ryHWTol3ZSRxq3vFrrag5WfT/view?usp=sharing"
+                            >
+                                Resumé
+                            </Link>
+                            <Link fontSize="sm" color="primary" href="/cookies">
+                                Cookies
+                            </Link>
+                        </Grid>
+                    </Stack>
                 </Stack>
-                <Stack spacing="6">
-                    <Heading fontSize="xl">Sitemap</Heading>
+                <Stack>
+                    <Heading fontSize="xl">My Stuff</Heading>
                     <Grid gap="1" gridTemplateColumns={['repeat(2, 1fr)', null, '1fr']}>
-                        <Link fontSize="sm" color="primary" href="/blog">
-                            Blog
-                        </Link>
-                        <Link fontSize="sm" color="primary" href="/q-and-a">
-                            Q&A
+                        <Link fontSize="sm" color="primary" href="/career">
+                            Career
                         </Link>
                         <Link fontSize="sm" color="primary" href="/projects">
                             Projects
@@ -78,16 +98,6 @@ export const Footer: VFC = () => {
                         </Link>
                         <Link fontSize="sm" color="primary" href="/stats">
                             Stats
-                        </Link>
-                        <Link
-                            fontSize="sm"
-                            color="primary"
-                            href="https://drive.google.com/file/d/1Ws1_C6_3ryHWTol3ZSRxq3vFrrag5WfT/view?usp=sharing"
-                        >
-                            Resumé
-                        </Link>
-                        <Link fontSize="sm" color="primary" href="/cookies">
-                            Cookies
                         </Link>
                     </Grid>
                 </Stack>

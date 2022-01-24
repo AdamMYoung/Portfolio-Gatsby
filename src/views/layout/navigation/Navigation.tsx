@@ -39,9 +39,10 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                     <LinkButton w="full" py="2" href="/blog" variant="link">
                         Blog
                     </LinkButton>
-                    <LinkButton w="full" py="2" href="/career" variant="link">
-                        Career
+                    <LinkButton w="full" py="2" href="/about" variant="link">
+                        About
                     </LinkButton>
+
                     <LinkButton w="full" py="2" href="/q-and-a" variant="link">
                         Q&A
                     </LinkButton>
@@ -51,6 +52,9 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                         </MenuButton>
 
                         <MenuList>
+                            <LinkButton w="full" py="2" href="/career" variant="link">
+                                Career
+                            </LinkButton>
                             <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
                                 Projects
                             </MenuItem>
@@ -111,18 +115,20 @@ export const Navigation: VFC = () => {
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/blog">
                                 Blog
                             </Link>
-                            <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/career">
-                                Career
+                            <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/about">
+                                About
                             </Link>
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/q-and-a">
                                 Q&A
                             </Link>
-
                             <Menu>
                                 <MenuButton as={Link} variant="animate-ltr" fontWeight="semibold" fontSize="md">
                                     My Stuff
                                 </MenuButton>
                                 <MenuList>
+                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/career">
+                                        Career
+                                    </MenuItem>
                                     <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
                                         Projects
                                     </MenuItem>
