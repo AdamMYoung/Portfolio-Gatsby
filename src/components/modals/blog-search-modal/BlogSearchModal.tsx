@@ -50,7 +50,7 @@ export const BlogSearchModal = ({ onClose, ...rest }: Omit<ModalProps, 'children
                         <Divider />
                         <Stack p="4" spacing="4" maxHeight="400" overflow="none" overflowY="auto" divider={<Divider />}>
                             {results.map(({ title, slug, topics, createdAt }) => (
-                                <LinkBox as={Stack} spacing="2">
+                                <LinkBox key={slug} as={Stack} spacing="2">
                                     <LinkOverlay
                                         px="0"
                                         variant="link"
@@ -64,7 +64,9 @@ export const BlogSearchModal = ({ onClose, ...rest }: Omit<ModalProps, 'children
                                     </LinkOverlay>
                                     <Flex wrap="wrap" gap="2">
                                         {topics.map((t) => (
-                                            <Tag size="sm">{t}</Tag>
+                                            <Tag key={t} size="sm">
+                                                {t}
+                                            </Tag>
                                         ))}
                                     </Flex>
                                     <Text variant="subtitle">{dayjs().to(new Date(createdAt))}</Text>

@@ -11,10 +11,11 @@ import { Link } from '~components/link';
 import { MarkdownRenderer } from '~components/markdown-renderer';
 import { MotionFlex } from '~components/motion';
 import { Progress } from '~components/progress';
-import { useCombinedSubset, useIsMobile, useRelativeScrollPercentage } from '~hooks';
-import { ContentsProvider } from '~providers';
+
+import { useCombinedSubset, useIsMobile, useRelativeScrollPercentage } from '~hooks/index';
+import { ContentsProvider } from '~providers/contents-provider';
 import { BlogPost } from '~types';
-import { stringToLongDate } from '~utils/date';
+import { dateToLongDate } from '~utils/date';
 import { getTwitterIntent } from '~utils/twitter';
 import { Contents } from '~views/contents';
 import { LengthIcon } from '~views/length-icon';
@@ -102,8 +103,8 @@ const BlogHeader: VFC = () => {
     const { blogPost } = useBlogPost();
     const { heroImage, title, copy, topics, createdAt, updatedAt } = blogPost;
 
-    const createdAtText = stringToLongDate(createdAt);
-    const updatedAtText = stringToLongDate(updatedAt);
+    const createdAtText = dateToLongDate(createdAt);
+    const updatedAtText = dateToLongDate(updatedAt);
 
     const duration = Number(copy.readingTime.replace(/\D+/g, ''));
 
@@ -242,7 +243,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                                         key={id}
                                         to={`/blog/${slug}`}
                                         title={title}
-                                        subtitle={stringToLongDate(createdAt)}
+                                        subtitle={dateToLongDate(createdAt)}
                                         image={heroImage.localFile}
                                         readingTime={copy.readingTime}
                                     />

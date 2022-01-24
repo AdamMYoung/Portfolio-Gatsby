@@ -13,7 +13,7 @@ import {
     TwoPanelTitle,
 } from '~components/sections/two-panel';
 import { useJobs } from '~hooks/static-queries';
-import { stringToMonthYear } from '~utils/date';
+import { dateToMonthYear } from '~utils/date';
 
 import { SEO } from '~views/seo';
 
@@ -77,8 +77,7 @@ const Career: VFC = () => {
                             <TwoPanelSubtitle>{job.role}</TwoPanelSubtitle>
 
                             <TwoPanelSubtitle fontSize="md">
-                                {stringToMonthYear(job.startDate)} -{' '}
-                                {job.endDate ? stringToMonthYear(job.endDate) : 'Now'}
+                                {dateToMonthYear(job.startDate)} - {job.endDate ? dateToMonthYear(job.endDate) : 'Now'}
                             </TwoPanelSubtitle>
                         </TwoPanelHeading>
                         <TwoPanelBody>

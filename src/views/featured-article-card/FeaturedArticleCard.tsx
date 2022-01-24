@@ -15,7 +15,7 @@ import { Card } from '~components/card';
 import { LinkButton } from '~components/link-button';
 import { getContainerMotion } from '~components/motion';
 import { useFeaturedArticle } from '~hooks/static-queries';
-import { stringToLongDate } from '~utils/date';
+import { dateToLongDate } from '~utils/date';
 
 const ChakraGatsbyImage = chakra(GatsbyImage);
 
@@ -41,7 +41,7 @@ export const FeaturedArticleCard: VFC = () => {
                     </Flex>
                     <TwoPanelTitle>{title}</TwoPanelTitle>
                     <TwoPanelHeading>
-                        <TwoPanelSubtitle fontSize={['lg', null, 'xl']}>{stringToLongDate(createdAt)}</TwoPanelSubtitle>
+                        <TwoPanelSubtitle fontSize={['lg', null, 'xl']}>{dateToLongDate(createdAt)}</TwoPanelSubtitle>
                         <TwoPanelSubtitle fontSize={['sm', null, 'md']}>{copy.readingTime}</TwoPanelSubtitle>
                     </TwoPanelHeading>
 
