@@ -1,7 +1,7 @@
 import { List, ListItem } from '@chakra-ui/react';
 import React, { useMemo, VFC } from 'react';
 import { Link } from '~components/link';
-import { ContentsEntry, useContents } from '~providers';
+import { ContentsEntry, useContents } from '~providers/contents-provider';
 
 const listItemIndentMap = {
     h2: 0,
@@ -27,7 +27,7 @@ const buildContents = (entries: ContentsEntry[]) => {
         }
 
         return (
-            <ListItem sx={{ display: 'block', ml: listItemIndentMap[e.heading] }}>
+            <ListItem key={e.title} sx={{ display: 'block', ml: listItemIndentMap[e.heading] }}>
                 <Link href={`#${e.anchor}`}>
                     {isSubheading ? `${heading}.${subheading}.` : `${heading}.`} {e.title}
                 </Link>

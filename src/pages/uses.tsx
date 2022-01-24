@@ -45,7 +45,7 @@ const Uses: VFC = () => {
             <UsesIntro />
 
             {categories.map(({ name, uses }) => (
-                <Stack spacing="4">
+                <Stack key={name} spacing="4">
                     <Heading>{name}</Heading>
                     <Box overflow="none" overflowX="auto">
                         <Table colorScheme="white">

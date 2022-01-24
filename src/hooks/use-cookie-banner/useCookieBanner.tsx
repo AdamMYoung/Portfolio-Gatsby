@@ -5,7 +5,7 @@ import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
 import { useLocation } from 'react-use';
 
 import { Link as GatsbyLink } from 'gatsby';
-import { useIfClient } from '~hooks';
+import { useIfClient } from '~hooks/use-if-client';
 
 const Link = chakra(GatsbyLink);
 
@@ -21,6 +21,7 @@ const isCookieRequestSet = (): boolean => {
 };
 
 const setCookieAcceptance = (accepted: boolean) => {
+    // deepcode ignore OverwriteAssignment: This is how cookie assignment works in JS
     document.cookie = createCookieEntry(gaCookie, accepted);
     document.cookie = createCookieEntry(hotjarCookie, accepted);
 };
@@ -35,7 +36,8 @@ export const useCookieBanner = () => {
         toast.close(toastId.current);
 
         if (accepted) {
-            initializeAndTrack(location);
+            //Casting to location since the `replace` functions aren't used in this function.
+            initializeAndTrack(location as unknown as Location);
         }
     };
 

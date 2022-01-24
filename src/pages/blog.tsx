@@ -20,7 +20,7 @@ import {
 import { useArrayLimiter, useIfClient, useParamsEvent } from '~hooks';
 import { useBlogTopics } from '~hooks/static-queries';
 import { BlogSearchProvider, useBlogFilter, useBlogIndex } from '~providers';
-import { stringToLongDate } from '~utils/date';
+import { dateToLongDate } from '~utils/date';
 import { FeaturedArticleCard } from '~views/featured-article-card';
 import { SEO } from '~views/seo';
 
@@ -115,7 +115,7 @@ const BlogPost = () => {
                             key={id}
                             to={`/blog/${slug}`}
                             title={title}
-                            subtitle={stringToLongDate(createdAt)}
+                            subtitle={dateToLongDate(createdAt)}
                             image={heroImage.localFile}
                             readingTime={copy?.readingTime}
                         />
