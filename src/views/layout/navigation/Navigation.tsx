@@ -39,6 +39,9 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                     <LinkButton w="full" py="2" href="/blog" variant="link">
                         Blog
                     </LinkButton>
+                    <LinkButton w="full" py="2" href="/career" variant="link">
+                        Career
+                    </LinkButton>
                     <LinkButton w="full" py="2" href="/q-and-a" variant="link">
                         Q&A
                     </LinkButton>
@@ -107,6 +110,9 @@ export const Navigation: VFC = () => {
                         <Stack visibility={['hidden', null, null, 'visible']} direction="row" spacing="12" mx="auto">
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/blog">
                                 Blog
+                            </Link>
+                            <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/career">
+                                Career
                             </Link>
                             <Link variant="animate-ltr" fontWeight="semibold" fontSize="md" href="/q-and-a">
                                 Q&A
