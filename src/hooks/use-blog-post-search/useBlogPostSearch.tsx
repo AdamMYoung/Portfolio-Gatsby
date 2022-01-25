@@ -1,5 +1,5 @@
 import { useFlexSearch } from 'react-use-flexsearch';
-import { useBlogIndex } from '~providers';
+import { useBlogIndex } from '~providers/blog-index-provider';
 
 type BlogSearchResult = {
     title: string;

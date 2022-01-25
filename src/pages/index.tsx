@@ -6,6 +6,7 @@ import { Link } from '~components/link';
 import { LinkButton } from '~components/link-button';
 import { TwoPanel, TwoPanelBlock, TwoPanelBody, TwoPanelImage, TwoPanelTitle } from '~components/sections/two-panel';
 import { FeaturedArticleCard } from '~views/featured-article-card';
+import { NewsletterSubscription } from '~views/newsletter-subscription';
 import { SEO } from '~views/seo';
 
 const HomeIntro: VFC = () => {
@@ -56,21 +57,6 @@ const HomeRecommendations: VFC = () => {
     return <Grid gridTemplateColumns={['1fr', null, '1fr 1fr']}></Grid>;
 };
 
-const HomeSubscribe: VFC = () => {
-    return (
-        <Stack spacing="4" maxW={['auto', null, '50%']}>
-            <Heading fontSize="5xl">Stay up to date</Heading>
-            <Text>
-                Get the latest articles on web development, technology and best practices, straight to your inbox.
-            </Text>
-            <Flex gap="4">
-                <Input rounded="full" placeholder="jane.doe@example.com" />
-                <Button px="12">Subscribe</Button>
-            </Flex>
-        </Stack>
-    );
-};
-
 const Index: VFC = () => {
     return (
         <Stack spacing={[16, null, 24]}>
@@ -83,7 +69,7 @@ const Index: VFC = () => {
             {/* <HomeRecommendations /> */}
             <FeaturedArticleCard />
             <Divider />
-            <HomeSubscribe />
+            <NewsletterSubscription />
         </Stack>
     );
 };
