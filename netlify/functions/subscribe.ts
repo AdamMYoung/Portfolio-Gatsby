@@ -1,9 +1,9 @@
 import { Handler } from '@netlify/functions';
-const mailchimp = require('@mailchimp/mailchimp_marketing');
+import axios from 'axios';
 
-mailchimp.setConfig({
-    apiKey: process.env.MAILCHIMP_API_KEY,
-    server: process.env.MAILCHIMP_SERVER,
+const mailchimpApi = axios.create({
+    baseURL: `https://${process.env.MAILCHIMP_SERVER}.api.mailchimp.com/3.0`,
+    auth: { username: 'anystring', password: process.env.MAILCHIMP_API_KEY },
 });
 
 const handler: Handler = async (event) => {
@@ -13,10 +13,11 @@ const handler: Handler = async (event) => {
         return { statusCode: 400 };
     }
 
-    mailchimp.lists.addListMember('16aaa3e39a', {
-        email_address: email,
-        status: 'subscribed',
-    });
+    mailchimpApi.post(
+        `/lists/${process.env.MAILCHIMP_LIST_ID}/members`,
+        { email_address: email, status: 'subscribed' },
+        { headers: { 'content-type': 'application/json' } }
+    );
 
     return { statusCode: 200, body: 'User subscribed' };
 };

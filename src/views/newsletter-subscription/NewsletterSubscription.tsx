@@ -9,7 +9,7 @@ export const NewsletterSubscription: VFC = () => {
     const { state, subscribe } = useNewsletterSubscription();
 
     const handleSubscribe: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-        if (email && isEmail(email)) {
+        if (email && isEmail(email) && !state.success) {
             subscribe(email);
         }
     };
