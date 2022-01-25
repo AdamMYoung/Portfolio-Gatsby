@@ -23,7 +23,7 @@ const handler: Handler = async (event) => {
         return { statusCode: 401, body: 'User identified as a bot.' };
     }
 
-    mailchimp.lists.addListMember('AYDev', {
+    mailchimp.lists.addListMember('16aaa3e39a', {
         email_address: email,
         status: 'subscribed',
     });
