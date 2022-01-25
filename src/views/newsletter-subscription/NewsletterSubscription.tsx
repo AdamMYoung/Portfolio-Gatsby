@@ -15,12 +15,12 @@ export const NewsletterSubscription: VFC = () => {
     };
 
     return (
-        <Stack spacing="4" maxW={['auto', null, '50%']}>
+        <Stack spacing="4" maxW={['auto', null, '70%', '50%']}>
             <Heading fontSize="5xl">Stay up to date</Heading>
             <Text>
                 Get the latest articles on web development, technology and best practices, straight to your inbox.
             </Text>
-            <Flex gap="4">
+            <Stack spacing="4" direction={['column', null, 'row']}>
                 <Input
                     isDisabled={state.success}
                     rounded="full"
@@ -30,7 +30,7 @@ export const NewsletterSubscription: VFC = () => {
                 <Button isLoading={state.querying} isDisabled={state.success} onClick={handleSubscribe} px="12">
                     {state.success ? 'Subscribed!' : 'Subscribe'}
                 </Button>
-            </Flex>
+            </Stack>
         </Stack>
     );
 };
