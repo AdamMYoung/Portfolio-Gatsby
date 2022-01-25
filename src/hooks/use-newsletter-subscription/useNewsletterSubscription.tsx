@@ -7,7 +7,7 @@ export const useNewsletterSubscription = () => {
     const { state, wrapQuery } = useQueryState();
 
     const subscribe = async (email: string) => {
-        await wrapQuery(() => fetch(`/netlify/functions/subscribe?email=${email}`));
+        await wrapQuery(() => fetch(`/.netlify/functions/subscribe?email=${email}`));
         setSubscribed(true);
     };
 
