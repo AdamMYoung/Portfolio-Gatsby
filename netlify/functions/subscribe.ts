@@ -14,14 +14,12 @@ const handler: Handler = async (event) => {
         return { statusCode: 400 };
     }
 
-    await mailchimpApi.put(
+    return await mailchimpApi.put(
         `/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(email.toLowerCase())}`,
         { email_address: email, status_if_new: 'pending' },
         { headers: { 'content-type': 'application/json' } }
-    ).then(res => ({ statusCode: 200, body: res }));
+    ).then(res => ({ statusCode: 200, body: res })).catch(err => ({ status: 500, body: err }));
 
-
-    return { statusCode: 200, body: 'User subscribed' };
 };
 
 export { handler };
