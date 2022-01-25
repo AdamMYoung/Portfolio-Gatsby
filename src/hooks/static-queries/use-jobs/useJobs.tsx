@@ -42,7 +42,7 @@ export const useJobs = (): JobListing[] => {
 
     console.log(data);
 
-    return data.allContentfulPageJobRole.nodes.map((node) => ({
+    return data.allContentfulJobRole.nodes.map((node) => ({
         companyName: node.companyName,
         role: node.role,
         languages: node.languages,
