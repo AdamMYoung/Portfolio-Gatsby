@@ -9,10 +9,8 @@ import {
     TwoPanelSubtitle,
     TwoPanelTitle,
 } from '~components/sections/two-panel';
+import { EMAIL_REGEX } from '~utils/validation';
 import { SEO } from '~views/seo';
-
-const EMAIL_REGEX =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const encode = (data) => {
     return Object.keys(data)

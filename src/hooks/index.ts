@@ -11,6 +11,8 @@ export * from './use-if-client';
 export * from './use-relative-scroll-percentage';
 export * from './use-cookie-banner';
 export * from './use-input-state';
+export * from './use-newsletter-subscription';
+export * from './use-query-state';
 
 //Intentionally not exporting ./static-queries as to not pollute
 //the import autocomplete of the hooks folder.
