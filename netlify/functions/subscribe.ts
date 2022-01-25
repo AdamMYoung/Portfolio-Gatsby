@@ -9,18 +9,9 @@ mailchimp.setConfig({
 
 const handler: Handler = async (event) => {
     const email = event.queryStringParameters.email;
-    const token = event.queryStringParameters.token;
 
-    if (!email || !token) {
+    if (!email) {
         return { statusCode: 400 };
-    }
-
-    const { data } = await axios.get('https://www.google.com/recaptcha/api/siteverify', {
-        params: { secret: process.env.RECAPTCHA_SERVER_SECRET, response: token },
-    });
-
-    if (!data?.success || data?.score < 0.5) {
-        return { statusCode: 401, body: 'User identified as a bot.' };
     }
 
     mailchimp.lists.addListMember('16aaa3e39a', {
