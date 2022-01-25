@@ -49,6 +49,7 @@
         "gatsby-source-filesystem": "^4.2.0",
         "gatsby-source-graphql": "^4.3.0",
         "gatsby-transformer-sharp": "^4.2.0",
+        "hash-wasm": "^4.9.0",
         "highlight.js": "^11.3.1",
         "highlightjs-graphql": "^1.0.2",
         "marked": "^4.0.6",

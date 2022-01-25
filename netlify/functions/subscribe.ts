@@ -1,5 +1,6 @@
 import { Handler } from '@netlify/functions';
-import axios from 'axios';
+import axios from 'axios'
+import { md5 } from "hash-wasm"
 
 const mailchimpApi = axios.create({
     baseURL: `https://${process.env.MAILCHIMP_SERVER}.api.mailchimp.com/3.0`,
@@ -13,9 +14,9 @@ const handler: Handler = async (event) => {
         return { statusCode: 400 };
     }
 
-    mailchimpApi.post(
-        `/lists/${process.env.MAILCHIMP_LIST_ID}/members`,
-        { email_address: email, status: 'subscribed' },
+    await mailchimpApi.post(
+        `/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(email.toLowerCase())}`,
+        { email_address: email, status_if_new: 'pending' },
         { headers: { 'content-type': 'application/json' } }
     );
 
