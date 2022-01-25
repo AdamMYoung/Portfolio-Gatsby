@@ -1,10 +1,11 @@
 import { Stack, Heading, Flex, Text, Input, Button } from '@chakra-ui/react';
 import React, { useState, VFC } from 'react';
+import { useInputState } from '~hooks/use-input-state';
 import { useNewsletterSubscription } from '~hooks/use-newsletter-subscription';
 import { isEmail } from '~utils/validation';
 
 export const NewsletterSubscription: VFC = () => {
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useInputState();
     const { state, subscribe } = useNewsletterSubscription();
 
     const handleSubscribe: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -24,7 +25,7 @@ export const NewsletterSubscription: VFC = () => {
                     isDisabled={state.success}
                     rounded="full"
                     placeholder="jane.doe@example.com"
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={setEmail}
                 />
                 <Button isLoading={state.querying} isDisabled={state.success} onClick={handleSubscribe} px="12">
                     {state.success ? 'Subscribed!' : 'Subscribe'}
