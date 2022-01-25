@@ -18,8 +18,7 @@ const handler: Handler = async (event) => {
         `/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(email.toLowerCase())}`,
         { email_address: email, status_if_new: 'pending' },
         { headers: { 'content-type': 'application/json' } }
-    ).then(res => ({ statusCode: 200, body: res })).catch(err => ({ status: 500, body: err }));
-
+    ).then(res => ({ statusCode: 200, body: res }))
 };
 
 export { handler };
