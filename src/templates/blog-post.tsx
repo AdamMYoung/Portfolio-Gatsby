@@ -229,7 +229,7 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                             <Text fontSize="md" variant="subtitle">
                                 Adam Young is a front-end engineer, who specializes in React and modern web
                                 technologies. He's working at <Link href="https://curve.com">Curve</Link> as a front-end
-                                engineer. He currently lives in Birmingham with his fiancé and two cats.
+                                engineer. He currently lives in the city of Birmingham with his two cats.
                             </Text>
                         </Stack>
                     </Stack>

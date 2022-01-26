@@ -62,6 +62,8 @@ const Career: VFC = () => {
                     {index % 2 === 0 && (
                         <TwoPanelImage>
                             <ChakraGatsbyImage
+                                position="sticky"
+                                top="7rem"
                                 w="full"
                                 pointerEvents="none"
                                 rounded="xl"
@@ -107,6 +109,8 @@ const Career: VFC = () => {
                     {index % 2 !== 0 && (
                         <TwoPanelImage>
                             <ChakraGatsbyImage
+                                position="sticky"
+                                top="7rem"
                                 w="full"
                                 height="96"
                                 pointerEvents="none"

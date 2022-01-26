@@ -158,10 +158,9 @@ const AboutWhoAmI = () => {
                     </TwoPanelBody>
                     <TwoPanelBody>
                         <Text>
-                            From there, I moved to Birmingham with my partner, and started my software development
-                            career. I worked at a local software development house as a full stack developer for around
-                            2 years, working with mapping libraries and design systems before moving into a fully
-                            front-end role at Curve.
+                            From there, I moved to Birmingham, and started my software development career. I worked at a
+                            local software development house as a full stack developer for around 2 years, working with
+                            mapping libraries and design systems before moving into a fully front-end role at Curve.
                         </Text>
                     </TwoPanelBody>
                 </Stack>
