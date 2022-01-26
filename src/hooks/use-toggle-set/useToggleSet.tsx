@@ -10,9 +10,9 @@ export const useToggleSet = <T extends any>(initialValue?: T[]): [T[], (toggle: 
     const toggleValue = useCallback(
         (value: T) => {
             if (internalState.includes(value)) {
-                setInternalState(internalState.filter((v) => v !== value));
+                setInternalState((state) => state.filter((v) => v !== value));
             } else {
-                setInternalState([...internalState, value]);
+                setInternalState((state) => [...state, value]);
             }
         },
         [internalState, setInternalState]

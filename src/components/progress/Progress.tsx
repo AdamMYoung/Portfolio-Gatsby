@@ -8,7 +8,7 @@ type ProgressProps = BoxProps & {
 };
 
 const getPercentage = (amount: number) => {
-    let percentage;
+    let percentage: number;
 
     if (amount < 0) {
         percentage = 0;
@@ -18,7 +18,7 @@ const getPercentage = (amount: number) => {
         percentage = amount;
     }
 
-    return percentage.toFixed(0);
+    return parseInt(percentage);
 };
 
 export const Progress: VFC<ProgressProps> = ({ amount, 'aria-label': label, ...rest }) => {
