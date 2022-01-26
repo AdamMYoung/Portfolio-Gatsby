@@ -112,7 +112,6 @@ const Career: VFC = () => {
                                 position="sticky"
                                 top="7rem"
                                 w="full"
-                                height="96"
                                 pointerEvents="none"
                                 rounded="xl"
                                 image={getImage(job.image)}
