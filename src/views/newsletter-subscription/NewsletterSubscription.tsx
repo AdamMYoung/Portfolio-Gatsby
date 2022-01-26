@@ -22,12 +22,13 @@ export const NewsletterSubscription: VFC = () => {
             </Text>
             <Stack spacing="4" direction={['column', null, 'row']}>
                 <Input
+                    disabled={state.success}
                     isDisabled={state.success}
                     rounded="full"
                     placeholder="jane.doe@example.com"
                     onChange={setEmail}
                 />
-                <Button isLoading={state.querying} isDisabled={state.success} onClick={handleSubscribe} px="12">
+                <Button isLoading={state.querying} disabled={state.success} isDisabled={state.success} onClick={handleSubscribe} px="12">
                     {state.success ? 'Subscribed!' : 'Subscribe'}
                 </Button>
             </Stack>
