@@ -160,7 +160,7 @@ const BlogContent: VFC = () => {
                     <Progress
                         position="sticky"
                         top="120"
-                        height={['80vh', null, '85vh']}
+                        height={'calc(100vh - 9rem)'}
                         aria-label="Article progress"
                         amount={percentage}
                     />
