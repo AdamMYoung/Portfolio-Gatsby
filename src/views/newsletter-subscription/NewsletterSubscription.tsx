@@ -20,18 +20,17 @@ export const NewsletterSubscription: VFC = () => {
             <Text>
                 Get the latest articles on web development, technology and best practices, straight to your inbox.
             </Text>
-            <Stack spacing="4" direction={['column', null, 'row']}>
-                <Input
-                    disabled={state.success}
-                    isDisabled={state.success}
-                    rounded="full"
-                    placeholder="jane.doe@example.com"
-                    onChange={setEmail}
-                />
-                <Button isLoading={state.querying} disabled={state.success} isDisabled={state.success} onClick={handleSubscribe} px="12">
-                    {state.success ? 'Subscribed!' : 'Subscribe'}
-                </Button>
-            </Stack>
+            {!!state.success ? <Text fontSize="xl">You are subscribed!</Text> :
+                <Stack spacing="4" direction={['column', null, 'row']}>
+                    <Input
+                        rounded="full"
+                        placeholder="jane.doe@example.com"
+                        onChange={setEmail}
+                    />
+                    <Button isLoading={state.querying} onClick={handleSubscribe} px="12">
+                        Subscribe
+                    </Button>
+                </Stack>}
         </Stack>
     );
 };
