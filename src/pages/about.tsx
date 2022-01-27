@@ -139,7 +139,7 @@ const AboutWhoAmI = () => {
                 <StaticImage
                     style={{ height: '100%', borderRadius: '12px' }}
                     src="../images/ne-england.jpg"
-                    alt="A scenic picture of the english countryside"
+                    alt="Sunset in a clear sky, on the north east coast (Redcar)"
                     width={900}
                 />
             </TwoPanelImage>

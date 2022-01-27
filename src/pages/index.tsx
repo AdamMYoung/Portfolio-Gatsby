@@ -44,7 +44,7 @@ const HomeIntro: VFC = () => {
                 <StaticImage
                     style={{ height: '100%', borderRadius: '12px' }}
                     src="../images/me.jpg"
-                    alt="A self portrait of me and my partner"
+                    alt="A covered-up self portrait of me, taking a picture with a DSLR in a mirror"
                     width={900}
                 />
             </TwoPanelImage>
