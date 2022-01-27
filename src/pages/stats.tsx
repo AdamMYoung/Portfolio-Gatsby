@@ -3,9 +3,16 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import React, { VFC } from 'react';
 import { InteractionTag } from '~components/interaction-tag';
-import { useIsMobile } from '~hooks';
-import { useBlogPosts, useGithubStats, usePopularLanguage, usePopularTopic, useSiteInfo } from '~hooks/static-queries';
+import { useIsMobile } from '~hooks/use-is-mobile';
+import {
+    useBlogPosts,
+    useGithubStats,
+    useGithubLanguageListings,
+    usePopularTopic,
+    useSiteInfo,
+} from '~hooks/static-queries';
 import { SEO } from '~views/seo';
+import { capitalizeFirstLetter } from '~utils/string';
 
 dayjs.extend(relativeTime);
 
@@ -17,7 +24,7 @@ const Stats: VFC = () => {
     const blogs = useBlogPosts();
 
     const popularTopic = usePopularTopic();
-    const popularLanguage = usePopularLanguage();
+    const { mostPopular, entries } = useGithubLanguageListings();
 
     return (
         <Stack spacing={[16, null, 24]}>
@@ -42,7 +49,7 @@ const Stats: VFC = () => {
                         </Stat>
                         <Stat>
                             <StatNumber>
-                                <InteractionTag href={`/projects`}>{popularLanguage}</InteractionTag>
+                                <InteractionTag href={`/projects`}>{mostPopular}</InteractionTag>
                             </StatNumber>
                             <StatHelpText>Most popular language</StatHelpText>
                         </Stat>
@@ -60,7 +67,9 @@ const Stats: VFC = () => {
                         </Stat>
                         <Stat>
                             <StatNumber>
-                                <InteractionTag href={`/blog?filters=${popularTopic}`}>{popularTopic}</InteractionTag>
+                                <InteractionTag href={`/blog?filters=${popularTopic}`}>
+                                    {capitalizeFirstLetter(popularTopic)}
+                                </InteractionTag>
                             </StatNumber>
                             <StatHelpText>Most popular topic</StatHelpText>
                         </Stat>
@@ -75,30 +84,12 @@ const Stats: VFC = () => {
                     <Heading as="h2" fontSize="xl" fontWeight="bold">
                         Languages
                     </Heading>
-                    <Stack spacing="4">
-                        <Text>React (Gatsby/Next.js)</Text>
-                        <Progress rounded="xl" value={90} />
-                    </Stack>
-                    <Stack spacing="4">
-                        <Text>TypeScript</Text>
-                        <Progress rounded="xl" value={80} />
-                    </Stack>
-                    <Stack spacing="4">
-                        <Text>Node.js</Text>
-                        <Progress rounded="xl" value={60} />
-                    </Stack>
-                    <Stack spacing="4">
-                        <Text>C#</Text>
-                        <Progress rounded="xl" value={30} />
-                    </Stack>
-                    <Stack spacing="4">
-                        <Text>Python</Text>
-                        <Progress rounded="xl" value={20} />
-                    </Stack>
-                    <Stack spacing="4">
-                        <Text>Clojure</Text>
-                        <Progress rounded="xl" value={5} />
-                    </Stack>
+                    {entries.map((e) => (
+                        <Stack key={e.name} spacing="4">
+                            <Text>{e.name}</Text>
+                            <Progress rounded="xl" value={e.weight} />
+                        </Stack>
+                    ))}
                 </Stack>
             </Stack>
         </Stack>

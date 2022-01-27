@@ -15,3 +15,11 @@ export const dateToLongDate = (date: string | Date) => {
 export const dateToMonthYear = (date: string | Date) => {
     return dayjs(date).format('MMMM YYYY');
 };
+
+export const isDateWithinRange = (date: string | Date, rangeNumber: number, rangeType: 'day' | 'month' | 'year') => {
+    const dateToCompare = dayjs(date);
+    const today = dayjs();
+    const range = dayjs().subtract(rangeNumber, rangeType);
+
+    return dateToCompare.isAfter(range);
+};

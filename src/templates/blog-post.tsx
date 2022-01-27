@@ -19,6 +19,7 @@ import { dateToLongDate } from '~utils/date';
 import { getTwitterIntent } from '~utils/twitter';
 import { Contents } from '~views/contents';
 import { LengthIcon } from '~views/length-icon';
+import { NewsletterSubscription } from '~views/newsletter-subscription';
 import { SEO } from '~views/seo';
 
 type BlogPostProps = {
@@ -251,6 +252,8 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                             </CardList>
                         </>
                     )}
+                    <Divider />
+                    <NewsletterSubscription />
                 </Stack>
             </BlogPostProvider>
         </ContentsProvider>

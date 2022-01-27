@@ -9,6 +9,7 @@ type Repository = {
     name: string;
     description: string;
     languages: string[];
+    updatedAt: Date;
 };
 
 /**
@@ -38,6 +39,7 @@ export const useGithubStats = (): GithubStats => {
                                 }
                             }
                             description
+                            updatedAt
                         }
                     }
                 }
@@ -50,6 +52,7 @@ export const useGithubStats = (): GithubStats => {
         repositories: github.user.repositories.nodes.map((repo) => ({
             name: repo.name,
             description: repo.description,
+            updatedAt: new Date(repo.updatedAt),
             languages: repo.languages.nodes.map((lang) => lang.name),
         })),
     };

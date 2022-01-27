@@ -2,29 +2,16 @@ import { Box, BoxProps } from '@chakra-ui/react';
 import React, { useState, VFC } from 'react';
 import { useDebounce } from 'react-use';
 import { MotionBox, MotionText } from '~components/motion';
+import { limitNumberWithinRange } from '~utils/number';
 
 type ProgressProps = BoxProps & {
     amount: number;
 };
 
-const getPercentage = (amount: number) => {
-    let percentage: number;
-
-    if (amount < 0) {
-        percentage = 0;
-    } else if (amount > 100) {
-        percentage = 100;
-    } else {
-        percentage = amount;
-    }
-
-    return parseInt(percentage);
-};
-
 export const Progress: VFC<ProgressProps> = ({ amount, 'aria-label': label, ...rest }) => {
-    const [percentage, setPercentage] = useState(getPercentage(0));
+    const [percentage, setPercentage] = useState(0);
 
-    useDebounce(() => setPercentage(getPercentage(amount)), 10, [amount]);
+    useDebounce(() => setPercentage(limitNumberWithinRange(amount)), 10, [amount]);
 
     const bg = amount < 100 ? 'red.300' : 'green.300';
 
