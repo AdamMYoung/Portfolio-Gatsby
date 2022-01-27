@@ -41,8 +41,8 @@ const AboutIntro = () => {
             <TwoPanelImage>
                 <StaticImage
                     style={{ height: '100%', borderRadius: '12px' }}
-                    src="../images/me.jpg"
-                    alt="A self portrait of me and my partner"
+                    src="../images/about.jpg"
+                    alt="A wooden table in a coffee shop, with coffee and a notepad"
                     width={900}
                 />
             </TwoPanelImage>
