@@ -52,9 +52,9 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                         </MenuButton>
 
                         <MenuList>
-                            <LinkButton w="full" py="2" href="/career" variant="link">
+                            <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/career">
                                 Career
-                            </LinkButton>
+                            </MenuItem>
                             <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
                                 Projects
                             </MenuItem>
