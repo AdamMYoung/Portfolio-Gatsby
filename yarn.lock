@@ -6486,10 +6486,10 @@ gatsby-plugin-perf-budgets@^0.0.18:
     opener "^1.5.1"
     ws "^6.0.0"
 
-gatsby-plugin-react-helmet@^5.2.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-5.5.0.tgz#b36e07ca3d37d085ac150f825e658bcad3e786b5"
-  integrity sha512-1GJQS9+2lIkZrxXNfvFmNf5imJfVWWcxJBU2DfPlm9uByp5CZRDrGGXuth1ThTllrCmC4DBkrqIUQLAG36B9kw==
+gatsby-plugin-react-helmet@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-5.6.0.tgz#9757d9164d66fc1201f1cf9af751c63fdb740420"
+  integrity sha512-EdJv0w569Bdaxq46sFX2UExsb1COdTGCXcjg53a31nhFmWo42PBuTBUhGKcsbdmomCaipl9j39NsHjj3opioBQ==
   dependencies:
     "@babel/runtime" "^7.15.4"
 
@@ -6595,17 +6595,17 @@ gatsby-source-contentful@^7.0.0:
     retry-axios "^2.6.0"
     semver "^7.3.5"
 
-gatsby-source-filesystem@^4.2.0, gatsby-source-filesystem@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-4.5.0.tgz#2dfeb50d083acc03c3eed092dac91297ebba7448"
-  integrity sha512-b4MeHoP/1Et6YTeHB1DSsd7L5gky+wN2fo+UBVLYRwk/JlFOhkhEFfdsxA7LGEFd69R1UWi+YUOPMIgVQNDZFw==
+gatsby-source-filesystem@^4.5.0, gatsby-source-filesystem@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-4.6.0.tgz#c8f19397a6f980b4d92bd57e8967f814b8b5d1de"
+  integrity sha512-Ve6VfFJ4moTX7n8uDTGF7K07HdjWkWW7c9Bn1etcS2QcFRRMj/lxQ/2EFpgVM20jtZ60IG1vqnAzDabqz7UxXQ==
   dependencies:
     "@babel/runtime" "^7.15.4"
     chokidar "^3.5.2"
     fastq "^1.13.0"
     file-type "^16.5.3"
     fs-extra "^10.0.0"
-    gatsby-core-utils "^3.5.0"
+    gatsby-core-utils "^3.6.0"
     got "^9.6.0"
     md5-file "^5.0.0"
     mime "^2.5.2"
@@ -10398,10 +10398,10 @@ react-helmet@^6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
-react-hook-form@^7.20.5:
-  version "7.22.5"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.22.5.tgz#85a135f3c5ae02ccf73096a03fc14b45607e9baa"
-  integrity sha512-Q2zaeQFXdVQ8l3hcywhltH+Nzj4vo50wMVujHDVN/1Xy9IOaSZJwYBXA2CYTpK6rq41fnXviw3jTLb04c7Gu9Q==
+react-hook-form@^7.25.3:
+  version "7.25.3"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.25.3.tgz#1475fd52398e905e1f6d88835f96aaa1144635c3"
+  integrity sha512-jL4SByMaC8U3Vhu9s7CwgJBP4M6I3Kpwxib9LrCwWSRPnXDrNQL4uihSTqLLoDICqSUhwwvian9uVYfv+ITtGg==
 
 react-icons@^4.3.1:
   version "4.3.1"
@@ -11851,10 +11851,10 @@ three-stdlib@^2.6.1, three-stdlib@^2.6.2:
     potpack "^1.0.1"
     zstddec "^0.0.2"
 
-three@^0.136.0:
-  version "0.136.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.136.0.tgz#b1504db021b46398ef468aa7849f3dcabb814f50"
-  integrity sha512-+fEMX7nYLz2ZesVP/dyifli5Jf8gR3XPAnFJveQ80aMhibFduzrADnjMbARXh8+W9qLK7rshJCjAIL/6cDxC+A==
+three@^0.137.5:
+  version "0.137.5"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.137.5.tgz#a1e34bedd0412f2d8797112973dfadac78022ce6"
+  integrity sha512-rTyr+HDFxjnN8+N/guZjDgfVxgHptZQpf6xfL/Mo7a5JYIFwK6tAq3bzxYYB4Ae0RosDZlDuP+X5aXDXz+XnHQ==
 
 throttle-debounce@^3.0.1:
   version "3.0.1"
