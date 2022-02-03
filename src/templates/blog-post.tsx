@@ -252,8 +252,8 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
                             </CardList>
                         </>
                     )}
-                    <Divider />
-                    <NewsletterSubscription />
+                    {/* <Divider /> */}
+                    {/* <NewsletterSubscription /> */}
                 </Stack>
             </BlogPostProvider>
         </ContentsProvider>
