@@ -41,7 +41,11 @@ const PageBreak = () => {
 
 const CVHeader = () => {
     return (
-        <Grid gap="4" gridTemplateColumns={['1fr', null, '2fr 1fr']}>
+        <Grid
+            gap="4"
+            gridTemplateColumns={['1fr', null, '2fr 1fr']}
+            sx={{ '@media print': { gridTemplateColumns: '2fr 1fr' } }}
+        >
             <Heading
                 as={Link}
                 color="black"
