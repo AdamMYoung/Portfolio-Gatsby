@@ -68,11 +68,7 @@ export const Footer: VFC = () => {
                             <Link fontSize="sm" color="primary" href="/about">
                                 About
                             </Link>
-                            <Link
-                                fontSize="sm"
-                                color="primary"
-                                href="https://drive.google.com/file/d/1Ws1_C6_3ryHWTol3ZSRxq3vFrrag5WfT/view?usp=sharing"
-                            >
+                            <Link fontSize="sm" color="primary" href="/cv">
                                 Resumé
                             </Link>
                             <Link fontSize="sm" color="primary" href="/cookies">
@@ -84,9 +80,6 @@ export const Footer: VFC = () => {
                 <Stack>
                     <Heading fontSize="xl">My Stuff</Heading>
                     <Grid gap="1" gridTemplateColumns={['repeat(2, 1fr)', null, '1fr']}>
-                        <Link fontSize="sm" color="primary" href="/career">
-                            Career
-                        </Link>
                         <Link fontSize="sm" color="primary" href="/projects">
                             Projects
                         </Link>

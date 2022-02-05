@@ -20,10 +20,7 @@ const Links = () => {
                     <CategoryListItem as={LinkButton} href="/">
                         Website
                     </CategoryListItem>
-                    <CategoryListItem
-                        as={LinkButton}
-                        href="https://drive.google.com/file/d/1Ws1_C6_3ryHWTol3ZSRxq3vFrrag5WfT/view?usp=sharing"
-                    >
+                    <CategoryListItem as={LinkButton} href="/cv">
                         Resumé
                     </CategoryListItem>
                     <CategoryListItem as={LinkButton} href="https://github.com/adammyoung">

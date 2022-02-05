@@ -14,10 +14,12 @@ import {
     TwoPanelSubtitle,
     TwoPanelTitle,
 } from '~components/sections/two-panel';
+import { Layout } from '~views/layout';
 import { SEO } from '~views/seo';
 
 const AboutIntro = () => {
     return (
+
         <TwoPanel disableMotion>
             <TwoPanelBlock>
                 <TwoPanelHeading>
@@ -201,17 +203,19 @@ const AboutStuffUsed = () => {
 
 const About: VFC = () => {
     return (
-        <Stack spacing={[16, null, 24]}>
-            <SEO
-                title="About Me"
-                description="My history, background, interests and everything else you need to know."
-                canonical="/about"
-            />
-            <AboutIntro />
-            <AboutWhoAmI />
-            <AboutInterests />
-            <AboutStuffUsed />
-        </Stack>
+        <Layout>
+            <Stack spacing={[16, null, 24]}>
+                <SEO
+                    title="About Me"
+                    description="My history, background, interests and everything else you need to know."
+                    canonical="/about"
+                />
+                <AboutIntro />
+                <AboutWhoAmI />
+                <AboutInterests />
+                <AboutStuffUsed />
+            </Stack>
+        </Layout>
     );
 };
 

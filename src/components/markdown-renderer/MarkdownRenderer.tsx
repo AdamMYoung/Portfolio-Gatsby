@@ -19,6 +19,7 @@ hljs.configure({
 
 type MarkdownRendererProps = BoxProps & {
     markdown: string;
+    useBlogFormatter?: boolean;
 };
 
 /**
@@ -129,10 +130,10 @@ const newTheme = {
     },
 };
 
-export const MarkdownRenderer: VFC<MarkdownRendererProps> = ({ markdown, ...rest }) => {
+export const MarkdownRenderer: VFC<MarkdownRendererProps> = ({ markdown, useBlogFormatter, ...rest }) => {
     return (
         <Box {...rest}>
-            <ReactMarkdown components={ChakraUIRenderer(newTheme)} children={markdown} skipHtml />
+            <ReactMarkdown components={ChakraUIRenderer(useBlogFormatter && newTheme)} children={markdown} skipHtml />
         </Box>
     );
 };

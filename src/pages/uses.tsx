@@ -10,6 +10,7 @@ import {
     TwoPanelTitle,
 } from '~components/sections/two-panel';
 import { useUses } from '~hooks/static-queries';
+import { Layout } from '~views/layout';
 import { SEO } from '~views/seo';
 
 const UsesIntro = () => {
@@ -36,40 +37,42 @@ const Uses: VFC = () => {
     const categories = useUses();
 
     return (
-        <Stack spacing={[16, null, 24]}>
-            <SEO
-                title="Uses"
-                description="The bits and pieces I use daily, from software development to photography."
-                canonical="/uses/"
-            />
-            <UsesIntro />
+        <Layout>
+            <Stack spacing={[16, null, 24]}>
+                <SEO
+                    title="Uses"
+                    description="The bits and pieces I use daily, from software development to photography."
+                    canonical="/uses/"
+                />
+                <UsesIntro />
 
-            {categories.map(({ name, uses }) => (
-                <Stack key={name} spacing="4">
-                    <Heading>{name}</Heading>
-                    <Box overflow="none" overflowX="auto">
-                        <Table colorScheme="white">
-                            <Thead>
-                                <Tr>
-                                    <Th>Name</Th>
-                                    <Th>Description</Th>
-                                </Tr>
-                            </Thead>
-                            <Tbody>
-                                {uses.map((use) => (
-                                    <Tr key={use.name}>
-                                        <Td>
-                                            <Link href={use.link}>{use.name}</Link>
-                                        </Td>
-                                        <Td>{use.description.description}</Td>
+                {categories.map(({ name, uses }) => (
+                    <Stack key={name} spacing="4">
+                        <Heading>{name}</Heading>
+                        <Box overflow="none" overflowX="auto">
+                            <Table colorScheme="white">
+                                <Thead>
+                                    <Tr>
+                                        <Th>Name</Th>
+                                        <Th>Description</Th>
                                     </Tr>
-                                ))}
-                            </Tbody>
-                        </Table>
-                    </Box>
-                </Stack>
-            ))}
-        </Stack>
+                                </Thead>
+                                <Tbody>
+                                    {uses.map((use) => (
+                                        <Tr key={use.name}>
+                                            <Td>
+                                                <Link href={use.link}>{use.name}</Link>
+                                            </Td>
+                                            <Td>{use.description.description}</Td>
+                                        </Tr>
+                                    ))}
+                                </Tbody>
+                            </Table>
+                        </Box>
+                    </Stack>
+                ))}
+            </Stack>
+        </Layout>
     );
 };
 
