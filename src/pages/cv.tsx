@@ -177,7 +177,11 @@ const CVSkills = () => {
                 Below you'll find a list of technologies, services, and languages that I've used recently. The list
                 isn't exhaustive, but gives a good overview of what I've been doing recently.
             </Text>
-            <Grid gridTemplateColumns={['1fr', null, 'repeat(3, 1fr)']} gap="4">
+            <Grid
+                gridTemplateColumns={['1fr', null, 'repeat(3, 1fr)']}
+                sx={{ '@media print': { gridTemplateColumns: 'repeat(3,1fr)' } }}
+                gap="4"
+            >
                 <Stack>
                     <Heading as="h3" fontSize="lg" fontWeight="semibold">
                         Technologies
