@@ -12,7 +12,7 @@ const Links = () => {
                 description="A collection of social platforms, websites and email links relevant to me."
                 canonical="/links/"
             />
-            <Stack>
+            <Stack spacing="8">
                 <Heading as="h1" fontWeight="semibold">
                     My Links
                 </Heading>
