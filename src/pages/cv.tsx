@@ -289,13 +289,13 @@ const CV = () => {
             <LightMode>
                 <Box
                     mx="auto"
-                    p="12"
+                    p={[4, null, 12]}
                     bg="white"
                     color="black"
                     maxWidth="container.lg"
                     rounded="sm"
                     sx={{
-                        my: 12,
+                        my: [4, null, 12],
                         dropShadow: 'md',
                         boxShadow: 'lg',
                         '.contentEntry': { mt: 12 },
