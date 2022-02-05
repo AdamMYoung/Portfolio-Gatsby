@@ -46,12 +46,13 @@ const CVHeader = () => {
                 color="black"
                 fontWeight="bold"
                 fontSize="5xl"
-                sx={{ '@media print': { fontSize: '4xl' } }}
+                textAlign={['center', null, 'left']}
+                sx={{ '@media print': { fontSize: '4xl', textAlign: 'left' } }}
                 href="/"
             >
                 Adam Young
             </Heading>
-            <Stack spacing="1" textAlign={['center', null, 'right']}>
+            <Stack spacing="1" textAlign={['center', null, 'right']} sx={{ '@media print': { textAlign: 'right' } }}>
                 <Link color="black" href="https://aydev.uk">
                     https://aydev.uk
                 </Link>
@@ -298,7 +299,7 @@ const CV = () => {
                         my: [4, null, 12],
                         dropShadow: 'md',
                         boxShadow: 'lg',
-                        '.contentEntry': { mt: 12 },
+                        '.contentEntry': { mt: [4, null, 12] },
                         '@media print': {
                             margin: 0,
                             size: 'A4',
