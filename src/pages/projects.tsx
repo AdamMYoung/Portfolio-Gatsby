@@ -14,6 +14,7 @@ import {
     TwoPanelTitle,
 } from '~components/sections/two-panel';
 import { useGithubStats } from '~hooks/static-queries';
+import { Layout } from '~views/layout';
 import { SEO } from '~views/seo';
 
 const ProjectsIntro: VFC = () => {
@@ -108,16 +109,18 @@ const ProjectsList: VFC = () => {
 
 const Projects: VFC = () => {
     return (
-        <Stack spacing={[16, null, 24]}>
-            <SEO
-                title="Projects"
-                description="All websites, libraries and other bits of code I've developed."
-                canonical="/projects/"
-            />
-            <ProjectsIntro />
-            <ActiveProjects />
-            <ProjectsList />
-        </Stack>
+        <Layout>
+            <Stack spacing={[16, null, 24]}>
+                <SEO
+                    title="Projects"
+                    description="All websites, libraries and other bits of code I've developed."
+                    canonical="/projects/"
+                />
+                <ProjectsIntro />
+                <ActiveProjects />
+                <ProjectsList />
+            </Stack>
+        </Layout>
     );
 };
 

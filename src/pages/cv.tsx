@@ -1,3 +1,4 @@
+
 import {
     LightMode,
     Icon,
@@ -13,6 +14,8 @@ import {
     HStack,
     UnorderedList,
     ListItem,
+    Container,
+    useMediaQuery
 } from '@chakra-ui/react';
 import { FaBook, FaSearch, FaUserGraduate, FaUserTie } from 'react-icons/fa';
 import React from 'react';
@@ -21,7 +24,7 @@ import { Link } from '~components/link';
 import { useJobs, useJobStats } from '~hooks/static-queries';
 import { dateToMonthYear } from '~utils/date';
 import { MarkdownRenderer } from '~components/markdown-renderer';
-import { css } from '@emotion/react';
+import { SEO } from '~views/seo';
 
 const CVHeader = () => {
     return (
@@ -171,7 +174,7 @@ const CVSkills = () => {
 
 const CVEducation = () => {
     return (
-        <Stack spacing="6">
+        <Stack spacing="6" >
             <HStack>
                 <Icon as={FaUserGraduate} color="blue.800" boxSize="8" />
                 <Heading as="h2" fontSize="3xl" fontWeight="semibold">
@@ -187,7 +190,7 @@ const CVEducation = () => {
                     My studies at Teesside University from 2015 to 2019 provided with industry-standard skills in
                     software development and computer science, such as:
                 </Text>
-                <UnorderedList pl="8">
+                <UnorderedList pl="8" className="studies">
                     <ListItem>Software patterns and application architecture.</ListItem>
                     <ListItem>Relational database design.</ListItem>
                     <ListItem>.NET and .NET Core application development.</ListItem>
@@ -211,27 +214,44 @@ const CVEducation = () => {
 };
 
 const CV = () => {
+
+
     return (
-        <LightMode>
-            <Box
-                mx="auto"
-                p="12"
-                bg="white"
-                color="black"
-                boxShadow="lg"
-                maxWidth="container.lg"
-                rounded="md"
-                dropShadow="md"
-            >
-                <Stack spacing="12" className="printable">
-                    <CVHeader />
-                    <CVAbout />
-                    <CVSkills />
-                    <CVExperience />
-                    <CVEducation />
-                </Stack>
-            </Box>
-        </LightMode>
+        <Container maxW="container.xl">
+            <SEO
+                title="CV"
+                description="My CV, detailing my experience, education, and skillset."
+                canonical="/cv/"
+            />
+            <LightMode>
+                <Box
+                    mx="auto"
+                    p="12"
+                    bg="white"
+                    color="black"
+                    maxWidth="container.lg"
+                    rounded="md"
+                    sx={{
+                        my: 12,
+                        dropShadow: "md",
+                        boxShadow: "lg",
+                        "@media print": {
+                            margin: 0,
+                            dropShadow: "none",
+                            boxShadow: "none",
+                        }
+                    }}
+                >
+                    <Stack spacing="12" className="printable">
+                        <CVHeader />
+                        <CVAbout />
+                        <CVSkills />
+                        <CVExperience />
+                        <CVEducation />
+                    </Stack>
+                </Box>
+            </LightMode>
+        </Container>
     );
 };
 

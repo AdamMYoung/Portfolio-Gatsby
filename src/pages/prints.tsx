@@ -13,6 +13,7 @@ import {
     TwoPanelTitle,
 } from '~components/sections/two-panel';
 import { usePrintsOverview } from '~hooks/static-queries';
+import { Layout } from '~views/layout';
 import { SEO } from '~views/seo';
 
 const PrintsIntro = () => {
@@ -46,27 +47,29 @@ const Prints: VFC = () => {
     const prints = usePrintsOverview();
 
     return (
-        <Stack spacing={[16, null, 24]}>
-            <SEO
-                title="Prints"
-                description="3D printing projects I've made, with interactive models, pictures and downloads."
-                canonical="/prints/"
-            />
-            <PrintsIntro />
-            <CardList id="prints">
-                {prints.map(({ name, description, slug, publicUrl }) => {
-                    return (
-                        <PrintCard
-                            key={slug}
-                            to={`/prints/${slug}`}
-                            title={name}
-                            description={description}
-                            modelUrl={publicUrl}
-                        />
-                    );
-                })}
-            </CardList>
-        </Stack>
+        <Layout>
+            <Stack spacing={[16, null, 24]}>
+                <SEO
+                    title="Prints"
+                    description="3D printing projects I've made, with interactive models, pictures and downloads."
+                    canonical="/prints/"
+                />
+                <PrintsIntro />
+                <CardList id="prints">
+                    {prints.map(({ name, description, slug, publicUrl }) => {
+                        return (
+                            <PrintCard
+                                key={slug}
+                                to={`/prints/${slug}`}
+                                title={name}
+                                description={description}
+                                modelUrl={publicUrl}
+                            />
+                        );
+                    })}
+                </CardList>
+            </Stack>
+        </Layout>
     );
 };
 

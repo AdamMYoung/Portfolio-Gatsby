@@ -18,6 +18,7 @@ import { BlogPost } from '~types';
 import { dateToLongDate } from '~utils/date';
 import { getTwitterIntent } from '~utils/twitter';
 import { Contents } from '~views/contents';
+import { Layout } from '~views/layout';
 import { LengthIcon } from '~views/length-icon';
 import { NewsletterSubscription } from '~views/newsletter-subscription';
 import { SEO } from '~views/seo';
@@ -213,50 +214,52 @@ const BlogEntry: VFC<BlogPostProps> = ({ data }) => {
     const relatedBlogs = useCombinedSubset(3, [data.matching.nodes, data.notMatching.nodes]);
 
     return (
-        <ContentsProvider>
-            <BlogPostProvider value={{ blogPost: data.contentfulPageBlogPost }}>
-                <Stack spacing="12">
-                    <BlogSEO />
-                    <BlogNavigation />
+        <Layout>
+            <ContentsProvider>
+                <BlogPostProvider value={{ blogPost: data.contentfulPageBlogPost }}>
+                    <Stack spacing="12">
+                        <BlogSEO />
+                        <BlogNavigation />
 
-                    <Stack spacing="10">
-                        <BlogHeader />
-                        <BlogContent />
-                        <BlogSocial />
+                        <Stack spacing="10">
+                            <BlogHeader />
+                            <BlogContent />
+                            <BlogSocial />
 
-                        <Divider />
-                        <Stack spacing="4">
-                            <Text fontSize="md">Written by Adam Young</Text>
-                            <Text fontSize="md" variant="subtitle">
-                                Adam Young is a front-end engineer, who specializes in React and modern web
-                                technologies. He's working at <Link href="https://curve.com">Curve</Link> as a front-end
-                                engineer. He currently lives in the city of Birmingham with his two cats.
-                            </Text>
-                        </Stack>
-                    </Stack>
-                    {relatedBlogs.length > 0 && (
-                        <>
                             <Divider />
-                            <Heading>Related Articles</Heading>
-                            <CardList>
-                                {relatedBlogs.map(({ id, slug, createdAt, title, heroImage, copy }) => (
-                                    <BlogCard
-                                        key={id}
-                                        to={`/blog/${slug}`}
-                                        title={title}
-                                        subtitle={dateToLongDate(createdAt)}
-                                        image={heroImage.localFile}
-                                        readingTime={copy.readingTime}
-                                    />
-                                ))}
-                            </CardList>
-                        </>
-                    )}
-                    {/* <Divider /> */}
-                    {/* <NewsletterSubscription /> */}
-                </Stack>
-            </BlogPostProvider>
-        </ContentsProvider>
+                            <Stack spacing="4">
+                                <Text fontSize="md">Written by Adam Young</Text>
+                                <Text fontSize="md" variant="subtitle">
+                                    Adam Young is a front-end engineer, who specializes in React and modern web
+                                    technologies. He's working at <Link href="https://curve.com">Curve</Link> as a front-end
+                                    engineer. He currently lives in the city of Birmingham with his two cats.
+                                </Text>
+                            </Stack>
+                        </Stack>
+                        {relatedBlogs.length > 0 && (
+                            <>
+                                <Divider />
+                                <Heading>Related Articles</Heading>
+                                <CardList>
+                                    {relatedBlogs.map(({ id, slug, createdAt, title, heroImage, copy }) => (
+                                        <BlogCard
+                                            key={id}
+                                            to={`/blog/${slug}`}
+                                            title={title}
+                                            subtitle={dateToLongDate(createdAt)}
+                                            image={heroImage.localFile}
+                                            readingTime={copy.readingTime}
+                                        />
+                                    ))}
+                                </CardList>
+                            </>
+                        )}
+                        {/* <Divider /> */}
+                        {/* <NewsletterSubscription /> */}
+                    </Stack>
+                </BlogPostProvider>
+            </ContentsProvider>
+        </Layout>
     );
 };
 

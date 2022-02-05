@@ -10,6 +10,7 @@ import {
     TwoPanelTitle,
 } from '~components/sections/two-panel';
 import { EMAIL_REGEX } from '~utils/validation';
+import { Layout } from '~views/layout';
 import { SEO } from '~views/seo';
 
 const encode = (data) => {
@@ -114,14 +115,16 @@ const QAndAIntro = () => {
 
 const QAndA: VFC = () => {
     return (
-        <Stack spacing={[16, null, 24]}>
-            <SEO
-                title="Q&A"
-                description="Ask a question, get a response. Have a look through questions asked by others too."
-                canonical="/q-and-a/"
-            />
-            <QAndAIntro />
-        </Stack>
+        <Layout>
+            <Stack spacing={[16, null, 24]}>
+                <SEO
+                    title="Q&A"
+                    description="Ask a question, get a response. Have a look through questions asked by others too."
+                    canonical="/q-and-a/"
+                />
+                <QAndAIntro />
+            </Stack>
+        </Layout>
     );
 };
 

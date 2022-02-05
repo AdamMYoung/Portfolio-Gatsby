@@ -6,6 +6,7 @@ import { Link } from '~components/link';
 import { LinkButton } from '~components/link-button';
 import { TwoPanel, TwoPanelBlock, TwoPanelBody, TwoPanelImage, TwoPanelTitle } from '~components/sections/two-panel';
 import { FeaturedArticleCard } from '~views/featured-article-card';
+import { Layout } from '~views/layout';
 import { NewsletterSubscription } from '~views/newsletter-subscription';
 import { SEO } from '~views/seo';
 
@@ -59,18 +60,20 @@ const HomeRecommendations: VFC = () => {
 
 const Index: VFC = () => {
     return (
-        <Stack spacing={[16, null, 24]}>
-            <SEO
-                title="Home"
-                description="Hi, I'm Adam Young, a Software Engineer from Birmingham currently working at Curve. Here, you'll find articles about software development, my interests, and the projects I've currently got on the go."
-                canonical="/"
-            />
-            <HomeIntro />
-            {/* <HomeRecommendations /> */}
-            <FeaturedArticleCard />
-            {/* <Divider /> */}
-            {/* <NewsletterSubscription /> */}
-        </Stack>
+        <Layout>
+            <Stack spacing={[16, null, 24]}>
+                <SEO
+                    title="Home"
+                    description="Hi, I'm Adam Young, a Software Engineer from Birmingham currently working at Curve. Here, you'll find articles about software development, my interests, and the projects I've currently got on the go."
+                    canonical="/"
+                />
+                <HomeIntro />
+                {/* <HomeRecommendations /> */}
+                <FeaturedArticleCard />
+                {/* <Divider /> */}
+                {/* <NewsletterSubscription /> */}
+            </Stack>
+        </Layout>
     );
 };
 

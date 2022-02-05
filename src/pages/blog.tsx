@@ -22,6 +22,7 @@ import { useBlogTopics } from '~hooks/static-queries';
 import { BlogSearchProvider, useBlogFilter, useBlogIndex } from '~providers';
 import { dateToLongDate } from '~utils/date';
 import { FeaturedArticleCard } from '~views/featured-article-card';
+import { Layout } from '~views/layout';
 import { SEO } from '~views/seo';
 
 const BlogIntro = () => {
@@ -50,8 +51,8 @@ const BlogIntro = () => {
                             {!isTopicsSelected
                                 ? 'View All Articles'
                                 : hasNoResults
-                                ? 'No Articles Found'
-                                : `View ${results.length} ${results.length === 1 ? 'Article' : 'Articles'} `}
+                                    ? 'No Articles Found'
+                                    : `View ${results.length} ${results.length === 1 ? 'Article' : 'Articles'} `}
                         </Button>
                     </TwoPanelBody>
                     <TwoPanelBody>
@@ -140,17 +141,19 @@ const BlogPost = () => {
 
 const Blog: VFC = () => {
     return (
-        <Stack spacing={[16, null, 24]}>
-            <BlogSearchProvider>
-                <SEO
-                    title="Blog"
-                    description="The AYDev Blog. Find tips and guides across web development right here."
-                    canonical="/blog/"
-                />
-                <BlogIntro />
-                <BlogPost />
-            </BlogSearchProvider>
-        </Stack>
+        <Layout>
+            <Stack spacing={[16, null, 24]}>
+                <BlogSearchProvider>
+                    <SEO
+                        title="Blog"
+                        description="The AYDev Blog. Find tips and guides across web development right here."
+                        canonical="/blog/"
+                    />
+                    <BlogIntro />
+                    <BlogPost />
+                </BlogSearchProvider>
+            </Stack>
+        </Layout>
     );
 };
 

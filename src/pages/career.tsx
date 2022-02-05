@@ -48,80 +48,82 @@ const Career: VFC = () => {
     const jobs = useJobs();
 
     return (
-        <Stack spacing={[16, null, 24]}>
-            <SEO
-                title="Career"
-                description="A breakdown of my career and experience with languages, technologies and services."
-                canonical="/career"
-            />
+        <Layout>
+            <Stack spacing={[16, null, 24]}>
+                <SEO
+                    title="Career"
+                    description="A breakdown of my career and experience with languages, technologies and services."
+                    canonical="/career"
+                />
 
-            <CareerIntro />
+                <CareerIntro />
 
-            {jobs.map((job, index) => (
-                <TwoPanel gridTemplateColumns={['1fr', null, null, '1fr 1.2fr']} key={job.companyName}>
-                    {index % 2 === 0 && (
-                        <TwoPanelImage>
-                            <ChakraGatsbyImage
-                                position="sticky"
-                                top="7rem"
-                                w="full"
-                                pointerEvents="none"
-                                rounded="xl"
-                                image={getImage(job.image)}
-                                alt={job.companyName}
-                            />
-                        </TwoPanelImage>
-                    )}
+                {jobs.map((job, index) => (
+                    <TwoPanel gridTemplateColumns={['1fr', null, null, '1fr 1.2fr']} key={job.companyName}>
+                        {index % 2 === 0 && (
+                            <TwoPanelImage>
+                                <ChakraGatsbyImage
+                                    position="sticky"
+                                    top="7rem"
+                                    w="full"
+                                    pointerEvents="none"
+                                    rounded="xl"
+                                    image={getImage(job.image)}
+                                    alt={job.companyName}
+                                />
+                            </TwoPanelImage>
+                        )}
 
-                    <TwoPanelBlock>
-                        <TwoPanelHeading>
-                            <TwoPanelTitle>{job.companyName}</TwoPanelTitle>
-                            <TwoPanelSubtitle>{job.role}</TwoPanelSubtitle>
+                        <TwoPanelBlock>
+                            <TwoPanelHeading>
+                                <TwoPanelTitle>{job.companyName}</TwoPanelTitle>
+                                <TwoPanelSubtitle>{job.role}</TwoPanelSubtitle>
 
-                            <TwoPanelSubtitle fontSize="md">
-                                {dateToMonthYear(job.startDate)} - {job.endDate ? dateToMonthYear(job.endDate) : 'Now'}
-                            </TwoPanelSubtitle>
-                        </TwoPanelHeading>
-                        <TwoPanelBody>
-                            <Flex gap="2" wrap="wrap">
-                                {job.languages.map((lang) => (
-                                    <Tag key={lang} colorScheme="green">
-                                        {lang}
-                                    </Tag>
-                                ))}
-                                {job.technologies.map((tech) => (
-                                    <Tag key={tech} colorScheme="red">
-                                        {tech}
-                                    </Tag>
-                                ))}
-                                {job.services.map((service) => (
-                                    <Tag key={service} colorScheme="blue">
-                                        {service}
-                                    </Tag>
-                                ))}
-                            </Flex>
-                        </TwoPanelBody>
-                        <TwoPanelBody>
-                            <MarkdownRenderer markdown={job.description} />
-                        </TwoPanelBody>
-                    </TwoPanelBlock>
+                                <TwoPanelSubtitle fontSize="md">
+                                    {dateToMonthYear(job.startDate)} - {job.endDate ? dateToMonthYear(job.endDate) : 'Now'}
+                                </TwoPanelSubtitle>
+                            </TwoPanelHeading>
+                            <TwoPanelBody>
+                                <Flex gap="2" wrap="wrap">
+                                    {job.languages.map((lang) => (
+                                        <Tag key={lang} colorScheme="green">
+                                            {lang}
+                                        </Tag>
+                                    ))}
+                                    {job.technologies.map((tech) => (
+                                        <Tag key={tech} colorScheme="red">
+                                            {tech}
+                                        </Tag>
+                                    ))}
+                                    {job.services.map((service) => (
+                                        <Tag key={service} colorScheme="blue">
+                                            {service}
+                                        </Tag>
+                                    ))}
+                                </Flex>
+                            </TwoPanelBody>
+                            <TwoPanelBody>
+                                <MarkdownRenderer markdown={job.description} />
+                            </TwoPanelBody>
+                        </TwoPanelBlock>
 
-                    {index % 2 !== 0 && (
-                        <TwoPanelImage>
-                            <ChakraGatsbyImage
-                                position="sticky"
-                                top="7rem"
-                                w="full"
-                                pointerEvents="none"
-                                rounded="xl"
-                                image={getImage(job.image)}
-                                alt={job.companyName}
-                            />
-                        </TwoPanelImage>
-                    )}
-                </TwoPanel>
-            ))}
-        </Stack>
+                        {index % 2 !== 0 && (
+                            <TwoPanelImage>
+                                <ChakraGatsbyImage
+                                    position="sticky"
+                                    top="7rem"
+                                    w="full"
+                                    pointerEvents="none"
+                                    rounded="xl"
+                                    image={getImage(job.image)}
+                                    alt={job.companyName}
+                                />
+                            </TwoPanelImage>
+                        )}
+                    </TwoPanel>
+                ))}
+            </Stack>
+        </Layout>
     );
 };
 
