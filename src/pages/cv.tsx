@@ -2,6 +2,7 @@ import {
     LightMode,
     Icon,
     Box,
+    Button,
     Grid,
     Heading,
     Stack,
@@ -320,7 +321,8 @@ const CV = () => {
                         <CVEducation />
                         <CVReferences />
                         <Text textAlign="center" mt="12" sx={{ '@media print': { display: 'none' } }}>
-                            This resumé is auto-generated, and can be easily printed. Why not give it a try?
+                            This resumé is auto-generated, and can be easily printed. Why not give it a{' '}
+                            <Link onClick={() => window.print()}>try</Link>?
                         </Text>
                     </Box>
                 </Box>
