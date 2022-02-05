@@ -314,6 +314,9 @@ const CV = () => {
                         <CVExperience />
                         <CVEducation />
                         <CVReferences />
+                        <Text textAlign="center" mt="12" sx={{ '@media print': { display: 'none' } }}>
+                            This resumé is auto-generated, and can be easily printed. Why not give it a try?
+                        </Text>
                     </Box>
                 </Box>
             </LightMode>
