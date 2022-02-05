@@ -289,7 +289,7 @@ const CV = () => {
                     bg="white"
                     color="black"
                     maxWidth="container.lg"
-                    rounded="md"
+                    rounded="sm"
                     sx={{
                         my: 12,
                         dropShadow: 'md',
@@ -298,6 +298,7 @@ const CV = () => {
                         '@media print': {
                             margin: 0,
                             size: 'A4',
+                            rounded: 'none',
                             dropShadow: 'none',
                             boxShadow: 'none',
                             '.contentEntry': {
