@@ -41,7 +41,14 @@ const PageBreak = () => {
 const CVHeader = () => {
     return (
         <Grid gap="4" gridTemplateColumns="2fr 1fr">
-            <Heading as={Link} color="black" fontWeight="bold" fontSize="5xl" href="/">
+            <Heading
+                as={Link}
+                color="black"
+                fontWeight="bold"
+                fontSize="5xl"
+                sx={{ '@media print': { fontSize: '4xl' } }}
+                href="/"
+            >
                 Adam Young
             </Heading>
             <Stack spacing="1" textAlign="right">
