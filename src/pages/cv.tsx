@@ -40,7 +40,7 @@ const PageBreak = () => {
 
 const CVHeader = () => {
     return (
-        <Grid gap="4" gridTemplateColumns="2fr 1fr">
+        <Grid gap="4" gridTemplateColumns={["1fr", null, "2fr 1fr"]}>
             <Heading
                 as={Link}
                 color="black"
@@ -177,7 +177,7 @@ const CVSkills = () => {
                 Below you'll find a list of technologies, services, and languages that I've used recently. The list
                 isn't exhaustive, but gives a good overview of what I've been doing recently.
             </Text>
-            <Grid gridTemplateColumns="repeat(3, 1fr)" gap="4">
+            <Grid gridTemplateColumns={["1fr", null, "repeat(3, 1fr)"]} gap="4">
                 <Stack>
                     <Heading as="h3" fontSize="lg" fontWeight="semibold">
                         Technologies
