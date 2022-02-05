@@ -52,8 +52,8 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                         </MenuButton>
 
                         <MenuList>
-                            <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/career">
-                                Career
+                            <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/cv">
+                                Resumé
                             </MenuItem>
                             <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
                                 Projects
@@ -126,8 +126,8 @@ export const Navigation: VFC = () => {
                                     My Stuff
                                 </MenuButton>
                                 <MenuList>
-                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/career">
-                                        Career
+                                    <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/cv">
+                                        Resumé
                                     </MenuItem>
                                     <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/projects">
                                         Projects

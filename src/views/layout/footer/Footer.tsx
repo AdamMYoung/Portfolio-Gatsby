@@ -80,9 +80,6 @@ export const Footer: VFC = () => {
                 <Stack>
                     <Heading fontSize="xl">My Stuff</Heading>
                     <Grid gap="1" gridTemplateColumns={['repeat(2, 1fr)', null, '1fr']}>
-                        <Link fontSize="sm" color="primary" href="/career">
-                            Career
-                        </Link>
                         <Link fontSize="sm" color="primary" href="/projects">
                             Projects
                         </Link>
