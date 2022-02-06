@@ -301,10 +301,10 @@ const CV = () => {
                     maxWidth="container.lg"
                     rounded="sm"
                     sx={{
-                        my: [4, null, 12],
+                        my: [8, null, 12],
                         dropShadow: 'md',
                         boxShadow: 'lg',
-                        '.contentEntry': { mt: [4, null, 12] },
+                        '.contentEntry': { mt: [8, null, 12] },
                         '@media print': {
                             margin: 0,
                             size: 'A4',
