@@ -160,6 +160,7 @@ const BlogContent: VFC = () => {
                 <MarkdownRenderer useBlogFormatter w="full" pr={[0, null, 6]} markdown={copy.copy} />
                 {!isMobile && (
                     <Progress
+                        useFinishEffect
                         position="sticky"
                         top="120"
                         height={'calc(100vh - 9rem)'}

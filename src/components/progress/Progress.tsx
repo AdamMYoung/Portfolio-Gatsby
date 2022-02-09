@@ -1,17 +1,29 @@
 import { Box, BoxProps } from '@chakra-ui/react';
-import React, { useState, VFC } from 'react';
+import React, { useEffect, useRef, useState, VFC } from 'react';
 import { useDebounce } from 'react-use';
+import party from 'party-js';
+
 import { MotionBox, MotionText } from '~components/motion';
 import { limitNumberWithinRange } from '~utils/number';
 
 type ProgressProps = BoxProps & {
     amount: number;
+    useFinishEffect?: boolean;
 };
 
-export const Progress: VFC<ProgressProps> = ({ amount, 'aria-label': label, ...rest }) => {
+export const Progress: VFC<ProgressProps> = ({ amount, useFinishEffect, 'aria-label': label, ...rest }) => {
+    const indicatorRef = useRef<HTMLDivElement>();
     const [percentage, setPercentage] = useState(0);
+    const [hasReachedEnd, setHasReachedEnd] = useState(false);
 
     useDebounce(() => setPercentage(limitNumberWithinRange(amount)), 10, [amount]);
+
+    useEffect(() => {
+        if (!hasReachedEnd && useFinishEffect && percentage === 100) {
+            setHasReachedEnd(true);
+            party.confetti(indicatorRef.current, { spread: 80, count: 60, size: 1.25 });
+        }
+    }, [percentage, useFinishEffect, hasReachedEnd, setHasReachedEnd]);
 
     const bg = amount < 100 ? 'red.300' : 'green.300';
 
@@ -31,6 +43,7 @@ export const Progress: VFC<ProgressProps> = ({ amount, 'aria-label': label, ...r
                 />
                 <MotionBox rounded="xl" position="absolute" w="2" animate={{ height: `${percentage}%` }} bg={bg} />
                 <MotionBox
+                    ref={indicatorRef}
                     role="progressbar"
                     aria-valuenow={percentage}
                     aria-label={label}

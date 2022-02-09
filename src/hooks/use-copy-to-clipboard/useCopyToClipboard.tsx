@@ -10,6 +10,6 @@ export const useCopyToClipboard = (message = 'Content copied to clipboard') => {
 
             toast({ title: 'Copied!', description: message, status: 'success', duration: 3000 });
         },
-        [message]
+        [message, toast]
     );
 };

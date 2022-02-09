@@ -11,6 +11,17 @@ const reducer = (_, action: 'loading' | 'loaded' | 'error') => {
     }
 };
 
+type QueryStateOptions = {
+    /**
+     * Indicates if the `wrapQuery` function should throw any errors returned from the wrapped Promise. Defaults to `true`.
+     */
+    throwErrors?: boolean;
+};
+
+const defaultQueryStateOptions: Required<QueryStateOptions> = {
+    throwErrors: true,
+};
+
 /**
  * Hook to provide loading statuses, errors, and a function to wrap a Promise for handling loading state.
  * Acts as a smaller state-management hook compared to React Query or SWR.
@@ -22,7 +33,9 @@ export const useQueryState = () => {
     const setLoaded = () => dispatch('loaded');
     const setError = () => dispatch('error');
 
-    const wrapQuery = async <T extends any>(fn: () => Promise<T>) => {
+    const wrapQuery = async <T extends any>(fn: () => Promise<T>, options = defaultQueryStateOptions) => {
+        const { throwErrors } = options;
+
         setLoading();
 
         try {
@@ -31,7 +44,10 @@ export const useQueryState = () => {
             return result;
         } catch (error) {
             setError();
-            throw error;
+
+            if (throwErrors) {
+                throw error;
+            }
         }
     };
 
