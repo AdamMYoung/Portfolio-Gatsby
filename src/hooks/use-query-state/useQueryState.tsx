@@ -11,6 +11,10 @@ const reducer = (_, action: 'loading' | 'loaded' | 'error') => {
     }
 };
 
+/**
+ * Hook to provide loading statuses, errors, and a function to wrap a Promise for handling loading state.
+ * Acts as a smaller state-management hook compared to React Query or SWR.
+ */
 export const useQueryState = () => {
     const [state, dispatch] = useReducer(reducer, { querying: false, success: false, error: false });
 

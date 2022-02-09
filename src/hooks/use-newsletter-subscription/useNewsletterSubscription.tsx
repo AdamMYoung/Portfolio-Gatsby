@@ -1,5 +1,8 @@
 import { useQueryState } from '~hooks/use-query-state';
 
+/**
+ * Hook to submit email newsletter subscriptions.
+ */
 export const useNewsletterSubscription = () => {
     const { state, wrapQuery } = useQueryState();
 

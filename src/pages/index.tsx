@@ -70,8 +70,8 @@ const Index: VFC = () => {
                 <HomeIntro />
                 {/* <HomeRecommendations /> */}
                 <FeaturedArticleCard />
-                {/* <Divider /> */}
-                {/* <NewsletterSubscription /> */}
+                <Divider />
+                <NewsletterSubscription />
             </Stack>
         </Layout>
     );
