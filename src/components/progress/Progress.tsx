@@ -18,12 +18,16 @@ export const Progress: VFC<ProgressProps> = ({ amount, useFinishEffect, 'aria-la
 
     useDebounce(() => setPercentage(limitNumberWithinRange(amount)), 10, [amount]);
 
-    useEffect(() => {
-        if (!hasReachedEnd && useFinishEffect && percentage === 100) {
-            setHasReachedEnd(true);
-            party.confetti(indicatorRef.current, { spread: 80, count: 60, size: 1.25 });
-        }
-    }, [percentage, useFinishEffect, hasReachedEnd, setHasReachedEnd]);
+    useDebounce(
+        () => {
+            if (!hasReachedEnd && useFinishEffect && percentage === 100) {
+                setHasReachedEnd(true);
+                party.confetti(indicatorRef.current, { spread: 80, count: 60, size: 1.25 });
+            }
+        },
+        200,
+        [percentage, useFinishEffect, hasReachedEnd, setHasReachedEnd]
+    );
 
     const bg = amount < 100 ? 'red.300' : 'green.300';
 
