@@ -1,14 +1,19 @@
-import { Box, Button, Divider, Flex, Grid, Heading, Input, Stack, Text } from '@chakra-ui/react';
-import { StaticImage } from 'gatsby-plugin-image';
+import { Box, chakra, Divider, Grid, Heading, HStack, Stack, Text } from '@chakra-ui/react';
+import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image';
 import React, { VFC } from 'react';
+import { Card } from '~components/card';
 
 import { Link } from '~components/link';
 import { LinkButton } from '~components/link-button';
+import { MarkdownRenderer } from '~components/markdown-renderer';
 import { TwoPanel, TwoPanelBlock, TwoPanelBody, TwoPanelImage, TwoPanelTitle } from '~components/sections/two-panel';
+import { useRecommendations } from '~hooks/static-queries';
 import { FeaturedArticleCard } from '~views/featured-article-card';
 import { Layout } from '~views/layout';
 import { NewsletterSubscription } from '~views/newsletter-subscription';
 import { SEO } from '~views/seo';
+
+const ChakraGatsbyImage = chakra(GatsbyImage);
 
 const HomeIntro: VFC = () => {
     return (
@@ -55,7 +60,37 @@ const HomeIntro: VFC = () => {
 
 // Will add recommendations when I actually get some!
 const HomeRecommendations: VFC = () => {
-    return <Grid gridTemplateColumns={['1fr', null, '1fr 1fr']}></Grid>;
+    const recommendations = useRecommendations();
+
+    return (
+        <Grid gridTemplateColumns={['1fr', null, '1fr 1fr']} gap={[4, null, 8]}>
+            {recommendations.map(({ profilePicture, name, text, company }) => (
+                <Card key={name}>
+                    <Stack spacing="4">
+                        <HStack spacing={4}>
+                            <ChakraGatsbyImage
+                                image={getImage(profilePicture)}
+                                alt={name}
+                                w="12"
+                                h="12"
+                                rounded="full"
+                            />
+                            <Stack spacing="1">
+                                <Heading fontSize="lg" fontWeight="semibold">
+                                    {name}
+                                </Heading>
+                                <Text fontSize="sm" fontWeight="semibold" variant="subtitle">
+                                    {company}
+                                </Text>
+                            </Stack>
+                        </HStack>
+
+                        <MarkdownRenderer fontSize="sm" markdown={text} />
+                    </Stack>
+                </Card>
+            ))}
+        </Grid>
+    );
 };
 
 const Index: VFC = () => {
@@ -68,7 +103,7 @@ const Index: VFC = () => {
                     canonical="/"
                 />
                 <HomeIntro />
-                {/* <HomeRecommendations /> */}
+                <HomeRecommendations />
                 <FeaturedArticleCard />
                 <Divider />
                 <NewsletterSubscription />
