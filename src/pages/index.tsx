@@ -58,13 +58,12 @@ const HomeIntro: VFC = () => {
     );
 };
 
-// Will add recommendations when I actually get some!
 const HomeRecommendations: VFC = () => {
     const recommendations = useRecommendations();
 
     return (
         <Grid gridTemplateColumns={['1fr', null, '1fr 1fr']} gap={[4, null, 8]}>
-            {recommendations.map(({ profilePicture, name, text, company }) => (
+            {recommendations.map(({ profilePicture, name, text, role, company }) => (
                 <Card key={name}>
                     <Stack spacing="4">
                         <HStack spacing={4}>
@@ -77,7 +76,7 @@ const HomeRecommendations: VFC = () => {
                             />
                             <Stack spacing="1">
                                 <Heading fontSize="lg" fontWeight="semibold">
-                                    {name}
+                                    {role}, {name}
                                 </Heading>
                                 <Text fontSize="sm" fontWeight="semibold" variant="subtitle">
                                     {company}

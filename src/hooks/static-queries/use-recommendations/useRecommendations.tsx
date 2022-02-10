@@ -1,10 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { IGatsbyImageData, ImageDataLike } from 'gatsby-plugin-image';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 type Recommendation = {
     profilePicture: IGatsbyImageData;
     name: string;
     company: string;
+    role: string;
     text: string;
 };
 
@@ -17,6 +18,7 @@ export const useRecommendations = (): Recommendation[] => {
                     text {
                         text
                     }
+                    role
                     company
                     profilePicture {
                         localFile {
@@ -34,6 +36,7 @@ export const useRecommendations = (): Recommendation[] => {
         company: node.company,
         name: node.name,
         text: node.text.text,
+        role: node.role,
         profilePicture: node.profilePicture.localFile,
     }));
 };
