@@ -76,10 +76,10 @@ const HomeRecommendations: VFC = () => {
                             />
                             <Stack spacing="1">
                                 <Heading fontSize="lg" fontWeight="semibold">
-                                    {role}, {name}
+                                    {name}
                                 </Heading>
                                 <Text fontSize="sm" fontWeight="semibold" variant="subtitle">
-                                    {company}
+                                    {role}, {company}
                                 </Text>
                             </Stack>
                         </HStack>
