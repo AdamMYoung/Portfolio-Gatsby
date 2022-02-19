@@ -1,4 +1,4 @@
-import { Container, Stack, StackProps } from '@chakra-ui/react';
+import { Box, Container, Flex, Stack, StackProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
 import { useCookieBanner } from '~hooks';
@@ -10,13 +10,15 @@ export const Layout: FC<StackProps> = ({ children, ...rest }) => {
     useCookieBanner();
 
     return (
-        <Container maxW="1600px" minH="100vh" pb="12">
-            <Navigation />
+        <>
+            <Container maxW="1600px">
+                <Navigation />
+            </Container>
+
             <Container as="main" maxW="1280px" mt={[8, null, 16]}>
                 {children}
-
                 <Footer />
             </Container>
-        </Container>
+        </>
     );
 };

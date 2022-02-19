@@ -7,7 +7,7 @@ export const Card: FC<MotionBoxProps> = ({ children, sx, ...rest }) => {
     const { colorMode } = useColorMode();
 
     const _sx = useMergedStyles(sx, {
-        bg: colorMode === 'dark' ? 'gray.600' : 'gray.200',
+        bg: colorMode === 'dark' ? '#232323' : 'gray.200',
     });
 
     return (

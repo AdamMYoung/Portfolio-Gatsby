@@ -26,13 +26,15 @@ import { LinkButton } from '~components/link-button';
 import { MenuIconButton } from '~components/menu-icon-button';
 
 const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
+    const { colorMode } = useColorMode();
+
     return (
         <Drawer {...props}>
             <DrawerOverlay />
 
             <DrawerContent>
                 <DrawerCloseButton />
-                <DrawerBody as={Stack} spacing="4" pt="14">
+                <DrawerBody bg={colorMode === 'dark' ? '#121212' : 'white'} as={Stack} spacing="4" pt="14">
                     <LinkButton w="full" py="2" href="/" variant="link">
                         Home
                     </LinkButton>
@@ -51,7 +53,7 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
                             My Stuff
                         </MenuButton>
 
-                        <MenuList>
+                        <MenuList bg={colorMode === 'dark' ? '#232323' : 'white'}>
                             <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/cv">
                                 Resumé
                             </MenuItem>
@@ -81,18 +83,16 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
 
 export const Navigation: VFC = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { colorMode } = useColorMode();
     const location = useLocation();
     const isMobile = useBreakpointValue([true, null, null, false]);
 
     // Close the nav drawer whenever the location changes.
-    useEffect(() => onClose(), [location]);
+    useEffect(() => onClose(), [onClose, location]);
 
     return (
         <>
             <Grid
                 as="nav"
-                sx={{ bg: colorMode == 'dark' ? 'gray.800' : 'white' }}
                 transitionProperty="background-color"
                 transitionDuration="normal"
                 zIndex="1"

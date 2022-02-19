@@ -108,7 +108,7 @@ const newTheme = {
         useEffect(() => hljs.highlightElement(preRef.current), []);
 
         return (
-            <Box p="4" position="relative" bg="gray.700" boxShadow="xl" rounded="xl">
+            <Box p="4" position="relative" bg="#232323" boxShadow="xl" rounded="xl">
                 <CopyButton contentToCopy={content} position="absolute" top="4" right="4">
                     Copy
                 </CopyButton>
