@@ -156,7 +156,7 @@ const BlogContent: VFC = () => {
     return (
         <>
             <Box ref={fromRef} />
-            <Flex>
+            <Flex pr="4">
                 <MarkdownRenderer useBlogFormatter w="full" pr={[0, null, 6]} markdown={copy.copy} />
                 {!isMobile && (
                     <Progress

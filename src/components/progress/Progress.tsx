@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@chakra-ui/react';
+import { Box, BoxProps, useColorMode } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState, VFC } from 'react';
 import { useDebounce } from 'react-use';
 import party from 'party-js';
@@ -12,6 +12,7 @@ type ProgressProps = BoxProps & {
 };
 
 export const Progress: VFC<ProgressProps> = ({ amount, useFinishEffect, 'aria-label': label, ...rest }) => {
+    const { colorMode } = useColorMode();
     const indicatorRef = useRef<HTMLDivElement>();
     const [percentage, setPercentage] = useState(0);
     const [hasReachedEnd, setHasReachedEnd] = useState(false);
@@ -42,7 +43,7 @@ export const Progress: VFC<ProgressProps> = ({ amount, useFinishEffect, 'aria-la
                     bottom="0"
                     left="0"
                     right="0"
-                    bg="white"
+                    bg={colorMode === 'dark' ? 'white' : 'gray.600'}
                     opacity="0.1"
                 />
                 <MotionBox rounded="xl" position="absolute" w="2" animate={{ height: `${percentage}%` }} bg={bg} />
