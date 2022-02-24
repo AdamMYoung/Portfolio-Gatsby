@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Button, HStack, ToastId, useToast, Box, chakra, Stack } from '@chakra-ui/react';
+import { Text, Button, HStack, ToastId, useToast, Box, chakra, Stack, useColorMode } from '@chakra-ui/react';
 import { useEffect, useRef } from 'react';
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
 import { useLocation } from 'react-use';
@@ -30,6 +30,7 @@ export const useCookieBanner = () => {
     const toast = useToast();
     const location = useLocation();
     const toastId = useRef<ToastId>();
+    const { colorMode } = useColorMode();
 
     const handleResponse = (accepted: boolean) => {
         setCookieAcceptance(accepted);
@@ -50,8 +51,9 @@ export const useCookieBanner = () => {
             toastId.current = toast({
                 position: 'bottom',
                 duration: null,
+
                 render: () => (
-                    <Box p="4" bg="blue.800" rounded="xl">
+                    <Box p="4" bg={colorMode === 'dark' ? '#232323' : 'white'} rounded="xl">
                         <Stack direction={['column', null, 'row']} spacing="4" alignItems={['end', null, 'initial']}>
                             <Text fontSize="sm">
                                 This site uses cookies to track performance and to understand how the site is used. For
