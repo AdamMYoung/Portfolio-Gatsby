@@ -125,7 +125,7 @@ export const Navigation: VFC = () => {
                                 <MenuButton as={Link} variant="animate-ltr" fontWeight="semibold" fontSize="md">
                                     My Stuff
                                 </MenuButton>
-                                <MenuList>
+                                <MenuList bg={colorMode === 'dark' ? '#232323' : 'white'}>
                                     <MenuItem as={Link} fontWeight="semibold" fontSize="md" href="/cv">
                                         Resumé
                                     </MenuItem>
