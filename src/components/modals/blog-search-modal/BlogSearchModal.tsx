@@ -14,6 +14,7 @@ import {
     Stack,
     Tag,
     Text,
+    useColorMode,
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -25,13 +26,14 @@ import { useBlogPostSearch } from '~hooks/use-blog-post-search';
 dayjs.extend(relativeTime);
 
 export const BlogSearchModal = ({ onClose, ...rest }: Omit<ModalProps, 'children'>): React.ReactElement => {
+    const { colorMode } = useColorMode();
     const [search, setSearch] = useInputState('');
     const results = useBlogPostSearch(search);
 
     return (
         <Modal onClose={onClose} {...rest}>
             <ModalOverlay />
-            <ModalContent rounded="xl">
+            <ModalContent rounded="xl" bg={colorMode === 'dark' ? '#232323' : 'white'}>
                 <ModalBody>
                     <HStack spacing="4">
                         <SearchIcon />
