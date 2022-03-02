@@ -82,6 +82,7 @@ const MobileNavDrawer: VFC<Omit<DrawerProps, 'children'>> = (props) => {
 };
 
 export const Navigation: VFC = () => {
+    const { colorMode } = useColorMode();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const location = useLocation();
     const isMobile = useBreakpointValue([true, null, null, false]);
