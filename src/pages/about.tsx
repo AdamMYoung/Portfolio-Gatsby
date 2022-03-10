@@ -19,7 +19,6 @@ import { SEO } from '~views/seo';
 
 const AboutIntro = () => {
     return (
-
         <TwoPanel disableMotion>
             <TwoPanelBlock>
                 <TwoPanelHeading>
@@ -163,6 +162,12 @@ const AboutWhoAmI = () => {
                             From there, I moved to Birmingham, and started my software development career. I worked at a
                             local software development house as a full stack developer for around 2 years, working with
                             mapping libraries and design systems before moving into a fully front-end role at Curve.
+                        </Text>
+                    </TwoPanelBody>
+                    <TwoPanelBody>
+                        <Text>
+                            After working at Curve for close to 8 months, I decided to follow up an opportunity to work
+                            at Checkout.com, where I'll be working within the website, and developer experience team.
                         </Text>
                     </TwoPanelBody>
                 </Stack>

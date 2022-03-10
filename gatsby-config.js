@@ -10,7 +10,7 @@ module.exports = {
         siteWwwUrl: 'https://www.aydev.uk',
         title: 'AYDev',
         description:
-            "Hi, I'm Adam Young, a Software Engineer from Birmingham currently working at Curve. Here, you'll find articles about software development, my interests, and the projects I've currently got on the go.",
+            "Hi, I'm Adam Young, a Software Engineer based in Darlington, currently working at Curve. Here, you'll find articles about software development, my interests, and the projects I've currently got on the go.",
     },
     plugins: [
         {
