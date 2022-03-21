@@ -72,7 +72,7 @@ export const useGithubLanguageListings = () => {
             })
         );
 
-        const mostPopular = Object.keys(entries).reduce((a, b) => (entries[a] > entries[b] ? a : b));
+        const mostPopular = Object.keys(entries).reduce((a, b) => (entries[a].weight > entries[b].weight ? a : b));
 
         return { entries: weightEntries(entries), mostPopular };
     }, [stats]);
