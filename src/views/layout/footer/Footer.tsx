@@ -1,6 +1,8 @@
 import { Divider, Flex, Grid, Heading, Icon, IconButton, Stack } from '@chakra-ui/react';
 import React, { VFC } from 'react';
 import { FaDev, FaGithub, FaTwitter, FaUnsplash } from 'react-icons/fa';
+import Carbonbadge from "react-carbonbadge"
+
 import { Link } from '~components/link';
 
 export const Footer: VFC = () => {
@@ -97,6 +99,7 @@ export const Footer: VFC = () => {
                 <Stack spacing="2">
                     <Heading fontSize="medium">All rights reserved © Adam Young {new Date().getFullYear()}</Heading>
                     <Link href="https://github.com/AdamMYoung/Portfolio">Source code on Github</Link>
+                    <Carbonbadge dark={true} />
                 </Stack>
             </Grid>
         </Stack>
