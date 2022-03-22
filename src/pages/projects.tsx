@@ -41,6 +41,31 @@ const ActiveProjects: VFC = () => {
     return (
         <Stack spacing="8">
             <Heading>Active Projects</Heading>
+            {/* Blurdle */}
+            <Card>
+                <TwoPanel height={['auto', null, null, '20rem']}>
+                    <StaticImage
+                        style={{ borderRadius: '12px' }}
+                        src="../images/blurdle.png"
+                        alt="A map of london, a screenshot from eBay Heuristics"
+                        width={900}
+                    />
+                    <TwoPanelBlock>
+                        <TwoPanelHeading>
+                            <TwoPanelTitle>Blurdle</TwoPanelTitle>
+                            <TwoPanelSubtitle>
+                                Like Wordle, but with blurry pictures.
+                            </TwoPanelSubtitle>
+                        </TwoPanelHeading>
+                        <TwoPanelBody>
+                            <LinkButton w="full" href="http://blurdle.aydev.uk/">
+                                Open
+                            </LinkButton>
+                        </TwoPanelBody>
+                    </TwoPanelBlock>
+                </TwoPanel>
+            </Card>
+            {/* eBay Heuristics */}
             <Card>
                 <TwoPanel height={['auto', null, null, '20rem']}>
                     <TwoPanelBlock>
@@ -64,6 +89,7 @@ const ActiveProjects: VFC = () => {
                         width={900}
                     />
                 </TwoPanel>
+
             </Card>
         </Stack>
     );
