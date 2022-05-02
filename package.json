@@ -32,7 +32,7 @@
         "axios": "^0.24.0",
         "chakra-ui-markdown-renderer": "^4.0.0",
         "dayjs": "^1.10.7",
-        "framer-motion": "^5.3.3",
+        "framer-motion": "^6.3.3",
         "gatsby": "^4.2.0",
         "gatsby-plugin-advanced-sitemap": "^2.0.0",
         "gatsby-plugin-alias-imports": "^1.0.5",
