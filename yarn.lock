@@ -13418,10 +13418,10 @@ three-stdlib@^2.6.2, three-stdlib@^2.8.9:
     potpack "^1.0.1"
     zstddec "^0.0.2"
 
-three@0.136.0:
-  version "0.136.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.136.0.tgz#b1504db021b46398ef468aa7849f3dcabb814f50"
-  integrity sha512-+fEMX7nYLz2ZesVP/dyifli5Jf8gR3XPAnFJveQ80aMhibFduzrADnjMbARXh8+W9qLK7rshJCjAIL/6cDxC+A==
+three@0.145.0:
+  version "0.145.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.145.0.tgz#a613d71e75effc2aed88be630027ca01e2b6502e"
+  integrity sha512-EKoHQEtEJ4CB6b2BGMBgLZrfwLjXcSUfoI/MiIXUuRpeYsfK5aPWbYhdtIVWOH+x6X0TouldHKHBuc/LAiFzAw==
 
 throttle-debounce@^3.0.1:
   version "3.0.1"
